@@ -1,16 +1,29 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'fs/promises';
+import path from 'path';
 
 // Open Graph image generada dinámicamente con next/og.
-// Next.js la sirve en /opengraph-image y la usa automáticamente como
-// og:image y twitter:image para la home (gracias al fichero estar en
-// el directorio raíz de la app).
+// Sirve como og:image y twitter:image de la home.
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const alt = 'swaraya — Inteligencia, investigada y diseñada';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+async function getLogoDataUri() {
+  try {
+    const filePath = path.join(process.cwd(), 'public', 'logo-swaraya.png');
+    const buf = await readFile(filePath);
+    return `data:image/png;base64,${buf.toString('base64')}`;
+  } catch (err) {
+    console.error('Could not load logo:', err);
+    return null;
+  }
+}
+
 export default async function Image() {
+  const logoSrc = await getLogoDataUri();
+
   return new ImageResponse(
     (
       <div
@@ -41,7 +54,7 @@ export default async function Image() {
           }}
         />
 
-        {/* Top: label + wordmark */}
+        {/* Top: label + logo oficial */}
         <div
           style={{
             display: 'flex',
@@ -58,23 +71,32 @@ export default async function Image() {
               fontWeight: 500,
               opacity: 0.9,
               display: 'flex',
+              marginBottom: 36,
             }}
           >
             Agencia de Inteligencia Artificial Aplicada
           </div>
-          <div
-            style={{
-              marginTop: 18,
-              fontSize: 120,
-              lineHeight: 1,
-              letterSpacing: '-0.04em',
-              fontWeight: 600,
-              color: '#F4F6F9',
-              display: 'flex',
-            }}
-          >
-            swaraya
-          </div>
+          {logoSrc ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={logoSrc}
+              alt="swaraya"
+              style={{ height: 120, width: 'auto', display: 'flex' }}
+            />
+          ) : (
+            <div
+              style={{
+                fontSize: 120,
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+                fontWeight: 600,
+                color: '#F4F6F9',
+                display: 'flex',
+              }}
+            >
+              swaraya
+            </div>
+          )}
         </div>
 
         {/* Bottom: tagline + url */}
@@ -120,10 +142,10 @@ export default async function Image() {
             />
             <div
               style={{
-                fontSize: 20,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
+                fontSize: 22,
+                letterSpacing: '0.04em',
                 color: '#9BA5B7',
+                fontWeight: 500,
                 display: 'flex',
               }}
             >
