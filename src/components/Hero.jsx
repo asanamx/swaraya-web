@@ -281,6 +281,27 @@ export const Hero = () => {
                 <text x="0" y="15" fontFamily="system-ui, -apple-system, sans-serif" fontSize="15" fontWeight="500" letterSpacing="-0.3">OpenClaw</text>
               </svg>
             </div>
+
+            {/* Resend */}
+            <div
+              className="text-[#6B7280] opacity-70 hover:opacity-100 hover:text-[#7AC4E0] transition-all duration-300 cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(122,196,224,0.4)] pointer-events-auto"
+              title="Resend"
+            >
+              <svg viewBox="0 0 100 20" fill="currentColor" className="w-20 h-5 md:w-24 md:h-6">
+                <text x="0" y="15" fontFamily="system-ui, -apple-system, sans-serif" fontSize="15" fontWeight="700" letterSpacing="-0.5">Resend</text>
+              </svg>
+            </div>
+
+            {/* Sanity */}
+            <div
+              className="text-[#6B7280] opacity-70 hover:opacity-100 hover:text-[#7AC4E0] transition-all duration-300 cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(122,196,224,0.4)] pointer-events-auto flex items-center gap-2"
+              title="Sanity"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 md:w-6 md:h-6">
+                <path d="M5.36 4.42c0 2.69 1.69 4.29 5.07 5.14l3.58.82c3.2.72 5.15 2.52 5.15 5.43.03 1.27-.39 2.51-1.18 3.5-.01-2.93-1.54-4.51-5.24-5.46l-3.52-.79c-2.82-.64-4.99-2.12-4.99-5.28-.01-1.23.4-2.43 1.13-3.36zm10.94 12.5c1.52.96 2.19 2.31 2.19 4.24-1.27 1.61-3.48 2.51-6.08 2.51-4.37 0-7.43-2.18-8.11-5.89h4.05c.54 1.71 1.97 2.5 4.03 2.5 2.51 0 4.18-1.33 4.23-3.36zM7.79 7.04C7.06 6.07 6.67 4.88 6.7 3.67 7.93 2.18 10.02 1.34 12.45 1.34c4.45 0 7.02 2.32 7.65 5.5h-3.9c-.44-1.25-1.51-2.23-3.71-2.23-2.35 0-3.95 1.36-4.7 2.43z"/>
+              </svg>
+              <span className="text-sm md:text-base font-medium tracking-tight">Sanity</span>
+            </div>
           </div>
         </div>
       </div>
