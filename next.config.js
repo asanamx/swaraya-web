@@ -7,6 +7,14 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Allow Emergent preview hosts to access dev resources (HMR, etc.)
+  allowedDevOrigins: [
+    'nextjs-swaraya.preview.emergentagent.com',
+    'nextjs-swaraya.cluster-8.preview.emergentcf.cloud',
+    '*.preview.emergentagent.com',
+    '*.preview.emergentcf.cloud',
+    '*.emergentagent.com',
+  ],
 };
 
 module.exports = nextConfig;
