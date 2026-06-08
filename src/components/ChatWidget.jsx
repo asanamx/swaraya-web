@@ -8,7 +8,7 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: '¡Hola! Soy el asistente de Swaraya. ¿En qué puedo ayudarte hoy? Puedo responder preguntas sobre nuestros servicios de IA o explicarte conceptos de inteligencia artificial.'
+      content: '¡Hola! Soy el asistente de swaraya. ¿En qué puedo ayudarte hoy? Puedo responder preguntas sobre nuestros servicios de IA o explicarte conceptos de inteligencia artificial.'
     }
   ]);
   const [input, setInput] = useState('');
@@ -97,7 +97,7 @@ const ChatWidget = () => {
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente Swaraya</h3>
+                <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente swaraya</h3>
                 <p className="text-[0.625rem] text-[#5D6878]">Powered by AI</p>
               </div>
             </div>

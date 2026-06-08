@@ -4,30 +4,28 @@ import BadgeRemover from '@/components/BadgeRemover';
 
 export const metadata = {
   metadataBase: new URL('https://swaraya.ai'),
-  title: 'Swaraya | Agencia de Inteligencia Artificial Aplicada',
+  title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
   description:
-    'Swaraya investiga, diseña e integra sistemas de inteligencia artificial para organizaciones que requieren precisión, escalabilidad y ventaja estructural.',
+    'swaraya investiga, diseña e integra sistemas de inteligencia artificial para organizaciones que requieren precisión, escalabilidad y ventaja estructural.',
   keywords:
     'inteligencia artificial, IA, agencia IA, machine learning, automatización, consultoría IA, desarrollo IA, investigación IA',
-  authors: [{ name: 'Swaraya' }],
+  authors: [{ name: 'swaraya' }],
   robots: 'index, follow',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: 'https://swaraya.ai/',
-    title: 'Swaraya | Agencia de Inteligencia Artificial Aplicada',
+    title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
     description:
       'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
-    images: ['https://swaraya.ai/og-image.png'],
     locale: 'es_ES',
-    siteName: 'Swaraya',
+    siteName: 'swaraya',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Swaraya | Agencia de Inteligencia Artificial Aplicada',
+    title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
     description:
       'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
-    images: ['https://swaraya.ai/og-image.png'],
   },
   icons: {
     icon: [

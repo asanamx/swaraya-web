@@ -98,7 +98,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
   const [copied, setCopied] = useState(false);
 
   const shareUrl = typeof window !== 'undefined' ? window.location.href : `https://swaraya.ai/blog/${post.slug}`;
-  const shareText = `${post.title} | Swaraya Insights`;
+  const shareText = `${post.title} | swaraya Insights`;
 
   const shareLinks = {
     twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
@@ -123,7 +123,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
         <div className="container-main py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <img src="/logo-swaraya.png" alt="Swaraya" className="h-5 md:h-6 w-auto" />
+              <img src="/logo-swaraya.png" alt="swaraya" className="h-5 md:h-6 w-auto" />
             </Link>
             <Link
               href="/blog"
@@ -265,7 +265,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                   <span className="text-[#5A7BFA] font-semibold">S</span>
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-[#F4F6F9]">{post.author?.name || 'Swaraya'}</div>
+                  <div className="text-sm font-medium text-[#F4F6F9]">{post.author?.name || 'swaraya'}</div>
                   <div className="text-xs text-[#5D6878]">Agencia de Inteligencia Aplicada</div>
                 </div>
               </div>
@@ -302,10 +302,10 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
       <footer className="py-8 border-t border-[rgba(255,255,255,0.04)]">
         <div className="container-main flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center">
-            <img src="/logo-swaraya.png" alt="Swaraya" className="h-4 w-auto opacity-60" />
+            <img src="/logo-swaraya.png" alt="swaraya" className="h-4 w-auto opacity-60" />
           </Link>
           <p className="text-xs text-[#5D6878]">
-            © {new Date().getFullYear()} Agencia Swaraya. Todos los derechos reservados.
+            © {new Date().getFullYear()} Agencia swaraya. Todos los derechos reservados.
           </p>
         </div>
       </footer>

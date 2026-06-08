@@ -32,7 +32,7 @@ export const Footer = () => {
             <a href="#" className="inline-block">
               <img 
                 src="/logo-swaraya.png" 
-                alt="Swaraya - Inteligencia Aplicada" 
+                alt="swaraya - Inteligencia Aplicada" 
                 className="h-5 md:h-[22px] w-auto"
                 data-testid="footer-logo"
               />
@@ -102,7 +102,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-16 md:mt-20 pt-6 border-t border-[rgba(255,255,255,0.03)] flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-[0.6875rem] text-[#4B5563]" data-testid="footer-copyright">
-            © {currentYear} Swaraya. Todos los derechos reservados.
+            © {currentYear} swaraya. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacidad" className="text-[0.6875rem] text-[#4B5563] hover:text-[#9BA5B7] transition-colors duration-250" data-testid="footer-privacy">

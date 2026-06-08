@@ -1,8 +1,8 @@
 import PrivacyPolicy from '@/views/legal/PrivacyPolicy';
 
 export const metadata = {
-  title: 'Aviso de Privacidad | Swaraya',
-  description: 'Aviso de Privacidad de Swaraya: cómo recopilamos, usamos y protegemos su información personal.',
+  title: 'Aviso de Privacidad | swaraya',
+  description: 'Aviso de Privacidad de swaraya: cómo recopilamos, usamos y protegemos su información personal.',
   alternates: { canonical: '/privacidad' },
 };
 

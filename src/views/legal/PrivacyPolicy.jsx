@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
             <section className="space-y-4">
               <h2 className="text-xl md:text-2xl font-light text-[#F4F6F9]">1. Información General</h2>
               <p className="leading-relaxed">
-                Swaraya ("nosotros", "nuestro" o "la Agencia") se compromete a proteger la privacidad de nuestros usuarios y clientes. Este Aviso de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos su información personal cuando utiliza nuestro sitio web y servicios.
+                swaraya ("nosotros", "nuestro" o "la Agencia") se compromete a proteger la privacidad de nuestros usuarios y clientes. Este Aviso de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos su información personal cuando utiliza nuestro sitio web y servicios.
               </p>
             </section>
 

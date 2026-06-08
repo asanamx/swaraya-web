@@ -9,12 +9,12 @@ export async function generateMetadata({ params }) {
   const post = await getPost(slug, SITE_DOMAIN);
 
   if (!post) {
-    return { title: 'Artículo no encontrado | Swaraya' };
+    return { title: 'Artículo no encontrado | swaraya' };
   }
 
   const images = post.coverImage ? [post.coverImage] : [];
   return {
-    title: `${post.title} | Swaraya Insights`,
+    title: `${post.title} | swaraya Insights`,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {

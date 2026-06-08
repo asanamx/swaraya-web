@@ -36,7 +36,7 @@ export const Philosophy = () => {
           </h2>
 
           <p className="body-large mx-auto" data-testid="philosophy-body">
-            Swaraya concibe la inteligencia artificial como una disciplina de diseño, no sólo de ejecución. Por eso construimos sistemas con responsabilidad, estructura y visión de largo plazo.
+            swaraya concibe la inteligencia artificial como una disciplina de diseño, no sólo de ejecución. Por eso construimos sistemas con responsabilidad, estructura y visión de largo plazo.
           </p>
         </div>
       </div>

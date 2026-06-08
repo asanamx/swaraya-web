@@ -191,7 +191,7 @@ export const Hero = () => {
               style={{ transitionDelay: '150ms' }}
               data-testid="hero-description"
             >
-              Swaraya investiga, diseña e integra sistemas de inteligencia artificial para organizaciones que requieren precisión, escalabilidad y ventaja estructural.
+              swaraya investiga, diseña e integra sistemas de inteligencia artificial para organizaciones que requieren precisión, escalabilidad y ventaja estructural.
             </p>
 
             {/* CTAs */}

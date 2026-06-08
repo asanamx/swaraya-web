@@ -73,7 +73,7 @@ export const Navbar = () => {
           >
             <img 
               src="/logo-swaraya.png" 
-              alt="Swaraya - Inteligencia Aplicada" 
+              alt="swaraya - Inteligencia Aplicada" 
               className="h-5 md:h-6 w-auto"
             />
           </Link>

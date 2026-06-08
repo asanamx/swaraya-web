@@ -38,7 +38,7 @@ export const Positioning = () => {
             style={{ transitionDelay: '120ms' }}
           >
             <p className="body-large" data-testid="positioning-body">
-              Las organizaciones más avanzadas no adoptan IA como una herramienta aislada. La incorporan como una nueva capa de razonamiento, coordinación y decisión. Swaraya diseña esa transición con rigor técnico, criterio estratégico y sensibilidad institucional.
+              Las organizaciones más avanzadas no adoptan IA como una herramienta aislada. La incorporan como una nueva capa de razonamiento, coordinación y decisión. swaraya diseña esa transición con rigor técnico, criterio estratégico y sensibilidad institucional.
             </p>
           </div>
         </div>
