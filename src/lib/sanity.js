@@ -1,17 +1,48 @@
-import { createClient } from '@sanity/client';
-
 // Sanity configuration. The dataset is public-read, so no token is required
-// for fetching published content. This allows direct, secure browser fetches
-// (works identically in local/preview and on Vercel with no backend).
+// for fetching published content. To avoid CORS restrictions when running in
+// the browser (Sanity's CDN/API rejects unknown origins), we route browser
+// requests through a same-origin Next.js proxy at /api/sanity/query. On the
+// server, we hit Sanity's CDN directly for best performance.
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '9slaxsvf';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01';
 
-export const sanityClient = createClient({
-  projectId,
-  dataset,
-  apiVersion: '2024-01-01',
-  useCdn: true,
-});
+function buildDirectUrl(query, params) {
+  const url = new URL(
+    `https://${projectId}.apicdn.sanity.io/v${apiVersion}/data/query/${dataset}`,
+  );
+  url.searchParams.set('query', query);
+  if (params && typeof params === 'object') {
+    for (const [k, v] of Object.entries(params)) {
+      url.searchParams.set(`$${k}`, JSON.stringify(v));
+    }
+  }
+  return url.toString();
+}
+
+async function sanityFetch(query, params = {}) {
+  const isBrowser = typeof window !== 'undefined';
+  let url;
+  if (isBrowser) {
+    url = `/api/sanity/query?query=${encodeURIComponent(query)}&params=${encodeURIComponent(
+      JSON.stringify(params || {}),
+    )}`;
+  } else {
+    url = buildDirectUrl(query, params);
+  }
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Sanity request failed (${res.status}): ${text.slice(0, 200)}`);
+  }
+  const data = await res.json();
+  return data?.result;
+}
+
+export const sanityClient = {
+  fetch: sanityFetch,
+  config: () => ({ projectId, dataset, apiVersion, useCdn: true }),
+};
 
 // ---- Portable Text -> HTML (mirrors backend portable_text_to_html) ----
 function escapeAttr(value) {
