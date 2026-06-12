@@ -27,7 +27,7 @@ export const Hero = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 75% 35%, rgba(84,104,214,0.18) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 15% 80%, rgba(44,62,128,0.12) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 75% 35%, rgba(84,104,214,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 15% 80%, rgba(44,62,128,0.14) 0%, transparent 60%)',
           filter: 'blur(20px)',
         }}
       />
@@ -36,12 +36,122 @@ export const Hero = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: 0.05,
+          opacity: 0.06,
           backgroundImage:
             'linear-gradient(rgba(84,104,214,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(84,104,214,0.5) 1px, transparent 1px)',
           backgroundSize: '64px 64px',
         }}
       />
+
+      {/* DECORATIVE COMPOSITION — concentric orbital system (right side, desktop only) */}
+      <div
+        className="hidden lg:block absolute pointer-events-none"
+        style={{
+          right: '4%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: 580,
+          height: 580,
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 1.6s ease 0.4s',
+        }}
+      >
+        {/* Concentric rings */}
+        <svg
+          viewBox="0 0 600 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+        >
+          <defs>
+            <radialGradient id="ringFade" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#5468D6" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#5468D6" stopOpacity="0" />
+            </radialGradient>
+            <linearGradient id="strokeFade" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(84,104,214,0.6)" />
+              <stop offset="100%" stopColor="rgba(84,104,214,0)" />
+            </linearGradient>
+          </defs>
+
+          {/* Outer ring with dashed sweep */}
+          <circle cx="300" cy="300" r="290" stroke="rgba(84,104,214,0.18)" strokeWidth="1" />
+          <circle
+            cx="300" cy="300" r="290"
+            stroke="#5468D6" strokeWidth="1" strokeDasharray="4 1820"
+            style={{ animation: 'orbitDash 14s linear infinite', transformOrigin: '300px 300px' }}
+          />
+
+          {/* Mid ring */}
+          <circle cx="300" cy="300" r="210" stroke="rgba(84,104,214,0.22)" strokeWidth="1" />
+          <circle
+            cx="300" cy="300" r="210"
+            stroke="#5468D6" strokeWidth="1.2" strokeDasharray="2 1318"
+            style={{ animation: 'orbitDash 9s linear infinite reverse', transformOrigin: '300px 300px' }}
+          />
+
+          {/* Inner ring */}
+          <circle cx="300" cy="300" r="130" stroke="rgba(84,104,214,0.28)" strokeWidth="1" />
+
+          {/* Cross-hairs */}
+          <line x1="0" y1="300" x2="600" y2="300" stroke="rgba(84,104,214,0.08)" strokeWidth="1" />
+          <line x1="300" y1="0" x2="300" y2="600" stroke="rgba(84,104,214,0.08)" strokeWidth="1" />
+
+          {/* Static orbital nodes */}
+          <circle cx="300" cy="10" r="3" fill="#5468D6" />
+          <circle cx="510" cy="210" r="2" fill="#5468D6" opacity="0.7" />
+          <circle cx="90" cy="390" r="2" fill="#5468D6" opacity="0.5" />
+          <circle cx="430" cy="430" r="2.5" fill="#5468D6" opacity="0.6" />
+
+          {/* Faint quadrant labels (numeric, micro) */}
+          <text x="300" y="50" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">000</text>
+          <text x="550" y="305" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">090</text>
+          <text x="300" y="566" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">180</text>
+          <text x="48" y="305" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">270</text>
+
+          {/* Center node */}
+          <circle cx="300" cy="300" r="42" fill="url(#ringFade)" />
+
+          {/* Center: AXIS mark glyph, large */}
+          <g transform="translate(258 258) scale(1.3)" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round">
+            <line x1="32" y1="10" x2="32" y2="24" />
+            <line x1="32" y1="40" x2="32" y2="54" />
+            <line x1="10" y1="32" x2="24" y2="32" />
+            <line x1="40" y1="32" x2="54" y2="32" />
+            <line x1="44.5" y1="19.5" x2="50" y2="14" />
+          </g>
+        </svg>
+
+        {/* Floating data ticks — micro labels */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 100,
+            right: 10,
+            fontSize: 10,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: 'rgba(155,165,183,0.55)',
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          axis · 5/5
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 80,
+            left: 14,
+            fontSize: 10,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: 'rgba(155,165,183,0.55)',
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          v · 5.0
+        </div>
+      </div>
 
       {/* Top accent line */}
       <div
@@ -102,12 +212,13 @@ export const Hero = () => {
 
           {/* Subhead */}
           <p
-            className="mt-10 md:mt-14 max-w-[52ch]"
+            className="mt-10 md:mt-12 max-w-[52ch]"
             style={{
-              fontSize: 'clamp(1rem, 1.3vw, 1.2rem)',
+              fontSize: 'clamp(1rem, 1.25vw, 1.15rem)',
               lineHeight: 1.55,
-              color: '#9BA5B7',
+              color: '#C8CCDC',
               fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
             }}
             data-testid="hero-subhead"
           >

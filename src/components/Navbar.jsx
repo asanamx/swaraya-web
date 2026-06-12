@@ -177,15 +177,21 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-8 pb-8 flex flex-col gap-2" data-testid="mobile-menu">
-            {navLinks.map((link) => (
+          <div className="lg:hidden mt-6 pb-12 flex flex-col" data-testid="mobile-menu">
+            {navLinks.map((link, idx) => (
               link.isRoute ? (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="py-4 text-2xl text-[#F5F2EC] border-b border-[rgba(245,242,236,0.08)]"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 500, letterSpacing: '-0.02em' }}
+                  className="py-4 text-[1.65rem] text-[#F5F2EC]"
+                  style={{
+                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.1,
+                    borderBottom: '1px solid rgba(245,242,236,0.06)',
+                  }}
                 >
                   {link.name}
                 </Link>
@@ -193,8 +199,14 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="py-4 text-left text-2xl text-[#F5F2EC] border-b border-[rgba(245,242,236,0.08)]"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 500, letterSpacing: '-0.02em' }}
+                  className="py-4 text-left text-[1.65rem] text-[#F5F2EC] w-full"
+                  style={{
+                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.1,
+                    borderBottom: '1px solid rgba(245,242,236,0.06)',
+                  }}
                 >
                   {link.name}
                 </button>
@@ -202,11 +214,27 @@ export const Navbar = () => {
             ))}
             <button
               onClick={() => scrollToSection('#contact')}
-              className="mt-8 inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-full px-6 py-3"
-              style={{ background: '#5468D6', color: '#F5F2EC' }}
+              className="mt-10 inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-full self-start"
+              style={{
+                background: '#5468D6',
+                color: '#F5F2EC',
+                padding: '14px 26px',
+                fontFamily: "'Inter', sans-serif",
+              }}
             >
-              Iniciar Diálogo
+              Iniciar Diálogo →
             </button>
+            <div
+              className="mt-12 pt-6 text-xs"
+              style={{
+                borderTop: '1px solid rgba(245,242,236,0.06)',
+                color: '#5D6878',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+              }}
+            >
+              hola@swaraya.ai · CDMX
+            </div>
           </div>
         )}
       </div>
