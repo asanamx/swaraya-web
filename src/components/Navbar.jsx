@@ -104,13 +104,13 @@ export const Navbar = () => {
             data-testid="navbar-logo"
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
-            <AxisMark size={26} color="currentColor" />
+            <AxisMark size={22} color="currentColor" />
             <span
               style={{
                 fontFamily: "'Author', sans-serif",
                 fontWeight: 600,
                 letterSpacing: '-0.03em',
-                fontSize: '1.5rem',
+                fontSize: '1.3125rem',
                 lineHeight: 1,
               }}
             >
