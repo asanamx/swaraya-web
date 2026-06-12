@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- swaraya mark — v2 PRECISION
+       "s" geométrica seccionada por una línea horizontal precisa.
+       Concepto: "investigación + ingeniería" como dos mitades alineadas.
+       Referencia: Stripe / Linear / Anthropic. -->
+  <!-- Mitad superior de la s -->
+  <path d="M44 20 C44 11 36 8 30 8 C22 8 16 12 16 20 C16 26 22 28 28 30"
+        fill="none" stroke="#F4F6F9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Mitad inferior de la s -->
+  <path d="M20 44 C20 53 28 56 34 56 C42 56 48 52 48 44 C48 38 42 36 36 34"
+        fill="none" stroke="#F4F6F9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Acento cyan de unión (la línea media que sostiene la lectura) -->
+  <line x1="30" y1="32" x2="34" y2="32" stroke="#7AC4E0" stroke-width="6" stroke-linecap="round"/>
+</svg>
