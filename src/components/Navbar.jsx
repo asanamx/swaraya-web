@@ -72,9 +72,9 @@ export const Navbar = () => {
             data-testid="navbar-logo"
           >
             <img 
-              src="/logo-swaraya.png" 
-              alt="swaraya - Inteligencia Aplicada" 
-              className="h-5 md:h-6 w-auto"
+              src="/swaraya-lockup.svg" 
+              alt="swaraya — Inteligencia Aplicada" 
+              className="h-6 md:h-7 w-auto"
             />
           </Link>
 

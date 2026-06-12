@@ -71,32 +71,46 @@ export default async function Image() {
               fontWeight: 500,
               opacity: 0.9,
               display: 'flex',
-              marginBottom: 36,
+              marginBottom: 40,
             }}
           >
             Agencia de Inteligencia Artificial Aplicada
           </div>
-          {logoSrc ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={logoSrc}
-              alt="swaraya"
-              style={{ height: 120, width: 'auto', display: 'flex' }}
-            />
-          ) : (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+            {/* Mark v5 AXIS — replicado directamente como SVG inline */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              width={130}
+              height={130}
+              style={{ display: 'flex' }}
+            >
+              <g
+                stroke="#F4F6F9"
+                strokeWidth={4}
+                strokeLinecap="round"
+                fill="none"
+              >
+                <line x1="32" y1="10" x2="32" y2="24" />
+                <line x1="32" y1="40" x2="32" y2="54" />
+                <line x1="10" y1="32" x2="24" y2="32" />
+                <line x1="40" y1="32" x2="54" y2="32" />
+                <line x1="44.5" y1="19.5" x2="50" y2="14" />
+              </g>
+            </svg>
             <div
               style={{
-                fontSize: 120,
+                fontSize: 128,
                 lineHeight: 1,
                 letterSpacing: '-0.04em',
-                fontWeight: 600,
+                fontWeight: 500,
                 color: '#F4F6F9',
                 display: 'flex',
               }}
             >
               swaraya
             </div>
-          )}
+          </div>
         </div>
 
         {/* Bottom: tagline + url */}

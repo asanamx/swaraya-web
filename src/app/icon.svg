@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- swaraya favicon — v5 AXIS, en su versión compacta.
+       Stroke un poco más grueso (2px @ 32) para legibilidad en tamaños pequeños. -->
+  <g stroke="#F4F6F9" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <line x1="16" y1="5" x2="16" y2="12"/>
+    <line x1="16" y1="20" x2="16" y2="27"/>
+    <line x1="5" y1="16" x2="12" y2="16"/>
+    <line x1="20" y1="16" x2="27" y2="16"/>
+    <line x1="22.5" y1="9.5" x2="25" y2="7"/>
+  </g>
+</svg>
