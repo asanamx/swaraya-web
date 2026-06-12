@@ -15,7 +15,7 @@ export const Outcomes = () => {
 
   return (
     <section
-      className="section-padding-lg bg-[#05060A] relative overflow-hidden"
+      className="section-padding-lg bg-[#F5F2EC] relative overflow-hidden"
       data-testid="outcomes-section"
     >
       {/* Subtle architectural grid overlay */}
@@ -37,7 +37,7 @@ export const Outcomes = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-28 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#00A87E] block mb-6" 
+            className="label-accent text-[#2C3E80] block mb-6" 
             data-testid="outcomes-label"
           >
             Resultados
@@ -64,7 +64,8 @@ export const Outcomes = () => {
                   <span 
                     className="text-[3.25rem] md:text-[4rem] lg:text-[5rem] font-semibold tracking-[-0.04em] leading-[0.85] transition-all duration-500"
                     style={{
-                      background: 'linear-gradient(180deg, #F4F6F9 0%, #6B7280 100%)',
+                      fontFamily: "'Cabinet Grotesk', sans-serif",
+                      background: 'linear-gradient(180deg, #0E0F11 0%, #5D6878 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -72,7 +73,7 @@ export const Outcomes = () => {
                   >
                     {metric.value}
                   </span>
-                  <span className="text-lg md:text-xl lg:text-2xl font-medium text-[#4B5563] ml-0.5">
+                  <span className="text-lg md:text-xl lg:text-2xl font-medium text-[#5D6878] ml-0.5">
                     {metric.suffix}
                   </span>
                 </div>
@@ -82,12 +83,12 @@ export const Outcomes = () => {
               <div 
                 className="w-10 h-px mb-4 transition-all duration-400 group-hover:w-14"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(0,168,126,0.5) 0%, transparent 100%)'
+                  background: 'linear-gradient(90deg, rgba(44,62,128,0.5) 0%, transparent 100%)'
                 }}
               />
               
               {/* Label */}
-              <p className="text-[0.8125rem] md:text-sm text-[#999999] leading-relaxed max-w-[200px]">
+              <p className="text-[0.8125rem] md:text-sm text-[#5D6878] leading-relaxed max-w-[200px]">
                 {metric.label}
               </p>
             </div>

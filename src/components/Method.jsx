@@ -37,7 +37,7 @@ export const Method = () => {
   return (
     <section
       id="method"
-      className="section-padding bg-[#05060A]"
+      className="section-padding bg-[#F5F2EC]"
       data-testid="method-section"
     >
       <div className="container-main">
@@ -47,7 +47,7 @@ export const Method = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-28 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#7AC4E0] block mb-6" 
+            className="label-accent text-[#2C3E80] block mb-6" 
             data-testid="method-label"
           >
             Método
@@ -91,17 +91,17 @@ export const Method = () => {
                   </div>
                   
                   {/* Node dot */}
-                  <div className="absolute top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#7AC4E0]/40 transition-all duration-300 group-hover:bg-[#7AC4E0]/70 group-hover:scale-125" />
+                  <div className="absolute top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#2C3E80]/40 transition-all duration-300 group-hover:bg-[#2C3E80]/70 group-hover:scale-125" />
                   
                   {/* Vertical connector */}
                   <div className="absolute top-[56px] left-1/2 w-px h-6 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-transparent -translate-x-1/2" />
                   
                   {/* Content */}
                   <div className="pt-6">
-                    <h3 className="text-[0.9375rem] font-medium text-[#F4F6F9] mb-2.5 tracking-[-0.01em]">
+                    <h3 className="text-[0.9375rem] font-medium text-[#0E0F11] mb-2.5 tracking-[-0.01em]">
                       {step.title}
                     </h3>
-                    <p className="text-[0.8125rem] text-[#999999] leading-[1.7] max-w-[170px] mx-auto">
+                    <p className="text-[0.8125rem] text-[#5D6878] leading-[1.7] max-w-[170px] mx-auto">
                       {step.description}
                     </p>
                   </div>
@@ -121,7 +121,7 @@ export const Method = () => {
               >
                 {/* Left: Number and line */}
                 <div className="flex flex-col items-center w-10">
-                  <span className="text-xl font-semibold text-[#7AC4E0]/40 mb-2 tabular-nums">
+                  <span className="text-xl font-semibold text-[#2C3E80]/40 mb-2 tabular-nums">
                     {step.number}
                   </span>
                   {index < steps.length - 1 && (
@@ -131,10 +131,10 @@ export const Method = () => {
                 
                 {/* Right: Content */}
                 <div className="pb-8 flex-1">
-                  <h3 className="text-[0.9375rem] font-medium text-[#F4F6F9] mb-1.5 tracking-[-0.01em]">
+                  <h3 className="text-[0.9375rem] font-medium text-[#0E0F11] mb-1.5 tracking-[-0.01em]">
                     {step.title}
                   </h3>
-                  <p className="text-[0.8125rem] text-[#999999] leading-[1.7]">
+                  <p className="text-[0.8125rem] text-[#5D6878] leading-[1.7]">
                     {step.description}
                   </p>
                 </div>

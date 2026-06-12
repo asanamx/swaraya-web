@@ -1,28 +1,39 @@
 import { ImageResponse } from 'next/og';
-import { readFile } from 'fs/promises';
-import path from 'path';
 
 // Open Graph image generada dinámicamente con next/og.
 // Sirve como og:image y twitter:image de la home.
+// Sistema visual nuevo: dark dramático + Author wordmark + Cabinet headlines + indigo eléctrico.
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const alt = 'swaraya — Inteligencia, investigada y diseñada';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-async function getLogoDataUri() {
+async function loadFont(url) {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'logo-swaraya.png');
-    const buf = await readFile(filePath);
-    return `data:image/png;base64,${buf.toString('base64')}`;
-  } catch (err) {
-    console.error('Could not load logo:', err);
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    return await res.arrayBuffer();
+  } catch {
     return null;
   }
 }
 
 export default async function Image() {
-  const logoSrc = await getLogoDataUri();
+  // Fonts: Author Semibold for wordmark, Cabinet Grotesk for headlines.
+  // Fontshare CDN — fetched at edge.
+  const [authorFont, cabinetFont] = await Promise.all([
+    loadFont('https://cdn.fontshare.com/wf/47YDOTC2J2YPUMCV3Q4WHHNTMU33CFQH/V3M2WERPCNNZ7T26K3MOXUEZGS2ZGQUC/4ABQGZ3MYJZTWULQDLA7M3FNYIWY7CW3.woff'),
+    loadFont('https://cdn.fontshare.com/wf/QO5AURETMMOXVFGEZACCRXP67D2GDP4U/J5OF54OLQMAYWFFKKLHKLPDAJWPKMUXM/RG7XCDLB3WGRNF4XJBR7QKD2EFR42KOA.woff'),
+  ]);
+
+  const fonts = [];
+  if (authorFont) {
+    fonts.push({ name: 'Author', data: authorFont, style: 'normal', weight: 600 });
+  }
+  if (cabinetFont) {
+    fonts.push({ name: 'Cabinet', data: cabinetFont, style: 'normal', weight: 500 });
+  }
 
   return new ImageResponse(
     (
@@ -35,9 +46,9 @@ export default async function Image() {
           justifyContent: 'space-between',
           padding: '80px 96px',
           background:
-            'radial-gradient(circle at 78% 38%, rgba(122,196,224,0.22) 0%, rgba(5,6,10,0) 55%), radial-gradient(circle at 22% 78%, rgba(90,123,250,0.18) 0%, rgba(5,6,10,0) 55%), #05060A',
-          color: '#F4F6F9',
-          fontFamily: 'Inter, system-ui, sans-serif',
+            'radial-gradient(circle at 78% 38%, rgba(84,104,214,0.22) 0%, rgba(14,15,17,0) 55%), radial-gradient(circle at 22% 78%, rgba(44,62,128,0.18) 0%, rgba(14,15,17,0) 55%), #0E0F11',
+          color: '#F5F2EC',
+          fontFamily: '"Cabinet", "Author", system-ui, sans-serif',
           position: 'relative',
         }}
       >
@@ -48,13 +59,13 @@ export default async function Image() {
             inset: 0,
             opacity: 0.06,
             backgroundImage:
-              'linear-gradient(rgba(122,196,224,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(122,196,224,0.5) 1px, transparent 1px)',
+              'linear-gradient(rgba(84,104,214,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(84,104,214,0.5) 1px, transparent 1px)',
             backgroundSize: '60px 60px',
             display: 'flex',
           }}
         />
 
-        {/* Top: label + logo oficial */}
+        {/* Top: eyebrow + wordmark */}
         <div
           style={{
             display: 'flex',
@@ -67,17 +78,18 @@ export default async function Image() {
               fontSize: 22,
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: '#7AC4E0',
+              color: '#5468D6',
               fontWeight: 500,
-              opacity: 0.9,
+              opacity: 0.95,
               display: 'flex',
               marginBottom: 40,
+              fontFamily: 'system-ui, sans-serif',
             }}
           >
             Agencia de Inteligencia Artificial Aplicada
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            {/* Mark v5 AXIS — replicado directamente como SVG inline */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+            {/* Mark v5 AXIS */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 64 64"
@@ -86,7 +98,7 @@ export default async function Image() {
               style={{ display: 'flex' }}
             >
               <g
-                stroke="#F4F6F9"
+                stroke="#F5F2EC"
                 strokeWidth={4}
                 strokeLinecap="round"
                 fill="none"
@@ -100,11 +112,12 @@ export default async function Image() {
             </svg>
             <div
               style={{
-                fontSize: 128,
+                fontFamily: '"Author", system-ui, sans-serif',
+                fontSize: 140,
                 lineHeight: 1,
                 letterSpacing: '-0.04em',
-                fontWeight: 500,
-                color: '#F4F6F9',
+                fontWeight: 600,
+                color: '#F5F2EC',
                 display: 'flex',
               }}
             >
@@ -127,19 +140,23 @@ export default async function Image() {
               lineHeight: 1.05,
               letterSpacing: '-0.025em',
               fontWeight: 500,
-              color: '#F4F6F9',
+              fontFamily: '"Cabinet", system-ui, sans-serif',
               display: 'flex',
               flexDirection: 'column',
+              color: '#F5F2EC',
             }}
           >
             <span style={{ display: 'flex' }}>Investigación profunda.</span>
-            <span style={{ display: 'flex', color: '#9BA5B7' }}>
-              Ingeniería precisa. Inteligencia real.
+            <span style={{ display: 'flex', color: '#C8CCDC' }}>
+              Ingeniería precisa.
+            </span>
+            <span style={{ display: 'flex', color: '#5468D6' }}>
+              Inteligencia real.
             </span>
           </div>
           <div
             style={{
-              marginTop: 40,
+              marginTop: 32,
               display: 'flex',
               alignItems: 'center',
               gap: 16,
@@ -149,7 +166,7 @@ export default async function Image() {
               style={{
                 width: 36,
                 height: 1,
-                background: '#7AC4E0',
+                background: '#5468D6',
                 opacity: 0.6,
                 display: 'flex',
               }}
@@ -160,6 +177,7 @@ export default async function Image() {
                 letterSpacing: '0.04em',
                 color: '#9BA5B7',
                 fontWeight: 500,
+                fontFamily: 'system-ui, sans-serif',
                 display: 'flex',
               }}
             >
@@ -169,6 +187,6 @@ export default async function Image() {
         </div>
       </div>
     ),
-    { ...size },
+    { ...size, fonts: fonts.length > 0 ? fonts : undefined },
   );
 }

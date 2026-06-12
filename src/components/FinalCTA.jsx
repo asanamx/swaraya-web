@@ -10,7 +10,7 @@ export const FinalCTA = () => {
   return (
     <section
       id="contact"
-      className="section-padding-lg bg-[#05060A] relative overflow-hidden"
+      className="section-padding-lg bg-[#F5F2EC] relative overflow-hidden"
       data-testid="final-cta-section"
     >
       {/* Architectural accent lines */}
@@ -26,7 +26,7 @@ export const FinalCTA = () => {
           className={`max-w-[640px] mx-auto text-center mb-16 md:mb-24 lg:mb-32 reveal ${ctaVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#7AC4E0] block mb-10" 
+            className="label-accent text-[#2C3E80] block mb-10" 
             data-testid="cta-label"
           >
             Diálogo Abierto

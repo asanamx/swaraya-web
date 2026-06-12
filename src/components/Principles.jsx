@@ -16,7 +16,7 @@ export const Principles = () => {
   return (
     <section
       ref={sectionRef}
-      className="section-padding-lg bg-[#08090E]"
+      className="section-padding-lg bg-[#FAF8F2]"
       data-testid="principles-section"
     >
       <div className="container-main">
@@ -25,7 +25,7 @@ export const Principles = () => {
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>
             <h2 className="heading-xl" data-testid="principles-headline">
               Nuestros sistemas se moldean por{' '}
-              <span className="text-[#9BA5B7]">disciplina antes que escala.</span>
+              <span className="text-[#5D6878]">disciplina antes que escala.</span>
             </h2>
           </div>
 
@@ -41,7 +41,7 @@ export const Principles = () => {
                   data-testid={`principle-item-${index + 1}`}
                 >
                   <div className="principle-marker transition-all duration-300 group-hover:w-6 group-hover:opacity-100" style={{ opacity: 0.7 }} />
-                  <span className="text-[0.9375rem] md:text-base lg:text-lg text-[#9BA5B7] font-normal leading-snug tracking-[-0.01em] transition-colors duration-300 group-hover:text-[#B7BFCC]">
+                  <span className="text-[0.9375rem] md:text-base lg:text-lg text-[#5D6878] font-normal leading-snug tracking-[-0.01em] transition-colors duration-300 group-hover:text-[#0E0F11]">
                     {principle}
                   </span>
                 </li>

@@ -5,23 +5,47 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// Inline mark — v5 AXIS
+function AxisMark({ size = 22, color = 'currentColor' }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      width={size}
+      height={size}
+      style={{ display: 'block', flexShrink: 0 }}
+      aria-hidden="true"
+    >
+      <g stroke={color} strokeWidth={4} strokeLinecap="round" fill="none">
+        <line x1="32" y1="10" x2="32" y2="24" />
+        <line x1="32" y1="40" x2="32" y2="54" />
+        <line x1="10" y1="32" x2="24" y2="32" />
+        <line x1="40" y1="32" x2="54" y2="32" />
+        <line x1="44.5" y1="19.5" x2="50" y2="14" />
+      </g>
+    </svg>
+  );
+}
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
+  // On home, the nav sits over the dark hero until user scrolls past it.
+  // On other routes, the nav is always over the cream content.
+  const overDarkHero = isHomePage && !isScrolled;
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024 && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
+      if (window.innerWidth >= 1024 && isMobileMenuOpen) setIsMobileMenuOpen(false);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -52,30 +76,46 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Color tokens for current state
+  const navTextColor = overDarkHero ? '#F5F2EC' : '#0E0F11';
+  const navMutedColor = overDarkHero ? 'rgba(245,242,236,0.65)' : 'rgba(14,15,17,0.6)';
+  const navHoverColor = overDarkHero ? '#F5F2EC' : '#2C3E80';
+  const navBgClass = isMobileMenuOpen
+    ? 'bg-[#0E0F11]'
+    : isScrolled
+      ? 'bg-[#F5F2EC]/95 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]'
+      : isHomePage
+        ? 'bg-transparent'
+        : 'bg-[#F5F2EC]/95 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]';
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        isMobileMenuOpen 
-          ? 'bg-[#05060A] h-screen' 
-          : isScrolled
-            ? 'bg-[#05060A]/96 backdrop-blur-xl border-b border-[rgba(255,255,255,0.03)]'
-            : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} ${
+        isMobileMenuOpen ? 'h-screen' : ''
       }`}
       data-testid="navbar"
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
-          {/* Logo */}
+          {/* Logo: glyph + wordmark Author */}
           <Link
             href="/"
-            className="relative z-50 flex items-center mt-1"
+            className="relative z-50 flex items-center gap-2.5 md:gap-3"
             data-testid="navbar-logo"
+            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
-            <img 
-              src="/swaraya-lockup.svg" 
-              alt="swaraya — Inteligencia Aplicada" 
-              className="h-6 md:h-7 w-auto"
-            />
+            <AxisMark size={26} color="currentColor" />
+            <span
+              style={{
+                fontFamily: "'Author', sans-serif",
+                fontWeight: 600,
+                letterSpacing: '-0.03em',
+                fontSize: '1.5rem',
+                lineHeight: 1,
+              }}
+            >
+              swaraya
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -85,7 +125,10 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="link-hover text-[0.8125rem] text-[#5D6878] hover:text-[#F4F6F9] tracking-wide"
+                  className="link-hover text-[0.8125rem] tracking-wide transition-colors"
+                  style={{ color: navMutedColor }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
                 >
                   {link.name}
@@ -94,7 +137,10 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="link-hover text-[0.8125rem] text-[#5D6878] hover:text-[#F4F6F9] tracking-wide"
+                  className="link-hover text-[0.8125rem] tracking-wide transition-colors"
+                  style={{ color: navMutedColor }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
                 >
                   {link.name}
@@ -103,100 +149,66 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
-            <button
-              onClick={() => scrollToSection('#contact')}
-              className="btn-primary py-2.5 px-5 text-[0.8125rem]"
-              data-testid="navbar-cta"
-            >
-              Iniciar Diálogo
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* CTA Desktop */}
           <button
-            className="lg:hidden text-[#F4F6F9] p-1.5 -mr-1.5 relative z-50"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            data-testid="mobile-menu-button"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => scrollToSection('#contact')}
+            className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
+            style={{
+              padding: '10px 20px',
+              background: overDarkHero ? '#5468D6' : '#2C3E80',
+              color: '#F5F2EC',
+            }}
+            data-testid="nav-cta"
           >
-            <div className="relative w-5 h-5">
-              <Menu 
-                size={18} 
-                strokeWidth={1.5} 
-                className={`absolute inset-0 m-auto transition-all duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
-                }`}
-              />
-              <X 
-                size={18} 
-                strokeWidth={1.5} 
-                className={`absolute inset-0 m-auto transition-all duration-300 ${
-                  isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
-                }`}
-              />
-            </div>
+            Iniciar Diálogo
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden relative z-50 flex items-center justify-center"
+            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor, width: 40, height: 40 }}
+            data-testid="mobile-menu-toggle"
+            aria-label="Menu"
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden absolute top-0 left-0 right-0 bottom-0 transition-all duration-350 ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        data-testid="mobile-menu"
-      >
-        <div className="container-main pt-20 pb-8 h-full flex flex-col">
-          <div className="flex-1 flex flex-col justify-center -mt-12">
-            <nav className="space-y-0">
-              {navLinks.map((link, index) => (
-                link.isRoute ? (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block w-full text-left text-xl md:text-2xl font-medium text-[#9BA5B7] hover:text-[#F4F6F9] transition-all duration-300 py-3.5 ${
-                      isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-                    }`}
-                    style={{ transitionDelay: isMobileMenuOpen ? `${index * 40 + 80}ms` : '0ms' }}
-                    data-testid={`mobile-nav-link-${link.name.toLowerCase()}`}
-                  >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className={`block w-full text-left text-xl md:text-2xl font-medium text-[#9BA5B7] hover:text-[#F4F6F9] transition-all duration-300 py-3.5 ${
-                      isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-                    }`}
-                    style={{ transitionDelay: isMobileMenuOpen ? `${index * 40 + 80}ms` : '0ms' }}
-                    data-testid={`mobile-nav-link-${link.name.toLowerCase()}`}
-                  >
-                    {link.name}
-                  </button>
-                )
-              ))}
-            </nav>
-          </div>
-          
-          <div 
-            className={`transition-all duration-300 ${
-              isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-            }`}
-            style={{ transitionDelay: isMobileMenuOpen ? '250ms' : '0ms' }}
-          >
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-8 pb-8 flex flex-col gap-2" data-testid="mobile-menu">
+            {navLinks.map((link) => (
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="py-4 text-2xl text-[#F5F2EC] border-b border-[rgba(245,242,236,0.08)]"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 500, letterSpacing: '-0.02em' }}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="py-4 text-left text-2xl text-[#F5F2EC] border-b border-[rgba(245,242,236,0.08)]"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 500, letterSpacing: '-0.02em' }}
+                >
+                  {link.name}
+                </button>
+              )
+            ))}
             <button
               onClick={() => scrollToSection('#contact')}
-              className="btn-primary w-full"
-              data-testid="mobile-navbar-cta"
+              className="mt-8 inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-full px-6 py-3"
+              style={{ background: '#5468D6', color: '#F5F2EC' }}
             >
               Iniciar Diálogo
             </button>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );

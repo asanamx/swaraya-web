@@ -62,7 +62,7 @@ export const ResearchDomains = () => {
   return (
     <section
       id="research"
-      className="section-padding bg-[#08090E]"
+      className="section-padding bg-[#FAF8F2]"
       data-testid="research-domains-section"
     >
       <div className="container-main">
@@ -72,7 +72,7 @@ export const ResearchDomains = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#5A7BFA] block mb-6" 
+            className="label-accent text-[#2C3E80] block mb-6" 
             data-testid="research-label"
           >
             Dominios de Investigación
@@ -93,7 +93,7 @@ export const ResearchDomains = () => {
           {domains.map((domain) => (
             <div
               key={domain.id}
-              className="relative bg-[#08090E] p-7 md:p-8 lg:p-10 group"
+              className="relative bg-[#FAF8F2] p-7 md:p-8 lg:p-10 group"
               data-testid={`domain-card-${domain.id}`}
             >
               {/* Number watermark */}
@@ -105,19 +105,19 @@ export const ResearchDomains = () => {
               <div className="relative z-10 mb-7">
                 <div className="w-9 h-9 rounded-lg bg-[rgba(255,255,255,0.02)] flex items-center justify-center transition-all duration-400 group-hover:bg-[rgba(122,196,224,0.06)]">
                   <domain.icon 
-                    className="w-4 h-4 text-[#5D6878] transition-colors duration-400 group-hover:text-[#7AC4E0]" 
+                    className="w-4 h-4 text-[#5D6878] transition-colors duration-400 group-hover:text-[#2C3E80]" 
                     strokeWidth={1.5}
                   />
                 </div>
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-[0.9375rem] md:text-base font-medium text-[#F4F6F9] mb-3.5 tracking-[-0.01em] leading-snug">
+              <h3 className="relative z-10 text-[0.9375rem] md:text-base font-medium text-[#0E0F11] mb-3.5 tracking-[-0.01em] leading-snug">
                 {domain.title}
               </h3>
 
               {/* Description */}
-              <p className="relative z-10 text-[0.8125rem] text-[#999999] leading-[1.8]">
+              <p className="relative z-10 text-[0.8125rem] text-[#5D6878] leading-[1.8]">
                 {domain.description}
               </p>
               

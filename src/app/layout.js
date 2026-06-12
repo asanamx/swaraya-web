@@ -28,16 +28,13 @@ export const metadata = {
       'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
   },
   icons: {
-    icon: [
-      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
-    ],
-    apple: '/apple-touch-icon.png',
+    icon: '/icon.svg',
+    apple: '/apple-icon.svg',
   },
 };
 
 export const viewport = {
-  themeColor: '#05060A',
+  themeColor: '#F5F2EC',
 };
 
 export default function RootLayout({ children }) {

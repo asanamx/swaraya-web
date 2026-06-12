@@ -46,7 +46,7 @@ export const TechLogos = () => {
 
   return (
     <section 
-      className="py-12 md:py-16 bg-[#05060A] border-y border-[rgba(255,255,255,0.03)]"
+      className="py-12 md:py-16 bg-[#F5F2EC] border-y border-[rgba(14,15,17,0.06)]"
       data-testid="tech-logos-section"
     >
       <div className="container-main">
@@ -64,7 +64,7 @@ export const TechLogos = () => {
             {technologies.map((tech, index) => (
               <div
                 key={tech.name}
-                className="text-[#4B5563] hover:text-[#6B7280] transition-colors duration-300 opacity-60 hover:opacity-80"
+                className="text-[#4B5563] hover:text-[#9BA5B7] transition-colors duration-300 opacity-60 hover:opacity-80"
                 style={{ transitionDelay: `${index * 50}ms` }}
                 title={tech.name}
               >

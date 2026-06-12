@@ -8,7 +8,7 @@ export const Positioning = () => {
   return (
     <section
       ref={sectionRef}
-      className="section-padding bg-[#05060A]"
+      className="section-padding bg-[#F5F2EC]"
       data-testid="positioning-section"
     >
       <div className="container-main">
@@ -16,7 +16,7 @@ export const Positioning = () => {
           {/* Left Column */}
           <div className={`lg:col-span-6 reveal ${isVisible ? 'revealed' : ''}`}>
             <span 
-              className="label-accent text-[#00A87E] block mb-6 md:mb-8" 
+              className="label-accent text-[#2C3E80] block mb-6 md:mb-8" 
               data-testid="positioning-label"
             >
               Posicionamiento
@@ -26,7 +26,7 @@ export const Positioning = () => {
               data-testid="positioning-headline"
             >
               La inteligencia artificial ya no es una capa de interfaz.{' '}
-              <span className="text-[#999999]">
+              <span className="text-[#5D6878]">
                 Se está convirtiendo en la lógica operativa de las instituciones modernas.
               </span>
             </h2>

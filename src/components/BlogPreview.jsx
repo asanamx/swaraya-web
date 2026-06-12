@@ -37,7 +37,7 @@ export const BlogPreview = () => {
   };
 
   return (
-    <section className="section-padding bg-[#05060A]" id="insights">
+    <section className="section-padding bg-[#F5F2EC]" id="insights">
       <div className="container-main">
         {/* Header */}
         <div 
@@ -45,7 +45,7 @@ export const BlogPreview = () => {
           className={`flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <div className="max-w-xl">
-            <span className="label-accent text-[#7AC4E0] mb-4 md:mb-5 block">
+            <span className="label-accent text-[#2C3E80] mb-4 md:mb-5 block">
               Insights
             </span>
             <h2 className="heading-xl">
@@ -55,7 +55,7 @@ export const BlogPreview = () => {
           
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#9BA5B7] hover:text-[#F4F6F9] transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-[#9BA5B7] hover:text-[#0E0F11] transition-colors group"
           >
             Ver todos los artículos
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -71,10 +71,10 @@ export const BlogPreview = () => {
             // Loading skeleton
             [...Array(3)].map((_, i) => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-[16/9] bg-[#0C1016] rounded-xl mb-4" />
-                <div className="h-3 bg-[#0C1016] rounded w-1/4 mb-3" />
-                <div className="h-5 bg-[#0C1016] rounded w-3/4 mb-2" />
-                <div className="h-4 bg-[#0C1016] rounded w-full" />
+                <div className="aspect-[16/9] bg-[#FAF8F2] rounded-xl mb-4" />
+                <div className="h-3 bg-[#FAF8F2] rounded w-1/4 mb-3" />
+                <div className="h-5 bg-[#FAF8F2] rounded w-3/4 mb-2" />
+                <div className="h-4 bg-[#FAF8F2] rounded w-full" />
               </div>
             ))
           ) : (
@@ -86,7 +86,7 @@ export const BlogPreview = () => {
               >
                 <Link href={`/blog/${post.slug}`}>
                   {/* Cover Image */}
-                  <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#0C1016]">
+                  <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#FAF8F2]">
                     <img
                       src={post.coverImage || post.cover_image}
                       alt={post.title}
@@ -97,7 +97,7 @@ export const BlogPreview = () => {
 
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[0.6875rem] font-medium text-[#7AC4E0] tracking-wide">
+                    <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-wide">
                       {post.category}
                     </span>
                     <span className="w-1 h-1 rounded-full bg-[#3D4654]" />
@@ -108,12 +108,12 @@ export const BlogPreview = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base md:text-lg font-medium text-[#F4F6F9] mb-2.5 leading-snug tracking-[-0.01em] group-hover:text-[#7AC4E0] transition-colors line-clamp-2">
+                  <h3 className="text-base md:text-lg font-medium text-[#0E0F11] mb-2.5 leading-snug tracking-[-0.01em] group-hover:text-[#2C3E80] transition-colors line-clamp-2">
                     {post.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-[#6B7280] leading-relaxed line-clamp-2">
+                  <p className="text-sm text-[#9BA5B7] leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </Link>
