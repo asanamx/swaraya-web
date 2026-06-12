@@ -476,3 +476,13 @@ body {
     linear-gradient(rgba(245,242,236,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(245,242,236,0.04) 1px, transparent 1px);
 }
+
+
+/* Editorial image treatment — unifies blog imagery with the indigo/cream palette */
+.prose img {
+  filter: saturate(0.82) contrast(1.04);
+  transition: filter 0.6s ease;
+}
+.prose img:hover {
+  filter: saturate(1) contrast(1);
+}

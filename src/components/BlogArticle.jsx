@@ -234,11 +234,12 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
           {/* Cover Image */}
           <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-[#FAF8F2]">
+            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(14,15,17,0.08)]">
               <img
                 src={post.coverImage || post.cover_image}
                 alt={post.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-all duration-700 hover:saturate-100"
+                style={{ filter: 'saturate(0.82) contrast(1.04)' }}
               />
             </div>
           </div>

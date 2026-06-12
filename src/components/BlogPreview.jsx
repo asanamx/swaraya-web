@@ -49,13 +49,13 @@ export const BlogPreview = () => {
               Insights
             </span>
             <h2 className="heading-xl">
-              Perspectivas sobre <span className="text-[#9BA5B7]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#2C3E80]">inteligencia aplicada</span>
             </h2>
           </div>
           
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#9BA5B7] hover:text-[#0E0F11] transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#2C3E80] transition-colors group"
           >
             Ver todos los artículos
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -86,21 +86,21 @@ export const BlogPreview = () => {
               >
                 <Link href={`/blog/${post.slug}`}>
                   {/* Cover Image */}
-                  <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#FAF8F2]">
+                  <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(14,15,17,0.06)]">
                     <img
                       src={post.coverImage || post.cover_image}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:saturate-100"
+                      style={{ filter: 'saturate(0.82) contrast(1.04)' }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#05060A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-wide">
+                    <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase">
                       {post.category}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-[#3D4654]" />
+                    <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
                     <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#5D6878]">
                       <Clock className="w-3 h-3" />
                       {post.readingTime || post.reading_time || '5'} min
@@ -108,12 +108,19 @@ export const BlogPreview = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base md:text-lg font-medium text-[#0E0F11] mb-2.5 leading-snug tracking-[-0.01em] group-hover:text-[#2C3E80] transition-colors line-clamp-2">
+                  <h3
+                    className="text-base md:text-lg text-[#0E0F11] mb-2.5 leading-snug group-hover:text-[#2C3E80] transition-colors line-clamp-2"
+                    style={{
+                      fontFamily: "'Cabinet Grotesk', sans-serif",
+                      fontWeight: 500,
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
                     {post.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-[#9BA5B7] leading-relaxed line-clamp-2">
+                  <p className="text-sm text-[#5D6878] leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </Link>

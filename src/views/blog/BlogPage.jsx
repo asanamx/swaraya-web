@@ -246,7 +246,8 @@ const BlogPage = () => {
                       <img
                         src={post.coverImage || post.cover_image}
                         alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.04] group-hover:saturate-100"
+                        style={{ filter: 'saturate(0.82) contrast(1.04)' }}
                       />
                     </div>
 

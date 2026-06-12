@@ -15,8 +15,8 @@ export const FinalCTA = () => {
     >
       {/* Architectural accent lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-[400px] h-px bg-gradient-to-r from-transparent via-[rgba(90,123,250,0.08)] to-transparent" />
-        <div className="absolute top-1/3 right-0 w-[300px] h-px bg-gradient-to-l from-transparent via-[rgba(122,196,224,0.06)] to-transparent" />
+        <div className="absolute top-1/4 left-0 w-[400px] h-px bg-gradient-to-r from-transparent via-[rgba(44,62,128,0.18)] to-transparent" />
+        <div className="absolute top-1/3 right-0 w-[300px] h-px bg-gradient-to-l from-transparent via-[rgba(44,62,128,0.12)] to-transparent" />
       </div>
 
       <div className="container-main relative z-10">
@@ -60,9 +60,9 @@ export const FinalCTA = () => {
           <div className="relative">
             {/* Outer glow frame */}
             <div 
-              className="absolute -inset-px rounded-[21px] opacity-50"
+              className="absolute -inset-px rounded-[21px] opacity-60"
               style={{
-                background: 'linear-gradient(135deg, rgba(90,123,250,0.1) 0%, transparent 50%, rgba(122,196,224,0.08) 100%)',
+                background: 'linear-gradient(135deg, rgba(44,62,128,0.18) 0%, transparent 50%, rgba(44,62,128,0.12) 100%)',
               }}
             />
             
@@ -70,19 +70,19 @@ export const FinalCTA = () => {
             <div 
               className="relative p-8 md:p-10 rounded-[20px] overflow-hidden"
               style={{
-                background: 'linear-gradient(168deg, rgba(12, 14, 20, 0.95) 0%, rgba(8, 9, 14, 0.98) 100%)',
-                border: '1px solid rgba(255, 255, 255, 0.04)',
+                background: 'linear-gradient(168deg, #0E0F11 0%, #161821 100%)',
+                border: '1px solid rgba(245,242,236,0.06)',
               }}
             >
               {/* Top accent line */}
               <div 
                 className="absolute top-0 left-8 right-8 h-px"
                 style={{
-                  background: 'linear-gradient(90deg, transparent 0%, rgba(90,123,250,0.2) 50%, transparent 100%)',
+                  background: 'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
                 }}
               />
 
-              <h3 className="text-[0.8125rem] md:text-sm font-medium text-[#9BA5B7] mb-8 tracking-[-0.005em]">
+              <h3 className="text-[0.8125rem] md:text-sm font-medium text-[#C8CCDC] mb-8 tracking-[-0.005em]">
                 O déjanos tus datos
               </h3>
               
@@ -137,7 +137,7 @@ export const FinalCTA = () => {
                 
                 <button
                   type="submit"
-                  className="w-full mt-3 py-4 px-6 bg-[#F4F6F9] text-[#05060A] text-[0.8125rem] font-medium tracking-[-0.005em] rounded-xl transition-all duration-300 hover:bg-white hover:shadow-[0_8px_32px_-8px_rgba(255,255,255,0.15)]"
+                  className="w-full mt-3 py-4 px-6 bg-[#F5F2EC] text-[#0E0F11] text-[0.8125rem] font-medium tracking-[-0.005em] rounded-xl transition-all duration-300 hover:bg-white hover:shadow-[0_8px_32px_-8px_rgba(245,242,236,0.18)]"
                   data-testid="contact-submit-button"
                 >
                   Enviar Mensaje
