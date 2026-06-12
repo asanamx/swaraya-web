@@ -97,13 +97,21 @@ export const ResearchDomains = () => {
               data-testid={`domain-card-${domain.id}`}
             >
               {/* Number watermark */}
-              <span className="absolute top-5 right-6 text-[3rem] md:text-[3.5rem] font-semibold text-[rgba(122,196,224,0.06)] leading-none select-none pointer-events-none transition-all duration-500 group-hover:text-[rgba(122,196,224,0.1)]" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+              <span
+                className="absolute top-5 right-6 text-[3.25rem] md:text-[4rem] leading-none select-none pointer-events-none transition-all duration-500"
+                style={{
+                  fontFamily: "'Cabinet Grotesk', sans-serif",
+                  fontWeight: 500,
+                  letterSpacing: '-0.04em',
+                  color: 'rgba(44,62,128,0.16)',
+                }}
+              >
                 {domain.number}
               </span>
-              
+
               {/* Icon with subtle container */}
               <div className="relative z-10 mb-7">
-                <div className="w-9 h-9 rounded-lg bg-[rgba(255,255,255,0.02)] flex items-center justify-center transition-all duration-400 group-hover:bg-[rgba(122,196,224,0.06)]">
+                <div className="w-9 h-9 rounded-lg bg-[rgba(44,62,128,0.05)] flex items-center justify-center transition-all duration-400 group-hover:bg-[rgba(44,62,128,0.10)]">
                   <domain.icon 
                     className="w-4 h-4 text-[#5D6878] transition-colors duration-400 group-hover:text-[#2C3E80]" 
                     strokeWidth={1.5}

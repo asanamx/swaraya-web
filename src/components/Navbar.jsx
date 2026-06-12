@@ -100,11 +100,11 @@ export const Navbar = () => {
           {/* Logo: glyph + wordmark Author */}
           <Link
             href="/"
-            className="relative z-50 flex items-center gap-2.5 md:gap-3"
+            className="relative z-50 flex items-center gap-2"
             data-testid="navbar-logo"
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
-            <AxisMark size={22} color="currentColor" />
+            <AxisMark size={18} color="currentColor" />
             <span
               style={{
                 fontFamily: "'Author', sans-serif",

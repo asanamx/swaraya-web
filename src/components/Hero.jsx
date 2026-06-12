@@ -43,7 +43,7 @@ export const Hero = () => {
         }}
       />
 
-      {/* DECORATIVE COMPOSITION — concentric orbital system (right side, desktop only) */}
+      {/* DECORATIVE COMPOSITION — orbital system that emanates FROM the glyph */}
       <div
         className="hidden lg:block absolute pointer-events-none"
         style={{
@@ -56,7 +56,26 @@ export const Hero = () => {
           transition: 'opacity 1.6s ease 0.4s',
         }}
       >
-        {/* Concentric rings */}
+        {/* Pulse waves emanating from the center glyph */}
+        <div className="absolute inset-0">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="absolute top-1/2 left-1/2"
+              style={{
+                width: 80,
+                height: 80,
+                transform: 'translate(-50%, -50%)',
+                border: '1px solid #5468D6',
+                borderRadius: '50%',
+                animation: `glyphPulse 4s cubic-bezier(0.16, 1, 0.3, 1) ${i * 1.33}s infinite`,
+                opacity: 0,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Concentric rings + orbital nodes */}
         <svg
           viewBox="0 0 600 600"
           fill="none"
@@ -65,88 +84,82 @@ export const Hero = () => {
         >
           <defs>
             <radialGradient id="ringFade" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#5468D6" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#5468D6" stopOpacity="0.55" />
               <stop offset="100%" stopColor="#5468D6" stopOpacity="0" />
             </radialGradient>
-            <linearGradient id="strokeFade" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="rgba(84,104,214,0.6)" />
-              <stop offset="100%" stopColor="rgba(84,104,214,0)" />
-            </linearGradient>
           </defs>
 
-          {/* Outer ring with dashed sweep */}
+          {/* Static rings */}
           <circle cx="300" cy="300" r="290" stroke="rgba(84,104,214,0.18)" strokeWidth="1" />
-          <circle
-            cx="300" cy="300" r="290"
-            stroke="#5468D6" strokeWidth="1" strokeDasharray="4 1820"
-            style={{ animation: 'orbitDash 14s linear infinite', transformOrigin: '300px 300px' }}
-          />
-
-          {/* Mid ring */}
           <circle cx="300" cy="300" r="210" stroke="rgba(84,104,214,0.22)" strokeWidth="1" />
-          <circle
-            cx="300" cy="300" r="210"
-            stroke="#5468D6" strokeWidth="1.2" strokeDasharray="2 1318"
-            style={{ animation: 'orbitDash 9s linear infinite reverse', transformOrigin: '300px 300px' }}
-          />
-
-          {/* Inner ring */}
           <circle cx="300" cy="300" r="130" stroke="rgba(84,104,214,0.28)" strokeWidth="1" />
 
           {/* Cross-hairs */}
-          <line x1="0" y1="300" x2="600" y2="300" stroke="rgba(84,104,214,0.08)" strokeWidth="1" />
-          <line x1="300" y1="0" x2="300" y2="600" stroke="rgba(84,104,214,0.08)" strokeWidth="1" />
+          <line x1="0" y1="300" x2="600" y2="300" stroke="rgba(84,104,214,0.06)" strokeWidth="1" />
+          <line x1="300" y1="0" x2="300" y2="600" stroke="rgba(84,104,214,0.06)" strokeWidth="1" />
 
-          {/* Static orbital nodes */}
-          <circle cx="300" cy="10" r="3" fill="#5468D6" />
-          <circle cx="510" cy="210" r="2" fill="#5468D6" opacity="0.7" />
-          <circle cx="90" cy="390" r="2" fill="#5468D6" opacity="0.5" />
-          <circle cx="430" cy="430" r="2.5" fill="#5468D6" opacity="0.6" />
-
-          {/* Faint quadrant labels (numeric, micro) */}
+          {/* Cardinal labels */}
           <text x="300" y="50" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">000</text>
           <text x="550" y="305" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">090</text>
           <text x="300" y="566" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">180</text>
           <text x="48" y="305" textAnchor="middle" fill="rgba(155,165,183,0.45)" fontSize="9" fontFamily="Inter, sans-serif" letterSpacing="2">270</text>
 
-          {/* Center node */}
-          <circle cx="300" cy="300" r="42" fill="url(#ringFade)" />
+          {/* Orbital nodes — actually orbiting */}
+          <g style={{ transformOrigin: '300px 300px', animation: 'orbitDash 22s linear infinite' }}>
+            <circle cx="300" cy="10" r="3.5" fill="#5468D6" />
+            <circle cx="300" cy="10" r="6" fill="#5468D6" opacity="0.3" />
+          </g>
+          <g style={{ transformOrigin: '300px 300px', animation: 'orbitDash 14s linear infinite reverse' }}>
+            <circle cx="300" cy="90" r="2.5" fill="#5468D6" />
+            <circle cx="300" cy="90" r="5" fill="#5468D6" opacity="0.25" />
+          </g>
+          <g style={{ transformOrigin: '300px 300px', animation: 'orbitDash 9s linear infinite' }}>
+            <circle cx="300" cy="170" r="2" fill="#5468D6" />
+            <circle cx="300" cy="170" r="4" fill="#5468D6" opacity="0.3" />
+          </g>
 
-          {/* Center: AXIS mark glyph, large */}
-          <g transform="translate(258 258) scale(1.3)" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round">
+          {/* Dashed sweep on outer ring (suggests "scanning") */}
+          <circle
+            cx="300" cy="300" r="290"
+            stroke="#5468D6" strokeWidth="1" strokeDasharray="80 1740"
+            style={{ animation: 'orbitDash 16s linear infinite', transformOrigin: '300px 300px', opacity: 0.7 }}
+          />
+
+          {/* Center halo */}
+          <circle cx="300" cy="300" r="52" fill="url(#ringFade)" />
+
+          {/* Center: AXIS mark glyph — the source */}
+          <g transform="translate(258 258) scale(1.3)" stroke="#F5F2EC" strokeWidth="3.2" strokeLinecap="round">
             <line x1="32" y1="10" x2="32" y2="24" />
             <line x1="32" y1="40" x2="32" y2="54" />
             <line x1="10" y1="32" x2="24" y2="32" />
             <line x1="40" y1="32" x2="54" y2="32" />
             <line x1="44.5" y1="19.5" x2="50" y2="14" />
           </g>
+
+          {/* Vector lines emanating from glyph to outer ring (subtle) */}
+          <g stroke="#5468D6" strokeWidth="1" opacity="0.35">
+            <line x1="332" y1="268" x2="500" y2="100" strokeDasharray="2 3" />
+            <line x1="332" y1="332" x2="500" y2="500" strokeDasharray="2 3" />
+            <line x1="268" y1="332" x2="100" y2="500" strokeDasharray="2 3" />
+          </g>
         </svg>
 
-        {/* Floating data ticks — micro labels */}
+        {/* Micro labels */}
         <div
           style={{
-            position: 'absolute',
-            top: 100,
-            right: 10,
-            fontSize: 10,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: 'rgba(155,165,183,0.55)',
-            fontFamily: "'Inter', sans-serif",
+            position: 'absolute', top: 100, right: 10,
+            fontSize: 10, letterSpacing: '0.24em', textTransform: 'uppercase',
+            color: 'rgba(155,165,183,0.55)', fontFamily: "'Inter', sans-serif",
           }}
         >
           axis · 5/5
         </div>
         <div
           style={{
-            position: 'absolute',
-            bottom: 80,
-            left: 14,
-            fontSize: 10,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: 'rgba(155,165,183,0.55)',
-            fontFamily: "'Inter', sans-serif",
+            position: 'absolute', bottom: 80, left: 14,
+            fontSize: 10, letterSpacing: '0.24em', textTransform: 'uppercase',
+            color: 'rgba(155,165,183,0.55)', fontFamily: "'Inter', sans-serif",
           }}
         >
           v · 5.0

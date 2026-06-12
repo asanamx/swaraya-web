@@ -55,15 +55,15 @@ export const Footer = () => {
       />
 
       <div className="container-main relative py-20 md:py-24 lg:py-32">
-        {/* Wordmark — proporcional a footer firma, no a hero */}
-        <div className="flex items-center gap-3 md:gap-4 mb-12 md:mb-16">
-          <AxisMark size={34} color="#F5F2EC" strokeWidth={4} />
+        {/* Wordmark — proporción idéntica al navbar (ratio glyph/wordmark ≈ 0.86) */}
+        <div className="flex items-center gap-2.5 mb-12 md:mb-16">
+          <AxisMark size={26} color="#F5F2EC" strokeWidth={4} />
           <span
             style={{
               fontFamily: "'Author', sans-serif",
               fontWeight: 600,
-              letterSpacing: '-0.035em',
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+              letterSpacing: '-0.03em',
+              fontSize: '1.875rem',
               lineHeight: 1,
               color: '#F5F2EC',
             }}

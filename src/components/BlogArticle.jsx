@@ -4,6 +4,28 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Play } from 'lucide-react';
 
+// Inline AXIS mark — matches Navbar/Footer brand
+function AxisMark({ size = 18, color = 'currentColor' }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      width={size}
+      height={size}
+      style={{ display: 'block', flexShrink: 0 }}
+      aria-hidden="true"
+    >
+      <g stroke={color} strokeWidth={4} strokeLinecap="round" fill="none">
+        <line x1="32" y1="10" x2="32" y2="24" />
+        <line x1="32" y1="40" x2="32" y2="54" />
+        <line x1="10" y1="32" x2="24" y2="32" />
+        <line x1="40" y1="32" x2="54" y2="32" />
+        <line x1="44.5" y1="19.5" x2="50" y2="14" />
+      </g>
+    </svg>
+  );
+}
+
 // Component for embedded YouTube videos
 const YouTubeEmbed = ({ videoId, title }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,12 +46,12 @@ const YouTubeEmbed = ({ videoId, title }) => {
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05060A]/80 to-transparent" />
-            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-[#2C3E80] text-[#05060A] group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E0F11]/75 to-transparent" />
+            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-[#2C3E80] text-[#F5F2EC] group-hover:scale-110 transition-transform shadow-lg shadow-[#2C3E80]/30">
               <Play className="w-7 h-7 ml-1" fill="currentColor" />
             </div>
             {title && (
-              <span className="relative z-10 text-sm text-[#5D6878] font-medium px-4 text-center">
+              <span className="relative z-10 text-sm text-[#F5F2EC] font-medium px-4 text-center">
                 {title}
               </span>
             )}
@@ -119,15 +141,30 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
   return (
     <div className="min-h-screen bg-[#F5F2EC]">
       {/* Header */}
-      <header className="border-b border-[rgba(255,255,255,0.04)]">
+      <header className="border-b border-[rgba(14,15,17,0.08)]">
         <div className="container-main py-6">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center">
-              <img src="/logo-swaraya.png" alt="swaraya" className="h-5 md:h-6 w-auto" />
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-[#0E0F11]"
+              aria-label="swaraya — Inicio"
+            >
+              <AxisMark size={18} color="currentColor" />
+              <span
+                style={{
+                  fontFamily: "'Author', sans-serif",
+                  fontWeight: 600,
+                  letterSpacing: '-0.03em',
+                  fontSize: '1.3125rem',
+                  lineHeight: 1,
+                }}
+              >
+                swaraya
+              </span>
             </Link>
             <Link
               href="/blog"
-              className="flex items-center gap-2 text-sm text-[#9BA5B7] hover:text-[#0E0F11] transition-colors"
+              className="flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#2C3E80] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Todos los artículos
@@ -151,26 +188,34 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Article Header */}
           <header className="max-w-3xl mx-auto mb-10 md:mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-xs font-medium text-[#2C3E80] tracking-wide px-2.5 py-1 bg-[rgba(122,196,224,0.1)] rounded-md">
+              <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase px-2.5 py-1 bg-[rgba(44,62,128,0.08)] rounded-md">
                 {post.category}
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#3D4654]" />
+              <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
               <span className="flex items-center gap-1.5 text-xs text-[#5D6878]">
                 <Calendar className="w-3.5 h-3.5" />
                 {formatDate(post.publishedAt || post.published_at)}
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#3D4654]" />
+              <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
               <span className="flex items-center gap-1.5 text-xs text-[#5D6878]">
                 <Clock className="w-3.5 h-3.5" />
                 {post.readingTime || post.reading_time || '5'} min de lectura
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-[#0E0F11] tracking-[-0.03em] leading-[1.15] mb-6">
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#0E0F11] mb-6"
+              style={{
+                fontFamily: "'Cabinet Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: '-0.035em',
+                lineHeight: 1.08,
+              }}
+            >
               {post.title}
             </h1>
 
-            <p className="text-base md:text-lg text-[#9BA5B7] leading-relaxed">
+            <p className="text-base md:text-lg text-[#5D6878] leading-relaxed">
               {post.excerpt}
             </p>
 
@@ -179,7 +224,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 <Link
                   key={tag}
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
-                  className="text-xs text-[#9BA5B7] hover:text-[#9BA5B7] transition-colors"
+                  className="text-xs text-[#5D6878] hover:text-[#2C3E80] transition-colors"
                 >
                   #{tag.replace(/\s+/g, '')}
                 </Link>
@@ -215,21 +260,22 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 return (
                   <div
                     key={`html-${index}`}
-                    className="prose prose-invert prose-base max-w-none
-                      prose-headings:text-[#C8CDD6] prose-headings:font-medium prose-headings:tracking-[-0.02em]
-                      prose-h1:text-2xl prose-h1:mt-10 prose-h1:mb-5
-                      prose-h2:text-xl prose-h2:mt-9 prose-h2:mb-4
-                      prose-h3:text-lg prose-h3:mt-7 prose-h3:mb-3
-                      prose-p:text-[#8B95A5] prose-p:leading-[1.75] prose-p:mb-5 prose-p:text-[0.9375rem]
-                      prose-a:text-[#2C3E80] prose-a:no-underline hover:prose-a:underline
-                      prose-strong:text-[#A8B0BC] prose-strong:font-medium
-                      prose-ul:text-[#8B95A5] prose-ul:my-5
-                      prose-ol:text-[#8B95A5] prose-ol:my-5
-                      prose-li:my-1.5 prose-li:leading-[1.7] prose-li:text-[0.9375rem]
-                      prose-blockquote:border-l-[#5A7BFA] prose-blockquote:bg-[rgba(90,123,250,0.04)] prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-                      prose-code:text-[#2C3E80] prose-code:bg-[rgba(122,196,224,0.08)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
-                      prose-pre:bg-[#FAF8F2] prose-pre:border prose-pre:border-[rgba(255,255,255,0.04)] prose-pre:rounded-xl
-                      prose-hr:border-[rgba(14,15,17,0.08)] prose-hr:my-8
+                    className="prose prose-base max-w-none
+                      prose-headings:text-[#0E0F11] prose-headings:font-medium prose-headings:tracking-[-0.025em]
+                      prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
+                      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                      prose-p:text-[#3C4654] prose-p:leading-[1.8] prose-p:mb-5 prose-p:text-[1rem]
+                      prose-a:text-[#2C3E80] prose-a:underline prose-a:underline-offset-2 prose-a:decoration-[#2C3E80]/30 hover:prose-a:decoration-[#2C3E80]
+                      prose-strong:text-[#0E0F11] prose-strong:font-semibold
+                      prose-ul:text-[#3C4654] prose-ul:my-5
+                      prose-ol:text-[#3C4654] prose-ol:my-5
+                      prose-li:my-1.5 prose-li:leading-[1.75] prose-li:text-[1rem]
+                      prose-blockquote:border-l-[#2C3E80] prose-blockquote:bg-[rgba(44,62,128,0.05)] prose-blockquote:text-[#0E0F11] prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+                      prose-code:text-[#2C3E80] prose-code:bg-[rgba(44,62,128,0.08)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
+                      prose-pre:bg-[#0E0F11] prose-pre:text-[#F5F2EC] prose-pre:rounded-xl
+                      prose-img:rounded-xl prose-img:border prose-img:border-[rgba(14,15,17,0.08)]
+                      prose-hr:border-[rgba(14,15,17,0.10)] prose-hr:my-10
                     "
                     dangerouslySetInnerHTML={{ __html: segment.content }}
                   />
@@ -238,20 +284,20 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             })()}
 
             {/* Share */}
-            <div className="mt-12 pt-8 border-t border-[rgba(255,255,255,0.04)]">
+            <div className="mt-12 pt-8 border-t border-[rgba(14,15,17,0.08)]">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <span className="text-xs font-medium text-[#5D6878] tracking-wide">Compartir artículo</span>
+                <span className="text-xs font-medium text-[#5D6878] tracking-[0.18em] uppercase">Compartir artículo</span>
                 <div className="flex items-center gap-3">
-                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)] hover:text-[#0E0F11] transition-all" aria-label="Compartir en Twitter">
+                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(44,62,128,0.08)] hover:text-[#2C3E80] transition-all" aria-label="Compartir en Twitter">
                     <Twitter className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)] hover:text-[#0E0F11] transition-all" aria-label="Compartir en LinkedIn">
+                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(44,62,128,0.08)] hover:text-[#2C3E80] transition-all" aria-label="Compartir en LinkedIn">
                     <Linkedin className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)] hover:text-[#0E0F11] transition-all" aria-label="Compartir en Facebook">
+                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(44,62,128,0.08)] hover:text-[#2C3E80] transition-all" aria-label="Compartir en Facebook">
                     <Facebook className="w-4 h-4" />
                   </a>
-                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)] hover:text-[#0E0F11] transition-all" aria-label="Copiar enlace">
+                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(44,62,128,0.08)] hover:text-[#2C3E80] transition-all" aria-label="Copiar enlace">
                     {copied ? <Check className="w-4 h-4 text-[#2C3E80]" /> : <LinkIcon className="w-4 h-4" />}
                   </button>
                 </div>
@@ -259,10 +305,10 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             </div>
 
             {/* Author */}
-            <div className="mt-8 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(255,255,255,0.04)]">
+            <div className="mt-8 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(14,15,17,0.08)]">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[rgba(90,123,250,0.1)] flex items-center justify-center">
-                  <span className="text-[#2C3E80] font-semibold">S</span>
+                <div className="w-12 h-12 rounded-full bg-[rgba(44,62,128,0.10)] flex items-center justify-center">
+                  <AxisMark size={20} color="#2C3E80" />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-[#0E0F11]">{post.author?.name || 'swaraya'}</div>
@@ -276,21 +322,37 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-12 md:py-16 border-t border-[rgba(255,255,255,0.04)]">
+        <section className="py-16 md:py-20 border-t border-[rgba(14,15,17,0.08)] bg-[#FAF8F2]">
           <div className="container-main">
-            <h2 className="text-xl font-semibold text-[#0E0F11] mb-8">Artículos relacionados</h2>
+            <h2
+              className="text-2xl text-[#0E0F11] mb-10"
+              style={{
+                fontFamily: "'Cabinet Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: '-0.025em',
+              }}
+            >
+              Artículos relacionados
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {relatedPosts.map((relPost) => (
                 <Link
                   key={relPost.id}
                   href={`/blog/${relPost.slug}`}
-                  className="group p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(255,255,255,0.04)] hover:border-[rgba(14,15,17,0.1)] transition-colors"
+                  className="group p-6 bg-[#F5F2EC] rounded-xl border border-[rgba(14,15,17,0.08)] hover:border-[#2C3E80]/40 transition-colors"
                 >
-                  <span className="text-xs font-medium text-[#2C3E80] tracking-wide">{relPost.category}</span>
-                  <h3 className="text-lg font-medium text-[#0E0F11] mt-3 mb-2 group-hover:text-[#2C3E80] transition-colors">
+                  <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase">{relPost.category}</span>
+                  <h3
+                    className="text-lg mt-3 mb-2 group-hover:text-[#2C3E80] transition-colors text-[#0E0F11]"
+                    style={{
+                      fontFamily: "'Cabinet Grotesk', sans-serif",
+                      fontWeight: 500,
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
                     {relPost.title}
                   </h3>
-                  <p className="text-sm text-[#9BA5B7] line-clamp-2">{relPost.excerpt}</p>
+                  <p className="text-sm text-[#5D6878] line-clamp-2">{relPost.excerpt}</p>
                 </Link>
               ))}
             </div>
@@ -299,10 +361,21 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
       )}
 
       {/* Footer */}
-      <footer className="py-8 border-t border-[rgba(255,255,255,0.04)]">
+      <footer className="py-8 border-t border-[rgba(14,15,17,0.08)]">
         <div className="container-main flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link href="/" className="flex items-center">
-            <img src="/logo-swaraya.png" alt="swaraya" className="h-4 w-auto opacity-60" />
+          <Link href="/" className="flex items-center gap-2 text-[#0E0F11] opacity-70 hover:opacity-100 transition-opacity">
+            <AxisMark size={14} color="currentColor" />
+            <span
+              style={{
+                fontFamily: "'Author', sans-serif",
+                fontWeight: 600,
+                letterSpacing: '-0.03em',
+                fontSize: '1rem',
+                lineHeight: 1,
+              }}
+            >
+              swaraya
+            </span>
           </Link>
           <p className="text-xs text-[#5D6878]">
             © {new Date().getFullYear()} Agencia swaraya. Todos los derechos reservados.

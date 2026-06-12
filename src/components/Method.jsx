@@ -85,13 +85,21 @@ export const Method = () => {
                 >
                   {/* Large number */}
                   <div className="mb-6">
-                    <span className="text-[3.5rem] font-semibold text-[rgba(122,196,224,0.06)] leading-none tracking-tight transition-colors duration-400 group-hover:text-[rgba(122,196,224,0.1)]" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+                    <span
+                      className="text-[3.5rem] md:text-[4.25rem] leading-none transition-colors duration-400"
+                      style={{
+                        fontFamily: "'Cabinet Grotesk', sans-serif",
+                        fontWeight: 500,
+                        letterSpacing: '-0.045em',
+                        color: 'rgba(44,62,128,0.20)',
+                      }}
+                    >
                       {step.number}
                     </span>
                   </div>
                   
                   {/* Node dot */}
-                  <div className="absolute top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#2C3E80]/40 transition-all duration-300 group-hover:bg-[#2C3E80]/70 group-hover:scale-125" />
+                  <div className="absolute top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#2C3E80]/55 transition-all duration-300 group-hover:bg-[#2C3E80] group-hover:scale-125" />
                   
                   {/* Vertical connector */}
                   <div className="absolute top-[56px] left-1/2 w-px h-6 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-transparent -translate-x-1/2" />
@@ -120,12 +128,20 @@ export const Method = () => {
                 data-testid={`method-step-${step.number}-mobile`}
               >
                 {/* Left: Number and line */}
-                <div className="flex flex-col items-center w-10">
-                  <span className="text-xl font-semibold text-[#2C3E80]/40 mb-2 tabular-nums">
+                <div className="flex flex-col items-center w-12">
+                  <span
+                    className="text-[1.75rem] mb-2 tabular-nums"
+                    style={{
+                      fontFamily: "'Cabinet Grotesk', sans-serif",
+                      fontWeight: 500,
+                      letterSpacing: '-0.04em',
+                      color: 'rgba(44,62,128,0.55)',
+                    }}
+                  >
                     {step.number}
                   </span>
                   {index < steps.length - 1 && (
-                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(122,196,224,0.15)] to-transparent min-h-[50px]" />
+                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(44,62,128,0.25)] to-transparent min-h-[50px]" />
                   )}
                 </div>
                 

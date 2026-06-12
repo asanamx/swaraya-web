@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, Calendar, Clock, ArrowRight, Tag, Filter } from 'lucide-react';
+import { Search, Calendar, Clock, ArrowRight, Filter } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import { getPosts, getCategories, getTags } from '../../lib/sanity';
@@ -24,6 +24,7 @@ const BlogPage = () => {
     fetchPosts();
     fetchCategories();
     fetchTags();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, selectedCategory, selectedTag, searchQuery]);
 
   const fetchPosts = async () => {
@@ -80,25 +81,33 @@ const BlogPage = () => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
   return (
-    <div className="min-h-screen bg-[#05060A]">
+    <div className="min-h-screen bg-[#F5F2EC]">
       {/* Full Navigation */}
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-28 md:pt-32 pb-16 md:pb-24 border-b border-[rgba(255,255,255,0.04)]">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(14,15,17,0.08)]">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="label-accent text-[#7AC4E0] mb-6 block">Insights</span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#F4F6F9] tracking-[-0.03em] mb-6">
-              Perspectivas sobre <span className="text-[#9BA5B7]">inteligencia aplicada</span>
+            <span className="label-accent text-[#2C3E80] mb-6 block">Insights</span>
+            <h1
+              className="text-3xl md:text-5xl lg:text-6xl text-[#0E0F11] mb-6"
+              style={{
+                fontFamily: "'Cabinet Grotesk', sans-serif",
+                fontWeight: 500,
+                letterSpacing: '-0.035em',
+                lineHeight: 1.02,
+              }}
+            >
+              Perspectivas sobre <span className="text-[#2C3E80]">inteligencia aplicada</span>
             </h1>
-            <p className="text-base md:text-lg text-[#6B7280] leading-relaxed">
-              Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos, 
+            <p className="text-base md:text-lg text-[#5D6878] leading-relaxed max-w-[60ch]">
+              Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos,
               gobernanza y el futuro de la inteligencia empresarial.
             </p>
           </div>
@@ -106,7 +115,7 @@ const BlogPage = () => {
       </section>
 
       {/* Search and Filters */}
-      <section className="py-8 border-b border-[rgba(255,255,255,0.04)]">
+      <section className="py-8 border-b border-[rgba(14,15,17,0.08)]">
         <div className="container-main">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Search */}
@@ -114,10 +123,10 @@ const BlogPage = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5D6878]" />
               <input
                 type="text"
-                placeholder="Buscar artículos..."
+                placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#0C1016] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#5D6878] focus:outline-none focus:border-[#5A7BFA]/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(14,15,17,0.08)] rounded-xl text-sm text-[#0E0F11] placeholder-[#5D6878] focus:outline-none focus:border-[#2C3E80]/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -125,23 +134,23 @@ const BlogPage = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 text-sm text-[#9BA5B7] hover:text-[#F4F6F9] transition-colors"
+              className="flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#0E0F11] transition-colors"
             >
               <Filter className="w-4 h-4" />
               Filtros
               {(selectedCategory || selectedTag) && (
-                <span className="w-2 h-2 rounded-full bg-[#7AC4E0]" />
+                <span className="w-2 h-2 rounded-full bg-[#2C3E80]" />
               )}
             </button>
           </div>
 
           {/* Expanded Filters */}
           {showFilters && (
-            <div className="mt-6 p-6 bg-[#0C1016] rounded-xl border border-[rgba(255,255,255,0.04)]">
+            <div className="mt-6 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(14,15,17,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Categories */}
                 <div>
-                  <h3 className="text-xs font-medium text-[#5D6878] tracking-wide mb-3">Categorías</h3>
+                  <h3 className="label-accent text-[#5D6878] mb-3">Categorías</h3>
                   <div className="flex flex-wrap gap-2">
                     {categories.map((cat) => (
                       <button
@@ -152,8 +161,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedCategory === cat.name
-                            ? 'bg-[#5A7BFA] text-white'
-                            : 'bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)]'
+                            ? 'bg-[#2C3E80] text-[#F5F2EC]'
+                            : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
                         }`}
                       >
                         {cat.name} ({cat.count})
@@ -164,7 +173,7 @@ const BlogPage = () => {
 
                 {/* Tags */}
                 <div>
-                  <h3 className="text-xs font-medium text-[#5D6878] tracking-wide mb-3">Tags</h3>
+                  <h3 className="label-accent text-[#5D6878] mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.slice(0, 10).map((tag) => (
                       <button
@@ -175,8 +184,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedTag === tag.name
-                            ? 'bg-[#7AC4E0] text-[#05060A]'
-                            : 'bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)]'
+                            ? 'bg-[#2C3E80] text-[#F5F2EC]'
+                            : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
                         }`}
                       >
                         {tag.name}
@@ -189,7 +198,7 @@ const BlogPage = () => {
               {(selectedCategory || selectedTag) && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-xs text-[#7AC4E0] hover:text-[#9BD4EA] transition-colors"
+                  className="mt-4 text-xs text-[#2C3E80] hover:underline transition-colors"
                 >
                   Limpiar filtros
                 </button>
@@ -200,32 +209,32 @@ const BlogPage = () => {
       </section>
 
       {/* Posts Grid */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-20">
         <div className="container-main">
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="animate-pulse">
-                  <div className="aspect-[16/9] bg-[#0C1016] rounded-xl mb-4" />
-                  <div className="h-4 bg-[#0C1016] rounded w-1/4 mb-3" />
-                  <div className="h-6 bg-[#0C1016] rounded w-3/4 mb-2" />
-                  <div className="h-4 bg-[#0C1016] rounded w-full" />
+                  <div className="aspect-[16/9] bg-[#FAF8F2] rounded-xl mb-4" />
+                  <div className="h-4 bg-[#FAF8F2] rounded w-1/4 mb-3" />
+                  <div className="h-6 bg-[#FAF8F2] rounded w-3/4 mb-2" />
+                  <div className="h-4 bg-[#FAF8F2] rounded w-full" />
                 </div>
               ))}
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-[#6B7280] mb-4">No se encontraron artículos</p>
+              <p className="text-[#5D6878] mb-4">No se encontraron artículos</p>
               <button
                 onClick={clearFilters}
-                className="text-sm text-[#7AC4E0] hover:text-[#9BD4EA] transition-colors"
+                className="text-sm text-[#2C3E80] hover:underline transition-colors"
               >
                 Limpiar filtros
               </button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {posts.map((post, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+              {posts.map((post) => (
                 <article
                   key={post.id}
                   className="group"
@@ -233,21 +242,20 @@ const BlogPage = () => {
                 >
                   <Link href={`/blog/${post.slug}`}>
                     {/* Cover Image */}
-                    <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#0C1016]">
+                    <div className="relative aspect-[16/10] mb-5 rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(14,15,17,0.06)]">
                       <img
                         src={post.coverImage || post.cover_image}
                         alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#05060A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
                     {/* Category */}
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[0.6875rem] font-medium text-[#7AC4E0] tracking-wide">
+                      <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase">
                         {post.category}
                       </span>
-                      <span className="w-1 h-1 rounded-full bg-[#3D4654]" />
+                      <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
                       <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#5D6878]">
                         <Clock className="w-3 h-3" />
                         {post.readingTime || post.reading_time || '5'} min
@@ -255,12 +263,20 @@ const BlogPage = () => {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-lg md:text-xl font-medium text-[#F4F6F9] mb-3 leading-snug tracking-[-0.01em] group-hover:text-[#7AC4E0] transition-colors">
+                    <h2
+                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#2C3E80] transition-colors"
+                      style={{
+                        fontFamily: "'Cabinet Grotesk', sans-serif",
+                        fontWeight: 500,
+                        letterSpacing: '-0.02em',
+                        color: '#0E0F11',
+                      }}
+                    >
                       {post.title}
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-sm text-[#6B7280] leading-relaxed line-clamp-2 mb-4">
+                    <p className="text-sm text-[#5D6878] leading-relaxed line-clamp-2 mb-4">
                       {post.excerpt}
                     </p>
 
@@ -277,15 +293,15 @@ const BlogPage = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 mt-12">
+            <div className="flex items-center justify-center gap-2 mt-16">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
                   className={`w-10 h-10 rounded-lg text-sm font-medium transition-all ${
                     currentPage === page
-                      ? 'bg-[#5A7BFA] text-white'
-                      : 'bg-[rgba(255,255,255,0.04)] text-[#9BA5B7] hover:bg-[rgba(255,255,255,0.08)]'
+                      ? 'bg-[#2C3E80] text-[#F5F2EC]'
+                      : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
                   }`}
                 >
                   {page}
@@ -297,17 +313,25 @@ const BlogPage = () => {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-16 border-t border-[rgba(255,255,255,0.04)]">
+      <section className="py-20 border-t border-[rgba(14,15,17,0.08)] bg-[#FAF8F2]">
         <div className="container-main text-center">
-          <p className="text-[#6B7280] mb-6">
+          <p
+            className="text-2xl md:text-3xl text-[#0E0F11] mb-8 max-w-[28ch] mx-auto"
+            style={{
+              fontFamily: "'Cabinet Grotesk', sans-serif",
+              fontWeight: 500,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.15,
+            }}
+          >
             ¿Listo para transformar tu organización con inteligencia aplicada?
           </p>
           <Link
             href="/#contact"
-            className="btn-primary inline-flex items-center group"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#2C3E80] text-[#F5F2EC] text-sm font-medium transition-all hover:bg-[#1F2D5C] group"
           >
             Iniciar Conversación
-            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </section>
