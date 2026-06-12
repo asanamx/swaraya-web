@@ -232,14 +232,13 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             </div>
           </header>
 
-          {/* Cover Image */}
+          {/* Cover Image — duotone editorial */}
           <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(14,15,17,0.08)]">
+            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#FAF8F2] border border-[rgba(14,15,17,0.08)]">
               <img
                 src={post.coverImage || post.cover_image}
                 alt={post.title}
-                className="w-full h-full object-cover transition-all duration-700 hover:saturate-100"
-                style={{ filter: 'saturate(0.82) contrast(1.04)' }}
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

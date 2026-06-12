@@ -486,3 +486,34 @@ body {
 .prose img:hover {
   filter: saturate(1) contrast(1);
 }
+
+/* Editorial duotone for blog COVER images — indigo over desaturated base.
+   Reveals full color on hover. Apply via class .cover-editorial on the wrapper. */
+.cover-editorial {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.cover-editorial > img {
+  filter: grayscale(1) brightness(0.94) contrast(1.06);
+  transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cover-editorial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(44,62,128,0.55) 0%, rgba(44,62,128,0.30) 100%);
+  mix-blend-mode: multiply;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.group:hover .cover-editorial > img,
+.cover-editorial:hover > img {
+  filter: grayscale(0) brightness(1) contrast(1);
+}
+.group:hover .cover-editorial::after,
+.cover-editorial:hover::after {
+  opacity: 0;
+}
+

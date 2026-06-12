@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "gobernanza-ia-instituciones",
+    "id": "post-gobernanza-ia-instituciones-3e97dfca",
+    "title": "Gobernanza de IA en instituciones: estructura antes que tecnología",
+    "assetId": "image-713ffef0ed6e26a4e7cbc92e1d22d97413e5dd92-1920x2880-jpg"
+  },
+  {
+    "slug": "rag-vs-fine-tuning-cuando-usar-cada-uno",
+    "id": "post-rag-vs-fine-tuning-cuando-usar-cada-uno-e0c8c389",
+    "title": "RAG vs Fine-tuning: cuándo usar cada uno",
+    "assetId": "image-9c038c3a4fcedc363db24f8b46b50cacf45eb682-1920x3194-jpg"
+  },
+  {
+    "slug": "metricas-exito-proyectos-ia",
+    "id": "post-metricas-exito-proyectos-ia-c9475920",
+    "title": "Métricas que importan en proyectos de IA",
+    "assetId": "image-eb8cd93e3828e888fd1e842ae58cc8df8e9cf573-1920x1280-jpg"
+  },
+  {
+    "slug": "cio-ia-agentica",
+    "id": "post-cio-ia-agentica-7d9d903f",
+    "title": "El nuevo rol del CIO ante la IA agéntica",
+    "assetId": "image-060b583e0b1aa343693b1a585c358d5aa2629cf2-1920x1289-jpg"
+  },
+  {
+    "slug": "por-que-ia-falla-empresas-grandes",
+    "id": "post-por-que-ia-falla-empresas-grandes-6df0695d",
+    "title": "Por qué la IA falla en empresas grandes (y cómo evitarlo)",
+    "assetId": "image-5aab2250dd73f710a7c375d23e727f77b9ac8b4e-1920x2400-jpg"
+  },
+  {
+    "slug": "evals-sistemas-llm-produccion",
+    "id": "post-evals-sistemas-llm-produccion-fdce0a74",
+    "title": "Diseño de evals para sistemas LLM en producción",
+    "assetId": "image-cdc5ed94bd21ffd2d140aecb78a9923eb7f8dd5d-1920x1280-jpg"
+  }
+]

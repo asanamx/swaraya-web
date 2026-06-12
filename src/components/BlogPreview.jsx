@@ -85,13 +85,12 @@ export const BlogPreview = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <Link href={`/blog/${post.slug}`}>
-                  {/* Cover Image */}
-                  <div className="relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(14,15,17,0.06)]">
+                  {/* Cover Image — duotone editorial */}
+                  <div className="cover-editorial relative aspect-[16/9] mb-5 rounded-xl bg-[#FAF8F2] border border-[rgba(14,15,17,0.06)]">
                     <img
                       src={post.coverImage || post.cover_image}
                       alt={post.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:saturate-100"
-                      style={{ filter: 'saturate(0.82) contrast(1.04)' }}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
 
