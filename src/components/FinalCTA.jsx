@@ -66,23 +66,24 @@ export const FinalCTA = () => {
               }}
             />
             
-            {/* Main card */}
+            {/* Main card — editorial light */}
             <div 
               className="relative p-8 md:p-10 rounded-[20px] overflow-hidden"
               style={{
-                background: 'linear-gradient(168deg, #0E0F11 0%, #161821 100%)',
-                border: '1px solid rgba(245,242,236,0.06)',
+                background: '#FAF8F2',
+                border: '1px solid rgba(14,15,17,0.08)',
+                boxShadow: '0 24px 60px -24px rgba(44,62,128,0.18)',
               }}
             >
               {/* Top accent line */}
               <div 
                 className="absolute top-0 left-8 right-8 h-px"
                 style={{
-                  background: 'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
+                  background: 'linear-gradient(90deg, transparent 0%, rgba(44,62,128,0.35) 50%, transparent 100%)',
                 }}
               />
 
-              <h3 className="text-[0.8125rem] md:text-sm font-medium text-[#C8CCDC] mb-8 tracking-[-0.005em]">
+              <h3 className="text-[0.8125rem] md:text-sm font-medium text-[#3C4654] mb-8 tracking-[-0.005em]">
                 O déjanos tus datos
               </h3>
               
@@ -137,7 +138,7 @@ export const FinalCTA = () => {
                 
                 <button
                   type="submit"
-                  className="w-full mt-3 py-4 px-6 bg-[#F5F2EC] text-[#0E0F11] text-[0.8125rem] font-medium tracking-[-0.005em] rounded-xl transition-all duration-300 hover:bg-white hover:shadow-[0_8px_32px_-8px_rgba(245,242,236,0.18)]"
+                  className="w-full mt-3 py-4 px-6 bg-[#2C3E80] text-[#F5F2EC] text-[0.8125rem] font-medium tracking-[-0.005em] rounded-xl transition-all duration-300 hover:bg-[#1F2D5C] hover:shadow-[0_8px_32px_-8px_rgba(44,62,128,0.30)]"
                   data-testid="contact-submit-button"
                 >
                   Enviar Mensaje

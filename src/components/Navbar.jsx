@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // Inline mark — v5 AXIS
-function AxisMark({ size = 22, color = 'currentColor' }) {
+function AxisMark({ size = 22, color = 'currentColor', strokeWidth = 4 }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@ function AxisMark({ size = 22, color = 'currentColor' }) {
       style={{ display: 'block', flexShrink: 0 }}
       aria-hidden="true"
     >
-      <g stroke={color} strokeWidth={4} strokeLinecap="round" fill="none">
+      <g stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" fill="none">
         <line x1="32" y1="10" x2="32" y2="24" />
         <line x1="32" y1="40" x2="32" y2="54" />
         <line x1="10" y1="32" x2="24" y2="32" />
@@ -28,18 +28,31 @@ function AxisMark({ size = 22, color = 'currentColor' }) {
 }
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
-  // On home, the nav sits over the dark hero until user scrolls past it.
-  // On other routes, the nav is always over the cream content.
-  const overDarkHero = isHomePage && !isScrolled;
+  // Scroll-driven logo morph (Anthropic-style)
+  // 0–60px: full wordmark visible
+  // 60–140px: crossfade wordmark→glyph
+  // >140px: only glyph
+  const MORPH_START = 60;
+  const MORPH_END = 140;
+  const morphProgress = Math.min(Math.max((scrollY - MORPH_START) / (MORPH_END - MORPH_START), 0), 1);
+  const wordmarkOpacity = 1 - morphProgress;
+  const glyphOpacity = morphProgress;
+  // Glyph scale: starts at 0.7, ends at 1
+  const glyphScale = 0.7 + morphProgress * 0.3;
+  // On non-homepage routes, always show the compact glyph + wordmark (no morph)
+  const isCompact = !isHomePage || scrollY > MORPH_END;
+
+  const isScrolled = scrollY > 80;
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
+    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -76,17 +89,15 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Color tokens for current state
-  const navTextColor = overDarkHero ? '#F5F2EC' : '#0E0F11';
-  const navMutedColor = overDarkHero ? 'rgba(245,242,236,0.65)' : 'rgba(14,15,17,0.6)';
-  const navHoverColor = overDarkHero ? '#F5F2EC' : '#2C3E80';
+  // Full light theme now — no more dark hero overlay
+  const navTextColor = '#0E0F11';
+  const navMutedColor = 'rgba(14,15,17,0.6)';
+  const navHoverColor = '#2C3E80';
   const navBgClass = isMobileMenuOpen
     ? 'bg-[#0E0F11]'
     : isScrolled
-      ? 'bg-[#F5F2EC]/95 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]'
-      : isHomePage
-        ? 'bg-transparent'
-        : 'bg-[#F5F2EC]/95 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]';
+      ? 'bg-[#F5F2EC]/92 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]'
+      : 'bg-[#F5F2EC]/0';
 
   return (
     <nav
@@ -97,25 +108,77 @@ export const Navbar = () => {
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
-          {/* Logo: glyph + wordmark Author */}
+          {/* Logo: Anthropic-style scroll morph — wordmark → glyph */}
           <Link
             href="/"
-            className="relative z-50 flex items-center gap-2"
+            className="relative z-50 flex items-center"
             data-testid="navbar-logo"
+            aria-label="swaraya — Inicio"
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
-            <AxisMark size={18} color="currentColor" />
-            <span
-              style={{
-                fontFamily: "'Author', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '-0.03em',
-                fontSize: '1.3125rem',
-                lineHeight: 1,
-              }}
-            >
-              swaraya
-            </span>
+            {isHomePage && !isMobileMenuOpen ? (
+              // HOME — morph container. Width animates so the layout collapses smoothly.
+              <div
+                style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  height: '28px',
+                  width: `${24 + (1 - morphProgress) * 88}px`,
+                  transition: 'width 80ms linear',
+                }}
+              >
+                {/* Glyph — grows in as we scroll */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '50%',
+                    transform: `translateY(-50%) scale(${glyphScale})`,
+                    transformOrigin: 'left center',
+                    opacity: glyphOpacity,
+                    transition: 'opacity 80ms linear',
+                  }}
+                >
+                  <AxisMark size={22} color="currentColor" strokeWidth={4.2} />
+                </div>
+                {/* Wordmark — fades out as we scroll */}
+                <span
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    fontFamily: "'Author', sans-serif",
+                    fontWeight: 600,
+                    letterSpacing: '-0.03em',
+                    fontSize: '1.4375rem',
+                    lineHeight: 1,
+                    opacity: wordmarkOpacity,
+                    transition: 'opacity 80ms linear',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  swaraya
+                </span>
+              </div>
+            ) : (
+              // BLOG / other routes — compact logo always
+              <div className="flex items-center gap-2">
+                <AxisMark size={18} color="currentColor" />
+                <span
+                  style={{
+                    fontFamily: "'Author', sans-serif",
+                    fontWeight: 600,
+                    letterSpacing: '-0.03em',
+                    fontSize: '1.3125rem',
+                    lineHeight: 1,
+                  }}
+                >
+                  swaraya
+                </span>
+              </div>
+            )}
           </Link>
 
           {/* Desktop Nav */}
@@ -155,7 +218,7 @@ export const Navbar = () => {
             className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
             style={{
               padding: '10px 20px',
-              background: overDarkHero ? '#5468D6' : '#2C3E80',
+              background: '#2C3E80',
               color: '#F5F2EC',
             }}
             data-testid="nav-cta"
