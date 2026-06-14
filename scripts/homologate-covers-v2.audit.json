@@ -1,0 +1,149 @@
+[
+  {
+    "slug": "gobernanza-ia-instituciones",
+    "postId": "post-gobernanza-ia-instituciones-3e97dfca",
+    "assetId": "image-2d0407a7ae9376c5571fe554ea36bc76a1a9c02d-1920x1442-jpg",
+    "status": "ok",
+    "concept": "circuit close-up: orden, estructura, principio"
+  },
+  {
+    "slug": "rag-vs-fine-tuning-cuando-usar-cada-uno",
+    "postId": "post-rag-vs-fine-tuning-cuando-usar-cada-uno-e0c8c389",
+    "assetId": "image-e5693967537219e7d5908642bf604ae21cc6dab3-1920x1441-jpg",
+    "status": "ok",
+    "concept": "dark blue circuit: arquitectura técnica, decisión"
+  },
+  {
+    "slug": "metricas-exito-proyectos-ia",
+    "postId": "post-metricas-exito-proyectos-ia-c9475920",
+    "assetId": "image-552689ed603bb24c5f8fd46d3e3431702a8a6e93-1920x1517-jpg",
+    "status": "ok",
+    "concept": "placa con componentes: granularidad, medición"
+  },
+  {
+    "slug": "cio-ia-agentica",
+    "postId": "post-cio-ia-agentica-7d9d903f",
+    "assetId": "image-987b0f887ce1a4aea0e345cc711aa27bca297009-1920x1280-jpg",
+    "status": "ok",
+    "concept": "circuit board macro: liderazgo técnico"
+  },
+  {
+    "slug": "por-que-ia-falla-empresas-grandes",
+    "postId": "post-por-que-ia-falla-empresas-grandes-6df0695d",
+    "assetId": "image-34b08ee832b3298356b157dad22b603e6c925f7e-1920x1920-jpg",
+    "status": "ok",
+    "concept": "server close-up: complejidad organizacional"
+  },
+  {
+    "slug": "evals-sistemas-llm-produccion",
+    "postId": "post-evals-sistemas-llm-produccion-fdce0a74",
+    "assetId": "image-6e23b4d5fe8e5eae1fd806065691696929f04267-1920x1282-jpg",
+    "status": "ok",
+    "concept": "código en monitor: testing, validación"
+  },
+  {
+    "slug": "agentes-autonomos-ia-empresarial",
+    "postId": "d386b751-1b4b-470a-9ca0-285ab7198050",
+    "assetId": "image-f08a0f071bd469494f0ed4e3e2c801b3b5a82744-1920x1280-jpg",
+    "status": "ok",
+    "concept": "chip CPU central: agencia, autonomía"
+  },
+  {
+    "slug": "arquitectura-ia-empresarial",
+    "postId": "b7aa645b-5690-412f-9aad-8c77f83ec731",
+    "assetId": "image-ea3ea6b7289c709413d732839babdb5fbae8f3ba-1920x1359-jpg",
+    "status": "ok",
+    "concept": "motherboard: arquitectura de sistema"
+  },
+  {
+    "slug": "roi-inteligencia-artificial",
+    "postId": "39c2a07b-bdeb-4888-818c-3bd830e53ec3",
+    "assetId": "image-2f884b05f3a3eeb713c02b778456cc2bf5baa053-1920x1280-jpg",
+    "status": "ok",
+    "concept": "componentes granulares: medición de valor"
+  },
+  {
+    "slug": "implementar-mlops-organizacion",
+    "postId": "bebdc6b3-c760-4c03-bd7d-8874bf4801e2",
+    "assetId": "image-70e99ae646fb7d43478fb0fd048b31c505299e93-1920x1282-jpg",
+    "status": "ok",
+    "concept": "tilt-shift motherboard: pipeline ordenado"
+  },
+  {
+    "slug": "llms-empresa-mas-alla-chatbot",
+    "postId": "dba06546-f4d8-4a9c-ba38-9dfc650b9aef",
+    "assetId": "image-377367b7342535be8b922a9d17a8aae717cd63c9-1920x1280-jpg",
+    "status": "ok",
+    "concept": "código en pantalla: lenguaje, sintaxis"
+  },
+  {
+    "slug": "data-mesh-arquitectura-datos",
+    "postId": "4fdf8304-f8a4-429e-aa19-89bb4bcdac23",
+    "status": "error",
+    "error": "Download failed: 404 https://images.unsplash.com/photo-1614729939124-032d1e6d3b15?w=1920&q=85&auto=format&fit=crop",
+    "sourceUrl": "https://images.unsplash.com/photo-1614729939124-032d1e6d3b15?w=1920&q=85&auto=format&fit=crop"
+  },
+  {
+    "slug": "futuro-trabajo-ia-generativa",
+    "postId": "f6276856-70bf-4a42-a63f-796c4d370f94",
+    "assetId": "image-c8526a001f78d94dc3f0ccc34af8648d50f5ed15-1920x1280-jpg",
+    "status": "ok",
+    "concept": "circuit board: trabajo + máquina"
+  },
+  {
+    "slug": "nlp-aplicado-casos-practicos",
+    "postId": "2db7a284-89dc-4c2e-ba0c-ea0bff9c469a",
+    "assetId": "image-67c2590d2ec702e03dddd6d09ca3ba376aa9c8ee-1920x1509-jpg",
+    "status": "ok",
+    "concept": "circuit abstracto: procesamiento de lenguaje"
+  },
+  {
+    "slug": "gobernanza-ia-implementacion-responsable",
+    "postId": "6cf76d2c-317c-41d9-9963-e9f6dc26df50",
+    "assetId": "image-fe30573bf92b077e1eed3a7427287146de45ead7-1920x1509-jpg",
+    "status": "ok",
+    "concept": "motherboard ordenada: marco ético"
+  },
+  {
+    "slug": "automatizacion-inteligente-rpa-ia",
+    "postId": "fc096221-cd51-4555-9290-d2d37bdd769c",
+    "assetId": "image-cad38e121a70b20c0734b1b9b10d6d62ede2aa9b-1920x1280-jpg",
+    "status": "ok",
+    "concept": "circuit repetitivo: automatización"
+  },
+  {
+    "slug": "computer-vision-cadena-suministro",
+    "postId": "b605cacd-c9bc-443b-b804-eec45303f9c0",
+    "assetId": "image-e57a2000a9cc78fce3556b41fcb9c08e7919f18c-1920x1920-jpg",
+    "status": "ok",
+    "concept": "abstracto industrial: visión + cadena"
+  },
+  {
+    "slug": "construyendo-equipo-ia-efectivo",
+    "postId": "f6b447b3-adc4-493e-b219-ebcebe700322",
+    "assetId": "image-ab00c5765ea440e323425dd9872216d4b5a63c1a-1920x2880-jpg",
+    "status": "ok",
+    "concept": "circuit ensamblado: colaboración técnica"
+  },
+  {
+    "slug": "prediccion-demanda-machine-learning",
+    "postId": "2a556371-54c0-486a-9cbe-2f9ac3b215c8",
+    "assetId": "image-af1f1fdc11dab518e4fd10545f30b36541cef22f-1920x1280-jpg",
+    "status": "ok",
+    "concept": "gráficas oscilantes: predicción, curvas"
+  },
+  {
+    "slug": "apis-ia-construir-vs-consumir",
+    "postId": "0fca9773-f90a-4c22-a369-2e9996761a2f",
+    "assetId": "image-000dbcfc39754706c2be1b41e65f29d0f9b529bf-1920x1280-jpg",
+    "status": "ok",
+    "concept": "cables/conectores: interfaces, ports"
+  },
+  {
+    "slug": "tendencias-ia-2026",
+    "postId": "32f9fa32-50c8-4e4e-ae75-324c530741f9",
+    "assetId": "image-8d02973f652f1a72da3a98e2ee05797ad43bfcd0-1920x2880-jpg",
+    "status": "ok",
+    "concept": "server rack: horizonte tecnológico"
+  }
+]

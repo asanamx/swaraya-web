@@ -487,22 +487,35 @@ body {
   filter: saturate(1) contrast(1);
 }
 
-/* Editorial duotone for blog COVER images — indigo over desaturated base.
-   NEVER reveals real color. Hover only lightens the overlay slightly. */
+/* Editorial duotone for blog COVER images — indigo over heavily-normalized base.
+   NEVER reveals real color. Strong contrast + vignette make different photos
+   look like a coherent visual collection. */
 .cover-editorial {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 .cover-editorial > img {
-  filter: grayscale(1) brightness(0.94) contrast(1.08);
+  /* Grayscale + boosted contrast unifies tonal range across different sources */
+  filter: grayscale(1) contrast(1.18) brightness(0.88);
   transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.cover-editorial::after {
+.cover-editorial::before {
+  /* Subtle radial vignette — unifies composition edges across photos */
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(44,62,128,0.58) 0%, rgba(44,62,128,0.34) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(14,15,17,0.35) 100%);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cover-editorial::after {
+  /* Indigo duotone overlay */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(44,62,128,0.62) 0%, rgba(44,62,128,0.40) 100%);
   mix-blend-mode: multiply;
   transition: background 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -510,12 +523,14 @@ body {
 }
 .group:hover .cover-editorial > img,
 .cover-editorial:hover > img {
-  /* image stays monochrome — slight breath only */
-  filter: grayscale(1) brightness(1.02) contrast(1.10);
+  filter: grayscale(1) contrast(1.20) brightness(0.94);
 }
 .group:hover .cover-editorial::after,
 .cover-editorial:hover::after {
-  /* same hue, just less opaque so the underlying architecture is more visible */
-  background: linear-gradient(160deg, rgba(44,62,128,0.42) 0%, rgba(44,62,128,0.20) 100%);
+  background: linear-gradient(160deg, rgba(44,62,128,0.46) 0%, rgba(44,62,128,0.24) 100%);
+}
+.group:hover .cover-editorial::before,
+.cover-editorial:hover::before {
+  opacity: 0.6;
 }
 
