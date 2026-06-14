@@ -4,6 +4,7 @@ import {
   Newsreader,
   Inter_Tight,
   Manrope,
+  JetBrains_Mono,
 } from 'next/font/google';
 import TypeLabClient from './TypeLabClient';
 
@@ -26,6 +27,10 @@ const interTight = Inter_Tight({
 const manrope = Manrope({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
 });
 
 export default function Page() {
@@ -72,5 +77,5 @@ export default function Page() {
     },
   ];
 
-  return <TypeLabClient typefaces={typefaces} />;
+  return <TypeLabClient typefaces={typefaces} monoCls={jetbrainsMono.className} />;
 }
