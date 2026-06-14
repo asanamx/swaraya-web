@@ -66,13 +66,31 @@ function GlyphFrame({ size = 22, color = '#0E0F11' }) {
 }
 
 function GlyphSv({ size = 22, color = '#0E0F11' }) {
+  // "sw" ligature — the two visible starting letters of "swaraya"
   const r = size;
   return (
-    <svg viewBox="0 0 100 64" width={r * 1.55} height={r} fill="none">
+    <svg viewBox="0 0 110 64" width={r * 1.7} height={r} fill="none">
       <text x="0" y="50" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="56" letterSpacing="-0.08em" fill={color}>sv</text>
+            fontSize="56" letterSpacing="-0.09em" fill={color}>sw</text>
       {/* connector dot — symbolizes the binding self-rule */}
-      <circle cx="50" cy="40" r="2.6" fill={color} />
+      <circle cx="48" cy="40" r="2.6" fill={color} />
+    </svg>
+  );
+}
+
+// Hybrid: ligature "sw" + radiant svar dot on top
+function GlyphSwSvar({ size = 22, color = '#0E0F11' }) {
+  const r = size;
+  return (
+    <svg viewBox="0 0 110 84" width={r * 1.7} height={r * 1.3} fill="none">
+      {/* svar sun above the "s" of the ligature */}
+      <circle cx="17" cy="13" r="4.2" fill={color} />
+      <line x1="17" y1="2"  x2="17" y2="7"  stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="5"  y1="13" x2="9"  y2="13" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="25" y1="13" x2="29" y2="13" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      {/* "sw" ligature */}
+      <text x="0" y="70" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="56" letterSpacing="-0.09em" fill={color}>sw</text>
     </svg>
   );
 }
@@ -178,8 +196,27 @@ function Wordmark({ concept, color = '#0E0F11', size = '3.5rem' }) {
     case 'E':
       return (
         <div style={base}>
-          <span style={{ borderBottom: `0.04em solid ${color}`, paddingBottom: '0.02em' }}>sv</span>
+          <span style={{ borderBottom: `0.04em solid ${color}`, paddingBottom: '0.02em' }}>sw</span>
           <span>araya</span>
+        </div>
+      );
+    case 'G':
+      return (
+        <div style={base}>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            {/* sun marker above the "s" */}
+            <svg
+              style={{ position: 'absolute', top: '-0.55em', left: '0.08em' }}
+              viewBox="0 0 32 32" width="0.42em" height="0.42em"
+            >
+              <circle cx="16" cy="16" r="6" fill={color} />
+              <line x1="16" y1="2" x2="16" y2="7" stroke={color} strokeWidth="3" strokeLinecap="round" />
+              <line x1="5" y1="16" x2="9" y2="16" stroke={color} strokeWidth="3" strokeLinecap="round" />
+              <line x1="23" y1="16" x2="27" y2="16" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            </svg>
+            <span style={{ borderBottom: `0.04em solid ${color}`, paddingBottom: '0.02em' }}>sw</span>
+            <span>araya</span>
+          </span>
         </div>
       );
     case 'F':
@@ -274,12 +311,13 @@ const CONCEPTS = [
   },
   {
     id: 'E',
-    name: 'Ligatura sv',
+    name: 'Ligatura sw',
     Glyph: GlyphSv,
-    short: 'Dos letras Sanskrit unidas',
+    short: 'Las dos primeras letras del wordmark',
     etym:
-      '«sva» (self) es la raíz Sanskrit que da origen a todo. Fusionada en una sola forma. ' +
-      'Lectura sutil pero estructuralmente arraigada en la etimología.',
+      '«sw» son las dos primeras letras visibles de swaraya (transliteración moderna de la ' +
+      'raíz Sanskrit sva). Fusionadas con un punto de unión, condensan la palabra en su mínima ' +
+      'expresión legible.',
   },
   {
     id: 'F',
@@ -289,6 +327,16 @@ const CONCEPTS = [
     etym:
       'Un punto independiente — separado de la palabra pero parte de ella. ' +
       'Representa al individuo soberano (sva): la unidad de decisión que la palabra contiene.',
+  },
+  {
+    id: 'G',
+    name: 'Sw + Svar — híbrido',
+    Glyph: GlyphSwSvar,
+    short: 'Ligatura "sw" con sol radiante encima',
+    etym:
+      'La síntesis de A + E: el sol radiante (svar = luz/origen) corona la ligatura sw ' +
+      '(las dos letras que arrancan la palabra). El ícono carga el doble peso simbólico ' +
+      '— etimología y grafía — sin perder simplicidad.',
   },
 ];
 
@@ -300,7 +348,7 @@ export default function PreviewGlyphPage() {
       <div className="container-main">
         {/* Header */}
         <header className="mb-12 max-w-3xl">
-          <span className="label-accent text-[#2C3E80] block mb-4">Identidad</span>
+          <span className="label-accent text-[#2C3E80] block mb-4">Identidad · v2</span>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl mb-6"
             style={{
@@ -312,11 +360,15 @@ export default function PreviewGlyphPage() {
           >
             El ícono nace de la palabra
           </h1>
-          <p className="text-base text-[#3C4654] leading-relaxed">
-            Seis brand-marks derivados del wordmark <em>swaraya</em>. Cada uno
-            ancla el ícono en un elemento visible dentro de la palabra
-            (etimología Sanskrit: <strong>sva-rāja</strong> = self + soberanía;
-            raíz <strong>svar</strong> = sol/luz/cielo).
+          <p className="text-base text-[#3C4654] leading-relaxed mb-3">
+            Siete brand-marks derivados del wordmark <em>swaraya</em>. Cada uno
+            ancla el ícono en un elemento visible dentro de la palabra (etimología
+            Sanskrit: <strong>sva-rāja</strong> = self + soberanía; raíz <strong>svar</strong> = sol/luz/cielo).
+          </p>
+          <p className="text-sm text-[#5D6878] leading-relaxed">
+            ✨ Actualización: la ligatura ahora usa <strong>sw</strong> (la grafía real
+            de swaraya), no «sv» (la raíz transliterada). Agregada opción <strong>G</strong>:
+            híbrido de A + E que combina la radiancia con la ligatura.
           </p>
         </header>
 
@@ -325,7 +377,7 @@ export default function PreviewGlyphPage() {
           <div className="text-[0.625rem] tracking-[0.32em] uppercase text-[#5D6878] mb-8">
             Comparación · 240 px
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+          <div className="grid grid-cols-3 md:grid-cols-7 gap-6 items-center">
             {CONCEPTS.map((c) => (
               <div key={c.id} className="flex flex-col items-center text-center">
                 <div className="h-[100px] flex items-end justify-center mb-4">
