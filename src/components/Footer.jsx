@@ -238,19 +238,45 @@ export const Footer = () => {
           className={`pt-16 md:pt-20 pb-12 reveal ${bottomVisible ? 'revealed' : ''}`}
           style={{ borderTop: '1px solid rgba(245,242,236,0.08)' }}
         >
-          {/* Wordmark — la "s" como cierre de identidad */}
-          <div
-            className="mb-12 md:mb-16"
-            style={{
-              fontFamily: "'Author', sans-serif",
-              fontWeight: 600,
-              letterSpacing: '-0.035em',
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-              lineHeight: 0.9,
-              color: '#F5F2EC',
-            }}
-          >
-            swaraya
+          {/* Wordmark — la marca completa "swaraya" con sol radiante sobre el "sw" */}
+          <div className="mb-12 md:mb-16">
+            <div
+              style={{
+                position: 'relative',
+                display: 'inline-flex',
+                alignItems: 'baseline',
+                fontFamily: "'Author', sans-serif",
+                fontWeight: 600,
+                letterSpacing: '-0.035em',
+                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                lineHeight: 0.9,
+                color: '#F5F2EC',
+              }}
+            >
+              <span style={{ position: 'relative', display: 'inline-block' }}>
+                {/* Sol radiante (svar) sobre la "s" */}
+                <svg
+                  style={{
+                    position: 'absolute',
+                    top: '-0.55em',
+                    left: '0.08em',
+                    width: '0.42em',
+                    height: '0.42em',
+                    overflow: 'visible',
+                  }}
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle cx="16" cy="16" r="6" fill="#F5F2EC" />
+                  <line x1="16" y1="2" x2="16" y2="7" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="5" y1="16" x2="9" y2="16" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="23" y1="16" x2="27" y2="16" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+                <span>sw</span>
+              </span>
+              <span>araya</span>
+            </div>
           </div>
 
           {/* Grid de columnas */}

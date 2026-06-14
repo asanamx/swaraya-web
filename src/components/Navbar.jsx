@@ -1,31 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-// Inline mark — v5 AXIS
-function AxisMark({ size = 22, color = 'currentColor', strokeWidth = 4 }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 64 64"
-      width={size}
-      height={size}
-      style={{ display: 'block', flexShrink: 0 }}
-      aria-hidden="true"
-    >
-      <g stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" fill="none">
-        <line x1="32" y1="10" x2="32" y2="24" />
-        <line x1="32" y1="40" x2="32" y2="54" />
-        <line x1="10" y1="32" x2="24" y2="32" />
-        <line x1="40" y1="32" x2="54" y2="32" />
-        <line x1="44.5" y1="19.5" x2="50" y2="14" />
-      </g>
-    </svg>
-  );
-}
+import SwarayaMark from './SwarayaMark';
 
 export const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -109,7 +88,7 @@ export const Navbar = () => {
       <div className="container-main">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
           {/* Logo: Anthropic-style scroll morph
-              The "s" IS the logomark. The rest of "swaraya" fades away on scroll. */}
+              Brand-mark = "sw" + sol radiante (svar). Resto de "araya" fade out. */}
           <Link
             href="/"
             className="relative z-50 flex items-center"
@@ -118,58 +97,20 @@ export const Navbar = () => {
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
             {isHomePage && !isMobileMenuOpen ? (
-              // HOME — wordmark "swaraya" morphs to standalone "s"
-              <div
-                style={{
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  height: '28px',
-                  fontFamily: "'Author', sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: '-0.03em',
-                  fontSize: '1.5rem',
-                  lineHeight: 1,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {/* "s" — sticks around as the brandmark */}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    transform: `scale(${1 + morphProgress * 0.18})`,
-                    transformOrigin: 'left center',
-                    transition: 'transform 80ms linear',
-                  }}
-                >
-                  s
-                </span>
-                {/* "waraya" — fades out and pulls left slightly */}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    opacity: wordmarkOpacity,
-                    transform: `translateX(${(1 - wordmarkOpacity) * -6}px)`,
-                    transition: 'opacity 80ms linear, transform 80ms linear',
-                  }}
-                >
-                  waraya
-                </span>
-              </div>
+              <SwarayaMark
+                mode="full"
+                size="1.5rem"
+                color="currentColor"
+                arayaOpacity={wordmarkOpacity}
+                strokeWidth={3}
+              />
             ) : (
-              // BLOG / other routes — wordmark only, always
-              <div
-                style={{
-                  fontFamily: "'Author', sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: '-0.03em',
-                  fontSize: '1.3125rem',
-                  lineHeight: 1,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                swaraya
-              </div>
+              <SwarayaMark
+                mode="full"
+                size="1.3125rem"
+                color="currentColor"
+                strokeWidth={3}
+              />
             )}
           </Link>
 
