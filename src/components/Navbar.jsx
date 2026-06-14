@@ -108,7 +108,8 @@ export const Navbar = () => {
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
-          {/* Logo: Anthropic-style scroll morph — wordmark → glyph */}
+          {/* Logo: Anthropic-style scroll morph
+              The "s" IS the logomark. The rest of "swaraya" fades away on scroll. */}
           <Link
             href="/"
             className="relative z-50 flex items-center"
@@ -117,66 +118,57 @@ export const Navbar = () => {
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
             {isHomePage && !isMobileMenuOpen ? (
-              // HOME — morph container. Width animates so the layout collapses smoothly.
+              // HOME — wordmark "swaraya" morphs to standalone "s"
               <div
                 style={{
                   position: 'relative',
                   display: 'flex',
                   alignItems: 'center',
                   height: '28px',
-                  width: `${24 + (1 - morphProgress) * 88}px`,
-                  transition: 'width 80ms linear',
+                  fontFamily: "'Author', sans-serif",
+                  fontWeight: 600,
+                  letterSpacing: '-0.03em',
+                  fontSize: '1.5rem',
+                  lineHeight: 1,
+                  whiteSpace: 'nowrap',
                 }}
               >
-                {/* Glyph — grows in as we scroll */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: '50%',
-                    transform: `translateY(-50%) scale(${glyphScale})`,
-                    transformOrigin: 'left center',
-                    opacity: glyphOpacity,
-                    transition: 'opacity 80ms linear',
-                  }}
-                >
-                  <AxisMark size={22} color="currentColor" strokeWidth={4.2} />
-                </div>
-                {/* Wordmark — fades out as we scroll */}
+                {/* "s" — sticks around as the brandmark */}
                 <span
                   style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    fontFamily: "'Author', sans-serif",
-                    fontWeight: 600,
-                    letterSpacing: '-0.03em',
-                    fontSize: '1.4375rem',
-                    lineHeight: 1,
-                    opacity: wordmarkOpacity,
-                    transition: 'opacity 80ms linear',
-                    whiteSpace: 'nowrap',
+                    display: 'inline-block',
+                    transform: `scale(${1 + morphProgress * 0.18})`,
+                    transformOrigin: 'left center',
+                    transition: 'transform 80ms linear',
                   }}
                 >
-                  swaraya
+                  s
+                </span>
+                {/* "waraya" — fades out and pulls left slightly */}
+                <span
+                  style={{
+                    display: 'inline-block',
+                    opacity: wordmarkOpacity,
+                    transform: `translateX(${(1 - wordmarkOpacity) * -6}px)`,
+                    transition: 'opacity 80ms linear, transform 80ms linear',
+                  }}
+                >
+                  waraya
                 </span>
               </div>
             ) : (
-              // BLOG / other routes — compact logo always
-              <div className="flex items-center gap-2">
-                <AxisMark size={18} color="currentColor" />
-                <span
-                  style={{
-                    fontFamily: "'Author', sans-serif",
-                    fontWeight: 600,
-                    letterSpacing: '-0.03em',
-                    fontSize: '1.3125rem',
-                    lineHeight: 1,
-                  }}
-                >
-                  swaraya
-                </span>
+              // BLOG / other routes — wordmark only, always
+              <div
+                style={{
+                  fontFamily: "'Author', sans-serif",
+                  fontWeight: 600,
+                  letterSpacing: '-0.03em',
+                  fontSize: '1.3125rem',
+                  lineHeight: 1,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                swaraya
               </div>
             )}
           </Link>

@@ -7,7 +7,6 @@ import Principles from '@/components/Principles';
 import Outcomes from '@/components/Outcomes';
 import Philosophy from '@/components/Philosophy';
 import BlogPreview from '@/components/BlogPreview';
-import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <Outcomes />
         <Philosophy />
         <BlogPreview />
-        <FinalCTA />
       </main>
       <Footer />
     </div>
