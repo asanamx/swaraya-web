@@ -1,308 +1,305 @@
 'use client';
 
 /**
- * /preview-glyph — Propuestas conceptuales de ícono derivado del wordmark
- *
- * Cada concepto muestra:
- *  1. El wordmark "swaraya" con el elemento gráfico visible (origen del ícono)
- *  2. El ícono aislado en tamaño grande
- *  3. El ícono en tamaño navbar (cómo se vería en producción)
- *  4. Justificación conceptual derivada de la etimología (Sanskrit svar / sva-rāja)
+ * /preview-glyph — Propuestas conceptuales en formato presentation deck.
+ * Cada concepto ocupa una sección completa con:
+ *   - Glifo a tamaño grande (240px)
+ *   - Wordmark con el elemento embebido
+ *   - Mockup de navbar real
+ *   - Aplicaciones (favicon, OG, business card)
+ *   - Justificación etimológica
  */
 
-// ============== GLYPH COMPONENTS ==============
+// ============= GLYPH RENDERERS =============
+// Each accepts size (px) and color. They render at the requested size cleanly.
 
-/** Concept A — "Svar" — punto radiante (sol/origen) sobre la s. La diéresis del Sanskrit. */
-function GlyphSvar({ size = 22, color = 'currentColor' }) {
+function GlyphSvar({ size = 22, color = '#0E0F11' }) {
+  // "s" + radiant sun (dot + 3 short rays) above
+  const r = size;
   return (
-    <svg viewBox="0 0 32 40" width={size * 1.6} height={size * 2} fill="none" aria-hidden="true">
-      {/* Punto radiante — el "svar" (sol, luz, radiancia) */}
-      <circle cx="16" cy="6" r="2.5" fill={color} />
-      {/* Pequeños rayos */}
-      <line x1="16" y1="0.5" x2="16" y2="2.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-      <line x1="9.5" y1="6" x2="11.5" y2="6" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-      <line x1="20.5" y1="6" x2="22.5" y2="6" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
-      {/* La "s" en lugar de un path arbitrario, dejamos el texto en Author */}
-      <text x="16" y="34" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="32" letterSpacing="-0.03em" fill={color} style={{ dominantBaseline: 'auto' }}>
-        s
-      </text>
+    <svg viewBox="0 0 64 80" width={r * 0.8} height={r} fill="none" style={{ overflow: 'visible' }}>
+      {/* sun core */}
+      <circle cx="32" cy="14" r="4.2" fill={color} />
+      {/* rays */}
+      <line x1="32" y1="2" x2="32" y2="7"  stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="20" y1="14" x2="25" y2="14" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      <line x1="39" y1="14" x2="44" y2="14" stroke={color} strokeWidth="2.6" strokeLinecap="round" />
+      {/* "s" */}
+      <text x="32" y="68" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="56" letterSpacing="-0.03em" fill={color}>s</text>
     </svg>
   );
 }
 
-/** Concept B — "Axis" — barra horizontal cruzando la "s". El eje del self/soberanía. */
-function GlyphAxis({ size = 22, color = 'currentColor' }) {
+function GlyphAxis({ size = 22, color = '#0E0F11' }) {
+  const r = size;
   return (
-    <svg viewBox="0 0 32 32" width={size * 1.4} height={size * 1.4} fill="none" aria-hidden="true">
-      <text x="16" y="26" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="28" letterSpacing="-0.03em" fill={color}>
-        s
-      </text>
-      {/* Eje horizontal que cruza el centro óptico de la "s" */}
-      <line x1="2" y1="16.5" x2="30" y2="16.5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+    <svg viewBox="0 0 64 64" width={r} height={r} fill="none">
+      <text x="32" y="50" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="56" letterSpacing="-0.03em" fill={color}>s</text>
+      {/* horizontal axis through optical center */}
+      <line x1="3" y1="32" x2="61" y2="32" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
     </svg>
   );
 }
 
-/** Concept C — "Raya" — línea bajo la s. Base / principio / regla. */
-function GlyphRaya({ size = 22, color = 'currentColor' }) {
+function GlyphRaya({ size = 22, color = '#0E0F11' }) {
+  const r = size;
   return (
-    <svg viewBox="0 0 32 32" width={size * 1.4} height={size * 1.4} fill="none" aria-hidden="true">
-      <text x="16" y="22" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="28" letterSpacing="-0.03em" fill={color}>
-        s
-      </text>
-      {/* Subrayado — la "raya" (principio, ley, regla) */}
-      <line x1="6" y1="27" x2="26" y2="27" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <svg viewBox="0 0 64 64" width={r} height={r} fill="none">
+      <text x="32" y="46" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="52" letterSpacing="-0.03em" fill={color}>s</text>
+      <line x1="10" y1="58" x2="54" y2="58" stroke={color} strokeWidth="3.4" strokeLinecap="round" />
     </svg>
   );
 }
 
-/** Concept D — "Cuadrado de sva" — la s inscrita en un cuadrado vacío. Soberanía contenida. */
-function GlyphFrame({ size = 22, color = 'currentColor' }) {
+function GlyphFrame({ size = 22, color = '#0E0F11' }) {
+  const r = size;
   return (
-    <svg viewBox="0 0 32 32" width={size * 1.4} height={size * 1.4} fill="none" aria-hidden="true">
-      <rect x="2" y="2" width="28" height="28" rx="3" stroke={color} strokeWidth="1.4" fill="none" />
-      <text x="16" y="24" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="22" letterSpacing="-0.03em" fill={color}>
-        s
-      </text>
+    <svg viewBox="0 0 64 64" width={r} height={r} fill="none">
+      <rect x="3" y="3" width="58" height="58" rx="6" stroke={color} strokeWidth="2.6" fill="none" />
+      <text x="32" y="48" textAnchor="middle" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="42" letterSpacing="-0.03em" fill={color}>s</text>
     </svg>
   );
 }
 
-/** Concept E — "Ligatura sv" — las dos primeras letras unidas. La raíz Sanskrit "sva" (self). */
-function GlyphSv({ size = 22, color = 'currentColor' }) {
+function GlyphSv({ size = 22, color = '#0E0F11' }) {
+  const r = size;
   return (
-    <svg viewBox="0 0 50 32" width={size * 2.2} height={size * 1.4} fill="none" aria-hidden="true">
-      <text x="0" y="24" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="28" letterSpacing="-0.08em" fill={color}>
-        sv
-      </text>
-      {/* Conector calligráfico sutil — un punto que une las dos letras */}
-      <circle cx="24" cy="20" r="1.3" fill={color} />
+    <svg viewBox="0 0 100 64" width={r * 1.55} height={r} fill="none">
+      <text x="0" y="50" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="56" letterSpacing="-0.08em" fill={color}>sv</text>
+      {/* connector dot — symbolizes the binding self-rule */}
+      <circle cx="50" cy="40" r="2.6" fill={color} />
     </svg>
   );
 }
 
-/** Concept F — "Punto soberano" — La s con un punto independiente al lado, igual que en el wordmark. */
-function GlyphDot({ size = 22, color = 'currentColor' }) {
+function GlyphDot({ size = 22, color = '#0E0F11' }) {
+  const r = size;
   return (
-    <svg viewBox="0 0 40 32" width={size * 1.9} height={size * 1.4} fill="none" aria-hidden="true">
-      <text x="0" y="24" fontFamily="'Author', sans-serif" fontWeight="600"
-            fontSize="28" letterSpacing="-0.03em" fill={color}>
-        s
-      </text>
-      {/* Punto independiente — el self soberano (svar) */}
-      <circle cx="32" cy="20" r="3" fill={color} />
+    <svg viewBox="0 0 80 64" width={r * 1.25} height={r} fill="none">
+      <text x="6" y="50" fontFamily="'Author', sans-serif" fontWeight="600"
+            fontSize="56" letterSpacing="-0.03em" fill={color}>s</text>
+      <circle cx="64" cy="42" r="5.8" fill={color} />
     </svg>
   );
 }
 
-// ============== Wordmark con cada elemento gráfico embebido ==============
+// ============= WORDMARK WITH EMBEDDED ELEMENT =============
 
-function WordmarkWith({ children, size = '3.5rem', color = '#0E0F11' }) {
+function Wordmark({ concept, color = '#0E0F11', size = '3.5rem' }) {
+  const base = {
+    position: 'relative',
+    display: 'inline-flex',
+    alignItems: 'baseline',
+    fontFamily: "'Author', sans-serif",
+    fontWeight: 600,
+    letterSpacing: '-0.035em',
+    fontSize: size,
+    lineHeight: 0.9,
+    color,
+  };
+
+  switch (concept) {
+    case 'A':
+      return (
+        <div style={base}>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            {/* sun marker above the "s" */}
+            <svg
+              style={{ position: 'absolute', top: '-0.55em', left: '0.08em' }}
+              viewBox="0 0 32 32" width="0.42em" height="0.42em"
+            >
+              <circle cx="16" cy="16" r="6" fill={color} />
+              <line x1="16" y1="2" x2="16" y2="7" stroke={color} strokeWidth="3" strokeLinecap="round" />
+              <line x1="5" y1="16" x2="9" y2="16" stroke={color} strokeWidth="3" strokeLinecap="round" />
+              <line x1="23" y1="16" x2="27" y2="16" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            </svg>
+            swaraya
+          </span>
+        </div>
+      );
+    case 'B':
+      return (
+        <div style={base}>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            {/* axis line through optical center of "s" only */}
+            <span style={{
+              position: 'absolute',
+              left: '-0.04em',
+              width: '0.55em',
+              top: '54%',
+              height: '0.06em',
+              background: color,
+              borderRadius: 2,
+            }} />
+            swaraya
+          </span>
+        </div>
+      );
+    case 'C':
+      return (
+        <div style={base}>
+          <span style={{ position: 'relative', display: 'inline-block', paddingBottom: '0.1em' }}>
+            swaraya
+            <span style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: '-0.04em',
+              height: '0.06em',
+              background: color,
+              borderRadius: 3,
+            }} />
+          </span>
+        </div>
+      );
+    case 'D':
+      return (
+        <div style={base}>
+          <span style={{
+            display: 'inline-block',
+            border: `0.045em solid ${color}`,
+            borderRadius: '0.08em',
+            padding: '0.04em 0.18em 0.08em',
+          }}>
+            <span style={{
+              borderRight: `0.025em solid ${color}`,
+              paddingRight: '0.1em',
+              marginRight: '0.1em',
+            }}>s</span>
+            <span>waraya</span>
+          </span>
+        </div>
+      );
+    case 'E':
+      return (
+        <div style={base}>
+          <span style={{ borderBottom: `0.04em solid ${color}`, paddingBottom: '0.02em' }}>sv</span>
+          <span>araya</span>
+        </div>
+      );
+    case 'F':
+      return (
+        <div style={base}>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            swaraya
+            <span style={{
+              position: 'absolute',
+              right: '-0.42em',
+              top: '0.45em',
+              width: '0.2em',
+              height: '0.2em',
+              borderRadius: '50%',
+              background: color,
+            }} />
+          </span>
+        </div>
+      );
+    default:
+      return <div style={base}>swaraya</div>;
+  }
+}
+
+// ============= NAVBAR MOCKUP =============
+
+function NavbarMockup({ Glyph, navColor = '#0E0F11' }) {
   return (
     <div
-      style={{
-        position: 'relative',
-        display: 'inline-flex',
-        alignItems: 'center',
-        fontFamily: "'Author', sans-serif",
-        fontWeight: 600,
-        letterSpacing: '-0.035em',
-        fontSize: size,
-        lineHeight: 0.9,
-        color,
-      }}
+      className="rounded-xl border border-[rgba(14,15,17,0.10)] overflow-hidden"
+      style={{ background: '#F5F2EC' }}
     >
-      <span style={{ position: 'relative', display: 'inline-block' }}>
-        {children?.svgOverlay}
-        swaraya
-      </span>
+      <div className="flex items-center justify-between px-5 py-4">
+        <div style={{ display: 'flex', alignItems: 'center', height: 22 }}>
+          <Glyph size={22} color={navColor} />
+        </div>
+        <div className="flex items-center gap-5 text-[11px] tracking-wide text-[#3C4654]">
+          <span>Investigación</span>
+          <span>Método</span>
+          <span>Blog</span>
+          <span
+            className="px-3 py-1.5 rounded-full text-[#F5F2EC] text-[10px] font-medium"
+            style={{ background: '#2C3E80' }}
+          >
+            Iniciar Diálogo
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
+
+// ============= CONCEPT DATA =============
 
 const CONCEPTS = [
   {
     id: 'A',
     name: 'Svar — sol/origen',
-    etym: '«svar» en Sanskrit = sol, luz, cielo, radiancia. La raíz de la palabra. Un punto radiante sobre la "s" simboliza la fuente de la inteligencia.',
     Glyph: GlyphSvar,
-    overlay: (
-      <svg
-        style={{ position: 'absolute', top: '-0.55em', left: '-0.05em' }}
-        width="0.4em" height="0.4em" viewBox="0 0 32 32" fill="none"
-      >
-        <circle cx="16" cy="16" r="6" fill="#2C3E80" />
-        <line x1="16" y1="2" x2="16" y2="7" stroke="#2C3E80" strokeWidth="3" strokeLinecap="round" />
-        <line x1="5" y1="16" x2="9" y2="16" stroke="#2C3E80" strokeWidth="3" strokeLinecap="round" />
-        <line x1="23" y1="16" x2="27" y2="16" stroke="#2C3E80" strokeWidth="3" strokeLinecap="round" />
-      </svg>
-    ),
+    short: 'Punto radiante sobre la "s"',
+    etym:
+      '«svar» en Sanskrit = sol, luz, cielo, radiancia. La raíz literal de la palabra. ' +
+      'Un punto radiante sobre la "s" simboliza la fuente de la inteligencia.',
   },
   {
     id: 'B',
     name: 'Axis — eje del self',
-    etym: '«sva» = self, «rāja» = soberanía. Un eje horizontal cruza la "s", anclando su forma orgánica con una estructura geométrica. Identidad bicéfala: investigación (curva) + ingeniería (recta).',
     Glyph: GlyphAxis,
-    overlay: (
-      <span
-        style={{
-          position: 'absolute',
-          left: '-0.05em',
-          right: '92%',
-          top: '50%',
-          height: '0.07em',
-          background: '#2C3E80',
-          borderRadius: 2,
-          transform: 'translateY(-50%)',
-        }}
-      />
-    ),
+    short: 'Barra horizontal atravesando la "s"',
+    etym:
+      '«sva-rāja» = soberanía del self. Un eje horizontal cruza la "s", anclando su forma ' +
+      'orgánica con una estructura geométrica. Identidad bicéfala: investigación (curva) + ' +
+      'ingeniería (recta).',
   },
   {
     id: 'C',
     name: 'Raya — principio/regla',
-    etym: '«rāja» / «rāya» también significa regla, ley, principio. Una línea bajo la "s" sostiene la palabra: la base sobre la que descansa el sistema.',
     Glyph: GlyphRaya,
-    overlay: (
-      <span
-        style={{
-          position: 'absolute',
-          left: '0',
-          right: '0',
-          bottom: '-0.18em',
-          height: '0.07em',
-          background: '#2C3E80',
-          borderRadius: 3,
-        }}
-      />
-    ),
+    short: 'Subrayado bajo la "s"',
+    etym:
+      '«rāja» / «rāya» también significa regla, ley, principio. Una línea bajo la "s" ' +
+      'sostiene la palabra: la base sobre la que descansa el sistema.',
   },
   {
     id: 'D',
     name: 'Cuadro — soberanía contenida',
-    etym: 'La autonomía (swarāj) requiere límites propios. La "s" inscrita en un marco sugiere un sistema cerrado y autosuficiente — la sovereign loop de un agente.',
     Glyph: GlyphFrame,
-    overlay: (
-      <span
-        style={{
-          position: 'absolute',
-          left: '-0.18em',
-          top: '-0.18em',
-          width: '1.18em',
-          height: '1.18em',
-          border: '0.05em solid #2C3E80',
-          borderRadius: '0.08em',
-        }}
-      />
-    ),
+    short: 'Marco geométrico envolvente',
+    etym:
+      'La autonomía (swarāj) requiere límites propios. La "s" inscrita en un marco ' +
+      'sugiere un sistema cerrado y autosuficiente — la sovereign loop de un agente.',
   },
   {
     id: 'E',
     name: 'Ligatura sv',
-    etym: 'Las dos letras Sanskrit que dan origen a todo: «sva». Fusionadas en una sola forma. Lectura sutil pero estructuralmente arraigada en la etimología.',
     Glyph: GlyphSv,
-    overlay: null, // dejamos visible "sv" en el wordmark, ya está allí
-    showSV: true,
+    short: 'Dos letras Sanskrit unidas',
+    etym:
+      '«sva» (self) es la raíz Sanskrit que da origen a todo. Fusionada en una sola forma. ' +
+      'Lectura sutil pero estructuralmente arraigada en la etimología.',
   },
   {
     id: 'F',
     name: 'Punto soberano',
-    etym: 'Un punto independiente — separado de la palabra pero parte de ella. Representa al individuo soberano (sva): la unidad de decisión que la palabra contiene.',
     Glyph: GlyphDot,
-    overlay: (
-      <span
-        style={{
-          position: 'absolute',
-          left: '0.13em',
-          top: '0.40em',
-          width: '0.18em',
-          height: '0.18em',
-          borderRadius: '50%',
-          background: '#2C3E80',
-        }}
-      />
-    ),
+    short: 'Punto independiente junto a la "s"',
+    etym:
+      'Un punto independiente — separado de la palabra pero parte de ella. ' +
+      'Representa al individuo soberano (sva): la unidad de decisión que la palabra contiene.',
   },
 ];
 
-const Card = ({ c, idx }) => {
-  const { Glyph, name, etym, id, overlay, showSV } = c;
-  return (
-    <article className="border border-[rgba(14,15,17,0.10)] rounded-2xl overflow-hidden bg-[#FAF8F2]">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(14,15,17,0.08)] bg-[rgba(44,62,128,0.04)]">
-        <span className="text-[0.625rem] tracking-[0.32em] uppercase text-[#2C3E80] font-medium">
-          Concepto {id}
-        </span>
-        <span className="text-xs text-[#5D6878]">{name}</span>
-      </div>
-
-      {/* Wordmark com elemento visible */}
-      <div className="px-8 py-10 border-b border-[rgba(14,15,17,0.08)] bg-[#F5F2EC]">
-        <div className="text-[0.625rem] tracking-[0.24em] uppercase text-[#5D6878] mb-5">
-          Wordmark
-        </div>
-        <div
-          style={{
-            position: 'relative',
-            display: 'inline-flex',
-            alignItems: 'baseline',
-            fontFamily: "'Author', sans-serif",
-            fontWeight: 600,
-            letterSpacing: showSV ? '-0.04em' : '-0.035em',
-            fontSize: '3rem',
-            lineHeight: 0.9,
-            color: '#0E0F11',
-          }}
-        >
-          {showSV ? (
-            <>
-              <span style={{ borderBottom: '0.04em solid #2C3E80', paddingBottom: '0.02em' }}>sv</span>
-              <span>araya</span>
-            </>
-          ) : (
-            <span style={{ position: 'relative', display: 'inline-block' }}>
-              {overlay}
-              swaraya
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Glyph aislado */}
-      <div className="px-8 py-12 grid grid-cols-3 gap-6 items-end border-b border-[rgba(14,15,17,0.08)]">
-        <div className="flex flex-col items-center gap-3">
-          <Glyph size={48} color="#0E0F11" />
-          <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">grande</span>
-        </div>
-        <div className="flex flex-col items-center gap-3">
-          <Glyph size={22} color="#0E0F11" />
-          <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">navbar</span>
-        </div>
-        <div className="flex flex-col items-center gap-3">
-          <Glyph size={14} color="#0E0F11" />
-          <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">favicon</span>
-        </div>
-      </div>
-
-      {/* Justificación */}
-      <div className="px-8 py-6">
-        <p className="text-sm text-[#3C4654] leading-relaxed">{etym}</p>
-      </div>
-    </article>
-  );
-};
+// ============= MAIN PAGE =============
 
 export default function PreviewGlyphPage() {
   return (
     <main className="min-h-screen bg-[#F5F2EC] text-[#0E0F11] pt-20 pb-24">
       <div className="container-main">
-        <header className="mb-12 md:mb-16 max-w-3xl">
+        {/* Header */}
+        <header className="mb-12 max-w-3xl">
           <span className="label-accent text-[#2C3E80] block mb-4">Identidad</span>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl mb-6"
@@ -315,46 +312,135 @@ export default function PreviewGlyphPage() {
           >
             El ícono nace de la palabra
           </h1>
-          <p className="text-lg text-[#3C4654] leading-relaxed mb-3">
-            Seis conceptos donde el brand-mark se construye desde un elemento
-            visible dentro del wordmark <em>swaraya</em>. Cada uno deriva de la
-            etimología Sanskrit de la palabra:
-          </p>
-          <p className="text-sm text-[#5D6878] leading-relaxed">
-            <strong className="text-[#0E0F11]">swarāj / sva-rāja</strong> · «sva» (self, propio) + «rāja»
-            (soberanía, regla) · concepto Vedántico de auto-gobierno e independencia.
-            La raíz <strong className="text-[#0E0F11]">svar</strong> aparece también en «svar» (sol, luz, cielo)
-            — radiancia interior.
+          <p className="text-base text-[#3C4654] leading-relaxed">
+            Seis brand-marks derivados del wordmark <em>swaraya</em>. Cada uno
+            ancla el ícono en un elemento visible dentro de la palabra
+            (etimología Sanskrit: <strong>sva-rāja</strong> = self + soberanía;
+            raíz <strong>svar</strong> = sol/luz/cielo).
           </p>
         </header>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10">
-          {CONCEPTS.map((c, i) => (
-            <Card key={c.id} c={c} idx={i} />
+        {/* Comparison strip: All 6 glyphs side by side */}
+        <section className="mb-16 border border-[rgba(14,15,17,0.10)] rounded-2xl bg-[#FAF8F2] p-8 md:p-12">
+          <div className="text-[0.625rem] tracking-[0.32em] uppercase text-[#5D6878] mb-8">
+            Comparación · 240 px
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+            {CONCEPTS.map((c) => (
+              <div key={c.id} className="flex flex-col items-center text-center">
+                <div className="h-[100px] flex items-end justify-center mb-4">
+                  <c.Glyph size={80} color="#0E0F11" />
+                </div>
+                <div className="text-[10px] tracking-[0.28em] uppercase text-[#2C3E80] font-medium mb-1">
+                  {c.id}
+                </div>
+                <div className="text-xs text-[#5D6878]">{c.short}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Detailed concept sections */}
+        <div className="space-y-12">
+          {CONCEPTS.map((c) => (
+            <section
+              key={c.id}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border border-[rgba(14,15,17,0.10)] rounded-2xl overflow-hidden bg-[#FAF8F2]"
+            >
+              {/* LEFT: Big glyph */}
+              <div
+                className="lg:col-span-4 flex flex-col items-center justify-center px-10 py-16 border-r border-[rgba(14,15,17,0.08)]"
+                style={{
+                  background:
+                    'radial-gradient(circle at center, rgba(44,62,128,0.04) 0%, transparent 65%)',
+                }}
+              >
+                <div className="mb-6">
+                  <c.Glyph size={180} color="#0E0F11" />
+                </div>
+                <div className="text-[10px] tracking-[0.32em] uppercase text-[#2C3E80] font-medium mb-2">
+                  Concepto {c.id}
+                </div>
+                <h2
+                  className="text-xl text-[#0E0F11] text-center"
+                  style={{
+                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontWeight: 500,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {c.name}
+                </h2>
+              </div>
+
+              {/* RIGHT: Wordmark + navbar + applications */}
+              <div className="lg:col-span-8 px-8 py-12 space-y-8">
+                {/* Wordmark */}
+                <div>
+                  <div className="text-[0.625rem] tracking-[0.24em] uppercase text-[#5D6878] mb-5">
+                    Wordmark
+                  </div>
+                  <Wordmark concept={c.id} size="3.25rem" />
+                </div>
+
+                {/* Navbar mockup */}
+                <div>
+                  <div className="text-[0.625rem] tracking-[0.24em] uppercase text-[#5D6878] mb-5">
+                    Navbar en producción
+                  </div>
+                  <NavbarMockup Glyph={c.Glyph} />
+                </div>
+
+                {/* Application sizes */}
+                <div>
+                  <div className="text-[0.625rem] tracking-[0.24em] uppercase text-[#5D6878] mb-5">
+                    Escalas
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 items-end">
+                    <div className="flex flex-col items-center gap-3 p-5 rounded-lg border border-[rgba(14,15,17,0.06)] bg-[#F5F2EC]">
+                      <c.Glyph size={56} color="#0E0F11" />
+                      <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">56 · App</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-3 p-5 rounded-lg border border-[rgba(14,15,17,0.06)] bg-[#F5F2EC]">
+                      <c.Glyph size={24} color="#0E0F11" />
+                      <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">24 · Navbar</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-3 p-5 rounded-lg border border-[rgba(14,15,17,0.06)] bg-[#F5F2EC]">
+                      <c.Glyph size={16} color="#0E0F11" />
+                      <span className="text-[0.625rem] tracking-[0.18em] uppercase text-[#5D6878]">16 · Favicon</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Etymology */}
+                <div className="pt-2 border-t border-[rgba(14,15,17,0.08)]">
+                  <div className="text-[0.625rem] tracking-[0.24em] uppercase text-[#5D6878] mb-3 mt-5">
+                    Concepto
+                  </div>
+                  <p className="text-sm md:text-base text-[#3C4654] leading-relaxed">
+                    {c.etym}
+                  </p>
+                </div>
+              </div>
+            </section>
           ))}
         </div>
 
-        <div className="mt-16 border-t border-[rgba(14,15,17,0.08)] pt-12 max-w-3xl">
-          <h2
-            className="text-2xl md:text-3xl mb-4"
+        {/* Footer guidance */}
+        <div className="mt-16 max-w-3xl">
+          <p
+            className="text-xl text-[#0E0F11]"
             style={{
               fontFamily: "'Cabinet Grotesk', sans-serif",
               fontWeight: 500,
-              letterSpacing: '-0.025em',
+              letterSpacing: '-0.02em',
             }}
           >
-            Mi recomendación
-          </h2>
-          <p className="text-[#3C4654] leading-relaxed mb-3">
-            Las dos opciones más fuertes son <strong>A (Svar — sol/origen)</strong> y
-            <strong> B (Axis — eje del self)</strong>. A es más cálido, más cargado
-            simbólicamente; B es más austero, más editorial-tech. Ambas funcionan
-            perfectamente en el morph y son identificables a cualquier tamaño.
+            ¿Cuál implementamos?
           </p>
-          <p className="text-[#3C4654] leading-relaxed">
-            Las opciones C, D, F son sólidas si quieres algo más experimental. La E
-            (ligatura sv) es la más sutil — funciona como guiño culto pero puede
-            no comunicar identidad a primera vista.
+          <p className="text-[#3C4654] leading-relaxed mt-2">
+            Dime la letra del concepto (A, B, C, D, E o F) y lo aplico en
+            navbar (con morph), favicon, OG image y resto del sistema.
           </p>
         </div>
       </div>
