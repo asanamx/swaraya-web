@@ -22,9 +22,9 @@ export default function SectionGlow({
   intensity = 'medium',
 }) {
   const isSubtle = intensity === 'subtle';
-  const glowAlpha = isSubtle ? 0.10 : 0.18;
+  const glowAlpha = isSubtle ? 0.05 : 0.09;
   const ringAlpha = isSubtle ? 0.10 : 0.14;
-  const coreAlpha = isSubtle ? 0.30 : 0.45;
+  const coreAlpha = isSubtle ? 0.18 : 0.26;
 
   // Convertimos position al sistema de CSS absolute centrado en el punto
   const leftPct = `${position.x}%`;

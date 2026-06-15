@@ -16,7 +16,7 @@ export const Philosophy = () => {
     >
       {/* Glow indigo a la izquierda + saturación alta de partículas */}
       <SectionGlow position={{ x: 22, y: 50 }} size={500} intensity="medium" />
-      <SectionParticles density="high" opacity={0.50} seed={7} />
+      <SectionParticles density="high" opacity={0.72} seed={7} />
 
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">

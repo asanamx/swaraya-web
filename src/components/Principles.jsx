@@ -23,7 +23,7 @@ export const Principles = () => {
     >
       {/* Glow indigo a la derecha + saturación alta de partículas */}
       <SectionGlow position={{ x: 82, y: 40 }} size={540} intensity="medium" />
-      <SectionParticles density="high" opacity={0.50} seed={11} />
+      <SectionParticles density="high" opacity={0.72} seed={11} />
 
       <div className="container-main relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 md:gap-10 lg:gap-16 xl:gap-20 items-start">
