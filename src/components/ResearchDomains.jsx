@@ -78,7 +78,7 @@ export const ResearchDomains = () => {
             Dominios de Investigación
           </span>
           <h2 className="heading-xl mb-5" data-testid="research-headline">
-            Campos de inteligencia aplicada
+            Campos de <span className="text-[#2C3E80]">inteligencia aplicada</span>
           </h2>
           <p className="body-large" data-testid="research-subtext">
             Capacidades diseñadas para traducir investigación, datos y sistemas en operación real.
