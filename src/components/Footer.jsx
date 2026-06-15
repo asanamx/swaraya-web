@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import SwarayaCardinal from './SwarayaCardinal';
+import SectionParticles from './SectionParticles';
 
 export const Footer = () => {
   const [topRef, topVisible] = useScrollReveal({ threshold: 0.15 });
@@ -18,12 +19,24 @@ export const Footer = () => {
       style={{ background: '#0E0F11', color: '#F5F2EC' }}
       data-testid="footer"
     >
-      {/* Indigo glow sutil */}
+      {/* Indigo electric glow — mismo lenguaje visual que el hero */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 50% at 20% 20%, rgba(84,104,214,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 85% 90%, rgba(44,62,128,0.10) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(84,104,214,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(84,104,214,0.14) 0%, transparent 60%)',
+          filter: 'blur(20px)',
+        }}
+      />
+
+      {/* Grid pattern muy sutil — líneas cream sobre oscuro, igual que el hero */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: 0.6,
+          backgroundImage:
+            'linear-gradient(rgba(245,242,236,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,242,236,0.04) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
         }}
       />
 
@@ -35,6 +48,9 @@ export const Footer = () => {
             'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
         }}
       />
+
+      {/* Partículas indigo flotantes — el "polvo de luz" del universo Swaraya */}
+      <SectionParticles density="medium" opacity={0.55} seed={29} />
 
       <div className="container-main relative">
         {/* ===== CONTACT SECTION (top) ===== */}

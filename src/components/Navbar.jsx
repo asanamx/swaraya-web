@@ -197,14 +197,22 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Desktop */}
+          {/* CTA Desktop — mismo indigo que el CTA primario del hero */}
           <button
             onClick={() => scrollToSection('#contact')}
             className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
             style={{
               padding: '10px 20px',
-              background: '#2C3E80',
+              background: '#5468D6',
               color: '#F5F2EC',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#7585E0';
+              e.currentTarget.style.boxShadow = '0 8px 20px -6px rgba(84,104,214,0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#5468D6';
+              e.currentTarget.style.boxShadow = 'none';
             }}
             data-testid="nav-cta"
           >

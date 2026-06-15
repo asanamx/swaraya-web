@@ -76,7 +76,7 @@ const ChatWidget = () => {
       {/* Chat Button - positioned to align with send button when chat opens */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#2C3E80] text-white shadow-lg shadow-[#2C3E80]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#2C3E80]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#5468D6] text-white shadow-lg shadow-[#5468D6]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#5468D6]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Abrir chat"
         data-testid="chat-open-button"
       >
@@ -93,7 +93,7 @@ const ChatWidget = () => {
           {/* Header */}
           <div className="px-5 py-4 bg-gradient-to-r from-[#0C1016] to-[#0A0C10] border-b border-[rgba(255,255,255,0.04)] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#2C3E80] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full bg-[#5468D6] flex items-center justify-center">
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -122,18 +122,18 @@ const ChatWidget = () => {
                 <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center ${
                   msg.role === 'user' 
                     ? 'bg-[rgba(255,255,255,0.08)]' 
-                    : 'bg-[#2C3E80]/20'
+                    : 'bg-[#5468D6]/20'
                 }`}>
                   {msg.role === 'user' 
                     ? <User className="w-3.5 h-3.5 text-[#9BA5B7]" />
-                    : <Bot className="w-3.5 h-3.5 text-[#2C3E80]" />
+                    : <Bot className="w-3.5 h-3.5 text-[#5468D6]" />
                   }
                 </div>
                 
                 {/* Message Bubble */}
                 <div className={`max-w-[75%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-[#2C3E80] text-white rounded-tr-md'
+                    ? 'bg-[#5468D6] text-white rounded-tr-md'
                     : 'bg-[rgba(255,255,255,0.04)] text-[#B7BFCC] rounded-tl-md'
                 }`}>
                   {msg.content}
@@ -144,8 +144,8 @@ const ChatWidget = () => {
             {/* Loading indicator */}
             {isLoading && (
               <div className="flex gap-3">
-                <div className="w-7 h-7 rounded-full bg-[#2C3E80]/20 flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-[#2C3E80]" />
+                <div className="w-7 h-7 rounded-full bg-[#5468D6]/20 flex items-center justify-center">
+                  <Bot className="w-3.5 h-3.5 text-[#5468D6]" />
                 </div>
                 <div className="px-4 py-3 rounded-2xl rounded-tl-md bg-[rgba(255,255,255,0.04)]">
                   <div className="flex gap-1">
@@ -170,13 +170,13 @@ const ChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu mensaje..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#5D6878] focus:outline-none focus:border-[#2C3E80]/50 transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#5D6878] focus:outline-none focus:border-[#5468D6]/50 transition-colors disabled:opacity-50"
                 data-testid="chat-input"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="w-11 h-11 rounded-xl bg-[#2C3E80] text-white flex items-center justify-center transition-all hover:bg-[#5468D6] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-11 h-11 rounded-xl bg-[#5468D6] text-white flex items-center justify-center transition-all hover:bg-[#5468D6] disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="chat-send-button"
               >
                 {isLoading ? (
