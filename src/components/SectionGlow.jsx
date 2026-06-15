@@ -51,34 +51,6 @@ export default function SectionGlow({
         }}
       />
 
-      {/* Anillo concéntrico fino — eco editorial */}
-      <div
-        className="absolute rounded-full"
-        style={{
-          left: leftPct,
-          top: topPct,
-          width: `${size * 0.7}px`,
-          height: `${size * 0.7}px`,
-          transform: 'translate(-50%, -50%)',
-          border: `1px solid rgba(84,104,214,${ringAlpha})`,
-          animation: 'glowSpin 60s linear infinite',
-        }}
-      />
-
-      {/* Anillo interno — más definido */}
-      <div
-        className="absolute rounded-full"
-        style={{
-          left: leftPct,
-          top: topPct,
-          width: `${size * 0.36}px`,
-          height: `${size * 0.36}px`,
-          transform: 'translate(-50%, -50%)',
-          border: `1px solid rgba(44,62,128,${ringAlpha * 1.4})`,
-          animation: 'glowSpin 90s linear infinite reverse',
-        }}
-      />
-
       {/* Núcleo pulsante — el "punto de luz" central */}
       <div
         className="absolute rounded-full"

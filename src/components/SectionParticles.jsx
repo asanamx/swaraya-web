@@ -28,9 +28,9 @@ export default function SectionParticles({
   seed = 1,
 }) {
   // Densidades sutiles — la idea es complementar, no llenar
-  const count = density === 'medium' ? 28 : 18;
-  // Rejilla pseudo-uniforme. Para count=18 → 6×3, para count=28 → 7×4
-  const cols = density === 'medium' ? 7 : 6;
+  const count = density === 'high' ? 48 : density === 'medium' ? 28 : 18;
+  // Rejilla pseudo-uniforme. low=6×3, medium=7×4, high=8×6
+  const cols = density === 'high' ? 8 : density === 'medium' ? 7 : 6;
   const rows = Math.ceil(count / cols);
 
   const particles = useMemo(() => {
