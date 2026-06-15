@@ -62,22 +62,26 @@ export const Navbar = () => {
       ? '#F5F2EC'  // cream sobre fondo oscuro
       : '#0E0F11'; // sumi sobre cream del hero
 
-  const navMutedColor = isMobileMenuOpen || isScrolled
-    ? 'rgba(245,242,236,0.6)'
-    : 'rgba(14,15,17,0.6)';
+  // Links del menú: más legibles sobre el navbar oscuro (0.85 en lugar de 0.6)
+  const navMutedColor = isMobileMenuOpen
+    ? 'rgba(245,242,236,0.7)'
+    : isScrolled
+      ? 'rgba(245,242,236,0.82)'  // cream casi pleno sobre oscuro — más contraste
+      : 'rgba(14,15,17,0.6)';     // sumi atenuado sobre cream
 
   const navHoverColor = '#5468D6';
 
   // Background: cream transparent al inicio, mobile menu sumi sólido,
-  // o C2 (Diálogo Abierto) al scrollear: sumi 0.85 + glow indigo radial + accent line
+  // o C2 (Diálogo Abierto) al scrollear: casi negro sólido + glow indigo
+  // concentrado SOBRE EL LOGO (no centrado) + accent line
   const navBgStyle = isMobileMenuOpen
     ? { background: '#0E0F11' }
     : isScrolled
       ? {
-          background: 'rgba(14,15,17,0.85)',
-          backdropFilter: 'blur(20px) saturate(130%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(130%)',
-          borderBottom: '1px solid rgba(84,104,214,0.08)',
+          background: 'rgba(14,15,17,0.96)',  // casi sólido — como el footer
+          backdropFilter: 'blur(20px) saturate(140%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(140%)',
+          borderBottom: '1px solid rgba(84,104,214,0.12)',
         }
       : { background: 'transparent' };
 
@@ -92,22 +96,23 @@ export const Navbar = () => {
       {/* C2 — "Eco de Diálogo Abierto": glow indigo + accent line, solo al scrollear */}
       {isScrolled && !isMobileMenuOpen && (
         <>
-          {/* Línea de acento indigo superior (gradient horizontal) */}
+          {/* Línea de acento indigo superior — fade en los extremos */}
           <div
             aria-hidden
             className="absolute top-0 left-0 right-0 h-px pointer-events-none"
             style={{
               background:
-                'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.4) 50%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.55) 25%, rgba(84,104,214,0.35) 50%, transparent 100%)',
             }}
           />
-          {/* Glow indigo radial — mismo recipe que el footer "Diálogo Abierto" */}
+          {/* Glow indigo CONCENTRADO sobre el logo (lado izquierdo, no centrado) — 
+              replica el carácter del footer "Diálogo Abierto" pero focalizado */}
           <div
             aria-hidden
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none overflow-hidden"
             style={{
               background:
-                'radial-gradient(ellipse 60% 100% at 8% 50%, rgba(84,104,214,0.16) 0%, transparent 60%), radial-gradient(ellipse 40% 100% at 95% 50%, rgba(44,62,128,0.10) 0%, transparent 60%)',
+                'radial-gradient(ellipse 28% 240% at 14% 50%, rgba(84,104,214,0.28) 0%, rgba(84,104,214,0.08) 35%, transparent 60%)',
             }}
           />
         </>
