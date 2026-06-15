@@ -19,31 +19,31 @@ const COLORS = {
 // ============================================================
 
 // VARIANT A — Cardinal Asimétrico completo
-function IconA({ size = 24, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 1.5, opacity = 1 }) {
+function IconA({ size = 24, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 2, opacity = 1 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden style={{ opacity }}>
       {/* NE long ray */}
       <line x1="34.5" y1="29.5" x2="58" y2="6" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
       {/* N short ray */}
-      <line x1="32" y1="28" x2="32" y2="16" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
+      <line x1="32" y1="28" x2="32" y2="14" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
       {/* S medium ray */}
-      <line x1="32" y1="36" x2="32" y2="52" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
+      <line x1="32" y1="36" x2="32" y2="54" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
       {/* E small marker */}
-      <line x1="36" y1="32" x2="44" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.85} strokeLinecap="round" opacity="0.55" />
+      <line x1="36" y1="32" x2="46" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.9} strokeLinecap="round" opacity="0.6" />
       {/* W small marker */}
-      <line x1="28" y1="32" x2="20" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.85} strokeLinecap="round" opacity="0.55" />
-      {/* Center */}
-      <circle cx="32" cy="32" r="2.6" fill={accent} />
+      <line x1="28" y1="32" x2="18" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.9} strokeLinecap="round" opacity="0.6" />
+      {/* Center — bigger, more present */}
+      <circle cx="32" cy="32" r="3.4" fill={accent} />
     </svg>
   );
 }
 
 // VARIANT B — Sextante
-function IconB({ size = 24, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 1.5, opacity = 1 }) {
+function IconB({ size = 24, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 2, opacity = 1 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden style={{ opacity }}>
       <line x1="34.5" y1="29.5" x2="58" y2="6" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
-      <circle cx="32" cy="32" r="2.6" fill={accent} />
+      <circle cx="32" cy="32" r="3.4" fill={accent} />
     </svg>
   );
 }
@@ -54,26 +54,26 @@ function IconB({ size = 24, fg = COLORS.text, accent = COLORS.indigo, strokeWidt
 // All rays of A live in the SVG simultaneously, but the "extra" rays
 // (N, S, E, W) fade out as progress → 1. Only NE remains at 100%.
 // ============================================================
-function MorphIcon({ size = 24, progress = 0, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 1.5 }) {
+function MorphIcon({ size = 24, progress = 0, fg = COLORS.text, accent = COLORS.indigo, strokeWidth = 2 }) {
   // Crossfade individual ray opacities
   const fadeOpacity = 1 - progress;
-  const eOpacity = 0.55 * fadeOpacity;
-  const wOpacity = 0.55 * fadeOpacity;
+  const eOpacity = 0.6 * fadeOpacity;
+  const wOpacity = 0.6 * fadeOpacity;
 
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden>
-      {/* NE long ray — ALWAYS visible (shared DNA between A and B) */}
+      {/* NE long ray — ALWAYS visible */}
       <line x1="34.5" y1="29.5" x2="58" y2="6" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" />
       {/* N short ray — fades */}
-      <line x1="32" y1="28" x2="32" y2="16" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" opacity={fadeOpacity} />
+      <line x1="32" y1="28" x2="32" y2="14" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" opacity={fadeOpacity} />
       {/* S medium ray — fades */}
-      <line x1="32" y1="36" x2="32" y2="52" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" opacity={fadeOpacity} />
+      <line x1="32" y1="36" x2="32" y2="54" stroke={fg} strokeWidth={strokeWidth} strokeLinecap="round" opacity={fadeOpacity} />
       {/* E marker — fades */}
-      <line x1="36" y1="32" x2="44" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.85} strokeLinecap="round" opacity={eOpacity} />
+      <line x1="36" y1="32" x2="46" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.9} strokeLinecap="round" opacity={eOpacity} />
       {/* W marker — fades */}
-      <line x1="28" y1="32" x2="20" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.85} strokeLinecap="round" opacity={wOpacity} />
-      {/* Center — ALWAYS visible (shared DNA) */}
-      <circle cx="32" cy="32" r="2.6" fill={accent} />
+      <line x1="28" y1="32" x2="18" y2="32" stroke={fg} strokeWidth={strokeWidth * 0.9} strokeLinecap="round" opacity={wOpacity} />
+      {/* Center — bigger, more present */}
+      <circle cx="32" cy="32" r="3.4" fill={accent} />
     </svg>
   );
 }
@@ -119,18 +119,18 @@ export default function BrandFinalClient({ monoCls }) {
             {/* Logo: icon + wordmark, icon morphs A → B based on scroll */}
             <div className="flex items-center gap-2.5">
               <MorphIcon
-                size={28}
+                size={36}
                 progress={morphProgress}
                 fg={COLORS.text}
                 accent={COLORS.indigo}
-                strokeWidth={1.8}
+                strokeWidth={2.2}
               />
               <span
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 700,
-                  fontSize: '1.125rem',
-                  letterSpacing: '-0.02em',
+                  fontSize: '1.25rem',
+                  letterSpacing: '-0.025em',
                   color: COLORS.text,
                 }}
               >
@@ -250,14 +250,14 @@ export default function BrandFinalClient({ monoCls }) {
                 Cuando el usuario llega al sitio (scrollY = 0)
               </div>
 
-              <div className="flex items-center gap-3 py-12 justify-center" style={{ background: COLORS.cream, borderRadius: 12 }}>
-                <IconA size={42} fg={COLORS.text} accent={COLORS.indigo} strokeWidth={2} />
+              <div className="flex items-center gap-4 py-12 justify-center" style={{ background: COLORS.cream, borderRadius: 12 }}>
+                <IconA size={58} fg={COLORS.text} accent={COLORS.indigo} strokeWidth={2.4} />
                 <span
                   style={{
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: 700,
-                    fontSize: 32,
-                    letterSpacing: '-0.02em',
+                    fontSize: 36,
+                    letterSpacing: '-0.025em',
                     color: COLORS.text,
                   }}
                 >
@@ -282,14 +282,14 @@ export default function BrandFinalClient({ monoCls }) {
                 Cuando el usuario ha hecho scroll &gt; 140px
               </div>
 
-              <div className="flex items-center gap-3 py-12 justify-center" style={{ background: COLORS.cream, borderRadius: 12 }}>
-                <IconB size={42} fg={COLORS.text} accent={COLORS.indigo} strokeWidth={2} />
+              <div className="flex items-center gap-4 py-12 justify-center" style={{ background: COLORS.cream, borderRadius: 12 }}>
+                <IconB size={58} fg={COLORS.text} accent={COLORS.indigo} strokeWidth={2.4} />
                 <span
                   style={{
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: 700,
-                    fontSize: 32,
-                    letterSpacing: '-0.02em',
+                    fontSize: 36,
+                    letterSpacing: '-0.025em',
                     color: COLORS.text,
                   }}
                 >
