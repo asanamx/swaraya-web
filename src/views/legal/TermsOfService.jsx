@@ -1,147 +1,207 @@
+import LegalLayout from './LegalLayout';
 import Link from 'next/link';
-import { Navbar } from '../../components/Navbar';
-import { Footer } from '../../components/Footer';
-import { ArrowLeft } from 'lucide-react';
+
+const COMPANY = 'Swaraya, S. de R. L. de C. V.';
+const SHORT = 'Swaraya';
+const SITE = 'swaraya.ai';
+const EMAIL_CONTACT = 'hola@swaraya.ai';
+const ADDRESS = 'Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México';
+
+const sections = [
+  {
+    number: '01',
+    id: 'objeto',
+    title: 'Objeto y alcance del Sitio',
+    body: (
+      <>
+        <p>
+          El Sitio tiene como objeto presentar de manera informativa los servicios de investigación, diseño, ingeniería e integración de sistemas de inteligencia artificial que ofrece <strong>{SHORT}</strong>, así como su enfoque metodológico, contenido editorial (blog) y facilitar el contacto entre prospectos interesados y el equipo de {SHORT}.
+        </p>
+        <p>
+          La información publicada en el Sitio es de carácter <strong>ilustrativo y referencial</strong> y no constituye una oferta vinculante de prestación de servicios.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '02',
+    id: 'comercial',
+    title: 'Información comercial y propuestas',
+    body: (
+      <>
+        <p>
+          Las descripciones de servicios, metodologías, capacidades técnicas, tiempos de entrega estimados, casos de estudio y cualquier rango de honorarios que se mencione en el Sitio son de <strong>carácter meramente referencial</strong> y pueden estar sujetos a cambios sin previo aviso por parte de {SHORT}. Cuando se expresen precios, éstos se entenderán en <strong>pesos mexicanos (MXN)</strong> y, salvo indicación expresa, no incluyen el Impuesto al Valor Agregado (IVA) ni gastos adicionales como licenciamiento de software, infraestructura en la nube, cómputo de modelos de inteligencia artificial de terceros, viáticos u otros costos derivados de la ejecución del proyecto.
+        </p>
+        <p>
+          Las condiciones definitivas de cada relación comercial se establecerán únicamente en los <strong>documentos contractuales firmados entre las partes</strong> (carta de compromiso, propuesta firmada, orden de trabajo y/o contrato de prestación de servicios), los cuales prevalecerán sobre cualquier información contenida en el Sitio.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '03',
+    id: 'propiedad',
+    title: 'Propiedad intelectual',
+    body: (
+      <>
+        <p>
+          La totalidad del contenido del Sitio, incluyendo de manera enunciativa y no limitativa: textos, artículos del blog, fotografías, ilustraciones, videos, diagramas, logotipos, la marca <strong>“{SHORT}”</strong>, tipografías, paleta de colores, identidad visual, código fuente, código compilado, bases de datos, gráficos, metodologías, frameworks de evaluación y cualesquiera otros elementos, son propiedad exclusiva de {SHORT} o se utilizan con autorización expresa de sus titulares, y se encuentran protegidos por la <strong>Ley Federal del Derecho de Autor</strong>, la <strong>Ley Federal de Protección a la Propiedad Industrial</strong> y los tratados internacionales aplicables.
+        </p>
+        <p>
+          Queda estrictamente prohibida cualquier reproducción, distribución, comunicación pública, transformación, uso para el entrenamiento de modelos de inteligencia artificial o utilización del contenido del Sitio sin la autorización previa, expresa y por escrito de {SHORT}.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '04',
+    id: 'uso-permitido',
+    title: 'Uso permitido del Sitio',
+    body: (
+      <>
+        <p>El Usuario se obliga a utilizar el Sitio únicamente con fines lícitos. Queda prohibido:</p>
+        <ul>
+          <li>Realizar cualquier acto que vulnere la seguridad, integridad o disponibilidad del Sitio (intentos de intrusión, escaneo, inyección de código, ataques de denegación de servicio, ingeniería inversa, entre otros).</li>
+          <li>Utilizar bots, scrapers, crawlers, spiders o cualquier herramienta automatizada para extraer información del Sitio, del blog o del asistente conversacional sin autorización expresa.</li>
+          <li>Suplantar la identidad de terceros o proporcionar información falsa, inexacta o desactualizada.</li>
+          <li>Reproducir, copiar, distribuir o explotar comercialmente el contenido del Sitio.</li>
+          <li>Utilizar el Sitio, sus formularios o el asistente conversacional para fines ajenos a la consulta legítima sobre los servicios de {SHORT}, incluyendo el envío de <em>spam</em>, contenido ofensivo, ilegal o que vulnere derechos de terceros.</li>
+          <li>Intentar manipular, desviar (<em>jailbreak</em>, <em>prompt injection</em>) o explotar el comportamiento del asistente conversacional para obtener resultados distintos a su propósito.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    number: '05',
+    id: 'asistente',
+    title: 'Asistente conversacional con inteligencia artificial',
+    body: (
+      <>
+        <p>
+          El Sitio incorpora un asistente conversacional que utiliza modelos de inteligencia artificial provistos por terceros. La información generada por dicho asistente es de <strong>carácter orientativo</strong>, puede contener imprecisiones u omisiones y <strong>no constituye asesoría profesional, legal, fiscal, financiera ni técnica vinculante</strong>.
+        </p>
+        <p>
+          El Usuario se obliga a no proporcionar al asistente datos personales sensibles, secretos industriales o información confidencial de terceros sin la debida autorización. Las conversaciones podrán ser almacenadas, procesadas y analizadas de forma agregada y anonimizada para mejorar la calidad del servicio, conforme a lo previsto en el Aviso de Privacidad Integral.
+        </p>
+        <p>
+          {SHORT} no garantiza la disponibilidad continua del asistente y podrá suspenderlo, modificarlo o reemplazarlo en cualquier momento sin que ello genere responsabilidad alguna.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '06',
+    id: 'enlaces',
+    title: 'Enlaces a sitios de terceros',
+    body: (
+      <>
+        <p>
+          El Sitio puede contener enlaces a sitios web operados por terceros (plataformas de modelos de IA, herramientas de productividad, redes sociales, repositorios de código, entre otros). {SHORT} no es responsable del contenido, políticas de privacidad ni prácticas de dichos sitios, por lo que se recomienda al Usuario revisar los términos y condiciones aplicables al acceder a ellos.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '07',
+    id: 'datos',
+    title: 'Tratamiento de datos personales',
+    body: (
+      <>
+        <p>
+          El tratamiento de los datos personales que el Usuario proporcione a través del Sitio, ya sea mediante el formulario de contacto, el correo electrónico, el asistente conversacional o cualquier otro canal, se rige por el{' '}
+          <Link href="/privacidad">Aviso de Privacidad Integral</Link>, el cual forma parte integrante de los presentes Términos.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '08',
+    id: 'cookies',
+    title: 'Cookies y tecnologías similares',
+    body: (
+      <>
+        <p>
+          El Sitio utiliza cookies y tecnologías similares con la finalidad de mejorar la experiencia del Usuario, medir el desempeño del Sitio y, en su caso, mostrar contenido relevante. El detalle del uso de cookies se encuentra descrito en el{' '}
+          <Link href="/privacidad#cookies">Aviso de Privacidad Integral</Link>. Al continuar navegando en el Sitio, el Usuario acepta el uso de cookies conforme a dicha política, salvo manifestación expresa en contrario.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '09',
+    id: 'responsabilidad',
+    title: 'Limitación de responsabilidad',
+    body: (
+      <>
+        <p>
+          {SHORT} hace su mejor esfuerzo por mantener actualizada y precisa toda la información publicada en el Sitio; sin embargo, no garantiza la ausencia absoluta de errores, omisiones, interrupciones, virus informáticos o cualquier otro elemento que pueda afectar el correcto funcionamiento del Sitio o causar daños al Usuario. En la máxima medida permitida por la legislación aplicable, {SHORT} <strong>no será responsable</strong> por daños directos, indirectos, incidentales, especiales o consecuentes derivados del acceso, uso o imposibilidad de uso del Sitio, del asistente conversacional o de la información en él contenida.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '10',
+    id: 'disponibilidad',
+    title: 'Disponibilidad del Sitio',
+    body: (
+      <>
+        <p>
+          {SHORT} se reserva el derecho de suspender, modificar, interrumpir o descontinuar, total o parcialmente, el Sitio o cualquiera de sus funcionalidades en cualquier momento y sin previo aviso, por causas técnicas, de mantenimiento, comerciales o de cualquier otra naturaleza, sin que ello genere responsabilidad alguna en favor del Usuario.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '11',
+    id: 'modificaciones',
+    title: 'Modificación de los Términos',
+    body: (
+      <>
+        <p>
+          {SHORT} podrá modificar los presentes Términos en cualquier momento. Las modificaciones surtirán efecto desde su publicación en el Sitio. La fecha de última actualización aparece al inicio del documento. El uso continuado del Sitio después de cualquier modificación constituye la <strong>aceptación tácita</strong> de los nuevos Términos.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '12',
+    id: 'jurisdiccion',
+    title: 'Legislación aplicable y jurisdicción',
+    body: (
+      <>
+        <p>
+          Los presentes Términos se rigen por las leyes vigentes de los <strong>Estados Unidos Mexicanos</strong>. Para la interpretación, cumplimiento y ejecución de los mismos, las partes se someten expresamente a la jurisdicción de los <strong>tribunales competentes de la ciudad de Pachuca de Soto, Estado de Hidalgo</strong>, renunciando a cualquier otra jurisdicción que pudiera corresponderles por razón de sus domicilios presentes o futuros.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '13',
+    id: 'contacto',
+    title: 'Contacto',
+    body: (
+      <>
+        <p>
+          Para cualquier duda, comentario o aclaración relacionada con los presentes Términos, el Usuario puede comunicarse a:
+        </p>
+        <ul>
+          <li><strong>Correo electrónico:</strong> <a href={`mailto:${EMAIL_CONTACT}`}>{EMAIL_CONTACT}</a></li>
+          <li><strong>Domicilio:</strong> {ADDRESS}</li>
+        </ul>
+      </>
+    ),
+  },
+];
 
 const TermsOfService = () => {
   return (
-    <div className="min-h-screen bg-[#F5F2EC]" data-testid="terms-of-service-page">
-      <Navbar />
-      
-      <main className="pt-24 pb-20 md:pt-32 md:pb-28">
-        <div className="container-main">
-          {/* Back link */}
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2 text-[#2C3E80] hover:text-[#1F2D5C] transition-colors duration-250 mb-10"
-            data-testid="back-to-home"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Volver al inicio</span>
-          </Link>
-
-          {/* Header */}
-          <div className="mb-12 md:mb-16">
-            <p className="label-accent text-[#7AC4E0] mb-4">Legal</p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-[#0E0F11] mb-6">
-              Términos de Servicio
-            </h1>
-            <p className="text-[#5D6878] text-sm">
-              Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </p>
-          </div>
-
-          {/* Content */}
-          <div className="max-w-3xl space-y-10 text-[#3C4654]">
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">1. Aceptación de los Términos</h2>
-              <p className="leading-relaxed">
-                Al acceder y utilizar el sitio web de swaraya y nuestros servicios, usted acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestros servicios.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">2. Descripción de los Servicios</h2>
-              <p className="leading-relaxed">
-                swaraya es una agencia de inteligencia aplicada que ofrece servicios de investigación, diseño e integración de sistemas de inteligencia artificial. Nuestros servicios incluyen, pero no se limitan a:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Consultoría estratégica en inteligencia artificial.</li>
-                <li>Desarrollo e implementación de soluciones de IA personalizadas.</li>
-                <li>Investigación aplicada en tecnologías emergentes.</li>
-                <li>Integración de sistemas inteligentes en infraestructuras existentes.</li>
-              </ul>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">3. Uso del Sitio Web</h2>
-              <p className="leading-relaxed">Al utilizar nuestro sitio web, usted se compromete a:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Proporcionar información veraz y actualizada.</li>
-                <li>No utilizar el sitio para fines ilegales o no autorizados.</li>
-                <li>No intentar acceder a áreas restringidas del sitio.</li>
-                <li>No interferir con el funcionamiento normal del sitio.</li>
-                <li>Respetar la propiedad intelectual de swaraya y terceros.</li>
-              </ul>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">4. Propiedad Intelectual</h2>
-              <p className="leading-relaxed">
-                Todo el contenido del sitio web, incluyendo textos, gráficos, logotipos, imágenes, software y código, es propiedad de swaraya o sus licenciantes y está protegido por las leyes de propiedad intelectual aplicables. Queda prohibida la reproducción, distribución o modificación sin autorización expresa.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">5. Confidencialidad</h2>
-              <p className="leading-relaxed">
-                Todos los proyectos y colaboraciones con swaraya están sujetos a acuerdos de confidencialidad (NDA). Nos comprometemos a proteger la información confidencial de nuestros clientes y esperamos el mismo nivel de discreción por parte de ellos.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">6. Limitación de Responsabilidad</h2>
-              <p className="leading-relaxed">
-                En la máxima medida permitida por la ley, swaraya no será responsable por daños indirectos, incidentales, especiales o consecuentes que resulten del uso o la imposibilidad de uso de nuestros servicios o sitio web.
-              </p>
-              <p className="leading-relaxed">
-                El sitio web y su contenido se proporcionan "tal cual" sin garantías de ningún tipo, ya sean expresas o implícitas.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">7. Asistente de Chat con IA</h2>
-              <p className="leading-relaxed">
-                Nuestro sitio web incluye un asistente de chat impulsado por inteligencia artificial. Las respuestas proporcionadas por este asistente son de carácter informativo y no constituyen asesoramiento profesional vinculante. Para consultas específicas sobre proyectos, le recomendamos contactar directamente con nuestro equipo.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">8. Enlaces a Terceros</h2>
-              <p className="leading-relaxed">
-                Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables del contenido, políticas de privacidad o prácticas de sitios web de terceros. Le recomendamos revisar los términos y políticas de cualquier sitio que visite.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">9. Modificaciones</h2>
-              <p className="leading-relaxed">
-                Nos reservamos el derecho de modificar estos Términos de Servicio en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web. El uso continuado de nuestros servicios después de cualquier modificación constituye su aceptación de los nuevos términos.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">10. Terminación</h2>
-              <p className="leading-relaxed">
-                Podemos suspender o terminar su acceso a nuestros servicios en cualquier momento, sin previo aviso, por cualquier motivo, incluyendo el incumplimiento de estos Términos de Servicio.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">11. Ley Aplicable</h2>
-              <p className="leading-relaxed">
-                Estos Términos de Servicio se regirán e interpretarán de acuerdo con las leyes aplicables, sin tener en cuenta sus disposiciones sobre conflictos de leyes.
-              </p>
-            </section>
-
-            <section className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-light text-[#0E0F11]">12. Contacto</h2>
-              <p className="leading-relaxed">
-                Si tiene preguntas sobre estos Términos de Servicio, puede contactarnos en:
-              </p>
-              <p className="leading-relaxed">
-                <strong className="text-[#0E0F11]">Email:</strong>{' '}
-                <a href="mailto:contacto@swaraya.ai" className="text-[#2C3E80] hover:text-[#1F2D5C] transition-colors">
-                  contacto@swaraya.ai
-                </a>
-              </p>
-            </section>
-          </div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+    <LegalLayout
+      eyebrow="Legal · Términos y Condiciones"
+      title="Términos y Condiciones de uso"
+      subtitle={`Los presentes Términos y Condiciones (en adelante, los “Términos”) regulan el acceso y uso del sitio web ${SITE} (en adelante, el “Sitio”), propiedad de ${COMPANY} (en adelante, “${SHORT}” o el “Titular”), así como la relación entre ${SHORT} y cualquier persona que ingrese, navegue o interactúe con el Sitio (en adelante, el “Usuario”). Al acceder y utilizar el Sitio, el Usuario manifiesta haber leído, comprendido y aceptado en su totalidad los presentes Términos. En caso de no estar de acuerdo, deberá abstenerse de utilizar el Sitio.`}
+      lastUpdated="15 de junio de 2026"
+      sections={sections}
+    />
   );
 };
 
