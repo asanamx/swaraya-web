@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowLeft, Twitter, Linkedin, Facebook, Link as LinkIcon, Check, Play } from 'lucide-react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 // Inline AXIS mark — matches Navbar/Footer brand
 function AxisMark({ size = 18, color = 'currentColor' }) {
@@ -140,46 +142,28 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
   return (
     <div className="min-h-screen bg-[#F5F2EC]">
-      {/* Header */}
-      <header className="border-b border-[rgba(14,15,17,0.08)]">
-        <div className="container-main py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-[#0E0F11]"
-              aria-label="swaraya — Inicio"
-            >
-              <AxisMark size={18} color="currentColor" />
-              <span
-                style={{
-                  fontFamily: "'Author', sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: '-0.03em',
-                  fontSize: '1.3125rem',
-                  lineHeight: 1,
-                }}
-              >
-                swaraya
-              </span>
-            </Link>
-            <Link
-              href="/blog"
-              className="flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#2C3E80] transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Todos los artículos
-            </Link>
-          </div>
-        </div>
-      </header>
+      {/* Navbar global del sitio (mismo que home y /blog) */}
+      <Navbar />
+
+      {/* Spacer para compensar el navbar fijo */}
+      <div className="h-14 md:h-16 lg:h-[72px]" aria-hidden="true" />
 
       {/* Article */}
-      <article className="py-12 md:py-16">
+      <article className="py-10 md:py-14">
         <div className="container-main">
-          {/* Back Link - Mobile */}
+          {/* Back Link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#2C3E80] mb-8 md:hidden"
+            className="inline-flex items-center gap-2 text-sm text-[#2C3E80] mb-8 hover:gap-3 transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Todos los artículos
+          </Link>
+
+          {/* Back Link - Mobile (legacy hidden) */}
+          <Link
+            href="/blog"
+            className="hidden items-center gap-2 text-sm text-[#2C3E80] mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver
@@ -360,28 +344,8 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
         </section>
       )}
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-[rgba(14,15,17,0.08)]">
-        <div className="container-main flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2 text-[#0E0F11] opacity-70 hover:opacity-100 transition-opacity">
-            <AxisMark size={14} color="currentColor" />
-            <span
-              style={{
-                fontFamily: "'Author', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '-0.03em',
-                fontSize: '1rem',
-                lineHeight: 1,
-              }}
-            >
-              swaraya
-            </span>
-          </Link>
-          <p className="text-xs text-[#5D6878]">
-            © {new Date().getFullYear()} Agencia swaraya. Todos los derechos reservados.
-          </p>
-        </div>
-      </footer>
+      {/* Footer global del sitio (mismo que home y /blog) */}
+      <Footer />
     </div>
   );
 };

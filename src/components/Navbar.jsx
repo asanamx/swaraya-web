@@ -35,12 +35,14 @@ export const Navbar = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
+  // Orden one-pager: las secciones del home en orden de aparición + Blog al final
+  // (Blog es la única ruta separada; el resto son anclas de la home)
   const navLinks = [
     { name: 'Investigación', href: '#research' },
     { name: 'Método', href: '#method' },
     { name: 'Filosofía', href: '#philosophy' },
-    { name: 'Blog', href: '/blog', isRoute: true },
     { name: 'Contacto', href: '#contact' },
+    { name: 'Blog', href: '/blog', isRoute: true },
   ];
 
   const scrollToSection = (href) => {

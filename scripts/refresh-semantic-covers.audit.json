@@ -1,0 +1,38 @@
+[
+  {
+    "postId": "fc096221-cd51-4555-9290-d2d37bdd769c",
+    "slug": "automatizacion-inteligente-rpa-ia",
+    "filename": "rpa-ia-clockwork-mechanism.jpg",
+    "url": "https://images.unsplash.com/photo-1633451238042-85d93d267866?w=1920&q=85&auto=format&fit=crop",
+    "meta": "clockwork mechanism — automatización cascada",
+    "assetId": "image-e7def3a446933d6c34ea563224f0b9115ba2e38c-1920x1272-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "post-rag-vs-fine-tuning-cuando-usar-cada-uno-e0c8c389",
+    "slug": "rag-vs-fine-tuning-cuando-usar-cada-uno",
+    "filename": "rag-vs-fine-tuning-parallel-arch.jpg",
+    "url": "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=1920&q=85&auto=format&fit=crop",
+    "meta": "parallel architecture — dos enfoques",
+    "assetId": "image-1a0c25e062fe836f1d8ac70a7b22feac474ceb55-1920x1280-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "post-evals-sistemas-llm-produccion-fdce0a74",
+    "slug": "evals-sistemas-llm-produccion",
+    "filename": "evals-llm-metronome.jpg",
+    "url": "https://images.unsplash.com/photo-1602342654726-83c1ea525a9c?w=1920&q=85&auto=format&fit=crop",
+    "meta": "metronome — precisión, medición",
+    "assetId": "image-b088d3edced23339427ea90b1a0bb7ed89cb1c09-1920x2899-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "0fca9773-f90a-4c22-a369-2e9996761a2f",
+    "slug": "apis-ia-construir-vs-consumir",
+    "filename": "apis-modular-architecture.jpg",
+    "url": "https://images.unsplash.com/photo-1553332697-bf631215652e?w=1920&q=85&auto=format&fit=crop",
+    "meta": "modular architecture — componentes",
+    "assetId": "image-1493df52877a848fbb0a824186d2db091f3fb97b-1920x2881-jpg",
+    "status": "ok"
+  }
+]

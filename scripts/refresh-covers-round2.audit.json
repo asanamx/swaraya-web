@@ -1,0 +1,47 @@
+[
+  {
+    "postId": "4fdf8304-f8a4-429e-aa19-89bb4bcdac23",
+    "slug": "data-mesh-arquitectura-datos",
+    "filename": "data-mesh-decentralized-nodes.jpg",
+    "url": "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&q=85&auto=format&fit=crop",
+    "meta": "cubos geométricos — red descentralizada",
+    "assetId": "image-394326f0e8965e99ebbb2880864aee8c2f9bdc3d-1920x1080-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "2db7a284-89dc-4c2e-ba0c-ea0bff9c469a",
+    "slug": "nlp-aplicado-casos-practicos",
+    "filename": "nlp-vintage-manuscript.jpg",
+    "url": "https://images.unsplash.com/photo-1546199881-3454b82b832b?w=1920&q=85&auto=format&fit=crop",
+    "meta": "manuscrito vintage — lenguaje, texto",
+    "assetId": "image-4e9bd96207d7cfd306a258a7703959fbc733d7d9-1920x1280-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "b605cacd-c9bc-443b-b804-eec45303f9c0",
+    "slug": "computer-vision-cadena-suministro",
+    "filename": "computer-vision-aerial-containers.jpg",
+    "url": "https://images.unsplash.com/photo-1565627680455-83e57619e4a8?w=1920&q=85&auto=format&fit=crop",
+    "meta": "vista aérea contenedores — supply chain",
+    "assetId": "image-0042b10638c5f88b277c29798af1a89f7309796f-1920x1080-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "d386b751-1b4b-470a-9ca0-285ab7198050",
+    "slug": "agentes-autonomos-ia-empresarial",
+    "filename": "autonomous-agents-murmuration.jpg",
+    "url": "https://images.unsplash.com/photo-1565392812859-e793ff1cb57d?w=1920&q=85&auto=format&fit=crop",
+    "meta": "murmuración aves — enjambre, autonomía",
+    "assetId": "image-c22877b86409b1d0ac77789ce319d3d33e29248f-1920x1280-jpg",
+    "status": "ok"
+  },
+  {
+    "postId": "f6276856-70bf-4a42-a63f-796c4d370f94",
+    "slug": "futuro-trabajo-ia-generativa",
+    "filename": "futuro-trabajo-ink-water.jpg",
+    "url": "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=1920&q=85&auto=format&fit=crop",
+    "meta": "tinta en agua — transformación, emergencia",
+    "assetId": "image-8a62c40dcbf09b1505b1d2e471eb896fda4b5dbe-1920x2560-jpg",
+    "status": "ok"
+  }
+]

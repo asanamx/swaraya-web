@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, Calendar, Clock, ArrowRight, Filter } from 'lucide-react';
+import { Search, Calendar, Clock, Filter } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import { getPosts, getCategories, getTags } from '../../lib/sanity';
 
 const SITE_DOMAIN = 'swaraya.ai';
@@ -312,29 +313,8 @@ const BlogPage = () => {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-20 border-t border-[rgba(14,15,17,0.08)] bg-[#FAF8F2]">
-        <div className="container-main text-center">
-          <p
-            className="text-2xl md:text-3xl text-[#0E0F11] mb-8 max-w-[28ch] mx-auto"
-            style={{
-              fontFamily: "'Cabinet Grotesk', sans-serif",
-              fontWeight: 500,
-              letterSpacing: '-0.025em',
-              lineHeight: 1.15,
-            }}
-          >
-            ¿Listo para transformar tu organización con inteligencia aplicada?
-          </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#2C3E80] text-[#F5F2EC] text-sm font-medium transition-all hover:bg-[#1F2D5C] group"
-          >
-            Iniciar Conversación
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
+      {/* Footer real del sitio — mismo que en home */}
+      <Footer />
     </div>
   );
 };
