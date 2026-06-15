@@ -256,13 +256,19 @@ export const Hero = () => {
                 <span style={{ fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '-0.01em' }}>Vercel</span>
               </div>
 
-              {/* OpenClaw */}
+              {/* OpenClaw — tipografía display que respeta el wordmark original */}
               <div className="transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(245,242,236,0.55)' }}
                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#5468D6'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(245,242,236,0.55)'; }}
                 title="OpenClaw"
               >
-                <span style={{ fontSize: '0.8125rem', fontWeight: 500, letterSpacing: '-0.01em' }}>OpenClaw</span>
+                <span style={{
+                  fontFamily: "'Khand', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                  letterSpacing: '-0.015em',
+                  lineHeight: 1,
+                }}>OpenClaw</span>
               </div>
 
               {/* Resend */}
