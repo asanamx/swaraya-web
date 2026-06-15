@@ -2,7 +2,6 @@
 
 import useScrollReveal from '../hooks/useScrollReveal';
 import useCountUp from '../hooks/useCountUp';
-import SectionParticles from './SectionParticles';
 
 const metrics = [
   { value: 85, suffix: '%', label: 'Precisión promedio en predicciones de demanda' },
@@ -66,9 +65,6 @@ export const Outcomes = () => {
           opacity: 0.55,
         }}
       />
-
-      {/* Capa sutil de partículas — densidad muy baja para complementar el grid */}
-      <SectionParticles density="low" opacity={0.38} seed={5} />
 
       <div className="container-main relative z-10">
         {/* Header */}

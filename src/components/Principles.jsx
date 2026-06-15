@@ -1,6 +1,7 @@
 'use client';
 
 import useScrollReveal from '../hooks/useScrollReveal';
+import SectionParticles from './SectionParticles';
 
 const principles = [
   'Contexto antes que automatización',
@@ -16,10 +17,13 @@ export const Principles = () => {
   return (
     <section
       ref={sectionRef}
-      className="section-padding-lg bg-[#FAF8F2]"
+      className="section-padding-lg bg-[#FAF8F2] relative overflow-hidden"
       data-testid="principles-section"
     >
-      <div className="container-main">
+      {/* Capa de partículas — saturación moderada */}
+      <SectionParticles density="medium" opacity={0.50} seed={11} />
+
+      <div className="container-main relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 md:gap-10 lg:gap-16 xl:gap-20 items-start">
           {/* Headline */}
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>

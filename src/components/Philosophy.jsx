@@ -14,7 +14,7 @@ export const Philosophy = () => {
       data-testid="philosophy-section"
     >
       {/* Capa sutil de partículas — evita que la sección se vea sobre-simplificada */}
-      <SectionParticles density="low" opacity={0.45} seed={7} />
+      <SectionParticles density="medium" opacity={0.50} seed={7} />
 
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">
