@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import SwarayaMark from './SwarayaMark';
+import SwarayaCardinal from './SwarayaCardinal';
 
 export const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -12,19 +12,13 @@ export const Navbar = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
-  // Scroll-driven logo morph (Anthropic-style)
-  // 0–60px: full wordmark visible
-  // 60–140px: crossfade wordmark→glyph
-  // >140px: only glyph
+  // Scroll-driven icon reduction: Cardinal A (5 rayos) → Sextante B (1 rayo + centro)
+  // 0–60px: A completo
+  // 60–140px: crossfade A → B (los rayos N/S/E/W se desvanecen)
+  // >140px: B (sextante)
   const MORPH_START = 60;
   const MORPH_END = 140;
   const morphProgress = Math.min(Math.max((scrollY - MORPH_START) / (MORPH_END - MORPH_START), 0), 1);
-  const wordmarkOpacity = 1 - morphProgress;
-  const glyphOpacity = morphProgress;
-  // Glyph scale: starts at 0.7, ends at 1
-  const glyphScale = 0.7 + morphProgress * 0.3;
-  // On non-homepage routes, always show the compact glyph + wordmark (no morph)
-  const isCompact = !isHomePage || scrollY > MORPH_END;
 
   const isScrolled = scrollY > 80;
 
@@ -87,31 +81,32 @@ export const Navbar = () => {
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
-          {/* Logo: Anthropic-style scroll morph
-              Brand-mark = "sw" + sol radiante (svar). Resto de "araya" fade out. */}
+          {/* Logo: Cardinal Asimétrico A → Sextante B (scroll-driven, no letter deformation) */}
           <Link
             href="/"
-            className="relative z-50 flex items-center"
+            className="relative z-50 flex items-center gap-2.5"
             data-testid="navbar-logo"
             aria-label="swaraya — Inicio"
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
-            {isHomePage && !isMobileMenuOpen ? (
-              <SwarayaMark
-                mode="full"
-                size="1.5rem"
-                color="currentColor"
-                arayaOpacity={wordmarkOpacity}
-                strokeWidth={3}
-              />
-            ) : (
-              <SwarayaMark
-                mode="full"
-                size="1.3125rem"
-                color="currentColor"
-                strokeWidth={3}
-              />
-            )}
+            <SwarayaCardinal
+              progress={isHomePage && !isMobileMenuOpen ? morphProgress : 1}
+              size={34}
+              color="currentColor"
+              accent={isMobileMenuOpen ? '#5468D6' : '#2C3E80'}
+              strokeWidth={2.2}
+            />
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 700,
+                fontSize: '1.1875rem',
+                letterSpacing: '-0.025em',
+                lineHeight: 1,
+              }}
+            >
+              swaraya
+            </span>
           </Link>
 
           {/* Desktop Nav */}
