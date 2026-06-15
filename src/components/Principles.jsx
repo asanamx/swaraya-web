@@ -3,6 +3,7 @@
 import useScrollReveal from '../hooks/useScrollReveal';
 import SectionParticles from './SectionParticles';
 import SectionGlow from './SectionGlow';
+import SectionGrid from './SectionGrid';
 
 const principles = [
   'Contexto antes que automatización',
@@ -21,6 +22,9 @@ export const Principles = () => {
       className="section-padding-lg bg-[#FAF8F2] relative overflow-hidden"
       data-testid="principles-section"
     >
+      {/* Cuadrícula parcial anclada al foco — textura sutil */}
+      <SectionGrid focal={{ x: 82, y: 40 }} radius={42} lineAlpha={0.045} />
+
       {/* Glow indigo a la derecha + saturación alta de partículas */}
       <SectionGlow position={{ x: 82, y: 40 }} size={540} intensity="medium" />
       <SectionParticles density="high" opacity={0.72} seed={11} />
