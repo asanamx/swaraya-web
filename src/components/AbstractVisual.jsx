@@ -152,7 +152,8 @@ export const AbstractVisual = () => {
       const cy = h * FOCAL.y;
 
       // Orbitales — 35 partículas alrededor del punto focal con órbitas
-      // amplias para que se distribuyan más
+      // amplias para que se distribuyan más. Compresión vertical menos
+      // pronunciada (0.85 vs 0.7) para que se extiendan más arriba y abajo.
       for (let i = 0; i < 35; i++) {
         const orbitSpeed = 0.00018 + (i % 4) * 0.00009;
         const angle = (i / 35) * Math.PI * 2 + time * orbitSpeed;
@@ -161,7 +162,7 @@ export const AbstractVisual = () => {
         const radius = orbitRadius + radiusVariation;
 
         const x = cx + Math.cos(angle) * radius;
-        const y = cy + Math.sin(angle) * radius * 0.7;
+        const y = cy + Math.sin(angle) * radius * 0.85;
         const size = 1.3 + Math.sin(time * 0.002 + i * 0.5) * 0.9;
         const opacity = 0.40 + Math.sin(time * 0.001 + i) * 0.22;
 
@@ -182,25 +183,40 @@ export const AbstractVisual = () => {
         ctx.fill();
       }
 
-      // Campo de partículas distribuidas — 38 partículas que cubren todo el
-      // lado derecho del hero (~35% a 100% horizontal, 5% a 95% vertical).
-      // Cada una sigue una órbita amplia con fase distinta para evitar
-      // patrones repetitivos y para distribuirlas sin concentración.
-      for (let i = 0; i < 38; i++) {
-        const fx = 0.36 + ((i * 0.137) % 0.62); // distribución pseudo-aleatoria
-        const fy = 0.06 + ((i * 0.293) % 0.86);
-        const driftX = Math.sin(time * 0.00035 + i * 1.7) * 22;
-        const driftY = Math.cos(time * 0.00028 + i * 2.3) * 18;
-        const x = w * fx + driftX;
-        const y = h * fy + driftY;
-        const size = 1.0 + Math.sin(time * 0.001 + i) * 0.5;
-        const opacity = 0.26 + Math.sin(time * 0.0015 + i * 0.7) * 0.16;
-        const color = i % 3 === 0 ? ACCENT : DEEP;
+      // Campo de partículas distribuidas en una rejilla pseudo-uniforme.
+      // Cubre el lado derecho del hero desde y=10% (bajo el menú) hasta
+      // y=88% (donde empieza el stack), con jitter por celda y drift propio.
+      // Esto garantiza una saturación vertical equilibrada, sin clusters.
+      const COLS = 7;
+      const ROWS = 7;
+      const X_MIN = 0.36;
+      const X_MAX = 0.98;
+      const Y_MIN = 0.10;
+      const Y_MAX = 0.88;
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const i = row * COLS + col;
+          // Jitter determinístico por celda — semilla basada en (row, col)
+          const seedX = ((i * 17.31) % 1);
+          const seedY = ((i * 11.79) % 1);
+          const cellW = (X_MAX - X_MIN) / COLS;
+          const cellH = (Y_MAX - Y_MIN) / ROWS;
+          const baseX = X_MIN + cellW * (col + 0.15 + seedX * 0.70);
+          const baseY = Y_MIN + cellH * (row + 0.15 + seedY * 0.70);
+          // Drift orgánico por partícula con fase única
+          const driftX = Math.sin(time * 0.00035 + i * 1.7) * 14;
+          const driftY = Math.cos(time * 0.00028 + i * 2.3) * 12;
+          const x = w * baseX + driftX;
+          const y = h * baseY + driftY;
+          const size = 0.9 + Math.sin(time * 0.001 + i) * 0.4;
+          const opacity = 0.24 + Math.sin(time * 0.0015 + i * 0.7) * 0.14;
+          const color = (row + col) % 3 === 0 ? ACCENT : DEEP;
 
-        ctx.beginPath();
-        ctx.arc(x, y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${color}, ${opacity})`;
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(x, y, size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${color}, ${opacity})`;
+          ctx.fill();
+        }
       }
     };
 
