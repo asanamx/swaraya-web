@@ -46,8 +46,9 @@ export const AbstractVisual = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    // Centro focal — cuadrante superior-derecho
-    const FOCAL = { x: 0.72, y: 0.46 };
+    // Centro focal — cuadrante superior-derecho, elevado para llenar la
+    // parte alta y dejar respiración inferior.
+    const FOCAL = { x: 0.72, y: 0.36 };
 
     // Grid muy sutil con onda
     const drawGrid = () => {
@@ -91,12 +92,12 @@ export const AbstractVisual = () => {
       ctx.fillStyle = outerGlow;
       ctx.fillRect(0, 0, w, h);
 
-      // Anillos concéntricos rotando con segmentos
+      // Anillos concéntricos rotando con segmentos — muy sutiles
       for (let i = 0; i < 5; i++) {
         const baseRadius = 60 + i * 65;
         const radiusPulse = Math.sin(time * 0.001 + i * 0.5) * 10;
         const radius = baseRadius + radiusPulse;
-        const opacity = (0.18 - i * 0.025) * pulseIntensity;
+        const opacity = (0.08 - i * 0.013) * pulseIntensity;
         const rotation = time * 0.00018 * (i % 2 === 0 ? 1 : -1);
 
         ctx.save();
@@ -109,7 +110,7 @@ export const AbstractVisual = () => {
 
         const color = i % 2 === 0 ? ACCENT : DEEP;
         ctx.strokeStyle = `rgba(${color}, ${opacity})`;
-        ctx.lineWidth = 1.5 - i * 0.12;
+        ctx.lineWidth = 1.2 - i * 0.10;
         ctx.lineCap = 'round';
 
         for (let s = 0; s < segments; s++) {
@@ -143,25 +144,26 @@ export const AbstractVisual = () => {
       ctx.fill();
     };
 
-    // Partículas orbitales y distantes
+    // Partículas orbitales y distribuidas en el lado derecho
     const drawParticles = () => {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       const cx = w * FOCAL.x;
       const cy = h * FOCAL.y;
 
-      // Orbitales — 25 partículas alrededor del punto focal
-      for (let i = 0; i < 25; i++) {
-        const orbitSpeed = 0.0002 + (i % 3) * 0.0001;
-        const angle = (i / 25) * Math.PI * 2 + time * orbitSpeed;
-        const orbitRadius = 100 + (i % 4) * 70;
-        const radiusVariation = Math.sin(time * 0.001 + i) * 35;
+      // Orbitales — 35 partículas alrededor del punto focal con órbitas
+      // amplias para que se distribuyan más
+      for (let i = 0; i < 35; i++) {
+        const orbitSpeed = 0.00018 + (i % 4) * 0.00009;
+        const angle = (i / 35) * Math.PI * 2 + time * orbitSpeed;
+        const orbitRadius = 90 + (i % 6) * 75; // hasta ~465px
+        const radiusVariation = Math.sin(time * 0.001 + i) * 40;
         const radius = orbitRadius + radiusVariation;
 
         const x = cx + Math.cos(angle) * radius;
-        const y = cy + Math.sin(angle) * radius * 0.55;
-        const size = 1.5 + Math.sin(time * 0.002 + i * 0.5) * 1;
-        const opacity = 0.45 + Math.sin(time * 0.001 + i) * 0.25;
+        const y = cy + Math.sin(angle) * radius * 0.7;
+        const size = 1.3 + Math.sin(time * 0.002 + i * 0.5) * 0.9;
+        const opacity = 0.40 + Math.sin(time * 0.001 + i) * 0.22;
 
         // Glow
         const glow = ctx.createRadialGradient(x, y, 0, x, y, size * 6);
@@ -180,31 +182,39 @@ export const AbstractVisual = () => {
         ctx.fill();
       }
 
-      // Partículas distantes — drift por todo el canvas
-      for (let i = 0; i < 20; i++) {
-        const x = (w * 0.3) + Math.sin(time * 0.0003 + i * 2) * w * 0.45;
-        const y = (h * 0.2) + Math.cos(time * 0.0002 + i * 1.5) * h * 0.6;
-        const size = 1.2 + Math.sin(time * 0.001 + i) * 0.6;
-        const opacity = 0.30 + Math.sin(time * 0.0015 + i) * 0.18;
+      // Campo de partículas distribuidas — 38 partículas que cubren todo el
+      // lado derecho del hero (~35% a 100% horizontal, 5% a 95% vertical).
+      // Cada una sigue una órbita amplia con fase distinta para evitar
+      // patrones repetitivos y para distribuirlas sin concentración.
+      for (let i = 0; i < 38; i++) {
+        const fx = 0.36 + ((i * 0.137) % 0.62); // distribución pseudo-aleatoria
+        const fy = 0.06 + ((i * 0.293) % 0.86);
+        const driftX = Math.sin(time * 0.00035 + i * 1.7) * 22;
+        const driftY = Math.cos(time * 0.00028 + i * 2.3) * 18;
+        const x = w * fx + driftX;
+        const y = h * fy + driftY;
+        const size = 1.0 + Math.sin(time * 0.001 + i) * 0.5;
+        const opacity = 0.26 + Math.sin(time * 0.0015 + i * 0.7) * 0.16;
+        const color = i % 3 === 0 ? ACCENT : DEEP;
 
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${DEEP}, ${opacity})`;
+        ctx.fillStyle = `rgba(${color}, ${opacity})`;
         ctx.fill();
       }
     };
 
-    // Líneas radiales desde el centro
+    // Líneas radiales desde el centro — muy sutiles, casi imperceptibles
     const drawConnections = () => {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       const cx = w * FOCAL.x;
       const cy = h * FOCAL.y;
 
-      for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI * 2 + time * 0.0001;
+      for (let i = 0; i < 10; i++) {
+        const angle = (i / 10) * Math.PI * 2 + time * 0.0001;
         const length = 220 + Math.sin(time * 0.0008 + i) * 60;
-        const opacity = 0.10 + Math.sin(time * 0.001 + i * 0.3) * 0.05;
+        const opacity = 0.030 + Math.sin(time * 0.001 + i * 0.3) * 0.018;
 
         const gradient = ctx.createLinearGradient(
           cx, cy,
@@ -215,7 +225,7 @@ export const AbstractVisual = () => {
         gradient.addColorStop(1, 'transparent');
 
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 0.6;
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(
@@ -265,7 +275,7 @@ export const AbstractVisual = () => {
         time++;
         ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
         drawGrid();
-        drawLightRays();
+        // drawLightRays — eliminado: los rayos cónicos eran demasiado intrusivos
         drawFocalStructure();
         drawConnections();
         drawParticles();
@@ -280,7 +290,6 @@ export const AbstractVisual = () => {
       time = 100;
       ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
       drawGrid();
-      drawLightRays();
       drawFocalStructure();
       drawConnections();
       drawParticles();
