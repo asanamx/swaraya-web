@@ -12,14 +12,7 @@ export const Navbar = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
-  // Scroll-driven icon reduction: Cardinal A (5 rayos) → Sextante B (1 rayo + centro)
-  // 0–60px: A completo
-  // 60–140px: crossfade A → B (los rayos N/S/E/W se desvanecen)
-  // >140px: B (sextante)
-  const MORPH_START = 60;
-  const MORPH_END = 140;
-  const morphProgress = Math.min(Math.max((scrollY - MORPH_START) / (MORPH_END - MORPH_START), 0), 1);
-
+  // Icon is fixed — no scroll morph. Solo necesitamos scrollY para el blur del navbar.
   const isScrolled = scrollY > 80;
 
   useEffect(() => {
@@ -90,18 +83,17 @@ export const Navbar = () => {
             style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
           >
             <SwarayaCardinal
-              progress={isHomePage && !isMobileMenuOpen ? morphProgress : 1}
-              size={42}
+              size={30}
               color="currentColor"
               accent={isMobileMenuOpen ? '#5468D6' : '#2C3E80'}
-              strokeWidth={3}
+              strokeWidth={2.6}
             />
             <span
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 700,
-                fontSize: '1.1875rem',
-                letterSpacing: '-0.025em',
+                fontSize: '1.375rem',
+                letterSpacing: '-0.028em',
                 lineHeight: 1,
               }}
             >

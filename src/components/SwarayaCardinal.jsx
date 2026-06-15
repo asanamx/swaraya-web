@@ -1,92 +1,78 @@
 'use client';
 
 /**
- * SwarayaCardinal — Sistema de marca oficial.
+ * SwarayaCardinal — Sistema de marca oficial (versión fija).
  *
  * Anatomía:
- *  5 LÍNEAS INDEPENDIENTES que no se tocan entre ellas.
- *  - 4 cardinales (N, S, E, W) forman una cruz INTERRUMPIDA con gap central
- *  - 1 diagonal NE flotando en el cuadrante superior derecho (OFFSET, separada)
- *  - El centro NO se dibuja — es espacio negativo, el silencio de la marca
+ *  6 elementos INDEPENDIENTES que no se tocan entre ellos.
+ *  - 4 cardinales (N, S, E, W) en sumi, formando una cruz interrumpida
+ *  - 1 punto central pequeño en INDIGO, flotando en el espacio negativo
+ *  - 1 diagonal NE en INDIGO, flotando separada en el cuadrante superior derecho
  *
  * Color:
- *  - Cardinales: color principal del texto (sumi)
- *  - Diagonal NE: índigo (#2C3E80) — la única acentuación cromática
+ *  - Cardinales: color del texto (sumi)
+ *  - Centro + diagonal NE: indigo (#2C3E80) — dos acentos cromáticos
  *
- * Scroll morph (A → B):
- *  - progress 0 → 4 cardinales + diagonal NE visibles
- *  - progress 1 → solo la diagonal NE indigo (la firma)
- *
- * El gap central es el ADN compartido entre A y B — siempre presente.
+ * Comportamiento: FIJO. Sin morph. Sin reacción al scroll.
+ * El ícono permanece igual en hero, scroll, páginas internas y mobile menu.
  *
  * Props:
- *  - progress: 0..1
- *  - size: pixel size
- *  - color: stroke color for cardinals (default currentColor)
- *  - accent: stroke color for NE diagonal (default '#2C3E80')
- *  - strokeWidth: line weight (default 3)
+ *  - size: pixel size (default 32)
+ *  - color: stroke color para los 4 cardinales (default currentColor)
+ *  - accent: color para el dot central + diagonal NE (default '#2C3E80')
+ *  - strokeWidth: grosor de líneas (default 2.6)
  */
 
 export default function SwarayaCardinal({
-  progress = 0,
-  size = 40,
+  size = 32,
   color = 'currentColor',
   accent = '#2C3E80',
-  strokeWidth = 3,
+  strokeWidth = 2.6,
 }) {
-  const p = Math.min(Math.max(progress, 0), 1);
-  const cardinalFade = 1 - p;
-
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 64 64"
+      viewBox="0 0 48 48"
       fill="none"
       aria-hidden
       style={{ display: 'block', flexShrink: 0 }}
     >
-      {/* N — cardinal vertical superior, NO toca el centro */}
+      {/* N — cardinal vertical superior, separado del centro */}
       <line
-        x1="32" y1="8" x2="32" y2="22"
+        x1="24" y1="3" x2="24" y2="16"
         stroke={color}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
-        opacity={cardinalFade}
-        style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* S — cardinal vertical inferior, NO toca el centro */}
+      {/* S — cardinal vertical inferior, separado del centro */}
       <line
-        x1="32" y1="42" x2="32" y2="56"
+        x1="24" y1="32" x2="24" y2="45"
         stroke={color}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
-        opacity={cardinalFade}
-        style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* E — cardinal horizontal derecha, NO toca el centro */}
+      {/* E — cardinal horizontal derecha, separada del centro */}
       <line
-        x1="42" y1="32" x2="56" y2="32"
+        x1="32" y1="24" x2="45" y2="24"
         stroke={color}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
-        opacity={cardinalFade}
-        style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* W — cardinal horizontal izquierda, NO toca el centro */}
+      {/* W — cardinal horizontal izquierda, separada del centro */}
       <line
-        x1="8" y1="32" x2="22" y2="32"
+        x1="3" y1="24" x2="16" y2="24"
         stroke={color}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
-        opacity={cardinalFade}
-        style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* NE — diagonal INDIGO flotando en el cuadrante superior derecho,
-          OFFSET del centro, separada del resto. Siempre visible.
-          Esta es la firma de la marca. */}
+      {/* Centro — punto INDIGO, flotando en el espacio negativo,
+          sin tocar ningún cardinal. Acento cromático interior. */}
+      <circle cx="24" cy="24" r="2.2" fill={accent} />
+      {/* NE — diagonal INDIGO, flotando en el cuadrante superior derecho,
+          completamente separada de todos los demás elementos. La firma. */}
       <line
-        x1="44" y1="22" x2="56" y2="10"
+        x1="32" y1="16" x2="45" y2="3"
         stroke={accent}
         strokeWidth={strokeWidth}
         strokeLinecap="round"
