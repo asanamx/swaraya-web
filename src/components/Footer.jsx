@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
+import SwarayaCardinal from './SwarayaCardinal';
 
 export const Footer = () => {
   const [topRef, topVisible] = useScrollReveal({ threshold: 0.15 });
@@ -238,44 +239,36 @@ export const Footer = () => {
           className={`pt-16 md:pt-20 pb-12 reveal ${bottomVisible ? 'revealed' : ''}`}
           style={{ borderTop: '1px solid rgba(245,242,236,0.08)' }}
         >
-          {/* Wordmark — la marca completa "swaraya" con sol radiante sobre el "sw" */}
+          {/* Wordmark del footer — sistema unificado con el navbar.
+              Misma proporción y composición. Cardinales en cream para
+              contraste con fondo oscuro. Indigo se mantiene luminoso. */}
           <div className="mb-12 md:mb-16">
             <div
               style={{
-                position: 'relative',
                 display: 'inline-flex',
-                alignItems: 'baseline',
-                fontFamily: "'Author', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '-0.035em',
-                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                lineHeight: 0.9,
+                alignItems: 'center',
+                gap: '0.5rem',
                 color: '#F5F2EC',
               }}
             >
-              <span style={{ position: 'relative', display: 'inline-block' }}>
-                {/* Sol radiante (svar) sobre la "s" */}
-                <svg
-                  style={{
-                    position: 'absolute',
-                    top: '-0.55em',
-                    left: '0.08em',
-                    width: '0.42em',
-                    height: '0.42em',
-                    overflow: 'visible',
-                  }}
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <circle cx="16" cy="16" r="6" fill="#F5F2EC" />
-                  <line x1="16" y1="2" x2="16" y2="7" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
-                  <line x1="5" y1="16" x2="9" y2="16" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
-                  <line x1="23" y1="16" x2="27" y2="16" stroke="#F5F2EC" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-                <span>sw</span>
+              <SwarayaCardinal
+                size={30}
+                color="currentColor"
+                accent="#5468D6"
+                strokeWidth={2.6}
+              />
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '1.375rem',
+                  letterSpacing: '-0.028em',
+                  lineHeight: 1,
+                  color: '#F5F2EC',
+                }}
+              >
+                swaraya
               </span>
-              <span>araya</span>
             </div>
           </div>
 
