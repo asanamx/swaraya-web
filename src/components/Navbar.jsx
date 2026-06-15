@@ -55,24 +55,65 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Full light theme now — no more dark hero overlay
-  const navTextColor = '#0E0F11';
-  const navMutedColor = 'rgba(14,15,17,0.6)';
-  const navHoverColor = '#2C3E80';
-  const navBgClass = isMobileMenuOpen
-    ? 'bg-[#0E0F11]'
+  // Theme-aware colors: cream + sumi at hero, invierte a oscuro al scrollear (Camino C2)
+  const navTextColor = isMobileMenuOpen
+    ? '#F5F2EC'
     : isScrolled
-      ? 'bg-[#F5F2EC]/92 backdrop-blur-xl border-b border-[rgba(14,15,17,0.06)]'
-      : 'bg-[#F5F2EC]/0';
+      ? '#F5F2EC'  // cream sobre fondo oscuro
+      : '#0E0F11'; // sumi sobre cream del hero
+
+  const navMutedColor = isMobileMenuOpen || isScrolled
+    ? 'rgba(245,242,236,0.6)'
+    : 'rgba(14,15,17,0.6)';
+
+  const navHoverColor = '#5468D6';
+
+  // Background: cream transparent al inicio, mobile menu sumi sólido,
+  // o C2 (Diálogo Abierto) al scrollear: sumi 0.85 + glow indigo radial + accent line
+  const navBgStyle = isMobileMenuOpen
+    ? { background: '#0E0F11' }
+    : isScrolled
+      ? {
+          background: 'rgba(14,15,17,0.85)',
+          backdropFilter: 'blur(20px) saturate(130%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(130%)',
+          borderBottom: '1px solid rgba(84,104,214,0.08)',
+        }
+      : { background: 'transparent' };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-350 ${
         isMobileMenuOpen ? 'h-screen' : ''
       }`}
+      style={navBgStyle}
       data-testid="navbar"
     >
-      <div className="container-main">
+      {/* C2 — "Eco de Diálogo Abierto": glow indigo + accent line, solo al scrollear */}
+      {isScrolled && !isMobileMenuOpen && (
+        <>
+          {/* Línea de acento indigo superior (gradient horizontal) */}
+          <div
+            aria-hidden
+            className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.4) 50%, transparent 100%)',
+            }}
+          />
+          {/* Glow indigo radial — mismo recipe que el footer "Diálogo Abierto" */}
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'radial-gradient(ellipse 60% 100% at 8% 50%, rgba(84,104,214,0.16) 0%, transparent 60%), radial-gradient(ellipse 40% 100% at 95% 50%, rgba(44,62,128,0.10) 0%, transparent 60%)',
+            }}
+          />
+        </>
+      )}
+
+      <div className="container-main relative">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
           {/* Logo: Cardinal Asimétrico A → Sextante B (scroll-driven, no letter deformation) */}
           <Link
@@ -85,7 +126,7 @@ export const Navbar = () => {
             <SwarayaCardinal
               size={30}
               color="currentColor"
-              accent={isMobileMenuOpen ? '#5468D6' : '#2C3E80'}
+              accent={isMobileMenuOpen || isScrolled ? '#5468D6' : '#2C3E80'}
               strokeWidth={2.6}
             />
             <span
