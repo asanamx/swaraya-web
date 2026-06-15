@@ -435,6 +435,18 @@ body {
   75%     { transform: translate(10px, 4px); }
 }
 
+/* Glow pulse para SectionGlow — escala + opacidad sin perder centro */
+@keyframes glowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.85; }
+  50%      { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+
+/* Rotación lenta para anillos concéntricos del SectionGlow */
+@keyframes glowSpin {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 @keyframes gridMove {
   0% { transform: translate(0, 0); }
   100% { transform: translate(60px, 60px); }

@@ -2,6 +2,7 @@
 
 import useScrollReveal from '../hooks/useScrollReveal';
 import SectionParticles from './SectionParticles';
+import SectionGlow from './SectionGlow';
 
 export const Philosophy = () => {
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -13,7 +14,8 @@ export const Philosophy = () => {
       className="section-padding-lg bg-[#FAF8F2] relative overflow-hidden"
       data-testid="philosophy-section"
     >
-      {/* Capa sutil de partículas — evita que la sección se vea sobre-simplificada */}
+      {/* Glow indigo a la izquierda del texto + partículas */}
+      <SectionGlow position={{ x: 22, y: 50 }} size={500} intensity="medium" />
       <SectionParticles density="medium" opacity={0.50} seed={7} />
 
       {/* Top border */}
