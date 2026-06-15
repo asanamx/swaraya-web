@@ -129,23 +129,32 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-350 ${
+      className={`fixed top-0 left-0 right-0 z-50 ${
         isMobileMenuOpen ? 'h-screen' : ''
       }`}
-      style={navBgStyle}
+      style={{
+        ...navBgStyle,
+        // Crossfade cinematográfico — easing premium, duración cómoda al ojo.
+        // Aplicado explícitamente a las propiedades que cambian para evitar
+        // jank en navegadores que no transicionan correctamente `transition-all`.
+        transitionProperty:
+          'background-color, background, backdrop-filter, -webkit-backdrop-filter, border-color, box-shadow',
+        transitionDuration: '420ms',
+        transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      }}
       data-testid="navbar"
     >
-      {/* Acento superior — solo cuando el navbar tiene fondo cream (post hero) */}
-      {!onDarkHero && isScrolled && !isMobileMenuOpen && (
-        <div
-          aria-hidden
-          className="absolute top-0 left-0 right-0 h-px pointer-events-none"
-          style={{
-            background:
-              `linear-gradient(90deg, transparent 0%, ${colors.indigo.onDark}59 50%, transparent 100%)`,
-          }}
-        />
-      )}
+      {/* Acento superior — siempre en el DOM, opacity-fade para crossfade suave */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+        style={{
+          background:
+            `linear-gradient(90deg, transparent 0%, ${colors.indigo.onDark}59 50%, transparent 100%)`,
+          opacity: !onDarkHero && isScrolled && !isMobileMenuOpen ? 1 : 0,
+          transition: 'opacity 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+        }}
+      />
 
       <div className="container-main relative">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
@@ -155,7 +164,10 @@ export const Navbar = () => {
             className="relative z-50 flex items-center gap-2.5"
             data-testid="navbar-logo"
             aria-label="swaraya — Inicio"
-            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor }}
+            style={{
+              color: isMobileMenuOpen ? '#F5F2EC' : navTextColor,
+              transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
           >
             <SwarayaCardinal
               size={30}
@@ -183,8 +195,11 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="link-hover text-[0.8125rem] tracking-wide transition-colors"
-                  style={{ color: navMutedColor }}
+                  className="link-hover text-[0.8125rem] tracking-wide"
+                  style={{
+                    color: navMutedColor,
+                    transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+                  }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
                   onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
@@ -195,8 +210,11 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="link-hover text-[0.8125rem] tracking-wide transition-colors"
-                  style={{ color: navMutedColor }}
+                  className="link-hover text-[0.8125rem] tracking-wide"
+                  style={{
+                    color: navMutedColor,
+                    transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+                  }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
                   onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
