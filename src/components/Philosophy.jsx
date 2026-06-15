@@ -1,6 +1,7 @@
 'use client';
 
 import useScrollReveal from '../hooks/useScrollReveal';
+import SectionParticles from './SectionParticles';
 
 export const Philosophy = () => {
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -9,9 +10,12 @@ export const Philosophy = () => {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="section-padding-lg bg-[#FAF8F2] relative"
+      className="section-padding-lg bg-[#FAF8F2] relative overflow-hidden"
       data-testid="philosophy-section"
     >
+      {/* Capa sutil de partículas — evita que la sección se vea sobre-simplificada */}
+      <SectionParticles density="low" opacity={0.16} seed={7} />
+
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">
         <div className="container-main">

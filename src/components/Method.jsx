@@ -1,6 +1,7 @@
 'use client';
 
 import useScrollReveal from '../hooks/useScrollReveal';
+import SectionParticles from './SectionParticles';
 
 const steps = [
   {
@@ -37,10 +38,13 @@ export const Method = () => {
   return (
     <section
       id="method"
-      className="section-padding bg-[#F5F2EC]"
+      className="section-padding bg-[#F5F2EC] relative overflow-hidden"
       data-testid="method-section"
     >
-      <div className="container-main">
+      {/* Capa sutil de partículas */}
+      <SectionParticles density="medium" opacity={0.14} seed={3} />
+
+      <div className="container-main relative z-10">
         {/* Header */}
         <div 
           ref={headerRef}
