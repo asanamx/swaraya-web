@@ -23,7 +23,7 @@ import { useMemo } from 'react';
  */
 export default function SectionParticles({
   density = 'low',
-  opacity = 0.18,
+  opacity = 0.40,
   color = '#5468D6',
   seed = 1,
 }) {
@@ -52,8 +52,8 @@ export default function SectionParticles({
       const delay = (r1 + r2) * 6;
       // Opacidad variando un poco entre partículas
       const opacityFactor = 0.7 + r2 * 0.6;
-      // Tamaño 1px ó 2px (pocas 2px para acento)
-      const sizePx = r1 > 0.85 ? 2 : 1;
+      // Tamaño 2px ó 3px (algunas más grandes para acento visible)
+      const sizePx = r1 > 0.75 ? 3 : 2;
 
       arr.push({
         left: `${left}%`,
@@ -84,7 +84,10 @@ export default function SectionParticles({
             height: `${p.sizePx}px`,
             background: color,
             opacity: opacity * p.opacityFactor,
-            animation: `float ${p.duration}s ease-in-out infinite`,
+            animationName: 'driftSubtle',
+            animationDuration: `${p.duration}s`,
+            animationTimingFunction: 'ease-in-out',
+            animationIterationCount: 'infinite',
             animationDelay: `-${p.delay}s`,
             willChange: 'transform',
           }}

@@ -42,7 +42,7 @@ export const Method = () => {
       data-testid="method-section"
     >
       {/* Capa sutil de partículas */}
-      <SectionParticles density="medium" opacity={0.14} seed={3} />
+      <SectionParticles density="medium" opacity={0.40} seed={3} />
 
       <div className="container-main relative z-10">
         {/* Header */}

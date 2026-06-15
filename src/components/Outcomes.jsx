@@ -68,7 +68,7 @@ export const Outcomes = () => {
       />
 
       {/* Capa sutil de partículas — densidad muy baja para complementar el grid */}
-      <SectionParticles density="low" opacity={0.12} seed={5} />
+      <SectionParticles density="low" opacity={0.38} seed={5} />
 
       <div className="container-main relative z-10">
         {/* Header */}
