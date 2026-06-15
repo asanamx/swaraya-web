@@ -91,10 +91,10 @@ export const Navbar = () => {
           >
             <SwarayaCardinal
               progress={isHomePage && !isMobileMenuOpen ? morphProgress : 1}
-              size={34}
+              size={42}
               color="currentColor"
               accent={isMobileMenuOpen ? '#5468D6' : '#2C3E80'}
-              strokeWidth={2.2}
+              strokeWidth={3}
             />
             <span
               style={{

@@ -3,42 +3,39 @@
 /**
  * SwarayaCardinal — Sistema de marca oficial.
  *
- * Concepto: Cardinal Asimétrico — el ícono que queda cuando las letras
- * del wordmark se retiran. Cada rayo viene de la anatomía tipográfica
- * de una letra específica:
- *  - NE largo: la oreja de la "r"
- *  - N corto: tope de stems de las "a"
- *  - S medio: descender de la "y"
- *  - E/W marcadores: terminales horizontales (w, s)
- *  - Centro indigo: el soberano, el punto de decisión
+ * Anatomía:
+ *  5 LÍNEAS INDEPENDIENTES que no se tocan entre ellas.
+ *  - 4 cardinales (N, S, E, W) forman una cruz INTERRUMPIDA con gap central
+ *  - 1 diagonal NE flotando en el cuadrante superior derecho (OFFSET, separada)
+ *  - El centro NO se dibuja — es espacio negativo, el silencio de la marca
  *
- * Comportamiento scroll:
- *  - progress 0   → Variante A (Cardinal completo, 5 rayos)
- *  - progress 0→1 → Crossfade: rayos N/S/E/W → 0
- *  - progress 1   → Variante B (Sextante: solo NE + centro)
+ * Color:
+ *  - Cardinales: color principal del texto (sumi)
+ *  - Diagonal NE: índigo (#2C3E80) — la única acentuación cromática
  *
- * El NE largo y el centro indigo PERMANECEN constantes — son el ADN
- * compartido entre A y B.
+ * Scroll morph (A → B):
+ *  - progress 0 → 4 cardinales + diagonal NE visibles
+ *  - progress 1 → solo la diagonal NE indigo (la firma)
+ *
+ * El gap central es el ADN compartido entre A y B — siempre presente.
  *
  * Props:
- *  - progress: 0..1 (drives the A → B reduction)
- *  - size: pixel size of the SVG (default 36)
- *  - color: stroke color for rays (default 'currentColor')
- *  - accent: fill color for the center dot (default '#2C3E80' indigo)
- *  - strokeWidth: ray weight (default 2.2)
+ *  - progress: 0..1
+ *  - size: pixel size
+ *  - color: stroke color for cardinals (default currentColor)
+ *  - accent: stroke color for NE diagonal (default '#2C3E80')
+ *  - strokeWidth: line weight (default 3)
  */
 
 export default function SwarayaCardinal({
   progress = 0,
-  size = 36,
+  size = 40,
   color = 'currentColor',
   accent = '#2C3E80',
-  strokeWidth = 2.2,
+  strokeWidth = 3,
 }) {
   const p = Math.min(Math.max(progress, 0), 1);
-  const fade = 1 - p;
-  const eOpacity = 0.6 * fade;
-  const wOpacity = 0.6 * fade;
+  const cardinalFade = 1 - p;
 
   return (
     <svg
@@ -49,41 +46,51 @@ export default function SwarayaCardinal({
       aria-hidden
       style={{ display: 'block', flexShrink: 0 }}
     >
-      {/* NE long ray — ALWAYS visible (shared DNA: A ∩ B) */}
+      {/* N — cardinal vertical superior, NO toca el centro */}
       <line
-        x1="34.5" y1="29.5" x2="58" y2="6"
-        stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"
-      />
-      {/* N short ray — fades to 0 with progress */}
-      <line
-        x1="32" y1="28" x2="32" y2="14"
-        stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"
-        opacity={fade}
+        x1="32" y1="8" x2="32" y2="22"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        opacity={cardinalFade}
         style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* S medium ray — fades */}
+      {/* S — cardinal vertical inferior, NO toca el centro */}
       <line
-        x1="32" y1="36" x2="32" y2="54"
-        stroke={color} strokeWidth={strokeWidth} strokeLinecap="round"
-        opacity={fade}
+        x1="32" y1="42" x2="32" y2="56"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        opacity={cardinalFade}
         style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* E small marker — fades */}
+      {/* E — cardinal horizontal derecha, NO toca el centro */}
       <line
-        x1="36" y1="32" x2="46" y2="32"
-        stroke={color} strokeWidth={strokeWidth * 0.9} strokeLinecap="round"
-        opacity={eOpacity}
+        x1="42" y1="32" x2="56" y2="32"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        opacity={cardinalFade}
         style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* W small marker — fades */}
+      {/* W — cardinal horizontal izquierda, NO toca el centro */}
       <line
-        x1="28" y1="32" x2="18" y2="32"
-        stroke={color} strokeWidth={strokeWidth * 0.9} strokeLinecap="round"
-        opacity={wOpacity}
+        x1="8" y1="32" x2="22" y2="32"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        opacity={cardinalFade}
         style={{ transition: 'opacity 0.25s ease-out' }}
       />
-      {/* Center — ALWAYS visible (shared DNA: A ∩ B) */}
-      <circle cx="32" cy="32" r="3.4" fill={accent} />
+      {/* NE — diagonal INDIGO flotando en el cuadrante superior derecho,
+          OFFSET del centro, separada del resto. Siempre visible.
+          Esta es la firma de la marca. */}
+      <line
+        x1="44" y1="22" x2="56" y2="10"
+        stroke={accent}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
