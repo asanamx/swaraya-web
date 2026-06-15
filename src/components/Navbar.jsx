@@ -57,35 +57,65 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Theme-aware colors: cream + sumi at hero, invierte a oscuro al scrollear (Camino C2)
+  // En la home tenemos un hero OSCURO (mismo tono que el footer). Detectamos
+  // si ya pasamos el alto del hero para invertir el navbar de "transparente
+  // sobre oscuro" a "cream sobre secciones claras".
+  // En el resto de páginas (blog, legal) el hero es claro y aplica la lógica
+  // tradicional desde el inicio.
+  const [pastHero, setPastHero] = useState(false);
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setPastHero(true); // forzamos modo "claro" para páginas con hero claro
+      return;
+    }
+    const update = () => {
+      const heroH = window.innerHeight; // hero es min-h-screen
+      setPastHero(window.scrollY > heroH - 80);
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    return () => window.removeEventListener('scroll', update);
+  }, [isHomePage]);
+
+  // En home, dos estados visuales:
+  //   - !pastHero (sobre hero oscuro): nav transparente + texto cream
+  //   - pastHero (sobre secciones cream): nav cream con blur + texto sumi
+  // En otras páginas siempre estado "claro".
+  const onDarkHero = isHomePage && !pastHero;
+
+  // Theme-aware colors
   const navTextColor = isMobileMenuOpen
     ? '#F5F2EC'
-    : isScrolled
-      ? '#F5F2EC'  // cream sobre fondo oscuro
-      : '#0E0F11'; // sumi sobre cream del hero
+    : onDarkHero
+      ? '#F5F2EC'    // cream sobre hero oscuro
+      : '#0E0F11';   // sumi sobre cream
 
-  // Links del menú: más legibles sobre el navbar oscuro (0.85 en lugar de 0.6)
   const navMutedColor = isMobileMenuOpen
     ? 'rgba(245,242,236,0.7)'
-    : isScrolled
-      ? 'rgba(245,242,236,0.82)'  // cream casi pleno sobre oscuro — más contraste
-      : 'rgba(14,15,17,0.6)';     // sumi atenuado sobre cream
+    : onDarkHero
+      ? 'rgba(245,242,236,0.78)'  // cream atenuado sobre oscuro
+      : 'rgba(14,15,17,0.62)';    // sumi atenuado sobre cream
 
   const navHoverColor = '#5468D6';
 
-  // Background: cream transparent al inicio, mobile menu sumi sólido,
-  // o C2 (Diálogo Abierto) al scrollear: casi negro sólido + glow indigo
-  // concentrado SOBRE EL LOGO (no centrado) + accent line
+  // Background:
+  //   - Mobile menu abierto: sumi sólido
+  //   - Sobre hero oscuro: transparente (el hero ya es oscuro)
+  //   - Sobre cream (home pastHero u otras páginas isScrolled): cream con blur
+  //   - Sobre cream en top de página /blog, /privacidad: transparente
   const navBgStyle = isMobileMenuOpen
     ? { background: '#0E0F11' }
-    : isScrolled
-      ? {
-          background: 'rgba(14,15,17,0.96)',  // casi sólido — como el footer
-          backdropFilter: 'blur(20px) saturate(140%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(140%)',
-          borderBottom: '1px solid rgba(84,104,214,0.12)',
-        }
-      : { background: 'transparent' };
+    : onDarkHero
+      ? { background: 'transparent' }
+      : isScrolled
+        ? {
+            background: 'rgba(245,242,236,0.92)',
+            backdropFilter: 'blur(18px) saturate(140%)',
+            WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+            borderBottom: '1px solid rgba(14,15,17,0.06)',
+          }
+        : { background: 'transparent' };
 
   return (
     <nav
@@ -95,29 +125,16 @@ export const Navbar = () => {
       style={navBgStyle}
       data-testid="navbar"
     >
-      {/* C2 — "Eco de Diálogo Abierto": glow indigo + accent line, solo al scrollear */}
-      {isScrolled && !isMobileMenuOpen && (
-        <>
-          {/* Línea de acento indigo superior — fade en los extremos */}
-          <div
-            aria-hidden
-            className="absolute top-0 left-0 right-0 h-px pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.55) 25%, rgba(84,104,214,0.35) 50%, transparent 100%)',
-            }}
-          />
-          {/* Glow indigo CONCENTRADO sobre el logo (lado izquierdo, no centrado) — 
-              replica el carácter del footer "Diálogo Abierto" pero focalizado */}
-          <div
-            aria-hidden
-            className="absolute inset-0 pointer-events-none overflow-hidden"
-            style={{
-              background:
-                'radial-gradient(ellipse 28% 240% at 14% 50%, rgba(84,104,214,0.28) 0%, rgba(84,104,214,0.08) 35%, transparent 60%)',
-            }}
-          />
-        </>
+      {/* Acento superior — solo cuando el navbar tiene fondo cream (post hero) */}
+      {!onDarkHero && isScrolled && !isMobileMenuOpen && (
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
+          }}
+        />
       )}
 
       <div className="container-main relative">
@@ -133,7 +150,7 @@ export const Navbar = () => {
             <SwarayaCardinal
               size={30}
               color="currentColor"
-              accent={isMobileMenuOpen || isScrolled ? '#5468D6' : '#2C3E80'}
+              accent={onDarkHero ? '#5468D6' : '#2C3E80'}
               strokeWidth={2.6}
             />
             <span
