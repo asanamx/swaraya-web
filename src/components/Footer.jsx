@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import SwarayaCardinal from './SwarayaCardinal';
 import SectionParticles from './SectionParticles';
+import { colors } from '../lib/tokens';
 
 export const Footer = () => {
   const [topRef, topVisible] = useScrollReveal({ threshold: 0.15 });
@@ -113,6 +114,14 @@ export const Footer = () => {
                   color: '#F5F2EC',
                   borderBottom: '1px solid rgba(245,242,236,0.30)',
                   paddingBottom: '0.5rem',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colors.indigo.onDark;
+                  e.currentTarget.style.borderBottomColor = `${colors.indigo.onDark}aa`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#F5F2EC';
+                  e.currentTarget.style.borderBottomColor = 'rgba(245,242,236,0.30)';
                 }}
                 data-testid="footer-cta-email"
               >
@@ -227,16 +236,18 @@ export const Footer = () => {
                     type="submit"
                     className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-medium tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
                     style={{
-                      background: '#F5F2EC',
-                      color: '#0E0F11',
+                      background: colors.indigo.onDark,
+                      color: colors.textOnDark.primary,
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#FFFFFF';
+                      e.currentTarget.style.background = colors.indigo.onDarkHover;
                       e.currentTarget.style.transform = 'translateY(-1px)';
+                      e.currentTarget.style.boxShadow = `0 12px 28px -8px ${colors.indigo.onDark}66`;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#F5F2EC';
+                      e.currentTarget.style.background = colors.indigo.onDark;
                       e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
                     }}
                     data-testid="footer-submit-button"
                   >
