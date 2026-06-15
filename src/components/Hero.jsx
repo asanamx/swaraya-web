@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import ParticleField from './ParticleField';
+import NeuralField from './NeuralField';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,8 +44,14 @@ export const Hero = () => {
         }}
       />
 
-      {/* PARTICLE FIELD — editorial constellation, slow drift + connections */}
-      <ParticleField density={70} maxConnect={150} speed={0.18} />
+      {/* NEURAL FIELD — el glifo Cardinal actúa como fuente luminosa de
+          partículas que se conectan entre sí formando una red neuronal */}
+      <NeuralField
+        glyphSizeRatio={0.30}
+        glyphCenter={{ x: 0.76, y: 0.44 }}
+        maxParticles={110}
+        connectDistance={120}
+      />
 
       {/* Top accent line */}
       <div

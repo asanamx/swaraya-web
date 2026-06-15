@@ -366,7 +366,7 @@ export const Footer = () => {
             }}
           >
             <span>© {year} swaraya</span>
-            <span>Inteligencia investigada y diseñada</span>
+            <span>Agencia de inteligencia artificial aplicada</span>
           </div>
         </div>
       </div>
