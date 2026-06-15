@@ -2,13 +2,24 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import NeuralField from './NeuralField';
+import AbstractVisual from './AbstractVisual';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [particles, setParticles] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
+    // Generamos las partículas flotantes CSS sólo en cliente para evitar
+    // mismatch de hidratación (Math.random difiere server/client).
+    setParticles(
+      [...Array(20)].map(() => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animation: `float ${8 + Math.random() * 10}s ease-in-out infinite`,
+        animationDelay: `${Math.random() * 5}s`,
+      })),
+    );
     return () => clearTimeout(timer);
   }, []);
 
@@ -44,14 +55,28 @@ export const Hero = () => {
         }}
       />
 
-      {/* NEURAL FIELD — el glifo Cardinal actúa como fuente luminosa de
-          partículas que se conectan entre sí formando una red neuronal */}
-      <NeuralField
-        glyphSizeRatio={0.30}
-        glyphCenter={{ x: 0.76, y: 0.44 }}
-        maxParticles={110}
-        connectDistance={120}
-      />
+      {/* ABSTRACT VISUAL — sistema orbital de partículas, anillos y rayos
+          desde el punto luminoso indigo. Es la animación original del sitio,
+          adaptada al tema cream + indigo. */}
+      <AbstractVisual />
+
+      {/* Partículas flotantes CSS — drift orgánico independiente del canvas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {particles.map((p, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: p.left,
+              top: p.top,
+              background: '#5468D6',
+              opacity: 0.32,
+              animation: p.animation,
+              animationDelay: p.animationDelay,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Top accent line */}
       <div
