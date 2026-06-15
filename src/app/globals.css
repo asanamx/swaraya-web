@@ -47,10 +47,43 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --text-on-dark-secondary: #C8CCDC;
   --text-on-dark-tertiary: #9BA5B7;
 
-  /* Acento institucional */
-  --accent-primary: #2C3E80;   /* indigo profundo (light mode) */
-  --accent-secondary: #5468D6; /* indigo eléctrico (dark mode) */
-  --accent-tertiary: #7AC4E0;  /* cyan legacy */
+  /* ─────────────────────────────────────────────────────────────
+     ACENTO INDIGO — Sistema dual por contexto de fondo
+     ─────────────────────────────────────────────────────────────
+     Swaraya tiene UN solo indigo perceptual pero calibrado en dos
+     tonos según el fondo en el que aparezca. Es un sistema funcional
+     de contraste, no un capricho cromático.
+
+     • Sobre fondo CREAM (#F5F2EC, #FAF8F2):
+         usa `--indigo-on-cream` = #2C3E80 (deep).
+         Casos: eyebrows de secciones, "inteligencia aplicada" en
+         titulares, dot del logo Cardinal sobre cream, links indigo
+         sobre fondo claro.
+
+     • Sobre fondo DARK (#0E0F11):
+         usa `--indigo-on-dark` = #5468D6 (electric).
+         Casos: botones primarios, ChatWidget completo, "Inteligencia
+         real" del hero, eyebrows sobre hero/footer, partículas y
+         glows.
+
+     • Estados hover:
+         on-cream: oscurece hacia #1F2D5C
+         on-dark : aclara hacia #7585E0
+
+     NUNCA invertir — el deep sobre dark se pierde y el electric
+     sobre cream se ve lavado. La regla es invariante.
+     ─────────────────────────────────────────────────────────────
+  */
+  --indigo-on-cream: #2C3E80;
+  --indigo-on-cream-hover: #1F2D5C;
+  --indigo-on-dark: #5468D6;
+  --indigo-on-dark-hover: #7585E0;
+
+  /* Aliases legacy (mantener para no romper código existente).
+     Para nuevo código, usa los `--indigo-on-*` semánticos arriba. */
+  --accent-primary: var(--indigo-on-cream);    /* = #2C3E80 */
+  --accent-secondary: var(--indigo-on-dark);   /* = #5468D6 */
+  --accent-tertiary: #7AC4E0;                  /* cyan legacy, no usar */
 
   /* Borders sobre crema */
   --border-1: rgba(14, 15, 17, 0.04);
