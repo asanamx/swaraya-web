@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import SwarayaCardinal from './SwarayaCardinal';
+import { colors, indigoFor, borders } from '../lib/tokens';
 
 export const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -84,28 +85,37 @@ export const Navbar = () => {
   // En otras páginas siempre estado "claro".
   const onDarkHero = isHomePage && !pastHero;
 
-  // Theme-aware colors
+  // ─────────────────────────────────────────────────────────────────
+  // Colores theme-aware — sistema dual aplicado vía tokens.
+  // Sobre hero oscuro usa los tokens "on dark"; sobre cream los "on cream".
+  // El indigo correcto se resuelve con `indigoFor(surface)`.
+  // ─────────────────────────────────────────────────────────────────
+  const surface = onDarkHero ? 'dark' : 'cream';
+  const indigoAccent = indigoFor(surface);                    // dot del logo, hover de links
+  const ctaIndigo = colors.indigo.onDark;                     // CTA siempre brillante (el botón tiene texto cream)
+  const ctaIndigoHover = colors.indigo.onDarkHover;
+
   const navTextColor = isMobileMenuOpen
-    ? '#F5F2EC'
+    ? colors.textOnDark.primary
     : onDarkHero
-      ? '#F5F2EC'    // cream sobre hero oscuro
-      : '#0E0F11';   // sumi sobre cream
+      ? colors.textOnDark.primary    // cream sobre hero oscuro
+      : colors.text.primary;         // sumi sobre cream
 
   const navMutedColor = isMobileMenuOpen
     ? 'rgba(245,242,236,0.7)'
     : onDarkHero
-      ? 'rgba(245,242,236,0.78)'  // cream atenuado sobre oscuro
-      : 'rgba(14,15,17,0.62)';    // sumi atenuado sobre cream
+      ? 'rgba(245,242,236,0.78)'     // cream atenuado sobre oscuro
+      : 'rgba(14,15,17,0.62)';       // sumi atenuado sobre cream
 
-  const navHoverColor = '#5468D6';
+  const navHoverColor = indigoAccent;
 
-  // Background:
-  //   - Mobile menu abierto: sumi sólido
-  //   - Sobre hero oscuro: transparente (el hero ya es oscuro)
-  //   - Sobre cream (home pastHero u otras páginas isScrolled): cream con blur
-  //   - Sobre cream en top de página /blog, /privacidad: transparente
+  // Background del navbar — cuatro estados posibles:
+  //   1. Mobile menu abierto → dark sólido
+  //   2. Sobre hero oscuro → transparente (el hero ya es oscuro)
+  //   3. Sobre cream + scrolleado → cream con blur
+  //   4. Sobre cream + en top → transparente
   const navBgStyle = isMobileMenuOpen
-    ? { background: '#0E0F11' }
+    ? { background: colors.dark.base }
     : onDarkHero
       ? { background: 'transparent' }
       : isScrolled
@@ -113,7 +123,7 @@ export const Navbar = () => {
             background: 'rgba(245,242,236,0.92)',
             backdropFilter: 'blur(18px) saturate(140%)',
             WebkitBackdropFilter: 'blur(18px) saturate(140%)',
-            borderBottom: '1px solid rgba(14,15,17,0.06)',
+            borderBottom: `1px solid ${borders.onCream.soft}`,
           }
         : { background: 'transparent' };
 
@@ -132,7 +142,7 @@ export const Navbar = () => {
           className="absolute top-0 left-0 right-0 h-px pointer-events-none"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
+              `linear-gradient(90deg, transparent 0%, ${colors.indigo.onDark}59 50%, transparent 100%)`,
           }}
         />
       )}
@@ -150,7 +160,7 @@ export const Navbar = () => {
             <SwarayaCardinal
               size={30}
               color="currentColor"
-              accent={onDarkHero ? '#5468D6' : '#2C3E80'}
+              accent={indigoAccent}
               strokeWidth={2.6}
             />
             <span
@@ -203,15 +213,15 @@ export const Navbar = () => {
             className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
             style={{
               padding: '10px 20px',
-              background: '#5468D6',
-              color: '#F5F2EC',
+              background: ctaIndigo,
+              color: colors.textOnDark.primary,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#7585E0';
-              e.currentTarget.style.boxShadow = '0 8px 20px -6px rgba(84,104,214,0.4)';
+              e.currentTarget.style.background = ctaIndigoHover;
+              e.currentTarget.style.boxShadow = `0 8px 20px -6px ${ctaIndigo}66`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#5468D6';
+              e.currentTarget.style.background = ctaIndigo;
               e.currentTarget.style.boxShadow = 'none';
             }}
             data-testid="nav-cta"
@@ -272,8 +282,8 @@ export const Navbar = () => {
               onClick={() => scrollToSection('#contact')}
               className="mt-10 inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-full self-start"
               style={{
-                background: '#5468D6',
-                color: '#F5F2EC',
+                background: colors.indigo.onDark,
+                color: colors.textOnDark.primary,
                 padding: '14px 26px',
                 fontFamily: "'Inter', sans-serif",
               }}
@@ -283,8 +293,8 @@ export const Navbar = () => {
             <div
               className="mt-12 pt-6 text-xs"
               style={{
-                borderTop: '1px solid rgba(245,242,236,0.06)',
-                color: '#5D6878',
+                borderTop: `1px solid ${borders.onDark.soft}`,
+                color: colors.text.secondary,
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
               }}
