@@ -1,0 +1,144 @@
+{
+  "steps": [
+    {
+      "step": "createCategories",
+      "count": 5
+    },
+    {
+      "step": "patchPosts",
+      "count": 21
+    },
+    {
+      "step": "deleteOldCategories",
+      "error": "Mutate failed: 409 {\"error\":{\"description\":\"Mutation failed: Document \\\"286ecf29-183a-4c30-bc65-911dabef0e7a\\\" cannot be deleted as there are references to it from \\\"drafts.b7aa645b-5690-412f-9aad-8c77f83ec731\\\"\",\"items\":[{\"error\":{\"description\":\"Document \\\"286ecf29-183a-4c30-bc65-911dabef0e7a\\\" cannot be deleted as there are references to it from \\\"drafts.b7aa645b-5690-412f-9aad-8c77f83ec731\\\"\",\"id\":\"286ecf29-183a-4c30-bc65-911dabef0e7a\",\"referencingIDs\":[\"drafts.b7aa645b-5690-412f-9aad-8c77f83ec731\"],\"type\":\"documentHasExistingReferencesError\"},\"index\":1}],\"type\":\"mutationError\"}}\n"
+    }
+  ],
+  "finalPosts": [
+    {
+      "category": "Tendencias",
+      "publishedAt": "2026-01-05T10:00:00.000Z",
+      "slug": "tendencias-ia-2026",
+      "title": "Tendencias de IA para 2026: Lo que Viene"
+    },
+    {
+      "category": "Arquitectura",
+      "publishedAt": "2026-01-10T10:00:00.000Z",
+      "slug": "apis-ia-construir-vs-consumir",
+      "title": "APIs de IA: Construir vs Consumir"
+    },
+    {
+      "category": "Casos de Uso",
+      "publishedAt": "2026-01-15T10:00:00.000Z",
+      "slug": "prediccion-demanda-machine-learning",
+      "title": "Predicción de Demanda con Machine Learning"
+    },
+    {
+      "category": "Estrategia de IA",
+      "publishedAt": "2026-01-20T10:00:00.000Z",
+      "slug": "construyendo-equipo-ia-efectivo",
+      "title": "Construyendo un Equipo de IA Efectivo"
+    },
+    {
+      "category": "Casos de Uso",
+      "publishedAt": "2026-01-25T10:00:00.000Z",
+      "slug": "computer-vision-cadena-suministro",
+      "title": "Computer Vision en la Cadena de Suministro"
+    },
+    {
+      "category": "Automatización Inteligente",
+      "publishedAt": "2026-01-30T10:00:00.000Z",
+      "slug": "automatizacion-inteligente-rpa-ia",
+      "title": "Automatización Inteligente de Procesos: RPA + IA"
+    },
+    {
+      "category": "Estrategia de IA",
+      "publishedAt": "2026-02-05T10:00:00.000Z",
+      "slug": "gobernanza-ia-implementacion-responsable",
+      "title": "Gobernanza de IA: Principios para una Implementación Responsable"
+    },
+    {
+      "category": "Casos de Uso",
+      "publishedAt": "2026-02-10T10:00:00.000Z",
+      "slug": "nlp-aplicado-casos-practicos",
+      "title": "NLP Aplicado: Casos Prácticos en la Industria"
+    },
+    {
+      "category": "Tendencias",
+      "publishedAt": "2026-02-15T10:00:00.000Z",
+      "slug": "futuro-trabajo-ia-generativa",
+      "title": "El Futuro del Trabajo con IA Generativa"
+    },
+    {
+      "category": "Arquitectura",
+      "publishedAt": "2026-02-20T10:00:00.000Z",
+      "slug": "data-mesh-arquitectura-datos",
+      "title": "Data Mesh: Descentralizando la Arquitectura de Datos"
+    },
+    {
+      "category": "Casos de Uso",
+      "publishedAt": "2026-02-25T10:00:00.000Z",
+      "slug": "llms-empresa-mas-alla-chatbot",
+      "title": "LLMs en la Empresa: Más Allá del Chatbot"
+    },
+    {
+      "category": "Arquitectura",
+      "publishedAt": "2026-02-28T10:00:00.000Z",
+      "slug": "implementar-mlops-organizacion",
+      "title": "Cómo Implementar MLOps en tu Organización"
+    },
+    {
+      "category": "Automatización Inteligente",
+      "publishedAt": "2026-03-01T10:00:00.000Z",
+      "slug": "roi-inteligencia-artificial",
+      "title": "Calculando el ROI de la Inteligencia Artificial"
+    },
+    {
+      "category": "Automatización Inteligente",
+      "publishedAt": "2026-03-09T22:06:00.000Z",
+      "slug": "arquitectura-ia-empresarial",
+      "title": "Arquitectura de IA Empresarial"
+    },
+    {
+      "category": "Automatización Inteligente",
+      "publishedAt": "2026-03-15T10:00:00.000Z",
+      "slug": "agentes-autonomos-ia-empresarial",
+      "title": "Agentes Autónomos: La Nueva Frontera de la IA Empresarial"
+    },
+    {
+      "category": "Arquitectura",
+      "publishedAt": "2026-05-28T17:10:54.287Z",
+      "slug": "evals-sistemas-llm-produccion",
+      "title": "Diseño de evals para sistemas LLM en producción"
+    },
+    {
+      "category": "Casos de Uso",
+      "publishedAt": "2026-05-31T17:10:37.396Z",
+      "slug": "por-que-ia-falla-empresas-grandes",
+      "title": "Por qué la IA falla en empresas grandes (y cómo evitarlo)"
+    },
+    {
+      "category": "Tendencias",
+      "publishedAt": "2026-06-03T17:10:19.249Z",
+      "slug": "cio-ia-agentica",
+      "title": "El nuevo rol del CIO ante la IA agéntica"
+    },
+    {
+      "category": "Estrategia de IA",
+      "publishedAt": "2026-06-06T17:10:04.149Z",
+      "slug": "metricas-exito-proyectos-ia",
+      "title": "Métricas que importan en proyectos de IA"
+    },
+    {
+      "category": "Arquitectura",
+      "publishedAt": "2026-06-09T17:09:46.081Z",
+      "slug": "rag-vs-fine-tuning-cuando-usar-cada-uno",
+      "title": "RAG vs Fine-tuning: cuándo usar cada uno"
+    },
+    {
+      "category": "Estrategia de IA",
+      "publishedAt": "2026-06-12T17:09:24.299Z",
+      "slug": "gobernanza-ia-instituciones",
+      "title": "Gobernanza de IA en instituciones: estructura antes que tecnología"
+    }
+  ]
+}
