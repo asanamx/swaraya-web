@@ -133,13 +133,23 @@ export const Footer = () => {
               </a>
 
               <div
-                className="mt-10 flex flex-col gap-1 text-sm"
+                className="mt-10 grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md"
                 style={{ color: '#9BA5B7', fontFamily: "'Inter', sans-serif" }}
               >
-                <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878', marginBottom: 6 }}>
-                  Sede
-                </span>
-                Ciudad de México · México
+                <div className="flex flex-col gap-1">
+                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878' }}>
+                    Sede
+                  </span>
+                  <span>Ciudad de México</span>
+                  <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>LatAm + remoto</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878' }}>
+                    Disponibilidad
+                  </span>
+                  <span>Lun – Vie · 9:00 – 19:00</span>
+                  <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>Respuesta en 24 h hábiles</span>
+                </div>
               </div>
             </div>
 

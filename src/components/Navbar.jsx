@@ -309,15 +309,40 @@ export const Navbar = () => {
               Iniciar Diálogo →
             </button>
             <div
-              className="mt-12 pt-6 text-xs"
+              className="mt-12 pt-6 flex flex-col gap-2"
               style={{
                 borderTop: `1px solid ${borders.onDark.soft}`,
                 color: colors.text.secondary,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
               }}
             >
-              hola@swaraya.ai · CDMX
+              <span
+                className="text-xs"
+                style={{
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: '#9BA5B7',
+                }}
+              >
+                hola@swaraya.ai
+              </span>
+              <span
+                className="text-xs"
+                style={{
+                  letterSpacing: '0.04em',
+                  color: '#7A8493',
+                }}
+              >
+                Ciudad de México · LatAm + remoto
+              </span>
+              <span
+                className="text-xs"
+                style={{
+                  letterSpacing: '0.04em',
+                  color: '#7A8493',
+                }}
+              >
+                Respuesta en 24 h hábiles
+              </span>
             </div>
           </div>
         )}
