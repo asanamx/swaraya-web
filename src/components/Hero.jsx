@@ -71,18 +71,7 @@ export const Hero = () => {
         }}
       />
 
-      {/* Grid casi imperceptible — 0.03 opacity per brief */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(245,242,236,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,242,236,0.03) 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-        }}
-      />
-
-      {/* Top accent line */}
+      {/* Grid pattern muy sutil — líneas cream sobre oscuro */}
       <div
         aria-hidden="true"
         className="absolute top-0 left-0 right-0 h-px"

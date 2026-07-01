@@ -1,9 +1,6 @@
 'use client';
 
 import useScrollReveal from '../hooks/useScrollReveal';
-import SectionParticles from './SectionParticles';
-import SectionGlow from './SectionGlow';
-import SectionGrid from './SectionGrid';
 
 export const Philosophy = () => {
   const [sectionRef, isVisible] = useScrollReveal({ threshold: 0.2 });
@@ -12,15 +9,19 @@ export const Philosophy = () => {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="section-padding-lg bg-[#FAF8F2] relative overflow-hidden"
+      className="section-padding-lg relative overflow-hidden"
+      style={{ background: '#F5F2EB' }}
       data-testid="philosophy-section"
     >
-      {/* Cuadrícula parcial anclada al foco — textura sutil */}
-      <SectionGrid focal={{ x: 22, y: 50 }} radius={42} lineAlpha={0.045} />
-
-      {/* Glow indigo a la izquierda + saturación alta de partículas */}
-      <SectionGlow position={{ x: 22, y: 50 }} size={500} intensity="medium" />
-      <SectionParticles density="high" opacity={0.72} seed={7} />
+      {/* Glow indigo suave detrás del manifiesto — único fondo */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(50% 45% at 50% 45%, rgba(84,104,214,0.08) 0%, transparent 70%)',
+        }}
+      />
 
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">
