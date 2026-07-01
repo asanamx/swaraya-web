@@ -55,12 +55,11 @@ export const Method = () => {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Ventana de progreso compacta y centrada en la sección:
-      //   arranca cuando el TOP de la sección alcanza el 65% del viewport
-      //   (usuario ya la está viendo bien) y termina cuando el TOP llega
-      //   al 25% del viewport. Total ≈ 0.4 * vh de scroll — ritmo natural.
-      const start = vh * 0.65;
-      const end = vh * 0.25;
+      // Ventana de progreso: rango medio, ni demasiado rápido ni demasiado
+      // largo. Arranca cuando el TOP alcanza el 75% del viewport y termina
+      // cuando llega al 10%. Total ≈ 0.65 * vh — ritmo cómodo de lectura.
+      const start = vh * 0.75;
+      const end = vh * 0.10;
       const raw = (start - rect.top) / (start - end);
       const p = Math.min(1, Math.max(0, raw));
       setProgress(p);
