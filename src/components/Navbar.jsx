@@ -156,27 +156,31 @@ export const Navbar = () => {
       />
 
       <div className="container-main relative">
-        <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
+        <div className="flex items-center justify-between h-[60px] lg:h-[72px]">
           {/* Logo: swaraya. wordmark (Quiet Confidence) */}
           <Link
             href="/"
-            className="relative z-50 inline-flex items-baseline focus:outline-none"
+            className="relative z-50 inline-flex items-center h-full focus:outline-none"
             data-testid="navbar-logo"
             aria-label="swaraya — inicio"
             style={{
               transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
               color: isMobileMenuOpen ? '#F5F2EC' : navTextColor,
+              minHeight: 44,
+              paddingRight: 6, /* espacio libre óptico */
             }}
           >
             <span
+              className="text-[22px] md:text-[24px] lg:text-[26px]"
               style={{
                 fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
                 fontWeight: 500,
-                fontSize: '1.5rem',
-                letterSpacing: '-0.035em',
+                letterSpacing: '-0.03em',
                 lineHeight: 1,
                 textTransform: 'lowercase',
                 color: 'currentColor',
+                display: 'inline-flex',
+                alignItems: 'baseline',
               }}
             >
               swaraya
@@ -191,8 +195,12 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="link-hover text-[0.8125rem] tracking-wide"
+                  className="link-hover"
                   style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 15,
+                    fontWeight: 400,
+                    letterSpacing: '0.005em',
                     color: navMutedColor,
                     transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
@@ -206,8 +214,12 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="link-hover text-[0.8125rem] tracking-wide"
+                  className="link-hover"
                   style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 15,
+                    fontWeight: 400,
+                    letterSpacing: '0.005em',
                     color: navMutedColor,
                     transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
                   }}
