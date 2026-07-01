@@ -158,9 +158,10 @@ export const Hero = () => {
               onClick={() => scrollToSection('#contact')}
               className="inline-flex items-center justify-center gap-3 rounded-full transition-all duration-300"
               style={{
-                padding: '17px 30px',
+                minHeight: 44,
+                padding: '16px 32px',
                 background: '#5468D6',
-                color: '#F5F2EC',
+                color: '#FFFFFF',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: '0.9375rem',
@@ -185,7 +186,8 @@ export const Hero = () => {
               onClick={() => scrollToSection('#research')}
               className="inline-flex items-center justify-center rounded-full transition-all duration-300"
               style={{
-                padding: '17px 30px',
+                minHeight: 44,
+                padding: '16px 32px',
                 background: 'transparent',
                 color: '#F5F2EC',
                 fontFamily: "'Inter', sans-serif",

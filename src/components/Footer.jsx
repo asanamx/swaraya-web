@@ -196,7 +196,7 @@ export const Footer = () => {
                         htmlFor={field.id}
                         style={{
                           display: 'block',
-                          fontSize: '0.625rem',
+                          fontSize: '0.6875rem',
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
                           color: '#9BA5B7',
@@ -222,7 +222,7 @@ export const Footer = () => {
                       htmlFor="message"
                       style={{
                         display: 'block',
-                        fontSize: '0.625rem',
+                        fontSize: '0.6875rem',
                         letterSpacing: '0.18em',
                         textTransform: 'uppercase',
                         color: '#9BA5B7',

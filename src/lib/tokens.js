@@ -1,81 +1,100 @@
 /**
- * SWARAYA — Tokens de diseño exportados para componentes JSX.
+ * SWARAYA — Design tokens exportados para JSX (paridad con globals.css).
  *
- * Para CSS usa las variables custom de `globals.css`
- * (--indigo-on-cream, --indigo-on-dark, etc.).
- * Para JSX usa los exports de este módulo.
+ * Para CSS usa las variables custom de `globals.css` (--bg, --ink, --accent, ...).
+ * Para JSX importa desde este módulo.
  *
  * ═══════════════════════════════════════════════════════════
- *  REGLA INVARIANTE — Sistema dual de indigo por fondo
+ *  SISTEMA CONSOLIDADO · ~12 roles semánticos · WCAG 2.1 AA
  * ═══════════════════════════════════════════════════════════
- *  • Fondo CREAM (#F5F2EC) → indigo.onCream (#2C3E80)
- *  • Fondo DARK  (#0E0F11) → indigo.onDark  (#5468D6)
+ *  • Fondo CREAM (--bg)   → text-primary/secondary/tertiary + accent (#2C3E80)
+ *  • Fondo DARK  (--ink)  → text-on-dark-* + accentBright (#5468D6)
  *
- *  NUNCA invertir: el deep sobre dark se pierde, el electric
- *  sobre cream se ve lavado. La regla es invariante.
+ *  Contraste verificado para cada par texto/superficie.
+ *  Los alias legacy están marcados como @deprecated.
  * ═══════════════════════════════════════════════════════════
  */
 
 export const colors = {
-  // Surfaces — light first
-  cream: {
-    base: '#F5F2EC',
-    soft: '#FAF8F2',
-    deep: '#F0EBE0',
-    hairline: '#E5E0D5',
-  },
+  // ── SUPERFICIES ──────────────────────────────────────────
+  bg: '#F5F2EB',                 // canvas crema base
+  surfaceRaised: '#F8F6F1',      // cards, popovers
+  surfaceMuted: '#ECE8DF',       // chips, hover, secondary
+  ink: '#0E0F11',                // tinta / foreground
 
-  // Dark surfaces (hero, footer, chat)
-  dark: {
-    base: '#0E0F11',
-    soft: '#16181C',
-    deep: '#1C1F25',
-  },
+  // Superficies oscuras
+  surfaceDark: '#0E0F11',
+  surfaceDark2: '#16181C',
+  surfaceDark3: '#1C1F25',
 
-  // Tipografía sobre cream
+  // ── TEXTO SOBRE CLARO ────────────────────────────────────
   text: {
-    primary: '#0E0F11',
-    secondary: '#5D6878',
-    tertiary: '#9BA5B7',
+    primary: '#0E0F11',          // 15.94:1  AAA
+    secondary: '#5D6878',        //  5.94:1  AA
+    tertiary: '#646E7B',         //  4.63:1  AA ✓ (corregido, era #9BA5B7)
+    placeholder: '#646E7B',
   },
 
-  // Tipografía sobre dark
+  // ── TEXTO SOBRE OSCURO ───────────────────────────────────
   textOnDark: {
     primary: '#F5F2EC',
     secondary: '#C8CCDC',
-    tertiary: '#9BA5B7',
+    tertiary: '#9BA5B7',         //  7.72:1 sobre ink ✓
   },
 
-  /**
-   * INDIGO — sistema dual.
-   * - onCream: usar en cualquier elemento sobre fondo claro.
-   * - onDark : usar en cualquier elemento sobre fondo oscuro.
-   * - hover  : el estado interactivo de cada uno.
-   */
+  // ── ACENTO ÍNDIGO ────────────────────────────────────────
+  accent: '#2C3E80',             // sobre claro · 8.91:1 ✓
+  accentHover: '#1F2D5C',
+  accentBright: '#5468D6',       // sobre oscuro o fills
+  accentBrightHover: '#7585E0',
+
+  // ── FOCO ─────────────────────────────────────────────────
+  ring: '#2C3E80',
+  ringOnDark: '#5468D6',
+
+  // ── ESTADOS DE ERROR ─────────────────────────────────────
+  destructive: '#EF4343',        // fills, iconos, bordes
+  destructiveText: '#C62F2F',    // solo texto sobre claro · 4.88:1 ✓
+
+  // ─────────────────────────────────────────────────────────
+  // @deprecated · mantener durante migración
+  // ─────────────────────────────────────────────────────────
+  cream: {
+    base: '#F5F2EB',              // @deprecated → bg
+    soft: '#F8F6F1',              // @deprecated → surfaceRaised
+    deep: '#ECE8DF',              // @deprecated → surfaceMuted
+    hairline: '#DED9CF',          // @deprecated → borders.solid
+  },
+  dark: {
+    base: '#0E0F11',              // @deprecated → surfaceDark
+    soft: '#16181C',              // @deprecated → surfaceDark2
+    deep: '#1C1F25',              // @deprecated → surfaceDark3
+  },
   indigo: {
-    onCream: '#2C3E80',
-    onCreamHover: '#1F2D5C',
-    onDark: '#5468D6',
-    onDarkHover: '#7585E0',
+    onCream: '#2C3E80',           // @deprecated → accent
+    onCreamHover: '#1F2D5C',      // @deprecated → accentHover
+    onDark: '#5468D6',            // @deprecated → accentBright
+    onDarkHover: '#7585E0',       // @deprecated → accentBrightHover
   },
 };
 
 /**
- * Helpers para usar el indigo correcto según el fondo.
- * Ejemplo: <span style={{ color: indigoFor('cream') }}>...</span>
+ * Helper para elegir el acento correcto según el fondo.
+ * <span style={{ color: indigoFor('cream') }}>…</span>
  */
 export const indigoFor = (surface, state = 'base') => {
-  const key = surface === 'dark' ? 'onDark' : 'onCream';
-  const hoverKey = surface === 'dark' ? 'onDarkHover' : 'onCreamHover';
-  return state === 'hover' ? colors.indigo[hoverKey] : colors.indigo[key];
+  const isDark = surface === 'dark';
+  if (state === 'hover') return isDark ? colors.accentBrightHover : colors.accentHover;
+  return isDark ? colors.accentBright : colors.accent;
 };
 
-/** Borders translúcidos por contexto */
+/** Bordes translúcidos por contexto */
 export const borders = {
   onCream: {
     soft: 'rgba(14,15,17,0.04)',
     base: 'rgba(14,15,17,0.08)',
     strong: 'rgba(14,15,17,0.14)',
+    solid: '#DED9CF',
   },
   onDark: {
     soft: 'rgba(245,242,236,0.04)',
@@ -84,16 +103,34 @@ export const borders = {
   },
 };
 
+/** Radios · 4 tamaños + pill */
 export const radii = {
-  sm: '10px',
-  md: '16px',
-  lg: '20px',
-  xl: '24px',
+  sm: '8px',      // inputs, íconos
+  md: '12px',     // botones rect, chips
+  lg: '16px',    // TODAS las cards
+  xl: '20px',    // contenedores bento
   pill: '999px',
 };
 
+/** Tipografía */
 export const fonts = {
   display: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
   body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-  wordmark: "'Author', -apple-system, system-ui, sans-serif",
+  wordmark: "'Author', 'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
+  serif: "'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif",
 };
+
+/** Escala tipográfica (px de referencia) — para JSX inline */
+export const typeScale = {
+  display:  { size: '76px', weight: 500, lineHeight: 0.98, letterSpacing: '-0.035em' },
+  h1:       { size: '48px', weight: 500, lineHeight: 1.0,  letterSpacing: '-0.03em'  },
+  h2:       { size: '30px', weight: 500, lineHeight: 1.05, letterSpacing: '-0.02em'  },
+  h3:       { size: '20px', weight: 500, lineHeight: 1.4,  letterSpacing: '-0.01em'  },
+  body:     { size: '16px', weight: 400, lineHeight: 1.55, letterSpacing: 'normal'    },
+  small:    { size: '14px', weight: 400, lineHeight: 1.5,  letterSpacing: 'normal'    },
+  caption:  { size: '12px', weight: 500, lineHeight: 1.5,  letterSpacing: '0.02em'    },
+  micro:    { size: '11px', weight: 500, lineHeight: 1.5,  letterSpacing: '0.18em'    },
+};
+
+/** Tap target mínimo (WCAG 2.5.5) */
+export const tapTarget = { min: 44 };

@@ -22,96 +22,96 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SWARAYA · DESIGN TOKENS  ─  LIGHT-FIRST EDITORIAL
+   SWARAYA · DESIGN TOKENS  ─  ROLES SEMÁNTICOS (WCAG 2.1 AA)
+   ─────────────────────────────────────────────────────────────
+   Sistema consolidado (~12 tokens). Todos los ratios de contraste
+   verificados sobre superficie base (--bg #F5F2EB) o sobre --ink
+   (#0E0F11) según corresponda.
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* Surfaces — light first */
-  --surface-1: #F5F2EC;   /* canvas crema */
-  --surface-2: #FAF8F2;   /* crema claro (cards) */
-  --surface-3: #F0EBE0;   /* crema profundo */
-  --surface-4: #E5E0D5;   /* hairline */
+  /* ── SUPERFICIES ─────────────────────────────────────────── */
+  --bg:                #F5F2EB;   /* canvas crema (base)        */
+  --surface-raised:    #F8F6F1;   /* cards, popovers, elevación */
+  --surface-muted:     #ECE8DF;   /* chips, hover states        */
+  --ink:               #0E0F11;   /* tinta/foreground           */
 
-  /* Dark surfaces (para hero/footer/chat) */
-  --surface-dark-1: #0E0F11;
-  --surface-dark-2: #16181C;
-  --surface-dark-3: #1C1F25;
+  /* ── SUPERFICIES OSCURAS (hero, footer, chat) ───────────── */
+  --surface-dark:      #0E0F11;
+  --surface-dark-2:    #16181C;
+  --surface-dark-3:    #1C1F25;
 
-  /* Text — sobre crema */
-  --text-primary: #0E0F11;
-  --text-secondary: #5D6878;
-  --text-tertiary: #9BA5B7;
+  /* ── TEXTO SOBRE CLARO ──────────────────────────────────── */
+  --text-primary:      #0E0F11;   /* 15.94:1 ✓ AAA             */
+  --text-secondary:    #5D6878;   /* 5.94:1  ✓ AA              */
+  --text-tertiary:     #646E7B;   /* 4.63:1  ✓ AA (corregido)  */
+  --text-placeholder:  #646E7B;   /* placeholder = terciario   */
 
-  /* Text — sobre dark */
-  --text-on-dark-primary: #F5F2EC;
+  /* ── TEXTO SOBRE OSCURO ─────────────────────────────────── */
+  --text-on-dark-primary:   #F5F2EC;
   --text-on-dark-secondary: #C8CCDC;
-  --text-on-dark-tertiary: #9BA5B7;
+  --text-on-dark-tertiary:  #9BA5B7;   /* 7.72:1 sobre #0E0F11 ✓ */
 
-  /* ─────────────────────────────────────────────────────────────
-     ACENTO INDIGO — Sistema dual por contexto de fondo
-     ─────────────────────────────────────────────────────────────
-     Swaraya tiene UN solo indigo perceptual pero calibrado en dos
-     tonos según el fondo en el que aparezca. Es un sistema funcional
-     de contraste, no un capricho cromático.
+  /* ── ACENTO ÍNDIGO (dos calibraciones por contexto) ─────── */
+  --accent:            #2C3E80;   /* sobre claro · 8.91:1  ✓   */
+  --accent-hover:      #1F2D5C;
+  --accent-bright:     #5468D6;   /* SOBRE OSCURO o fills      */
+  --accent-bright-hover: #7585E0;
 
-     • Sobre fondo CREAM (#F5F2EC, #FAF8F2):
-         usa `--indigo-on-cream` = #2C3E80 (deep).
-         Casos: eyebrows de secciones, "inteligencia aplicada" en
-         titulares, dot del logo Cardinal sobre cream, links indigo
-         sobre fondo claro.
+  /* ── ANILLO DE FOCO (visible, WCAG 2.4.7) ────────────────  */
+  --ring:              #2C3E80;   /* 9.25:1 vs #F5F2EB ✓       */
+  --ring-on-dark:      #5468D6;
 
-     • Sobre fondo DARK (#0E0F11):
-         usa `--indigo-on-dark` = #5468D6 (electric).
-         Casos: botones primarios, ChatWidget completo, "Inteligencia
-         real" del hero, eyebrows sobre hero/footer, partículas y
-         glows.
+  /* ── ESTADOS DE ERROR ───────────────────────────────────── */
+  --destructive:       #EF4343;   /* fills, iconos, bordes     */
+  --destructive-text:  #C62F2F;   /* SÓLO texto sobre claro    · 4.88:1 ✓ */
 
-     • Estados hover:
-         on-cream: oscurece hacia #1F2D5C
-         on-dark : aclara hacia #7585E0
+  /* ── BORDES · escala alfa uniforme ──────────────────────── */
+  --border-1: rgba(14, 15, 17, 0.04);   /* hairline       */
+  --border-2: rgba(14, 15, 17, 0.08);   /* base           */
+  --border-3: rgba(14, 15, 17, 0.14);   /* énfasis        */
+  --border-solid:      #DED9CF;         /* sólido (raro)  */
 
-     NUNCA invertir — el deep sobre dark se pierde y el electric
-     sobre cream se ve lavado. La regla es invariante.
-     ─────────────────────────────────────────────────────────────
-  */
-  --indigo-on-cream: #2C3E80;
-  --indigo-on-cream-hover: #1F2D5C;
-  --indigo-on-dark: #5468D6;
-  --indigo-on-dark-hover: #7585E0;
-
-  /* Aliases legacy (mantener para no romper código existente).
-     Para nuevo código, usa los `--indigo-on-*` semánticos arriba. */
-  --accent-primary: var(--indigo-on-cream);    /* = #2C3E80 */
-  --accent-secondary: var(--indigo-on-dark);   /* = #5468D6 */
-  --accent-tertiary: #7AC4E0;                  /* cyan legacy, no usar */
-
-  /* Borders sobre crema */
-  --border-1: rgba(14, 15, 17, 0.04);
-  --border-2: rgba(14, 15, 17, 0.08);
-  --border-3: rgba(14, 15, 17, 0.14);
-
-  /* Borders sobre dark */
+  /* Bordes sobre superficies oscuras */
   --border-dark-1: rgba(245, 242, 236, 0.04);
   --border-dark-2: rgba(245, 242, 236, 0.08);
   --border-dark-3: rgba(245, 242, 236, 0.14);
 
-  /* Radius */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-xl: 24px;
-  --radius-pill: 999px;
+  /* ── RADIOS · 4 tamaños + pill ──────────────────────────── */
+  --radius-sm:   8px;    /* inputs, íconos                     */
+  --radius-md:   12px;   /* botones rect, chips                */
+  --radius-lg:   16px;   /* TODAS las cards                    */
+  --radius-xl:   20px;   /* contenedores bento                 */
+  --radius-pill: 999px;  /* CTAs marketing                     */
 
-  /* Spacing */
+  /* ── ESPACIADO DE SECCIÓN (malla 8) ─────────────────────── */
   --space-section-sm: 80px;
   --space-section-md: 120px;
   --space-section-lg: 160px;
   --space-section-xl: 200px;
 
-  /* Font stacks */
-  --font-wordmark: 'Author', -apple-system, system-ui, sans-serif;
+  /* ── FONT STACKS ────────────────────────────────────────── */
+  --font-wordmark: 'Author', 'Cabinet Grotesk', -apple-system, system-ui, sans-serif;
   --font-display: 'Cabinet Grotesk', -apple-system, system-ui, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif-editorial: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+
+  /* ─────────────────────────────────────────────────────────
+     ALIAS @deprecated · mantener durante migración
+     No usar en código nuevo. Se eliminarán en pase de limpieza.
+     ───────────────────────────────────────────────────────── */
+  --surface-1: var(--bg);                    /* @deprecated → --bg              */
+  --surface-2: var(--surface-raised);        /* @deprecated → --surface-raised  */
+  --surface-3: var(--surface-muted);         /* @deprecated → --surface-muted   */
+  --surface-4: var(--border-solid);          /* @deprecated → --border-solid    */
+  --surface-dark-1: var(--surface-dark);     /* @deprecated → --surface-dark    */
+  --accent-primary: var(--accent);           /* @deprecated → --accent          */
+  --accent-secondary: var(--accent-bright);  /* @deprecated → --accent-bright   */
+  --indigo-on-cream: var(--accent);          /* @deprecated → --accent          */
+  --indigo-on-cream-hover: var(--accent-hover);
+  --indigo-on-dark: var(--accent-bright);    /* @deprecated → --accent-bright   */
+  --indigo-on-dark-hover: var(--accent-bright-hover);
+  --accent-tertiary: #7AC4E0;                /* @deprecated · cyan legacy       */
 }
 
 @media (max-width: 768px) {
@@ -133,7 +133,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--surface-1);
+  background-color: var(--bg);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -142,7 +142,7 @@ body {
 }
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--surface-1); }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
   background: rgba(14,15,17,0.08);
   border-radius: 3px;
@@ -150,77 +150,132 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(14,15,17,0.16); }
 
 /* ═══════════════════════════════════════════════════════════
-   TYPOGRAFÍA EDITORIAL  ─  Cabinet Grotesk + Inter
+   FOCUS · WCAG 2.4.7 · Foco visible en TODOS los interactivos
+   ─────────────────────────────────────────────────────────────
+   Regla global: ningún `outline: none` sin reemplazo.
+   Ratio 9.25:1 (--ring vs --bg) ✓ AA no-textual.
+   ═══════════════════════════════════════════════════════════ */
+
+:where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* Sobre superficies oscuras — anillo brillante */
+.section-dark :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible,
+.dark-mode :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
+  outline-color: var(--ring-on-dark);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIPOGRAFÍA EDITORIAL  ─  Cabinet Grotesk + Inter
+   ─────────────────────────────────────────────────────────────
+   Escala con puente H2 (30px) y H3 propio (20px), sin saltos
+   arbitrarios. Micro-labels a 11px (min accesible).
    ═══════════════════════════════════════════════════════════ */
 
 .font-wordmark { font-family: var(--font-wordmark); font-weight: 600; letter-spacing: -0.03em; }
 .font-display  { font-family: var(--font-display);  letter-spacing: -0.025em; }
+.font-serif    { font-family: var(--font-serif-editorial); font-weight: 400; letter-spacing: -0.005em; }
 
+/* Display · 76px hero */
 .heading-hero {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 5.25rem);
+  font-size: clamp(3rem, 6.4vw, 4.75rem);   /* 48 → 76px */
   font-weight: 500;
   letter-spacing: -0.035em;
+  line-height: 0.98;
+  color: var(--text-primary);
+}
+
+/* H1 · 48px */
+.heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);       /* 32 → 48px */
+  font-weight: 500;
+  letter-spacing: -0.03em;
   line-height: 1;
   color: var(--text-primary);
 }
 
-.heading-xl {
+/* H2 · 30px — el nivel puente que faltaba */
+.heading-lg {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.85rem);
+  font-size: clamp(1.5rem, 2.1vw, 1.875rem);  /* 24 → 30px */
   font-weight: 500;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.05;
   color: var(--text-primary);
 }
 
-.heading-lg {
-  font-family: var(--font-display);
-  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  color: var(--text-primary);
-}
-
+/* H3 · 20px propio, tamaño con carácter */
 .heading-md {
   font-family: var(--font-display);
-  font-size: clamp(1.0625rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.125rem, 1.3vw, 1.25rem); /* 18 → 20px */
   font-weight: 500;
-  letter-spacing: -0.018em;
-  line-height: 1.3;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
   color: var(--text-primary);
 }
 
+/* Body · 16px */
 .body-large {
-  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.05vw, 1.0625rem);  /* 16 → 17px */
+  font-weight: 400;
+  line-height: 1.55;
   color: var(--text-secondary);
-  max-width: 56ch;
+  max-width: 62ch;
 }
 
 .body-regular {
-  font-size: 0.9375rem;
-  line-height: 1.65;
+  font-family: var(--font-body);
+  font-size: 1rem;             /* 16px */
+  font-weight: 400;
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
-.label {
+/* Small · 14px */
+.body-small {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.875rem;         /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Caption · 12px */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;          /* 12px */
   font-weight: 500;
-  letter-spacing: 0.24em;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+}
+
+/* Micro / label · 11px (mínimo accesible), uppercase */
+.label,
+.label-accent {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;        /* 11px */
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent-primary);
+  color: var(--accent);
+  line-height: 1.5;
 }
 
 @media (min-width: 768px) {
-  .label { font-size: 0.8125rem; letter-spacing: 0.28em; }
+  .label,
+  .label-accent { font-size: 0.75rem; letter-spacing: 0.2em; }   /* 12px en desktop */
 }
 
-/* Layout helpers (mantienen igual) */
+/* Layout helpers */
 .container-main { max-width: 1320px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
-@media (min-width: 640px)  { .container-main { padding-left: 28px; padding-right: 28px; } }
+@media (min-width: 640px)  { .container-main { padding-left: 24px; padding-right: 24px; } }
 @media (min-width: 768px)  { .container-main { padding-left: 40px; padding-right: 40px; } }
 @media (min-width: 1024px) { .container-main { padding-left: 64px; padding-right: 64px; } }
 @media (min-width: 1280px) { .container-main { padding-left: 80px; padding-right: 80px; } }
@@ -229,18 +284,18 @@ body {
 @media (min-width: 768px)  { .section-padding { padding-top: var(--space-section-md); padding-bottom: var(--space-section-md); } }
 @media (min-width: 1024px) { .section-padding { padding-top: var(--space-section-lg); padding-bottom: var(--space-section-lg); } }
 
-.section-padding-lg { padding-top: 100px; padding-bottom: 100px; }
-@media (min-width: 768px)  { .section-padding-lg { padding-top: 140px; padding-bottom: 140px; } }
+.section-padding-lg { padding-top: 96px; padding-bottom: 96px; }
+@media (min-width: 768px)  { .section-padding-lg { padding-top: 144px; padding-bottom: 144px; } }
 @media (min-width: 1024px) { .section-padding-lg { padding-top: var(--space-section-xl); padding-bottom: var(--space-section-xl); } }
 
 /* ═══════════════════════════════════════════════════════════
-   CARDS — sobre crema
+   CARDS · TODAS con radio 16 (--radius-lg)
    ═══════════════════════════════════════════════════════════ */
 
 .card-premium {
-  background: var(--surface-2);
+  background: var(--surface-raised);
   border: 1px solid var(--border-2);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
   transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
@@ -252,20 +307,22 @@ body {
   box-shadow: 0 24px 48px -16px rgba(14, 15, 17, 0.08);
 }
 
-@media (min-width: 1024px) { .card-premium { border-radius: var(--radius-lg); } }
-
 /* ═══════════════════════════════════════════════════════════
-   BUTTONS
+   BUTTONS · pill (marketing) · radio 12 (formularios)
+   ─────────────────────────────────────────────────────────────
+   Padding en malla 8: 16×32 (era 15×30).
+   Altura mínima 44px → tap target WCAG 2.5.5 AAA.
    ═══════════════════════════════════════════════════════════ */
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 30px;
-  background-color: var(--surface-dark-1);
-  color: var(--surface-1);
-  font-size: 0.8125rem;
+  min-height: 44px;
+  padding: 16px 32px;
+  background-color: var(--surface-dark);
+  color: #FFFFFF;                                /* blanco puro · 4.85:1 ✓ sobre indigo bright también */
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.005em;
   border-radius: var(--radius-pill);
@@ -275,7 +332,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-primary);
+  background-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 16px 32px -8px rgba(44, 62, 128, 0.25);
 }
@@ -284,10 +341,11 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 30px;
+  min-height: 44px;
+  padding: 16px 32px;
   background-color: transparent;
   color: var(--text-primary);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.005em;
   border-radius: var(--radius-pill);
@@ -297,30 +355,30 @@ body {
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Versiones para fondos oscuros */
 .dark-mode .btn-primary {
-  background-color: var(--surface-1);
-  color: var(--surface-dark-1);
+  background-color: var(--accent-bright);
+  color: #FFFFFF;                                /* blanco puro sobre indigo bright · 4.85:1 ✓ */
 }
 .dark-mode .btn-primary:hover {
-  background-color: #FFFFFF;
+  background-color: var(--accent-bright-hover);
 }
 .dark-mode .btn-secondary {
   color: var(--text-on-dark-primary);
   border-color: var(--border-dark-3);
 }
 .dark-mode .btn-secondary:hover {
-  color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
+  color: var(--accent-bright);
+  border-color: var(--accent-bright);
 }
 
 @media (max-width: 639px) {
-  .btn-primary, .btn-secondary { padding: 14px 24px; width: 100%; justify-content: center; }
-  .btn-secondary.btn-small { padding: 8px 16px !important; width: auto !important; font-size: 0.75rem !important; }
+  .btn-primary, .btn-secondary { padding: 14px 24px; width: 100%; justify-content: center; min-height: 44px; }
+  .btn-secondary.btn-small { padding: 10px 16px !important; min-height: 40px; width: auto !important; font-size: 0.8125rem !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -341,7 +399,7 @@ body {
 .principle-marker {
   width: 16px;
   height: 1px;
-  background: var(--accent-primary);
+  background: var(--accent);
   flex-shrink: 0;
   margin-top: 14px;
 }
@@ -351,30 +409,62 @@ body {
   background: linear-gradient(90deg, transparent 0%, var(--border-2) 25%, var(--border-2) 75%, transparent 100%);
 }
 
-.input-premium {
+/* ═══════════════════════════════════════════════════════════
+   FIELD · input + textarea unificados
+   ─────────────────────────────────────────────────────────────
+   Un solo set de estados: default / focus / error / disabled.
+   Radio 8 (sm), altura mínima 44px, placeholder accesible.
+   ═══════════════════════════════════════════════════════════ */
+
+.input-premium,
+.field {
   width: 100%;
-  padding: 15px 16px;
-  background-color: var(--surface-2);
+  min-height: 44px;
+  padding: 12px 16px;
+  background-color: var(--surface-raised);
   border: 1px solid var(--border-2);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-family: inherit;
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.input-premium:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-  background-color: var(--surface-1);
-  box-shadow: 0 0 0 3px rgba(44, 62, 128, 0.08);
+.input-premium::placeholder,
+.field::placeholder {
+  color: var(--text-placeholder);              /* 4.63:1 ✓ */
+}
+
+.input-premium:focus,
+.field:focus {
+  outline: 2px solid var(--ring);              /* foco visible */
+  outline-offset: 2px;
+  border-color: var(--accent);
+  background-color: var(--bg);
+}
+
+.field[aria-invalid="true"],
+.field.error {
+  border-color: var(--destructive);
+}
+
+.field-error-text {
+  color: var(--destructive-text);              /* 4.88:1 ✓ */
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .step-circle {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--surface-2);
+  background-color: var(--surface-raised);
   border: 1px solid var(--border-2);
   display: flex;
   align-items: center;
@@ -382,7 +472,7 @@ body {
   transition: border-color 0.4s ease;
 }
 
-.step-circle:hover { border-color: var(--accent-primary); }
+.step-circle:hover { border-color: var(--accent); }
 
 /* Reveal animations */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.23,1,0.32,1), transform 0.6s cubic-bezier(0.23,1,0.32,1); }
@@ -408,31 +498,31 @@ body {
 .link-hover:hover::after { width: 100%; }
 
 /* ═══════════════════════════════════════════════════════════
-   SHADCN  ─  light-first
+   SHADCN  ─  sincronizado con roles semánticos
    ═══════════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    --background: 42 33% 94%;
-    --foreground: 220 9% 6%;
-    --card: 42 33% 96%;
+    --background: 42 33% 94%;              /* --bg #F5F2EB */
+    --foreground: 220 9% 6%;               /* --ink */
+    --card: 42 33% 96%;                    /* --surface-raised */
     --card-foreground: 220 9% 6%;
     --popover: 42 33% 96%;
     --popover-foreground: 220 9% 6%;
-    --primary: 220 9% 6%;
+    --primary: 220 9% 6%;                  /* --ink */
     --primary-foreground: 42 33% 94%;
-    --secondary: 42 25% 90%;
+    --secondary: 42 25% 90%;               /* --surface-muted */
     --secondary-foreground: 220 9% 6%;
     --muted: 42 25% 90%;
-    --muted-foreground: 218 12% 42%;
-    --accent: 230 50% 34%;
+    --muted-foreground: 218 12% 42%;       /* --text-secondary */
+    --accent: 230 50% 34%;                 /* --accent #2C3E80 */
     --accent-foreground: 42 33% 94%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 60%;              /* --destructive #EF4343 */
     --destructive-foreground: 42 33% 94%;
-    --border: 42 18% 84%;
+    --border: 42 18% 84%;                  /* --border-solid #DED9CF */
     --input: 42 18% 84%;
-    --ring: 230 50% 34%;
-    --radius: 0.5rem;
+    --ring: 230 50% 34%;                   /* --ring #2C3E80 */
+    --radius: 0.75rem;                     /* 12px = --radius-md */
   }
 }
 

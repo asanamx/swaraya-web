@@ -94,7 +94,7 @@ const AgentCard = ({ agent }) => (
     {/* Problema (label + texto) */}
     <div className="mb-5">
       <span
-        className="block text-[0.6875rem] uppercase tracking-[0.16em] text-[#9BA5B7] mb-2"
+        className="block text-[0.6875rem] uppercase tracking-[0.16em] text-[#646E7B] mb-2"
         style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
       >
         Problema
@@ -107,7 +107,7 @@ const AgentCard = ({ agent }) => (
     {/* Resultado (label + texto) */}
     <div className="mb-8">
       <span
-        className="block text-[0.6875rem] uppercase tracking-[0.16em] text-[#9BA5B7] mb-2"
+        className="block text-[0.6875rem] uppercase tracking-[0.16em] text-[#646E7B] mb-2"
         style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
       >
         Qué hace

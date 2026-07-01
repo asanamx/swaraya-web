@@ -230,9 +230,10 @@ export const Navbar = () => {
             onClick={() => scrollToSection('#contact')}
             className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
             style={{
-              padding: '10px 20px',
+              minHeight: 44,
+              padding: '12px 24px',
               background: ctaIndigo,
-              color: colors.textOnDark.primary,
+              color: '#FFFFFF',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = ctaIndigoHover;
@@ -251,7 +252,7 @@ export const Navbar = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden relative z-50 flex items-center justify-center"
-            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor, width: 40, height: 40 }}
+            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor, width: 44, height: 44 }}
             data-testid="mobile-menu-toggle"
             aria-label="Menu"
           >

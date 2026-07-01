@@ -98,7 +98,7 @@ const ChatWidget = () => {
               </div>
               <div>
                 <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente swaraya</h3>
-                <p className="text-[0.625rem] text-[#5D6878]">Powered by AI</p>
+                <p className="text-[0.6875rem] text-[#9BA5B7]">Powered by AI</p>
               </div>
             </div>
             <button
