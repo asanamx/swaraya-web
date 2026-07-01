@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=author@500,600,700&f[]=cabinet-grotesk@400,500,600,700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Nota: Las webfonts se cargan vía <link rel="stylesheet"> en layout.js
+   con preconnect hints — más rápido y confiable que @import.
+   Cabinet Grotesk (Fontshare)  → var(--font-display)
+   Inter          (Google)      → var(--font-body) */
 
 /* Hide Emergent badge */
 #emergent-badge,

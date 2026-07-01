@@ -177,9 +177,9 @@ export const Navbar = () => {
             />
             <span
               style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 700,
-                fontSize: '1.375rem',
+                fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
+                fontWeight: 500,
+                fontSize: '1.5rem',
                 letterSpacing: '-0.028em',
                 lineHeight: 1,
               }}
