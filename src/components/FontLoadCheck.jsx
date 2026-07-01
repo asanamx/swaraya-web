@@ -23,6 +23,8 @@ export default function FontLoadCheck() {
         { spec: '500 48px "Cabinet Grotesk"', label: 'Cabinet Grotesk 500' },
         { spec: '400 16px "Inter"',           label: 'Inter 400'           },
         { spec: '500 16px "Inter"',           label: 'Inter 500'           },
+        { spec: '400 32px "Newsreader"',      label: 'Newsreader 400'      },
+        { spec: 'italic 400 32px "Newsreader"', label: 'Newsreader 400 italic' },
       ];
       const results = checks.map((c) => ({ ...c, ok: document.fonts.check(c.spec) }));
       const failed = results.filter((r) => !r.ok);

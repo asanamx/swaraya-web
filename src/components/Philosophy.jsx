@@ -39,18 +39,15 @@ export const Philosophy = () => {
           </span>
 
           <h2
-            className="mb-8 md:mb-10"
+            className="editorial mb-8 md:mb-10"
             style={{
-              fontFamily: 'var(--font-serif-editorial)',
-              fontSize: 'clamp(1.5rem, 2.6vw, 2.125rem)',
-              fontWeight: 400,
-              lineHeight: 1.28,
-              letterSpacing: '-0.012em',
-              color: 'var(--text-primary)',
+              fontSize: 'clamp(2.25rem, 3.4vw, 2.75rem)',
+              lineHeight: 1.25,
+              letterSpacing: '-0.01em',
             }}
             data-testid="philosophy-headline"
           >
-            Creemos que la inteligencia debe profundizar la capacidad humana, expandir la claridad institucional y elevar la calidad de la toma de decisiones.
+            Creemos que la inteligencia debe profundizar la <em>capacidad humana</em>, expandir la <em>claridad institucional</em> y elevar la calidad de la toma de decisiones.
           </h2>
 
           <p className="body-large mx-auto" data-testid="philosophy-body">

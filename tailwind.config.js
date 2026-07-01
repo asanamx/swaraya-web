@@ -57,6 +57,7 @@ module.exports = {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         body: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         display: ['"Cabinet Grotesk"', '-apple-system', 'system-ui', 'sans-serif'],
+        serif: ['"Newsreader"', 'Georgia', 'serif'],
       },
       fontSize: {
         'display': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
