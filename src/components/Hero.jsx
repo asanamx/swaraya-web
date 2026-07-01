@@ -2,24 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import AbstractVisual from './AbstractVisual';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [particles, setParticles] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
-    // Generamos las partículas flotantes CSS sólo en cliente para evitar
-    // mismatch de hidratación (Math.random difiere server/client).
-    setParticles(
-      [...Array(20)].map(() => ({
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animation: `float ${8 + Math.random() * 10}s ease-in-out infinite`,
-        animationDelay: `${Math.random() * 5}s`,
-      })),
-    );
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,58 +16,41 @@ export const Hero = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Stagger delays para el titular (bloque 7 · motion contenido)
+  const line1Delay = 100;
+  const line2Delay = 180;
+  const line3Delay = 260;
+
   return (
     <section
       className="relative min-h-screen overflow-hidden"
-      style={{ background: '#0E0F11', color: '#F5F2EC' }}
+      style={{ background: '#0A0C10', color: '#F5F2EC' }}
       data-testid="hero-section"
     >
-      {/* Indigo electric glow — más presencia sobre fondo oscuro */}
+      {/* Un solo glow radial indigo — sustituye partículas + AbstractVisual. */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none hero-glow"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 75% 35%, rgba(84,104,214,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 15% 80%, rgba(84,104,214,0.10) 0%, transparent 60%)',
-          filter: 'blur(20px)',
+            'radial-gradient(circle at 70% 45%, rgba(84,104,214,0.18) 0%, rgba(84,104,214,0.06) 30%, transparent 60%)',
         }}
       />
 
-      {/* Grid pattern muy sutil — líneas cream sobre oscuro */}
+      {/* Grid casi imperceptible — 0.03 opacity per brief */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
-          opacity: 0.6,
           backgroundImage:
-            'linear-gradient(rgba(245,242,236,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,242,236,0.04) 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
+            'linear-gradient(rgba(245,242,236,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,242,236,0.03) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
         }}
       />
-
-      {/* ABSTRACT VISUAL — sistema orbital de partículas, anillos y rayos
-          desde el punto luminoso indigo. Es la animación original del sitio,
-          adaptada al tema cream + indigo. */}
-      <AbstractVisual />
-
-      {/* Partículas flotantes CSS — drift orgánico independiente del canvas */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {particles.map((p, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              left: p.left,
-              top: p.top,
-              background: '#5468D6',
-              opacity: 0.32,
-              animation: p.animation,
-              animationDelay: p.animationDelay,
-            }}
-          />
-        ))}
-      </div>
 
       {/* Top accent line */}
       <div
+        aria-hidden="true"
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
@@ -91,21 +62,20 @@ export const Hero = () => {
       <div className="container-main relative z-10">
         <div
           className="flex flex-col justify-center min-h-screen pt-24 md:pt-32 pb-24 md:pb-32 max-w-[1100px]"
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.8s ease, transform 0.8s ease',
-          }}
         >
           {/* Eyebrow */}
           <div
-            className="flex items-center gap-3 mb-8 md:mb-12"
+            className="flex items-center gap-3 mb-8 md:mb-12 reveal-motion"
             style={{
               fontSize: '0.75rem',
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
               color: '#5468D6',
               fontWeight: 500,
+              transitionDelay: '40ms',
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 600ms cubic-bezier(0.2,0.6,0.2,1), transform 600ms cubic-bezier(0.2,0.6,0.2,1)',
             }}
             data-testid="hero-eyebrow"
           >
@@ -113,7 +83,7 @@ export const Hero = () => {
             Agencia de Inteligencia Artificial Aplicada
           </div>
 
-          {/* Headline editorial */}
+          {/* Headline · Vía A (dos voces, no tres) — stagger 80ms por línea */}
           <h1
             className="m-0 max-w-[14ch]"
             style={{
@@ -126,34 +96,68 @@ export const Hero = () => {
             }}
             data-testid="hero-headline"
           >
-            Investigación profunda.
-            <br />
-            <span style={{ color: 'rgba(245,242,236,0.55)', fontWeight: 400 }}>
+            <span
+              style={{
+                display: 'block',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+                transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line1Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line1Delay}ms`,
+              }}
+            >
+              Investigación profunda.
+            </span>
+            <span
+              style={{
+                display: 'block',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+                transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line2Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line2Delay}ms`,
+              }}
+            >
               Ingeniería precisa.
             </span>
-            <br />
-            <span style={{ color: '#5468D6' }}>Inteligencia real.</span>
+            <span
+              style={{
+                display: 'block',
+                color: '#5468D6',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+                transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms`,
+              }}
+            >
+              Inteligencia real.
+            </span>
           </h1>
 
           {/* Subhead */}
           <p
-            className="mt-10 md:mt-12 max-w-[52ch]"
+            className="mt-10 md:mt-12 max-w-[60ch]"
             style={{
               fontSize: 'clamp(1rem, 1.25vw, 1.15rem)',
               lineHeight: 1.55,
               color: 'rgba(245,242,236,0.72)',
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 600ms cubic-bezier(0.2,0.6,0.2,1) 340ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) 340ms',
             }}
             data-testid="hero-subhead"
           >
-            Diseñamos sistemas de inteligencia artificial para organizaciones
-            que requieren ventaja estructural, no novedad. Cada solución es una
-            arquitectura precisa: investigada y diseñada.
+            Diseñamos sistemas de inteligencia artificial para conversaciones
+            estratégicas de largo plazo — ventaja estructural, no novedad.
+            Cada solución es una arquitectura precisa: investigada y diseñada.
           </p>
 
           {/* CTAs */}
-          <div className="mt-12 md:mt-14 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div
+            className="mt-12 md:mt-14 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+            style={{
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 600ms cubic-bezier(0.2,0.6,0.2,1) 420ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) 420ms',
+            }}
+          >
             <button
               onClick={() => scrollToSection('#contact')}
               className="inline-flex items-center justify-center gap-3 rounded-full transition-all duration-300"
@@ -179,7 +183,7 @@ export const Hero = () => {
               }}
               data-testid="hero-cta-primary"
             >
-              Inicia una Conversación Estratégica
+              Iniciar diálogo
               <ArrowRight size={16} />
             </button>
             <button
@@ -208,6 +212,36 @@ export const Hero = () => {
             >
               Ver nuestros Dominios
             </button>
+          </div>
+
+          {/* Fila de prueba — señales concretas (bloque 1) */}
+          <div
+            className="mt-8 md:mt-10 flex flex-wrap items-center gap-x-5 gap-y-3"
+            style={{
+              opacity: isLoaded ? 1 : 0,
+              transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
+              transition: 'opacity 600ms cubic-bezier(0.2,0.6,0.2,1) 500ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) 500ms',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 13,
+              color: '#C8CCDC',
+              letterSpacing: '0.005em',
+            }}
+            data-testid="hero-signals"
+          >
+            <span className="inline-flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                style={{
+                  display: 'inline-block',
+                  width: 6, height: 6, borderRadius: 999, background: '#5468D6',
+                }}
+              />
+              Agentes en producción
+            </span>
+            <span aria-hidden="true" style={{ width: 20, height: 1, background: 'rgba(200,204,220,0.25)' }} />
+            <span>Inmobiliario</span>
+            <span aria-hidden="true" style={{ width: 20, height: 1, background: 'rgba(200,204,220,0.25)' }} />
+            <span>Fiscal</span>
           </div>
 
           {/* Tech stack — logos oficiales monocromos */}

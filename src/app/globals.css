@@ -307,13 +307,15 @@ body {
 @media (min-width: 1024px) { .container-main { padding-left: 64px; padding-right: 64px; } }
 @media (min-width: 1280px) { .container-main { padding-left: 80px; padding-right: 80px; } }
 
-.section-padding { padding-top: var(--space-section-sm); padding-bottom: var(--space-section-sm); }
-@media (min-width: 768px)  { .section-padding { padding-top: var(--space-section-md); padding-bottom: var(--space-section-md); } }
-@media (min-width: 1024px) { .section-padding { padding-top: var(--space-section-lg); padding-bottom: var(--space-section-lg); } }
+.section-padding {
+  padding-top: clamp(80px, 12vw, 160px);
+  padding-bottom: clamp(80px, 12vw, 160px);
+}
 
-.section-padding-lg { padding-top: 96px; padding-bottom: 96px; }
-@media (min-width: 768px)  { .section-padding-lg { padding-top: 144px; padding-bottom: 144px; } }
-@media (min-width: 1024px) { .section-padding-lg { padding-top: var(--space-section-xl); padding-bottom: var(--space-section-xl); } }
+.section-padding-lg {
+  padding-top: clamp(96px, 14vw, 200px);
+  padding-bottom: clamp(96px, 14vw, 200px);
+}
 
 /* ═══════════════════════════════════════════════════════════
    CARDS · TODAS con radio 16 (--radius-lg)
@@ -518,7 +520,24 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-stagger > *, .timeline-reveal { transition: opacity 0.25s ease; transform: none; }
   .reveal.revealed, .reveal-stagger.revealed > *, .timeline-reveal.revealed { transform: none; }
+  /* Hero motion también debe respetar la preferencia */
+  [data-testid="hero-headline"] > span,
+  [data-testid="hero-eyebrow"],
+  [data-testid="hero-subhead"],
+  [data-testid="hero-signals"] {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-glow { animation: none !important; }
 }
+
+/* Respiración suave del glow del hero (10s+, muy sutil) */
+@keyframes hero-glow-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+.hero-glow { animation: hero-glow-breathe 14s ease-in-out infinite; }
 
 .link-hover { position: relative; transition: color 0.25s ease; }
 .link-hover::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: currentColor; transition: width 0.3s cubic-bezier(0.23,1,0.32,1); }
