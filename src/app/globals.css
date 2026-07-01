@@ -544,6 +544,63 @@ body {
 .link-hover:hover::after { width: 100%; }
 
 /* ═══════════════════════════════════════════════════════════
+   DUOTONO ÍNDIGO · imágenes del blog (Prompt B)
+   ─────────────────────────────────────────────────────────────
+   Convierte cualquier foto en un tratamiento marca consistente:
+   escala de grises + overlay indigo, sombras hacia ink, luces
+   hacia accent-bright.
+   ═══════════════════════════════════════════════════════════ */
+
+.duotone-indigo {
+  position: relative;
+  isolation: isolate;
+  filter: grayscale(1) contrast(1.05) brightness(0.95);
+}
+.duotone-indigo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0E0F11 0%, #5468D6 100%);
+  mix-blend-mode: color;
+  pointer-events: none;
+  z-index: 1;
+}
+.duotone-indigo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(84,104,214,0.10);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.35s ease;
+  opacity: 1;
+}
+.duotone-indigo:hover::before { opacity: 0.4; }
+
+/* ═══════════════════════════════════════════════════════════
+   CURSOR SPOTLIGHT · hero desktop (Prompt A)
+   ─────────────────────────────────────────────────────────────
+   Un radial índigo tenue que sigue al cursor. La posición viene
+   de las CSS custom props --mx / --my actualizadas por JS con
+   requestAnimationFrame. Desactivado en touch y reduced-motion.
+   ═══════════════════════════════════════════════════════════ */
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(84,104,214,0.15), transparent 65%);
+}
+[data-testid="hero-section"]:hover .hero-spotlight { opacity: 1; }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .hero-spotlight { display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    SHADCN  ─  sincronizado con roles semánticos
    ═══════════════════════════════════════════════════════════ */
 

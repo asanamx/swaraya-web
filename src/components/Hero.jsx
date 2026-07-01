@@ -1,14 +1,44 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Cursor spotlight — Prompt A · desactivado en touch/reduced-motion
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const hasHover = window.matchMedia('(hover: hover)').matches;
+    if (mq.matches || !hasHover) return;
+
+    const el = heroRef.current;
+    if (!el) return;
+    let raf = null;
+    let x = 0, y = 0;
+    const onMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty('--mx', `${x}px`);
+        el.style.setProperty('--my', `${y}px`);
+        raf = null;
+      });
+    };
+    el.addEventListener('mousemove', onMove);
+    return () => {
+      el.removeEventListener('mousemove', onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   const scrollToSection = (href) => {
@@ -26,7 +56,11 @@ export const Hero = () => {
       className="relative min-h-screen overflow-hidden"
       style={{ background: '#0A0C10', color: '#F5F2EC' }}
       data-testid="hero-section"
+      ref={heroRef}
     >
+      {/* Cursor spotlight (Prompt A · sólo hero desktop) */}
+      <div className="hero-spotlight" aria-hidden="true" />
+
       {/* Un solo glow radial indigo — sustituye partículas + AbstractVisual. */}
       <div
         aria-hidden="true"

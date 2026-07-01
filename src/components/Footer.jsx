@@ -403,27 +403,29 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Local input styles — dark-mode form */}
+      {/* Local input styles — dark-mode form (Prompt F.1) */}
       <style jsx>{`
         .footer-input {
           width: 100%;
+          min-height: 44px;
           padding: 12px 14px;
           background: rgba(245,242,236,0.04);
-          border: 1px solid rgba(245,242,236,0.10);
+          border: 1px solid rgba(245,242,236,0.14);
           border-radius: 10px;
           color: #F5F2EC;
           font-family: 'Inter', sans-serif;
-          font-size: 0.875rem;
+          font-size: 0.9375rem;
           line-height: 1.4;
-          transition: border-color 0.3s ease, background 0.3s ease;
+          transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
         }
         .footer-input::placeholder {
-          color: rgba(245,242,236,0.30);
+          color: #9BA5B7;                              /* 7.72:1 sobre #0E0F11 ✓ */
         }
         .footer-input:focus {
           outline: none;
-          border-color: rgba(84,104,214,0.55);
+          border-color: #5468D6;
           background: rgba(245,242,236,0.06);
+          box-shadow: 0 0 0 3px rgba(84,104,214,0.25);
         }
       `}</style>
     </footer>
