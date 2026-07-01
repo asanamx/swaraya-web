@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
-import SwarayaCardinal from './SwarayaCardinal';
 import SectionParticles from './SectionParticles';
 import { colors } from '../lib/tokens';
 
@@ -288,23 +287,19 @@ export const Footer = () => {
                 color: '#F5F2EC',
               }}
             >
-              <SwarayaCardinal
-                size={30}
-                color="currentColor"
-                accent="#5468D6"
-                strokeWidth={2.6}
-              />
               <span
                 style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '1.375rem',
-                  letterSpacing: '-0.028em',
+                  fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
+                  fontWeight: 500,
+                  fontSize: '1.5rem',
+                  letterSpacing: '-0.035em',
                   lineHeight: 1,
                   color: '#F5F2EC',
+                  textTransform: 'lowercase',
                 }}
               >
                 swaraya
+                <span aria-hidden="true" style={{ color: '#5468D6' }}>.</span>
               </span>
             </div>
           </div>

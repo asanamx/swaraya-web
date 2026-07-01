@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- swaraya mark — v1 SYNAPSE
-       "s" trazada como una curva continua que termina en un nodo de acento.
-       Referencia conceptual: la red neuronal del hero. -->
-  <path d="M48 14 C48 6 36 6 28 8 C18 10 14 18 16 24 C18 32 30 32 38 34 C46 36 50 40 50 46 C50 54 40 58 28 56 C20 55 16 50 16 46"
-        fill="none" stroke="#F4F6F9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="16" cy="46" r="3.2" fill="#7AC4E0"/>
-</svg>

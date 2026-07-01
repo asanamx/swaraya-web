@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2, User, Bot, Minimize2 } from 'lucide-react';
+import { X, Send, Loader2, User, Bot, Minimize2 } from 'lucide-react';
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,14 +73,24 @@ const ChatWidget = () => {
 
   return (
     <>
-      {/* Chat Button - positioned to align with send button when chat opens */}
+      {/* Chat Button — FAB con ícono de marca "s" */}
       <button
         onClick={() => setIsOpen(true)}
         className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#5468D6] text-white shadow-lg shadow-[#5468D6]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#5468D6]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
-        aria-label="Abrir chat"
+        aria-label="Abrir chat con swaraya"
         data-testid="chat-open-button"
       >
-        <MessageCircle className="w-5 h-5" />
+        <span
+          aria-hidden="true"
+          style={{
+            fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
+            fontWeight: 700,
+            fontSize: 22,
+            lineHeight: 1,
+            letterSpacing: '-0.04em',
+            color: '#F5F2EB',
+          }}
+        >s</span>
       </button>
 
       {/* Chat Window */}

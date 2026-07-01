@@ -13,6 +13,7 @@ export const metadata = {
   authors: [{ name: 'swaraya' }],
   robots: 'index, follow',
   alternates: { canonical: '/' },
+  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     url: 'https://swaraya.ai/',
@@ -21,21 +22,35 @@ export const metadata = {
       'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
     locale: 'es_ES',
     siteName: 'swaraya',
+    images: [
+      { url: '/og-image.png', width: 1200, height: 630, alt: 'swaraya.' },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
     description:
       'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
+    images: ['/og-image.png'],
   },
   icons: {
-    icon: '/icon.svg',
-    apple: '/apple-icon.svg',
+    icon: [
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png',   sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png',   sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#2C3E80' },
+    ],
   },
 };
 
 export const viewport = {
-  themeColor: '#F5F2EC',
+  themeColor: '#2C3E80',
 };
 
 export default function RootLayout({ children }) {
@@ -47,10 +62,10 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
 
-        {/* Cabinet Grotesk (Fontshare) — display / titulares (weight 500) */}
+        {/* Cabinet Grotesk (Fontshare) — display / titulares (500) + icon "s" (700) */}
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap"
         />
         {/* Inter (Google) — cuerpo / UI */}
         <link

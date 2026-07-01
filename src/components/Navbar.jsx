@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import SwarayaCardinal from './SwarayaCardinal';
 import { colors, indigoFor, borders } from '../lib/tokens';
 
 export const Navbar = () => {
@@ -158,33 +157,30 @@ export const Navbar = () => {
 
       <div className="container-main relative">
         <div className="flex items-center justify-between h-14 md:h-16 lg:h-[72px]">
-          {/* Logo: Cardinal Asimétrico A → Sextante B (scroll-driven, no letter deformation) */}
+          {/* Logo: swaraya. wordmark (Quiet Confidence) */}
           <Link
             href="/"
-            className="relative z-50 flex items-center gap-2.5"
+            className="relative z-50 inline-flex items-baseline focus:outline-none"
             data-testid="navbar-logo"
-            aria-label="swaraya — Inicio"
+            aria-label="swaraya — inicio"
             style={{
-              color: isMobileMenuOpen ? '#F5F2EC' : navTextColor,
               transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+              color: isMobileMenuOpen ? '#F5F2EC' : navTextColor,
             }}
           >
-            <SwarayaCardinal
-              size={30}
-              color="currentColor"
-              accent={indigoAccent}
-              strokeWidth={2.6}
-            />
             <span
               style={{
                 fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
                 fontWeight: 500,
                 fontSize: '1.5rem',
-                letterSpacing: '-0.028em',
+                letterSpacing: '-0.035em',
                 lineHeight: 1,
+                textTransform: 'lowercase',
+                color: 'currentColor',
               }}
             >
               swaraya
+              <span aria-hidden="true" style={{ color: indigoAccent }}>.</span>
             </span>
           </Link>
 
