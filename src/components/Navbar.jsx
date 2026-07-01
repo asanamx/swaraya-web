@@ -41,8 +41,8 @@ export const Navbar = () => {
     { name: 'Investigación', href: '#research' },
     { name: 'Método', href: '#method' },
     { name: 'Filosofía', href: '#philosophy' },
-    { name: 'Contacto', href: '#contact' },
     { name: 'Blog', href: '/blog', isRoute: true },
+    { name: 'Contacto', href: '#contact' },
   ];
 
   const scrollToSection = (href) => {
