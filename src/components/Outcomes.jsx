@@ -1,68 +1,70 @@
 'use client';
 
 import useScrollReveal from '../hooks/useScrollReveal';
-import useCountUp from '../hooks/useCountUp';
 
-const metrics = [
-  { value: 85, suffix: '%', label: 'Precisión promedio en predicciones de demanda' },
-  { value: 3,  suffix: '×', label: 'Aceleración en procesos de análisis de datos' },
-  { value: 60, suffix: '%', label: 'Reducción en tareas manuales repetitivas' },
-  { value: 24, suffix: '/7', label: 'Operación continua de sistemas autónomos' },
+/**
+ * OUTCOMES · "Inteligencia operativa medible"
+ *
+ * Sección OSCURA por diseño — funciona como puntuación tonal en medio
+ * del sitio (crema … crema … OSCURO … crema …).
+ *
+ * PROMPT D · métricas cualitativas honestas, ancladas a dominio.
+ * No inventamos porcentajes; comunicamos las propiedades reales de
+ * los sistemas que hemos puesto en operación.
+ */
+
+const facts = [
+  {
+    kicker: 'Perfilado de leads',
+    heading: 'Aprobación humana antes de cada acción del agente.',
+    domain: 'Inmobiliario residencial · en producción',
+  },
+  {
+    kicker: 'Documentación fiscal',
+    heading: 'Marcado prioritario de riesgo antes de la revisión manual.',
+    domain: 'Fiscal / contable · en desarrollo',
+  },
+  {
+    kicker: 'Trazabilidad',
+    heading: 'Cada decisión del sistema queda auditada end-to-end.',
+    domain: 'Estándar de todo agente entregado',
+  },
+  {
+    kicker: 'Operación',
+    heading: 'Sistemas diseñados para funcionar sin intervención constante.',
+    domain: 'Con reversibilidad humana en cualquier paso',
+  },
 ];
-
-const MetricCounter = ({ end, suffix, trigger, delay = 0 }) => {
-  const v = useCountUp(end, { duration: 1800 + delay, trigger });
-  return (
-    <div className="flex items-baseline">
-      <span
-        className="text-[3.25rem] md:text-[4rem] lg:text-[5.25rem] leading-[0.85] tabular-nums"
-        style={{
-          fontFamily: "'Cabinet Grotesk', sans-serif",
-          fontWeight: 500,
-          letterSpacing: '-0.045em',
-          background: 'linear-gradient(180deg, #0E0F11 0%, #2C3E80 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-      >
-        {Math.round(v)}
-      </span>
-      <span
-        className="ml-1"
-        style={{
-          fontFamily: "'Cabinet Grotesk', sans-serif",
-          fontWeight: 500,
-          fontSize: 'clamp(1.25rem, 1.6vw, 1.75rem)',
-          color: '#2C3E80',
-          letterSpacing: '-0.02em',
-        }}
-      >
-        {suffix}
-      </span>
-    </div>
-  );
-};
 
 export const Outcomes = () => {
   const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.2 });
-  const [metricsRef, metricsVisible] = useScrollReveal({ threshold: 0.15 });
+  const [gridRef, gridVisible]     = useScrollReveal({ threshold: 0.12 });
 
   return (
     <section
-      className="section-padding-lg bg-[#F5F2EC] relative overflow-hidden"
+      className="section-padding-lg relative overflow-hidden section-dark"
+      style={{ background: '#0A0C10', color: '#F5F2EC' }}
       data-testid="outcomes-section"
     >
-      {/* Architectural grid overlay */}
+      {/* Glow indigo enfocado — mismo lenguaje que el hero */}
       <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none section-glow"
+        style={{
+          background:
+            'radial-gradient(60% 50% at 72% 38%, rgba(84,104,214,0.18) 0%, rgba(84,104,214,0.05) 40%, transparent 70%)',
+        }}
+      />
+
+      {/* Grano SVG (feTurbulence) — sutil, sobre el glow */}
+      <div
+        aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(14,15,17,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(14,15,17,0.025) 1px, transparent 1px)
-          `,
-          backgroundSize: '96px 96px',
-          opacity: 0.55,
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          opacity: 0.05,
+          mixBlendMode: 'overlay',
         }}
       />
 
@@ -70,52 +72,114 @@ export const Outcomes = () => {
         {/* Header */}
         <div
           ref={headerRef}
-          className={`max-w-xl mb-16 md:mb-20 lg:mb-28 reveal ${headerVisible ? 'revealed' : ''}`}
+          className={`max-w-2xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span
-            className="label-accent text-[#2C3E80] block mb-6"
+            className="label-accent block mb-6"
+            style={{ color: '#5468D6' }}
             data-testid="outcomes-label"
           >
             Resultados
           </span>
-          <h2 className="heading-xl" data-testid="outcomes-headline">
-            Inteligencia operativa medible
+          <h2
+            className="heading-xl"
+            style={{ color: '#F5F2EC' }}
+            data-testid="outcomes-headline"
+          >
+            Inteligencia <span style={{ color: '#5468D6' }}>operativa</span> medible
           </h2>
+          <p
+            className="mt-6 max-w-[54ch]"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 'clamp(0.9375rem, 1vw, 1rem)',
+              lineHeight: 1.65,
+              color: 'rgba(200,204,220,0.85)',
+            }}
+          >
+            No promesas. Propiedades de sistemas ya en operación —
+            trazables, gobernables, con humanos siempre en el bucle.
+          </p>
         </div>
 
-        {/* Metrics - Monumental, count-up animated */}
+        {/* Grid de hechos cualitativos */}
         <div
-          ref={metricsRef}
-          className={`grid grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16 md:gap-x-14 lg:gap-x-8 reveal-stagger ${metricsVisible ? 'revealed' : ''}`}
+          ref={gridRef}
+          className={`grid sm:grid-cols-2 gap-px reveal-stagger ${gridVisible ? 'revealed' : ''}`}
+          style={{
+            background: 'rgba(245,242,236,0.08)',
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+          }}
         >
-          {metrics.map((metric, index) => (
+          {facts.map((f, i) => (
             <div
-              key={index}
-              className="relative group"
-              data-testid={`outcome-metric-${index + 1}`}
+              key={i}
+              className="relative p-8 md:p-10 lg:p-12 flex flex-col gap-5 transition-colors duration-400 group"
+              style={{ background: '#0A0C10' }}
+              data-testid={`outcome-fact-${i + 1}`}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#0E1116')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#0A0C10')}
             >
-              <div className="mb-5 md:mb-6">
-                <MetricCounter
-                  end={metric.value}
-                  suffix={metric.suffix}
-                  trigger={metricsVisible}
-                  delay={index * 120}
-                />
-              </div>
-
-              <div
-                className="w-10 h-px mb-4 transition-all duration-400 group-hover:w-16"
+              <span
                 style={{
-                  background: 'linear-gradient(90deg, rgba(44,62,128,0.7) 0%, transparent 100%)',
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                  color: '#5468D6',
+                }}
+              >
+                {f.kicker}
+              </span>
+              <p
+                style={{
+                  fontFamily: "'Cabinet Grotesk', sans-serif",
+                  fontWeight: 500,
+                  fontSize: 'clamp(1.375rem, 2vw, 1.75rem)',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em',
+                  color: '#F5F2EC',
+                  maxWidth: '30ch',
+                }}
+              >
+                {f.heading}
+              </p>
+              <div
+                className="w-10 h-px transition-all duration-400 group-hover:w-16 mt-1"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(84,104,214,0.7) 0%, transparent 100%)',
                 }}
               />
-
-              <p className="text-[0.8125rem] md:text-sm text-[#5D6878] leading-relaxed max-w-[210px]">
-                {metric.label}
-              </p>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.8125rem',
+                  color: '#9BA5B7',
+                  letterSpacing: '0.01em',
+                }}
+              >
+                {f.domain}
+              </span>
             </div>
           ))}
         </div>
+
+        {/* Nota de alcance */}
+        <p
+          className="mt-8 md:mt-10 text-center md:text-left max-w-[60ch]"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.75rem',
+            color: 'rgba(200,204,220,0.60)',
+            letterSpacing: '0.02em',
+            lineHeight: 1.6,
+          }}
+        >
+          Propiedades de sistemas en operación; el detalle específico
+          varía por implementación y dominio.
+        </p>
       </div>
     </section>
   );
