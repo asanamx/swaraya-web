@@ -137,10 +137,7 @@ export const Footer = () => {
               </div>
 
               {/* Datos corporativos — bajo Sede, sin domicilio */}
-              <div
-                className="mt-8 flex flex-col gap-1 text-sm max-w-md"
-                style={{ color: '#9BA5B7', fontFamily: "'Inter', sans-serif" }}
-              >
+              <div style={{ display: 'none' }} aria-hidden="true">
                 <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878', marginBottom: 4 }}>
                   Datos corporativos
                 </span>
@@ -302,9 +299,9 @@ export const Footer = () => {
           </div>
 
           {/* Grid de columnas */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
             {/* About */}
-            <div className="col-span-2 md:col-span-1">
+            <div className="col-span-2 md:col-span-2">
               <h4
                 style={{
                   fontSize: '0.6875rem',
@@ -413,7 +410,7 @@ export const Footer = () => {
               textTransform: 'uppercase',
             }}
           >
-            <span>© {year} swaraya</span>
+            <span>© {year} swaraya, S. de R. L. de C. V.</span>
             <span>Agencia de inteligencia artificial aplicada</span>
           </div>
         </div>
