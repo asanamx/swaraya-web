@@ -22,6 +22,20 @@ export const initiatives = [
     contactEmail: 'hola@atika.studio',
     status: 'operativa',               // 'operativa' | 'desarrollo' | 'proximo'
   },
+  {
+    id: 'stratika',
+    name: 'Stratika',
+    domain: 'stratika.systems',
+    url: 'https://stratika.systems',
+    logo: '/brand/iniciativas/stratika-logo.png',
+    logoAlt: 'Stratika',
+    tagline: 'Sistemas estratégicos impulsados por IA',
+    description:
+      'Plataforma de sistemas estratégicos que opera flujos de decisión aumentados por inteligencia artificial para equipos ejecutivos y unidades de negocio.',
+    model: 'subscription',
+    contactEmail: 'hola@stratika.systems',
+    status: 'desarrollo',
+  },
   // Próximas iniciativas se agregan aquí — la UI y los documentos
   // legales se actualizarán automáticamente:
   // {

@@ -355,6 +355,7 @@ export const Footer = () => {
                 title: 'Iniciativas',
                 logos: [
                   { src: '/brand/iniciativas/atika-white.png', alt: 'Atika', href: 'https://atika.studio' },
+                  { src: '/brand/iniciativas/stratika-logo.png', alt: 'Stratika', href: 'https://stratika.systems' },
                 ],
               },
             ].map((col) => (
