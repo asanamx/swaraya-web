@@ -414,20 +414,20 @@ export const Footer = () => {
               >
                 Iniciativas
               </h4>
-              <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
+              <ul className="flex flex-wrap items-center gap-x-8 gap-y-4">
                 {initiatives.map((it) => (
                   <li key={it.id}>
                     <a
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
                       aria-label={`Visitar ${it.name}`}
                     >
                       <img
                         src={it.logo}
                         alt={it.logoAlt || it.name}
-                        style={{ height: 16, width: 'auto', display: 'block' }}
+                        style={{ height: 20, width: 'auto', display: 'block' }}
                       />
                     </a>
                   </li>
