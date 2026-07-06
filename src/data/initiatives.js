@@ -13,6 +13,8 @@ export const initiatives = [
     name: 'Atika',
     domain: 'atika.studio',
     url: 'https://atika.studio',
+    logo: '/brand/iniciativas/atika-white.png',
+    logoAlt: 'Atika',
     tagline: 'Diagnóstico digital de interiores con IA',
     description:
       'Plataforma de diagnóstico digital de interiores impulsada por inteligencia artificial. Genera análisis y reportes de espacios habitables bajo demanda.',

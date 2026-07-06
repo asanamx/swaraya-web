@@ -344,17 +344,17 @@ export const Footer = () => {
                 ],
               },
               {
-                title: 'Iniciativas',
-                items: [
-                  { label: 'Atika · atika.studio', href: 'https://atika.studio', external: true },
-                ],
-              },
-              {
                 title: 'Legal',
                 items: [
                   { label: 'Privacidad', href: '/privacidad' },
                   { label: 'Términos', href: '/terminos' },
                   { label: 'Devoluciones', href: '/devoluciones' },
+                ],
+              },
+              {
+                title: 'Iniciativas',
+                logos: [
+                  { src: '/brand/iniciativas/atika-white.png', alt: 'Atika', href: 'https://atika.studio' },
                 ],
               },
             ].map((col) => (
@@ -372,7 +372,24 @@ export const Footer = () => {
                   {col.title}
                 </h4>
                 <ul className="flex flex-col gap-3">
-                  {col.items.map((item) => (
+                  {col.logos && col.logos.map((logo) => (
+                    <li key={logo.alt}>
+                      <a
+                        href={logo.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        aria-label={`Visitar ${logo.alt}`}
+                      >
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          style={{ height: 22, width: 'auto', display: 'block' }}
+                        />
+                      </a>
+                    </li>
+                  ))}
+                  {col.items && col.items.map((item) => (
                     <li key={item.label}>
                       {item.external ? (
                         <a
