@@ -339,6 +339,7 @@ export const Footer = () => {
                 items: [
                   { label: 'Privacidad', href: '/privacidad' },
                   { label: 'Términos', href: '/terminos' },
+                  { label: 'Devoluciones', href: '/devoluciones' },
                 ],
               },
             ].map((col) => (
