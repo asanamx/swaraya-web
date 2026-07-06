@@ -373,9 +373,64 @@ export const Footer = () => {
             ))}
           </div>
 
+          {/* Legal + iniciativas — bloque de transparencia */}
+          <div
+            className="mt-16 pt-10 grid gap-8 md:grid-cols-2"
+            style={{
+              borderTop: '1px solid rgba(245,242,236,0.06)',
+              color: '#9BA5B7',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.75rem',
+              lineHeight: 1.7,
+            }}
+          >
+            <div className="flex flex-col gap-1.5">
+              <span
+                style={{
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.24em',
+                  textTransform: 'uppercase',
+                  color: '#5D6878',
+                  marginBottom: 4,
+                }}
+              >
+                Datos corporativos
+              </span>
+              <span style={{ color: '#C8CCDC' }}>swaraya, S. de R. L. de C. V.</span>
+              <span>RFC: SWA1408208F7</span>
+              <span>Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México</span>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <span
+                style={{
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.24em',
+                  textTransform: 'uppercase',
+                  color: '#5D6878',
+                  marginBottom: 4,
+                }}
+              >
+                Iniciativas
+              </span>
+              <span>
+                swaraya opera la iniciativa{' '}
+                <a
+                  href="https://atika.studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#C8CCDC', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+                >
+                  Atika · atika.studio
+                </a>
+              </span>
+              <span>Contacto general: hola@swaraya.ai</span>
+              <span>Privacidad: privacidad@swaraya.ai</span>
+            </div>
+          </div>
+
           {/* Bottom row */}
           <div
-            className="mt-16 md:mt-20 pt-8 flex flex-col md:flex-row justify-between gap-4 text-xs"
+            className="mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs"
             style={{
               borderTop: '1px solid rgba(245,242,236,0.06)',
               color: '#5D6878',

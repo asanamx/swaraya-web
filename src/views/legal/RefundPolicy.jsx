@@ -1,9 +1,10 @@
 import LegalLayout from './LegalLayout';
 import Link from 'next/link';
+import { corporate, formatAddress, formatInitiativesText, initiatives } from '@/data/initiatives';
 
-const COMPANY = 'swaraya, S. de R. L. de C. V.';
-const SHORT = 'swaraya';
-const EMAIL_CONTACT = 'hola@swaraya.ai';
+const COMPANY = corporate.legalName;
+const SHORT = corporate.shortName;
+const EMAIL_CONTACT = corporate.contact.general;
 
 const sections = [
   {
@@ -13,8 +14,11 @@ const sections = [
     body: (
       <>
         <p>
-          Los cobros de las iniciativas comerciales operadas por <strong>{SHORT}</strong> son procesados por <strong>Paddle.com Market Ltd</strong>, quien actúa como <em>Merchant of Record</em>. Al confirmar una compra, el Usuario acepta tanto la presente Política como los Términos y Condiciones de Paddle, disponibles en{' '}
+          Los cobros de las iniciativas comerciales operadas por <strong>{SHORT}</strong> son procesados por <strong>{corporate.merchantOfRecord}</strong>, quien actúa como <em>Merchant of Record</em>. Al confirmar una compra, el Usuario acepta tanto la presente Política como los Términos y Condiciones de Paddle, disponibles en{' '}
           <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank" rel="noopener noreferrer">paddle.com/legal/checkout-buyer-terms</a>.
+        </p>
+        <p>
+          {SHORT} opera actualmente la iniciativa <strong>{formatInitiativesText()}</strong>. Las ventas realizadas a través de sus dominios son procesadas por {corporate.merchantOfRecord} conforme a esta Política.
         </p>
         <p>
           La presente Política forma parte integral de los{' '}

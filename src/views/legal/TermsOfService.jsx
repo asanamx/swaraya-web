@@ -1,10 +1,11 @@
 import LegalLayout from './LegalLayout';
 import Link from 'next/link';
+import { corporate, formatInitiativesText, initiatives } from '@/data/initiatives';
 
-const COMPANY = 'swaraya, S. de R. L. de C. V.';
-const SHORT = 'swaraya';
+const COMPANY = corporate.legalName;
+const SHORT = corporate.shortName;
+const EMAIL_CONTACT = corporate.contact.general;
 const SITE = 'swaraya.ai';
-const EMAIL_CONTACT = 'hola@swaraya.ai';
 const ADDRESS = 'Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México';
 
 const sections = [

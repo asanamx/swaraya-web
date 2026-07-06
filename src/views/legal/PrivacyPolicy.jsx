@@ -1,11 +1,13 @@
 import LegalLayout from './LegalLayout';
+import { corporate, formatInitiativesText, initiatives } from '@/data/initiatives';
 
-const COMPANY = 'swaraya, S. de R. L. de C. V.';
-const SHORT = 'swaraya';
-const RFC = 'SWA1408208F7';
+const COMPANY = corporate.legalName;
+const SHORT = corporate.shortName;
+const EMAIL_PRIVACY = corporate.contact.privacy;
+const RFC = corporate.rfc;
 const ADDRESS = 'Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México';
-const EMAIL_ARCO = 'privacidad@swaraya.ai';
-const EMAIL_CONTACT = 'hola@swaraya.ai';
+const EMAIL_ARCO = corporate.contact.privacy;
+const EMAIL_CONTACT = corporate.contact.general;
 
 const sections = [
   {

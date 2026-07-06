@@ -6,6 +6,7 @@ import Method from '@/components/Method';
 import Principles from '@/components/Principles';
 import Outcomes from '@/components/Outcomes';
 import IntelligenceShowcase from '@/components/IntelligenceShowcase';
+import Initiatives from '@/components/Initiatives';
 import Philosophy from '@/components/Philosophy';
 import BlogPreview from '@/components/BlogPreview';
 import Footer from '@/components/Footer';
@@ -22,6 +23,7 @@ export default function Home() {
         <Principles />
         <Outcomes />
         <IntelligenceShowcase />
+        <Initiatives />
         <Philosophy />
         <BlogPreview />
       </main>
