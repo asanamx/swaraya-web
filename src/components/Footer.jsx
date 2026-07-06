@@ -135,6 +135,18 @@ export const Footer = () => {
                   <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>Respuesta en 24 h hábiles</span>
                 </div>
               </div>
+
+              {/* Datos corporativos — bajo Sede, sin domicilio */}
+              <div
+                className="mt-8 flex flex-col gap-1 text-sm max-w-md"
+                style={{ color: '#9BA5B7', fontFamily: "'Inter', sans-serif" }}
+              >
+                <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878', marginBottom: 4 }}>
+                  Datos corporativos
+                </span>
+                <span style={{ color: '#C8CCDC' }}>swaraya, S. de R. L. de C. V.</span>
+                <span>RFC: SWA1408208F7</span>
+              </div>
             </div>
 
             {/* Right: Form */}
@@ -290,7 +302,7 @@ export const Footer = () => {
           </div>
 
           {/* Grid de columnas */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
             {/* About */}
             <div className="col-span-2 md:col-span-1">
               <h4
@@ -335,6 +347,12 @@ export const Footer = () => {
                 ],
               },
               {
+                title: 'Iniciativas',
+                items: [
+                  { label: 'Atika · atika.studio', href: 'https://atika.studio', external: true },
+                ],
+              },
+              {
                 title: 'Legal',
                 items: [
                   { label: 'Privacidad', href: '/privacidad' },
@@ -359,73 +377,30 @@ export const Footer = () => {
                 <ul className="flex flex-col gap-3">
                   {col.items.map((item) => (
                     <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className="link-hover text-sm transition-colors"
-                        style={{ color: '#C8CCDC' }}
-                      >
-                        {item.label}
-                      </Link>
+                      {item.external ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-hover text-sm transition-colors"
+                          style={{ color: '#C8CCDC' }}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="link-hover text-sm transition-colors"
+                          style={{ color: '#C8CCDC' }}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
-
-          {/* Legal + iniciativas — bloque de transparencia */}
-          <div
-            className="mt-16 pt-10 grid gap-8 md:grid-cols-2"
-            style={{
-              borderTop: '1px solid rgba(245,242,236,0.06)',
-              color: '#9BA5B7',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '0.75rem',
-              lineHeight: 1.7,
-            }}
-          >
-            <div className="flex flex-col gap-1.5">
-              <span
-                style={{
-                  fontSize: '0.6875rem',
-                  letterSpacing: '0.24em',
-                  textTransform: 'uppercase',
-                  color: '#5D6878',
-                  marginBottom: 4,
-                }}
-              >
-                Datos corporativos
-              </span>
-              <span style={{ color: '#C8CCDC' }}>swaraya, S. de R. L. de C. V.</span>
-              <span>RFC: SWA1408208F7</span>
-              <span>Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México</span>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <span
-                style={{
-                  fontSize: '0.6875rem',
-                  letterSpacing: '0.24em',
-                  textTransform: 'uppercase',
-                  color: '#5D6878',
-                  marginBottom: 4,
-                }}
-              >
-                Iniciativas
-              </span>
-              <span>
-                swaraya opera la iniciativa{' '}
-                <a
-                  href="https://atika.studio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#C8CCDC', textDecoration: 'underline', textUnderlineOffset: '3px' }}
-                >
-                  Atika · atika.studio
-                </a>
-              </span>
-              <span>Contacto general: hola@swaraya.ai</span>
-              <span>Privacidad: privacidad@swaraya.ai</span>
-            </div>
           </div>
 
           {/* Bottom row */}
