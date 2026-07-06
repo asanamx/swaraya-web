@@ -421,25 +421,14 @@ export const Footer = () => {
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block transition-colors duration-300"
+                      className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
                       aria-label={`Visitar ${it.name}`}
-                      style={{ color: '#C8CCDC' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.color = '#F5F2EC'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.color = '#C8CCDC'; }}
                     >
-                      <span
-                        style={{
-                          fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
-                          fontWeight: 500,
-                          fontSize: '1rem',
-                          letterSpacing: '-0.03em',
-                          lineHeight: 1,
-                          textTransform: 'lowercase',
-                        }}
-                      >
-                        {it.name}
-                        <span aria-hidden="true" style={{ color: '#5468D6' }}>.</span>
-                      </span>
+                      <img
+                        src={it.logo}
+                        alt={it.logoAlt || it.name}
+                        style={{ height: 20, width: 'auto', display: 'block' }}
+                      />
                     </a>
                   </li>
                 ))}
