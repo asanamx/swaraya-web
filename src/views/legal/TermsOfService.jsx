@@ -141,6 +141,21 @@ const sections = [
   },
   {
     number: '10',
+    id: 'cobros-devoluciones',
+    title: 'Cobros y devoluciones',
+    body: (
+      <>
+        <p>
+          Los cobros de las iniciativas comerciales operadas por {SHORT} son procesados por <strong>Paddle.com Market Ltd</strong> en su calidad de <em>Merchant of Record</em>. Las condiciones específicas de reembolso, cancelación de suscripciones y atención de disputas se detallan en nuestra <Link href="/devoluciones">Política de devoluciones</Link>, la cual forma parte integral de los presentes Términos.
+        </p>
+        <p>
+          Al confirmar cualquier compra, el Usuario declara haber leído y aceptado dicha Política, así como los términos aplicables de Paddle.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: '11',
     id: 'disponibilidad',
     title: 'Disponibilidad del Sitio',
     body: (
@@ -152,7 +167,7 @@ const sections = [
     ),
   },
   {
-    number: '11',
+    number: '12',
     id: 'modificaciones',
     title: 'Modificación de los Términos',
     body: (
@@ -164,7 +179,7 @@ const sections = [
     ),
   },
   {
-    number: '12',
+    number: '13',
     id: 'jurisdiccion',
     title: 'Legislación aplicable y jurisdicción',
     body: (
@@ -176,7 +191,7 @@ const sections = [
     ),
   },
   {
-    number: '13',
+    number: '14',
     id: 'contacto',
     title: 'Contacto',
     body: (
