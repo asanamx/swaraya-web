@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { colors } from '../lib/tokens';
+import { initiatives } from '@/data/initiatives';
 
 export const Footer = () => {
   const [topRef, topVisible] = useScrollReveal({ threshold: 0.15 });
@@ -298,8 +299,8 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Grid de columnas */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
+          {/* Grid de columnas — navegación */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
             {/* About */}
             <div className="col-span-2 md:col-span-2">
               <h4
@@ -351,13 +352,6 @@ export const Footer = () => {
                   { label: 'Devoluciones', href: '/devoluciones' },
                 ],
               },
-              {
-                title: 'Iniciativas',
-                logos: [
-                  { src: '/brand/iniciativas/atika-white.png', alt: 'Atika', href: 'https://atika.studio' },
-                  { src: '/brand/iniciativas/stratika-logo.png', alt: 'Stratika', href: 'https://stratika.systems' },
-                ],
-              },
             ].map((col) => (
               <div key={col.title}>
                 <h4
@@ -373,23 +367,6 @@ export const Footer = () => {
                   {col.title}
                 </h4>
                 <ul className="flex flex-col gap-3">
-                  {col.logos && col.logos.map((logo) => (
-                    <li key={logo.alt}>
-                      <a
-                        href={logo.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
-                        aria-label={`Visitar ${logo.alt}`}
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.alt}
-                          style={{ height: 22, width: 'auto', display: 'block' }}
-                        />
-                      </a>
-                    </li>
-                  ))}
                   {col.items && col.items.map((item) => (
                     <li key={item.label}>
                       {item.external ? (
@@ -417,6 +394,47 @@ export const Footer = () => {
               </div>
             ))}
           </div>
+
+          {/* Iniciativas — franja horizontal, autopoblada desde
+              /src/data/initiatives.js. Añadir una entrada al array
+              se refleja aquí automáticamente. */}
+          {initiatives.length > 0 && (
+            <div
+              className="mt-12 md:mt-14 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+              style={{ borderTop: '1px solid rgba(245,242,236,0.06)' }}
+            >
+              <h4
+                style={{
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.24em',
+                  textTransform: 'uppercase',
+                  color: '#5D6878',
+                  fontWeight: 500,
+                }}
+              >
+                Iniciativas
+              </h4>
+              <ul className="flex flex-wrap items-center gap-x-10 gap-y-4">
+                {initiatives.map((it) => (
+                  <li key={it.id}>
+                    <a
+                      href={it.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block opacity-60 hover:opacity-100 transition-opacity duration-300"
+                      aria-label={`Visitar ${it.name}`}
+                    >
+                      <img
+                        src={it.logo}
+                        alt={it.logoAlt || it.name}
+                        style={{ height: 16, width: 'auto', display: 'block' }}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Bottom row */}
           <div
