@@ -1,8 +1,8 @@
 import LegalLayout from './LegalLayout';
 import Link from 'next/link';
 
-const COMPANY = 'Swaraya, S. de R. L. de C. V.';
-const SHORT = 'Swaraya';
+const COMPANY = 'swaraya, S. de R. L. de C. V.';
+const SHORT = 'swaraya';
 const SITE = 'swaraya.ai';
 const EMAIL_CONTACT = 'hola@swaraya.ai';
 const ADDRESS = 'Avenida Juárez 397, Pachuca de Soto, Estado de Hidalgo, C.P. 42000, México';
