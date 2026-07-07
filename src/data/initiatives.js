@@ -30,7 +30,7 @@ export const initiatives = [
     url: 'https://constructos.app',
     logo: '/brand/iniciativas/constructos-logo.webp',
     logoAlt: 'Constructos',
-    footerHeightPx: 16,                // ajuste óptico: wordmark muy largo
+    footerHeightPx: 17,                // ajuste óptico: wordmark muy largo
     tagline: 'Constructos operativos para equipos de producto',
     description:
       'Plataforma de constructos operativos que estandariza rituales, artefactos y flujos de trabajo de equipos de producto y operaciones apoyada por inteligencia artificial.',
