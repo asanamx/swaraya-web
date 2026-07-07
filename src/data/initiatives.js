@@ -15,6 +15,7 @@ export const initiatives = [
     url: 'https://atika.studio',
     logo: '/brand/iniciativas/atika-white.png',
     logoAlt: 'Atika',
+    footerHeightPx: 18,                // ajuste óptico: letterforms gruesas — reducir altura
     tagline: 'Diagnóstico digital de interiores con IA',
     description:
       'Plataforma de diagnóstico digital de interiores impulsada por inteligencia artificial. Genera análisis y reportes de espacios habitables bajo demanda.',
@@ -23,31 +24,33 @@ export const initiatives = [
     status: 'operativa',               // 'operativa' | 'desarrollo' | 'proximo'
   },
   {
-    id: 'stratika',
-    name: 'Stratika',
-    domain: 'stratika.systems',
-    url: 'https://stratika.systems',
-    logo: '/brand/iniciativas/stratika-logo.png',
-    logoAlt: 'Stratika',
-    tagline: 'Sistemas estratégicos impulsados por IA',
-    description:
-      'Plataforma de sistemas estratégicos que opera flujos de decisión aumentados por inteligencia artificial para equipos ejecutivos y unidades de negocio.',
-    model: 'subscription',
-    contactEmail: 'hola@stratika.systems',
-    status: 'desarrollo',
-  },
-  {
     id: 'constructos',
     name: 'Constructos',
     domain: 'constructos.app',
     url: 'https://constructos.app',
     logo: '/brand/iniciativas/constructos-logo.webp',
     logoAlt: 'Constructos',
+    footerHeightPx: 16,                // ajuste óptico: wordmark muy largo
     tagline: 'Constructos operativos para equipos de producto',
     description:
       'Plataforma de constructos operativos que estandariza rituales, artefactos y flujos de trabajo de equipos de producto y operaciones apoyada por inteligencia artificial.',
     model: 'subscription',
     contactEmail: 'hola@constructos.app',
+    status: 'desarrollo',
+  },
+  {
+    id: 'stratika',
+    name: 'Stratika',
+    domain: 'stratika.systems',
+    url: 'https://stratika.systems',
+    logo: '/brand/iniciativas/stratika-logo.png',
+    logoAlt: 'Stratika',
+    footerHeightPx: 16,                // ajuste óptico: wordmark delgado
+    tagline: 'Sistemas estratégicos impulsados por IA',
+    description:
+      'Plataforma de sistemas estratégicos que opera flujos de decisión aumentados por inteligencia artificial para equipos ejecutivos y unidades de negocio.',
+    model: 'subscription',
+    contactEmail: 'hola@stratika.systems',
     status: 'desarrollo',
   },
   // Próximas iniciativas se agregan aquí — la UI y los documentos

@@ -414,20 +414,24 @@ export const Footer = () => {
               >
                 Iniciativas
               </h4>
-              <ul className="flex flex-wrap items-center gap-x-8 gap-y-4">
+              <ul className="flex flex-wrap items-center gap-x-12 md:gap-x-14 gap-y-5">
                 {initiatives.map((it) => (
-                  <li key={it.id}>
+                  <li key={it.id} className="flex items-center">
                     <a
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="initiative-logo inline-block"
+                      className="initiative-logo inline-flex items-center"
                       aria-label={`Visitar ${it.name}`}
                     >
                       <img
                         src={it.logo}
                         alt={it.logoAlt || it.name}
-                        style={{ height: 20, width: 'auto', display: 'block' }}
+                        style={{
+                          height: `${it.footerHeightPx ?? 20}px`,
+                          width: 'auto',
+                          display: 'block',
+                        }}
                       />
                     </a>
                   </li>
