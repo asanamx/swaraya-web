@@ -36,6 +36,20 @@ export const initiatives = [
     contactEmail: 'hola@stratika.systems',
     status: 'desarrollo',
   },
+  {
+    id: 'constructos',
+    name: 'Constructos',
+    domain: 'constructos.app',
+    url: 'https://constructos.app',
+    logo: '/brand/iniciativas/constructos-logo.webp',
+    logoAlt: 'Constructos',
+    tagline: 'Constructos operativos para equipos de producto',
+    description:
+      'Plataforma de constructos operativos que estandariza rituales, artefactos y flujos de trabajo de equipos de producto y operaciones apoyada por inteligencia artificial.',
+    model: 'subscription',
+    contactEmail: 'hola@constructos.app',
+    status: 'desarrollo',
+  },
   // Próximas iniciativas se agregan aquí — la UI y los documentos
   // legales se actualizarán automáticamente:
   // {
