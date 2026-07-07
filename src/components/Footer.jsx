@@ -421,7 +421,7 @@ export const Footer = () => {
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      className="initiative-logo inline-block"
                       aria-label={`Visitar ${it.name}`}
                     >
                       <img
@@ -475,6 +475,28 @@ export const Footer = () => {
           border-color: #5468D6;
           background: rgba(245,242,236,0.06);
           box-shadow: 0 0 0 3px rgba(84,104,214,0.25);
+        }
+
+        /* Iniciativas — homologación de estados idle/hover
+           Los logos originales conviven con tratamientos gráficos muy
+           distintos (wordmark blanco vs icono cuadrado a color). Para que
+           el "logo strip" respire con coherencia:
+           · Idle  → escala de grises + opacidad reducida (todos iguales)
+           · Hover → color de marca original + opacidad plena           */
+        .initiative-logo {
+          filter: grayscale(1);
+          opacity: 0.55;
+          transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+        .initiative-logo:hover,
+        .initiative-logo:focus-visible {
+          filter: grayscale(0);
+          opacity: 1;
+        }
+        .initiative-logo:focus-visible {
+          outline: 2px solid #5468D6;
+          outline-offset: 4px;
+          border-radius: 4px;
         }
       `}</style>
     </footer>
