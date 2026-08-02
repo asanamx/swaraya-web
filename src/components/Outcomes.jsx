@@ -42,8 +42,8 @@ export const Outcomes = () => {
 
   return (
     <section
-      className="section-padding-lg relative overflow-hidden section-dark"
-      style={{ background: '#0A0C10', color: '#F5F2EC' }}
+      className="section-padding-lg relative overflow-hidden section-dark with-grain"
+      style={{ background: '#111114', color: '#ffffff' }}
       data-testid="outcomes-section"
     >
       {/* Glow indigo enfocado — mismo lenguaje que el hero */}
@@ -52,7 +52,7 @@ export const Outcomes = () => {
         className="absolute inset-0 pointer-events-none section-glow"
         style={{
           background:
-            'radial-gradient(60% 50% at 72% 38%, rgba(84,104,214,0.18) 0%, rgba(84,104,214,0.05) 40%, transparent 70%)',
+            'radial-gradient(60% 50% at 72% 38%, rgba(58, 91, 255,0.18) 0%, rgba(58, 91, 255,0.05) 40%, transparent 70%)',
         }}
       />
 
@@ -76,17 +76,17 @@ export const Outcomes = () => {
         >
           <span
             className="label-accent block mb-6"
-            style={{ color: '#5468D6' }}
+            style={{ color: '#3a5bff' }}
             data-testid="outcomes-label"
           >
             Resultados
           </span>
           <h2
             className="heading-xl"
-            style={{ color: '#F5F2EC' }}
+            style={{ color: '#ffffff' }}
             data-testid="outcomes-headline"
           >
-            Inteligencia <span style={{ color: '#5468D6' }}>operativa</span> medible
+            Inteligencia <span style={{ color: '#3a5bff' }}>operativa</span> medible
           </h2>
           <p
             className="mt-6 max-w-[54ch]"
@@ -107,7 +107,7 @@ export const Outcomes = () => {
           ref={gridRef}
           className={`grid sm:grid-cols-2 gap-px reveal-stagger ${gridVisible ? 'revealed' : ''}`}
           style={{
-            background: 'rgba(245,242,236,0.08)',
+            background: 'rgba(255, 255, 255,0.08)',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
           }}
@@ -116,10 +116,10 @@ export const Outcomes = () => {
             <div
               key={i}
               className="relative p-8 md:p-10 lg:p-12 flex flex-col gap-5 transition-colors duration-400 group"
-              style={{ background: '#0A0C10' }}
+              style={{ background: '#111114' }}
               data-testid={`outcome-fact-${i + 1}`}
               onMouseEnter={(e) => (e.currentTarget.style.background = '#0E1116')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#0A0C10')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#111114')}
             >
               <span
                 style={{
@@ -128,7 +128,7 @@ export const Outcomes = () => {
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: '#5468D6',
+                  color: '#3a5bff',
                 }}
               >
                 {f.kicker}
@@ -140,7 +140,7 @@ export const Outcomes = () => {
                   fontSize: 'clamp(1.375rem, 2vw, 1.75rem)',
                   lineHeight: 1.2,
                   letterSpacing: '-0.02em',
-                  color: '#F5F2EC',
+                  color: '#ffffff',
                   maxWidth: '30ch',
                 }}
               >
@@ -149,14 +149,14 @@ export const Outcomes = () => {
               <div
                 className="w-10 h-px transition-all duration-400 group-hover:w-16 mt-1"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(84,104,214,0.7) 0%, transparent 100%)',
+                  background: 'linear-gradient(90deg, rgba(58, 91, 255,0.7) 0%, transparent 100%)',
                 }}
               />
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: '0.8125rem',
-                  color: '#9BA5B7',
+                  color: '#9aa0a8',
                   letterSpacing: '0.01em',
                 }}
               >

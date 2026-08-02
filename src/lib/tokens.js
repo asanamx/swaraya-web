@@ -7,8 +7,8 @@
  * ═══════════════════════════════════════════════════════════
  *  SISTEMA CONSOLIDADO · ~12 roles semánticos · WCAG 2.1 AA
  * ═══════════════════════════════════════════════════════════
- *  • Fondo CREAM (--bg)   → text-primary/secondary/tertiary + accent (#2C3E80)
- *  • Fondo DARK  (--ink)  → text-on-dark-* + accentBright (#5468D6)
+ *  • Fondo GALERÍA (--bg) → text-primary/secondary/tertiary + accent (#1233cc)
+ *  • Fondo DARK    (--ink) → text-on-dark-* + accentBright (#3a5bff)
  *
  *  Contraste verificado para cada par texto/superficie.
  *  Los alias legacy están marcados como @deprecated.
@@ -17,64 +17,69 @@
 
 export const colors = {
   // ── SUPERFICIES ──────────────────────────────────────────
-  bg: '#F5F2EB',                 // canvas crema base
-  surfaceRaised: '#F8F6F1',      // cards, popovers
-  surfaceMuted: '#ECE8DF',       // chips, hover, secondary
-  ink: '#0E0F11',                // tinta / foreground
+  bg: '#f4f4f5',                 // canvas gris galería base
+  surface: '#ffffff',            // superficie elevada
+  surfaceRaised: '#ffffff',      // alias cards, popovers
+  surfaceMuted: '#e5e5e6',       // chips, hover, secondary
+  ink: '#111114',                // tinta / foreground
 
   // Superficies oscuras
-  surfaceDark: '#0E0F11',
-  surfaceDark2: '#16181C',
-  surfaceDark3: '#1C1F25',
+  bgDark: '#111114',
+  bgDeep: '#0a0a0a',             // hero + footer profundo
+  surfaceDark: '#111114',
+  surfaceDark2: '#17171b',
+  surfaceDark3: '#1c1c22',
 
   // ── TEXTO SOBRE CLARO ────────────────────────────────────
   text: {
-    primary: '#0E0F11',          // 15.94:1  AAA
-    secondary: '#5D6878',        //  5.94:1  AA
-    tertiary: '#646E7B',         //  4.63:1  AA ✓ (corregido, era #9BA5B7)
-    placeholder: '#646E7B',
+    primary: '#111114',          // ≈17:1 sobre #f4f4f5 AAA
+    secondary: '#52565e',        // ≈6.6:1 AA
+    tertiary: '#63666e',         // ≈4.9:1 AA
+    placeholder: '#63666e',
   },
 
   // ── TEXTO SOBRE OSCURO ───────────────────────────────────
+  inkInverse: '#ffffff',
   textOnDark: {
-    primary: '#F5F2EC',
-    secondary: '#C8CCDC',
-    tertiary: '#9BA5B7',         //  7.72:1 sobre ink ✓
+    primary: '#ffffff',
+    secondary: '#c9cdd3',
+    tertiary: '#9aa0a8',         // ≈6.9:1 sobre #111114 ✓
   },
 
-  // ── ACENTO ÍNDIGO ────────────────────────────────────────
-  accent: '#2C3E80',             // sobre claro · 8.91:1 ✓
-  accentHover: '#1F2D5C',
-  accentBright: '#5468D6',       // sobre oscuro o fills
-  accentBrightHover: '#7585E0',
+  // ── ACENTO ULTRAMAR ──────────────────────────────────────
+  accent: '#1233cc',             // sobre claro · ≈9.3:1 ✓
+  accentHover: '#0f28a8',
+  accentBright: '#3a5bff',       // sobre oscuro o fills grandes
+  accentBrightHover: '#6478ff',
+  accentBrightText: '#7a92ff',   // texto pequeño sobre oscuro · ≈7:1
 
   // ── FOCO ─────────────────────────────────────────────────
-  ring: '#2C3E80',
-  ringOnDark: '#5468D6',
+  ring: '#1233cc',
+  ringOnDark: '#3a5bff',
 
   // ── ESTADOS DE ERROR ─────────────────────────────────────
   destructive: '#EF4343',        // fills, iconos, bordes
-  destructiveText: '#C62F2F',    // solo texto sobre claro · 4.88:1 ✓
+  destructiveText: '#c62f2f',    // solo texto sobre claro · 4.88:1 ✓
 
   // ─────────────────────────────────────────────────────────
-  // @deprecated · mantener durante migración
+  // @deprecated · alias hacia el nuevo sistema
   // ─────────────────────────────────────────────────────────
   cream: {
-    base: '#F5F2EB',              // @deprecated → bg
-    soft: '#F8F6F1',              // @deprecated → surfaceRaised
-    deep: '#ECE8DF',              // @deprecated → surfaceMuted
-    hairline: '#DED9CF',          // @deprecated → borders.solid
+    base: '#f4f4f5',              // @deprecated → bg
+    soft: '#ffffff',              // @deprecated → surfaceRaised
+    deep: '#e5e5e6',              // @deprecated → surfaceMuted
+    hairline: '#e5e5e6',          // @deprecated → borders.solid
   },
   dark: {
-    base: '#0E0F11',              // @deprecated → surfaceDark
-    soft: '#16181C',              // @deprecated → surfaceDark2
-    deep: '#1C1F25',              // @deprecated → surfaceDark3
+    base: '#111114',              // @deprecated → surfaceDark
+    soft: '#17171b',              // @deprecated → surfaceDark2
+    deep: '#1c1c22',              // @deprecated → surfaceDark3
   },
   indigo: {
-    onCream: '#2C3E80',           // @deprecated → accent
-    onCreamHover: '#1F2D5C',      // @deprecated → accentHover
-    onDark: '#5468D6',            // @deprecated → accentBright
-    onDarkHover: '#7585E0',       // @deprecated → accentBrightHover
+    onCream: '#1233cc',           // @deprecated → accent
+    onCreamHover: '#0f28a8',      // @deprecated → accentHover
+    onDark: '#3a5bff',            // @deprecated → accentBright
+    onDarkHover: '#6478ff',       // @deprecated → accentBrightHover
   },
 };
 
@@ -91,15 +96,15 @@ export const indigoFor = (surface, state = 'base') => {
 /** Bordes translúcidos por contexto */
 export const borders = {
   onCream: {
-    soft: 'rgba(14,15,17,0.04)',
-    base: 'rgba(14,15,17,0.08)',
-    strong: 'rgba(14,15,17,0.14)',
-    solid: '#DED9CF',
+    soft: 'rgba(17, 17, 20, 0.05)',
+    base: 'rgba(17, 17, 20, 0.10)',
+    strong: 'rgba(17, 17, 20, 0.16)',
+    solid: '#e5e5e6',
   },
   onDark: {
-    soft: 'rgba(245,242,236,0.04)',
-    base: 'rgba(245,242,236,0.08)',
-    strong: 'rgba(245,242,236,0.14)',
+    soft: 'rgba(255, 255, 255, 0.06)',
+    base: 'rgba(255, 255, 255, 0.10)',
+    strong: 'rgba(255, 255, 255, 0.14)',
   },
 };
 

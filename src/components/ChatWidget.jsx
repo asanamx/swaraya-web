@@ -76,7 +76,7 @@ const ChatWidget = () => {
       {/* Chat Button — FAB con ícono de marca "s" */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#5468D6] text-white shadow-lg shadow-[#5468D6]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#5468D6]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#3a5bff] text-white shadow-lg shadow-[#3a5bff]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#3a5bff]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Abrir chat con swaraya"
         data-testid="chat-open-button"
       >
@@ -88,7 +88,7 @@ const ChatWidget = () => {
             fontSize: 22,
             lineHeight: 1,
             letterSpacing: '-0.04em',
-            color: '#F5F2EB',
+            color: '#f4f4f5',
           }}
         >s</span>
       </button>
@@ -99,21 +99,21 @@ const ChatWidget = () => {
           isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="bg-[#0A0C10] rounded-2xl shadow-2xl shadow-black/50 border border-[rgba(255,255,255,0.06)] overflow-hidden flex flex-col h-[520px] max-h-[calc(100vh-6rem)]">
+        <div className="bg-[#111114] rounded-2xl shadow-2xl shadow-black/50 border border-[rgba(255,255,255,0.06)] overflow-hidden flex flex-col h-[520px] max-h-[calc(100vh-6rem)]">
           {/* Header */}
-          <div className="px-5 py-4 bg-gradient-to-r from-[#0C1016] to-[#0A0C10] border-b border-[rgba(255,255,255,0.04)] flex items-center justify-between">
+          <div className="px-5 py-4 bg-gradient-to-r from-[#0C1016] to-[#111114] border-b border-[rgba(255,255,255,0.04)] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#5468D6] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-full bg-[#3a5bff] flex items-center justify-center">
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente swaraya</h3>
-                <p className="text-[0.6875rem] text-[#9BA5B7]">Powered by AI</p>
+                <p className="text-[0.6875rem] text-[#9aa0a8]">Powered by AI</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="w-8 h-8 rounded-lg bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#5D6878] hover:text-[#F4F6F9] hover:bg-[rgba(255,255,255,0.08)] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#52565e] hover:text-[#F4F6F9] hover:bg-[rgba(255,255,255,0.08)] transition-colors"
               aria-label="Cerrar chat"
               data-testid="chat-close-button"
             >
@@ -132,18 +132,18 @@ const ChatWidget = () => {
                 <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center ${
                   msg.role === 'user' 
                     ? 'bg-[rgba(255,255,255,0.08)]' 
-                    : 'bg-[#5468D6]/20'
+                    : 'bg-[#3a5bff]/20'
                 }`}>
                   {msg.role === 'user' 
-                    ? <User className="w-3.5 h-3.5 text-[#9BA5B7]" />
-                    : <Bot className="w-3.5 h-3.5 text-[#5468D6]" />
+                    ? <User className="w-3.5 h-3.5 text-[#9aa0a8]" />
+                    : <Bot className="w-3.5 h-3.5 text-[#3a5bff]" />
                   }
                 </div>
                 
                 {/* Message Bubble */}
                 <div className={`max-w-[75%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-[#5468D6] text-white rounded-tr-md'
+                    ? 'bg-[#3a5bff] text-white rounded-tr-md'
                     : 'bg-[rgba(255,255,255,0.04)] text-[#B7BFCC] rounded-tl-md'
                 }`}>
                   {msg.content}
@@ -154,14 +154,14 @@ const ChatWidget = () => {
             {/* Loading indicator */}
             {isLoading && (
               <div className="flex gap-3">
-                <div className="w-7 h-7 rounded-full bg-[#5468D6]/20 flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-[#5468D6]" />
+                <div className="w-7 h-7 rounded-full bg-[#3a5bff]/20 flex items-center justify-center">
+                  <Bot className="w-3.5 h-3.5 text-[#3a5bff]" />
                 </div>
                 <div className="px-4 py-3 rounded-2xl rounded-tl-md bg-[rgba(255,255,255,0.04)]">
                   <div className="flex gap-1">
-                    <span className="w-2 h-2 rounded-full bg-[#5D6878] animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 rounded-full bg-[#5D6878] animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 rounded-full bg-[#5D6878] animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>
@@ -180,13 +180,13 @@ const ChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu mensaje..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#5D6878] focus:outline-none focus:border-[#5468D6]/50 transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#52565e] focus:outline-none focus:border-[#3a5bff]/50 transition-colors disabled:opacity-50"
                 data-testid="chat-input"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="w-11 h-11 rounded-xl bg-[#5468D6] text-white flex items-center justify-center transition-all hover:bg-[#5468D6] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-11 h-11 rounded-xl bg-[#3a5bff] text-white flex items-center justify-center transition-all hover:bg-[#3a5bff] disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="chat-send-button"
               >
                 {isLoading ? (

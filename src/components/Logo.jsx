@@ -26,21 +26,21 @@
 import Link from 'next/link';
 
 const TONES = {
-  positive:   { text: '#0E0F11', dot: '#2C3E80' },
-  negative:   { text: '#F5F2EC', dot: '#5468D6' },
-  indigo:     { text: '#2C3E80', dot: '#2C3E80' },
-  'mono-ink': { text: '#0E0F11', dot: '#0E0F11' },
-  'mono-cream': { text: '#F5F2EC', dot: '#F5F2EC' },
-  'on-indigo': { text: '#F5F2EB', dot: '#F5F2EB' },
+  positive:   { text: '#111114', dot: '#1233cc' },
+  negative:   { text: '#ffffff', dot: '#3a5bff' },
+  indigo:     { text: '#1233cc', dot: '#1233cc' },
+  'mono-ink': { text: '#111114', dot: '#111114' },
+  'mono-cream': { text: '#ffffff', dot: '#ffffff' },
+  'on-indigo': { text: '#f4f4f5', dot: '#f4f4f5' },
 };
 
 const ICON_BG = {
-  positive:  { bg: '#2C3E80', fg: '#F5F2EB' },
-  negative:  { bg: '#5468D6', fg: '#F5F2EB' },
-  indigo:    { bg: '#2C3E80', fg: '#F5F2EB' },
-  'mono-ink':   { bg: '#0E0F11', fg: '#F5F2EB' },
-  'mono-cream': { bg: '#F5F2EC', fg: '#0E0F11' },
-  'on-indigo':  { bg: '#F5F2EB', fg: '#2C3E80' },
+  positive:  { bg: '#1233cc', fg: '#f4f4f5' },
+  negative:  { bg: '#3a5bff', fg: '#f4f4f5' },
+  indigo:    { bg: '#1233cc', fg: '#f4f4f5' },
+  'mono-ink':   { bg: '#111114', fg: '#f4f4f5' },
+  'mono-cream': { bg: '#ffffff', fg: '#111114' },
+  'on-indigo':  { bg: '#f4f4f5', fg: '#1233cc' },
 };
 
 const resolveTone = (tone, surface) => {

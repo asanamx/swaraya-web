@@ -87,17 +87,17 @@ const BlogPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F2EC]">
+    <div className="min-h-screen bg-[#ffffff]">
       {/* Full Navigation */}
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(14,15,17,0.08)]">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(17, 17, 20,0.08)]">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="label-accent text-[#2C3E80] mb-6 block">Insights</span>
+            <span className="label-accent text-[#1233cc] mb-6 block">Insights</span>
             <h1
-              className="text-3xl md:text-5xl lg:text-6xl text-[#0E0F11] mb-6"
+              className="text-3xl md:text-5xl lg:text-6xl text-[#111114] mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -105,9 +105,9 @@ const BlogPage = () => {
                 lineHeight: 1.02,
               }}
             >
-              Perspectivas sobre <span className="text-[#2C3E80]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#1233cc]">inteligencia aplicada</span>
             </h1>
-            <p className="text-base md:text-lg text-[#5D6878] leading-relaxed max-w-[60ch]">
+            <p className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch]">
               Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos,
               gobernanza y el futuro de la inteligencia empresarial.
             </p>
@@ -116,18 +116,18 @@ const BlogPage = () => {
       </section>
 
       {/* Search and Filters */}
-      <section className="py-8 border-b border-[rgba(14,15,17,0.08)]">
+      <section className="py-8 border-b border-[rgba(17, 17, 20,0.08)]">
         <div className="container-main">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Search */}
             <form onSubmit={handleSearch} className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5D6878]" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#52565e]" />
               <input
                 type="text"
                 placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(14,15,17,0.08)] rounded-xl text-sm text-[#0E0F11] placeholder-[#5D6878] focus:outline-none focus:border-[#2C3E80]/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#1233cc]/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -135,23 +135,23 @@ const BlogPage = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#0E0F11] transition-colors"
+              className="flex items-center gap-2 text-sm text-[#52565e] hover:text-[#111114] transition-colors"
             >
               <Filter className="w-4 h-4" />
               Filtros
               {(selectedCategory || selectedTag) && (
-                <span className="w-2 h-2 rounded-full bg-[#2C3E80]" />
+                <span className="w-2 h-2 rounded-full bg-[#1233cc]" />
               )}
             </button>
           </div>
 
           {/* Expanded Filters */}
           {showFilters && (
-            <div className="mt-6 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(14,15,17,0.08)]">
+            <div className="mt-6 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Categories */}
                 <div>
-                  <h3 className="label-accent text-[#5D6878] mb-3">Categorías</h3>
+                  <h3 className="label-accent text-[#52565e] mb-3">Categorías</h3>
                   <div className="flex flex-wrap gap-2">
                     {categories.map((cat) => (
                       <button
@@ -162,8 +162,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedCategory === cat.name
-                            ? 'bg-[#2C3E80] text-[#F5F2EC]'
-                            : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
+                            ? 'bg-[#1233cc] text-[#ffffff]'
+                            : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                         }`}
                       >
                         {cat.name} ({cat.count})
@@ -174,7 +174,7 @@ const BlogPage = () => {
 
                 {/* Tags */}
                 <div>
-                  <h3 className="label-accent text-[#5D6878] mb-3">Tags</h3>
+                  <h3 className="label-accent text-[#52565e] mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.slice(0, 10).map((tag) => (
                       <button
@@ -185,8 +185,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedTag === tag.name
-                            ? 'bg-[#2C3E80] text-[#F5F2EC]'
-                            : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
+                            ? 'bg-[#1233cc] text-[#ffffff]'
+                            : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                         }`}
                       >
                         {tag.name}
@@ -199,7 +199,7 @@ const BlogPage = () => {
               {(selectedCategory || selectedTag) && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-xs text-[#2C3E80] hover:underline transition-colors"
+                  className="mt-4 text-xs text-[#1233cc] hover:underline transition-colors"
                 >
                   Limpiar filtros
                 </button>
@@ -225,10 +225,10 @@ const BlogPage = () => {
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-[#5D6878] mb-4">No se encontraron artículos</p>
+              <p className="text-[#52565e] mb-4">No se encontraron artículos</p>
               <button
                 onClick={clearFilters}
-                className="text-sm text-[#2C3E80] hover:underline transition-colors"
+                className="text-sm text-[#1233cc] hover:underline transition-colors"
               >
                 Limpiar filtros
               </button>
@@ -243,7 +243,7 @@ const BlogPage = () => {
                 >
                   <Link href={`/blog/${post.slug}`}>
                     {/* Cover Image — duotone editorial */}
-                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#FAF8F2] border border-[rgba(14,15,17,0.06)]">
+                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.06)]">
                       <img
                         src={post.coverImage || post.cover_image}
                         alt={post.title}
@@ -253,11 +253,11 @@ const BlogPage = () => {
 
                     {/* Category */}
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase">
+                      <span className="text-[0.6875rem] font-medium text-[#1233cc] tracking-[0.18em] uppercase">
                         {post.category}
                       </span>
-                      <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
-                      <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#5D6878]">
+                      <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
+                      <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#52565e]">
                         <Clock className="w-3 h-3" />
                         {post.readingTime || post.reading_time || '5'} min
                       </span>
@@ -265,24 +265,24 @@ const BlogPage = () => {
 
                     {/* Title */}
                     <h2
-                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#2C3E80] transition-colors"
+                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#1233cc] transition-colors"
                       style={{
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 500,
                         letterSpacing: '-0.02em',
-                        color: '#0E0F11',
+                        color: '#111114',
                       }}
                     >
                       {post.title}
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-sm text-[#5D6878] leading-relaxed line-clamp-2 mb-4">
+                    <p className="text-sm text-[#52565e] leading-relaxed line-clamp-2 mb-4">
                       {post.excerpt}
                     </p>
 
                     {/* Date */}
-                    <div className="flex items-center gap-2 text-xs text-[#5D6878]">
+                    <div className="flex items-center gap-2 text-xs text-[#52565e]">
                       <Calendar className="w-3.5 h-3.5" />
                       {formatDate(post.publishedAt || post.published_at)}
                     </div>
@@ -301,8 +301,8 @@ const BlogPage = () => {
                   onClick={() => setCurrentPage(page)}
                   className={`w-10 h-10 rounded-lg text-sm font-medium transition-all ${
                     currentPage === page
-                      ? 'bg-[#2C3E80] text-[#F5F2EC]'
-                      : 'bg-[rgba(14,15,17,0.04)] text-[#5D6878] hover:bg-[rgba(14,15,17,0.08)] hover:text-[#0E0F11]'
+                      ? 'bg-[#1233cc] text-[#ffffff]'
+                      : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                   }`}
                 >
                   {page}

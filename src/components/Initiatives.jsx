@@ -17,9 +17,9 @@ import useScrollReveal from '../hooks/useScrollReveal';
  */
 
 const STATUS = {
-  operativa:  { label: 'Operativa',      dot: '#3A5A40', fg: '#2E4733', bg: 'rgba(58,90,64,0.10)',  ring: 'rgba(58,90,64,0.22)'  },
-  desarrollo: { label: 'En desarrollo',  dot: '#9C6644', fg: '#7C4F35', bg: 'rgba(156,102,68,0.10)', ring: 'rgba(156,102,68,0.22)' },
-  proximo:    { label: 'Próximamente',   dot: '#9BA5B7', fg: '#5D6878', bg: 'rgba(155,165,183,0.12)', ring: 'rgba(155,165,183,0.30)' },
+  operativa:  { label: 'Operativa',      dot: '#1233cc', fg: '#1233cc', bg: 'rgba(18, 51, 204, 0.08)',  ring: 'rgba(18, 51, 204, 0.22)'  },
+  desarrollo: { label: 'En desarrollo',  dot: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)' },
+  proximo:    { label: 'Próximamente',   dot: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)' },
 };
 
 const StatusBadge = ({ status }) => {
@@ -52,7 +52,7 @@ const Initiatives = () => {
   return (
     <section
       id="iniciativas"
-      className="section-padding bg-[#F5F2EB] relative overflow-hidden"
+      className="section-padding bg-[#f4f4f5] relative overflow-hidden"
       data-testid="initiatives-section"
     >
       <div
@@ -60,7 +60,7 @@ const Initiatives = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(45% 40% at 20% 60%, rgba(84,104,214,0.06) 0%, transparent 70%)',
+            'radial-gradient(45% 40% at 20% 60%, rgba(58, 91, 255,0.06) 0%, transparent 70%)',
         }}
       />
 
@@ -69,11 +69,11 @@ const Initiatives = () => {
           ref={headerRef}
           className={`max-w-2xl mb-16 md:mb-20 reveal ${headerVisible ? 'revealed' : ''}`}
         >
-          <span className="label-accent text-[#2C3E80] block mb-6" data-testid="initiatives-label">
+          <span className="label-accent text-[#1233cc] block mb-6" data-testid="initiatives-label">
             Iniciativas
           </span>
           <h2 className="heading-xl mb-5" data-testid="initiatives-headline">
-            Plataformas <span className="text-[#2C3E80]">propietarias</span> operadas por swaraya
+            Plataformas <span className="text-[#1233cc]">propietarias</span> operadas por swaraya
           </h2>
           <p className="body-large">
             swaraya opera productos y plataformas digitales bajo marcas comerciales propias.
@@ -83,7 +83,7 @@ const Initiatives = () => {
 
         <div
           ref={gridRef}
-          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(14,15,17,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${gridVisible ? 'revealed' : ''}`}
+          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(17, 17, 20,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${gridVisible ? 'revealed' : ''}`}
         >
           {initiatives.map((it) => (
             <a
@@ -91,11 +91,11 @@ const Initiatives = () => {
               href={it.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative bg-[#F8F6F1] p-7 md:p-8 lg:p-10 group transition-all duration-300 focus:outline-none flex flex-col"
+              className="relative bg-[#ffffff] p-7 md:p-8 lg:p-10 group transition-all duration-300 focus:outline-none flex flex-col"
               data-testid={`initiative-${it.id}`}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(14,15,17,0.08)';
+                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(17, 17, 20,0.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -107,7 +107,7 @@ const Initiatives = () => {
                 <ArrowUpRight
                   className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
-                  style={{ color: '#2C3E80' }}
+                  style={{ color: '#1233cc' }}
                 />
               </div>
 
@@ -118,19 +118,19 @@ const Initiatives = () => {
                   fontWeight: 500,
                   fontSize: 'clamp(1.5rem, 2vw, 1.875rem)',
                   lineHeight: 1.1,
-                  color: '#0E0F11',
+                  color: '#111114',
                   textTransform: 'lowercase',
                 }}
               >
                 {it.name}
-                <span aria-hidden="true" style={{ color: '#2C3E80' }}>.</span>
+                <span aria-hidden="true" style={{ color: '#1233cc' }}>.</span>
               </h3>
 
               <span
                 className="mb-5 text-[0.75rem]"
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  color: '#646E7B',
+                  color: '#63666e',
                   letterSpacing: '0.005em',
                 }}
               >
@@ -139,19 +139,19 @@ const Initiatives = () => {
 
               <p
                 className="text-[0.9375rem] leading-[1.65] mb-4"
-                style={{ color: '#0E0F11', fontFamily: "'Inter', sans-serif" }}
+                style={{ color: '#111114', fontFamily: "'Inter', sans-serif" }}
               >
                 {it.tagline}
               </p>
 
               <p
                 className="text-[0.8125rem] leading-[1.7] mt-auto"
-                style={{ color: '#5D6878', fontFamily: "'Inter', sans-serif" }}
+                style={{ color: '#52565e', fontFamily: "'Inter', sans-serif" }}
               >
                 {it.description}
               </p>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(44,62,128,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(18, 51, 204,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </a>
           ))}
         </div>

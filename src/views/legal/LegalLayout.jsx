@@ -17,7 +17,7 @@ export default function LegalLayout({
   sections = [],
 }) {
   return (
-    <div className="min-h-screen bg-[#F5F2EC]" data-testid="legal-page">
+    <div className="min-h-screen bg-[#ffffff]" data-testid="legal-page">
       <Navbar />
 
       <main className="pt-28 md:pt-36 pb-20 md:pb-28">
@@ -25,7 +25,7 @@ export default function LegalLayout({
           {/* Back link */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[0.8125rem] text-[#5D6878] hover:text-[#2C3E80] transition-colors mb-12"
+            className="inline-flex items-center gap-2 text-[0.8125rem] text-[#52565e] hover:text-[#1233cc] transition-colors mb-12"
             data-testid="back-to-home"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -34,9 +34,9 @@ export default function LegalLayout({
 
           {/* Header */}
           <header className="mb-16 md:mb-20 max-w-4xl">
-            <p className="label-accent text-[#2C3E80] mb-6">{eyebrow}</p>
+            <p className="label-accent text-[#1233cc] mb-6">{eyebrow}</p>
             <h1
-              className="text-3xl md:text-5xl lg:text-[3.5rem] text-[#0E0F11] mb-6"
+              className="text-3xl md:text-5xl lg:text-[3.5rem] text-[#111114] mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -48,19 +48,19 @@ export default function LegalLayout({
             </h1>
             {subtitle && (
               <p
-                className="text-base md:text-lg text-[#5D6878] leading-relaxed max-w-[60ch] mb-6"
+                className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch] mb-6"
                 style={{ fontWeight: 400 }}
               >
                 {subtitle}
               </p>
             )}
-            <p className="text-xs text-[#5D6878] tracking-[0.14em] uppercase">
+            <p className="text-xs text-[#52565e] tracking-[0.14em] uppercase">
               Última actualización · {lastUpdated}
             </p>
           </header>
 
           {/* Divider */}
-          <div className="h-px bg-[rgba(14,15,17,0.10)] mb-16 md:mb-20" />
+          <div className="h-px bg-[rgba(17, 17, 20,0.10)] mb-16 md:mb-20" />
 
           {/* Sections */}
           <div className="space-y-16 md:space-y-20">
@@ -74,7 +74,7 @@ export default function LegalLayout({
                 {/* Number column */}
                 <div className="col-span-12 md:col-span-2">
                   <div
-                    className="text-[#2C3E80] sticky top-24"
+                    className="text-[#1233cc] sticky top-24"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 300,
@@ -90,7 +90,7 @@ export default function LegalLayout({
                 {/* Content column */}
                 <div className="col-span-12 md:col-span-10 max-w-3xl">
                   <h2
-                    className="text-xl md:text-2xl lg:text-[1.625rem] text-[#0E0F11] mb-6"
+                    className="text-xl md:text-2xl lg:text-[1.625rem] text-[#111114] mb-6"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
@@ -121,18 +121,18 @@ export default function LegalLayout({
           margin-top: 1em;
         }
         .prose-legal strong {
-          color: #0E0F11;
+          color: #111114;
           font-weight: 600;
         }
         .prose-legal a {
-          color: #2C3E80;
+          color: #1233cc;
           text-decoration: underline;
           text-decoration-thickness: 1px;
           text-underline-offset: 3px;
           transition: color 0.2s ease;
         }
         .prose-legal a:hover {
-          color: #5468D6;
+          color: #3a5bff;
         }
         .prose-legal ul {
           list-style: none;
@@ -152,7 +152,7 @@ export default function LegalLayout({
           top: 0.7em;
           width: 0.5rem;
           height: 1px;
-          background: #2C3E80;
+          background: #1233cc;
         }
         .prose-legal .sublabel {
           display: inline-block;
@@ -160,7 +160,7 @@ export default function LegalLayout({
           font-weight: 500;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #2C3E80;
+          color: #1233cc;
           margin-bottom: 0.75rem;
           margin-top: 1rem;
         }

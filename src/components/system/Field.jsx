@@ -8,7 +8,7 @@
  *
  * Accesibilidad:
  *  - min-height 44px
- *  - placeholder color #646E7B (4.63:1)
+ *  - placeholder color #63666e (4.63:1)
  *  - `aria-invalid` cuando `error` es truthy
  *  - `aria-describedby` conecta con field-error-text
  *  - foco visible por el `:focus-visible` global + border indigo

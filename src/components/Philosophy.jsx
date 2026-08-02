@@ -10,7 +10,7 @@ export const Philosophy = () => {
       ref={sectionRef}
       id="philosophy"
       className="section-padding-lg relative overflow-hidden"
-      style={{ background: '#F5F2EB' }}
+      style={{ background: '#f4f4f5' }}
       data-testid="philosophy-section"
     >
       {/* Glow indigo suave detrás del manifiesto — único fondo */}
@@ -19,7 +19,7 @@ export const Philosophy = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 50% 45%, rgba(84,104,214,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 50% 45%, rgba(58, 91, 255,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -33,7 +33,7 @@ export const Philosophy = () => {
       <div className="container-main">
         <div className={`max-w-[680px] mx-auto text-center reveal ${isVisible ? 'revealed' : ''}`}>
           <span 
-            className="label-accent text-[#2C3E80] block mb-8 md:mb-10" 
+            className="label-accent text-[#1233cc] block mb-8 md:mb-10" 
             data-testid="philosophy-label"
           >
             Filosofía

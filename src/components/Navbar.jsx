@@ -101,10 +101,10 @@ export const Navbar = () => {
       : colors.text.primary;         // sumi sobre cream
 
   const navMutedColor = isMobileMenuOpen
-    ? 'rgba(245,242,236,0.7)'
+    ? 'rgba(255, 255, 255,0.7)'
     : onDarkHero
-      ? 'rgba(245,242,236,0.78)'     // cream atenuado sobre oscuro
-      : 'rgba(14,15,17,0.62)';       // sumi atenuado sobre cream
+      ? 'rgba(255, 255, 255,0.78)'     // cream atenuado sobre oscuro
+      : 'rgba(17, 17, 20,0.62)';       // sumi atenuado sobre cream
 
   const navHoverColor = indigoAccent;
 
@@ -119,7 +119,7 @@ export const Navbar = () => {
       ? { background: 'transparent' }
       : isScrolled
         ? {
-            background: 'rgba(245,242,236,0.92)',
+            background: 'rgba(255, 255, 255,0.92)',
             backdropFilter: 'blur(18px) saturate(140%)',
             WebkitBackdropFilter: 'blur(18px) saturate(140%)',
             borderBottom: `1px solid ${borders.onCream.soft}`,
@@ -165,7 +165,7 @@ export const Navbar = () => {
             aria-label="swaraya — inicio"
             style={{
               transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
-              color: isMobileMenuOpen ? '#F5F2EC' : navTextColor,
+              color: isMobileMenuOpen ? '#ffffff' : navTextColor,
               minHeight: 44,
               paddingRight: 6, /* espacio libre óptico */
             }}
@@ -260,7 +260,7 @@ export const Navbar = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden relative z-50 flex items-center justify-center"
-            style={{ color: isMobileMenuOpen ? '#F5F2EC' : navTextColor, width: 44, height: 44 }}
+            style={{ color: isMobileMenuOpen ? '#ffffff' : navTextColor, width: 44, height: 44 }}
             data-testid="mobile-menu-toggle"
             aria-label="Menu"
           >
@@ -277,13 +277,13 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="py-4 text-[1.65rem] text-[#F5F2EC]"
+                  className="py-4 text-[1.65rem] text-[#ffffff]"
                   style={{
                     fontFamily: "'Cabinet Grotesk', sans-serif",
                     fontWeight: 500,
                     letterSpacing: '-0.025em',
                     lineHeight: 1.1,
-                    borderBottom: '1px solid rgba(245,242,236,0.06)',
+                    borderBottom: '1px solid rgba(255, 255, 255,0.06)',
                   }}
                 >
                   {link.name}
@@ -292,13 +292,13 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="py-4 text-left text-[1.65rem] text-[#F5F2EC] w-full"
+                  className="py-4 text-left text-[1.65rem] text-[#ffffff] w-full"
                   style={{
                     fontFamily: "'Cabinet Grotesk', sans-serif",
                     fontWeight: 500,
                     letterSpacing: '-0.025em',
                     lineHeight: 1.1,
-                    borderBottom: '1px solid rgba(245,242,236,0.06)',
+                    borderBottom: '1px solid rgba(255, 255, 255,0.06)',
                   }}
                 >
                   {link.name}
@@ -329,7 +329,7 @@ export const Navbar = () => {
                 style={{
                   letterSpacing: '0.16em',
                   textTransform: 'uppercase',
-                  color: '#9BA5B7',
+                  color: '#9aa0a8',
                 }}
               >
                 hola@swaraya.ai

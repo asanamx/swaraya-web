@@ -27,8 +27,8 @@ export const IconButton = forwardRef(function IconButton(
   }
   const color  = tone === 'dark' ? 'var(--text-on-dark-primary)' : 'var(--ink)';
   const hover  = tone === 'dark' ? 'var(--accent-bright)'         : 'var(--accent)';
-  const bg     = tone === 'dark' ? 'rgba(245,242,236,0.06)'       : 'rgba(14,15,17,0.04)';
-  const bgH    = tone === 'dark' ? 'rgba(245,242,236,0.12)'       : 'rgba(14,15,17,0.08)';
+  const bg     = tone === 'dark' ? 'rgba(255, 255, 255,0.06)'       : 'rgba(17, 17, 20,0.04)';
+  const bgH    = tone === 'dark' ? 'rgba(255, 255, 255,0.12)'       : 'rgba(17, 17, 20,0.08)';
   const radius = shape === 'pill' ? 'var(--radius-pill)' : 'var(--radius-md)';
 
   return (
@@ -85,18 +85,18 @@ export const FAB = forwardRef(function FAB(
         background: 'var(--accent-bright)',
         color: '#FFFFFF',
         border: 'none',
-        boxShadow: '0 10px 24px -8px rgba(84,104,214,0.35)',
+        boxShadow: '0 10px 24px -8px rgba(58, 91, 255,0.35)',
         cursor: 'pointer',
         ...style,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'scale(1.05)';
-        e.currentTarget.style.boxShadow = '0 14px 32px -8px rgba(84,104,214,0.5)';
+        e.currentTarget.style.boxShadow = '0 14px 32px -8px rgba(58, 91, 255,0.5)';
         rest.onMouseEnter?.(e);
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow = '0 10px 24px -8px rgba(84,104,214,0.35)';
+        e.currentTarget.style.boxShadow = '0 10px 24px -8px rgba(58, 91, 255,0.35)';
         rest.onMouseLeave?.(e);
       }}
       {...rest}

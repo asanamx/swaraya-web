@@ -37,7 +37,7 @@ export const BlogPreview = () => {
   };
 
   return (
-    <section className="section-padding bg-[#F5F2EC]" id="insights">
+    <section className="section-padding bg-[#ffffff]" id="insights">
       <div className="container-main">
         {/* Header */}
         <div 
@@ -45,17 +45,17 @@ export const BlogPreview = () => {
           className={`flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <div className="max-w-xl">
-            <span className="label-accent text-[#2C3E80] mb-4 md:mb-5 block">
+            <span className="label-accent text-[#1233cc] mb-4 md:mb-5 block">
               Insights
             </span>
             <h2 className="heading-xl">
-              Perspectivas sobre <span className="text-[#2C3E80]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#1233cc]">inteligencia aplicada</span>
             </h2>
           </div>
           
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#5D6878] hover:text-[#2C3E80] transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-[#52565e] hover:text-[#1233cc] transition-colors group"
           >
             Ver todos los artículos
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -86,7 +86,7 @@ export const BlogPreview = () => {
               >
                 <Link href={`/blog/${post.slug}`}>
                   {/* Cover Image — duotono índigo unificado (Prompt B) */}
-                  <div className="duotone-indigo relative aspect-[16/9] mb-5 rounded-2xl overflow-hidden bg-[#F8F6F1] border border-[rgba(14,15,17,0.06)] transition-transform duration-500 group-hover:scale-[1.02]">
+                  <div className="duotone-indigo relative aspect-[16/9] mb-5 rounded-2xl overflow-hidden bg-[#ffffff] border border-[rgba(17, 17, 20,0.06)] transition-transform duration-500 group-hover:scale-[1.02]">
                     <img
                       src={post.coverImage || post.cover_image}
                       alt={post.title}
@@ -96,11 +96,11 @@ export const BlogPreview = () => {
 
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[0.6875rem] font-medium text-[#2C3E80] tracking-[0.18em] uppercase">
+                    <span className="text-[0.6875rem] font-medium text-[#1233cc] tracking-[0.18em] uppercase">
                       {post.category}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-[#5D6878]/40" />
-                    <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#5D6878]">
+                    <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
+                    <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#52565e]">
                       <Clock className="w-3 h-3" />
                       {post.readingTime || post.reading_time || '5'} min
                     </span>
@@ -108,7 +108,7 @@ export const BlogPreview = () => {
 
                   {/* Title */}
                   <h3
-                    className="text-base md:text-lg text-[#0E0F11] mb-2.5 leading-snug group-hover:text-[#2C3E80] transition-colors line-clamp-2"
+                    className="text-base md:text-lg text-[#111114] mb-2.5 leading-snug group-hover:text-[#1233cc] transition-colors line-clamp-2"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
@@ -119,7 +119,7 @@ export const BlogPreview = () => {
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-[#5D6878] leading-relaxed line-clamp-2">
+                  <p className="text-sm text-[#52565e] leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </Link>

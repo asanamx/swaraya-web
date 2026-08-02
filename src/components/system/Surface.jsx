@@ -41,14 +41,14 @@ const elevationStyle = (elevation, tone) => {
         borderRadius: 'var(--radius-lg)',
         boxShadow: dark
           ? '0 12px 24px -12px rgba(0,0,0,0.6)'
-          : '0 12px 32px -16px rgba(14,15,17,0.10)',
+          : '0 12px 32px -16px rgba(17, 17, 20,0.10)',
       };
     case 'hero':
       return {
         borderRadius: 'var(--radius-xl)',
         boxShadow: dark
           ? '0 32px 64px -24px rgba(0,0,0,0.7)'
-          : '0 32px 64px -24px rgba(14,15,17,0.14)',
+          : '0 32px 64px -24px rgba(17, 17, 20,0.14)',
       };
     case 'flat':
     default:
@@ -87,7 +87,7 @@ const Surface = forwardRef(function Surface(
           e.currentTarget.style.transform = 'translateY(-3px)';
           e.currentTarget.style.boxShadow = tone === 'dark'
             ? '0 24px 48px -20px rgba(0,0,0,0.75)'
-            : '0 24px 48px -16px rgba(14,15,17,0.12)';
+            : '0 24px 48px -16px rgba(17, 17, 20,0.12)';
         }
         rest.onMouseEnter?.(e);
       }}

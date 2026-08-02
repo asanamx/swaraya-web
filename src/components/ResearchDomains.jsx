@@ -107,7 +107,7 @@ export const ResearchDomains = () => {
   return (
     <section
       id="research"
-      className="section-padding bg-[#F5F2EB]"
+      className="section-padding bg-[#f4f4f5]"
       data-testid="research-domains-section"
     >
       <div className="container-main">
@@ -116,13 +116,13 @@ export const ResearchDomains = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#2C3E80] block mb-6" 
+            className="label-accent text-[#1233cc] block mb-6" 
             data-testid="research-label"
           >
             Dominios de Investigación
           </span>
           <h2 className="heading-xl mb-5" data-testid="research-headline">
-            Campos de <span className="text-[#2C3E80]">inteligencia aplicada</span>
+            Campos de <span className="text-[#1233cc]">inteligencia aplicada</span>
           </h2>
           <p className="body-large" data-testid="research-subtext">
             Capacidades diseñadas para traducir investigación, datos y sistemas en operación real.
@@ -131,16 +131,16 @@ export const ResearchDomains = () => {
 
         <div 
           ref={cardsRef}
-          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(14,15,17,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${cardsVisible ? 'revealed' : ''}`}
+          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(17, 17, 20,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${cardsVisible ? 'revealed' : ''}`}
         >
           {domains.map(({ id, Glyph, title, description, number }) => (
             <div
               key={id}
-              className="relative bg-[#F8F6F1] p-7 md:p-8 lg:p-10 group transition-all duration-300"
+              className="relative bg-[#ffffff] p-7 md:p-8 lg:p-10 group transition-all duration-300"
               data-testid={`domain-card-${id}`}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(14,15,17,0.08)';
+                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(17, 17, 20,0.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -153,7 +153,7 @@ export const ResearchDomains = () => {
                   fontFamily: "'Cabinet Grotesk', sans-serif",
                   fontWeight: 500,
                   letterSpacing: '-0.04em',
-                  color: 'rgba(44,62,128,0.14)',
+                  color: 'rgba(18, 51, 204,0.14)',
                 }}
               >
                 {number}
@@ -163,23 +163,23 @@ export const ResearchDomains = () => {
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-400"
                   style={{
-                    background: 'rgba(44,62,128,0.06)',
-                    color: '#5D6878',
+                    background: 'rgba(18, 51, 204,0.06)',
+                    color: '#52565e',
                   }}
                 >
                   <Glyph />
                 </div>
               </div>
 
-              <h3 className="relative z-10 text-[0.9375rem] md:text-base font-medium text-[#0E0F11] mb-3.5 tracking-[-0.01em] leading-snug">
+              <h3 className="relative z-10 text-[0.9375rem] md:text-base font-medium text-[#111114] mb-3.5 tracking-[-0.01em] leading-snug">
                 {title}
               </h3>
 
-              <p className="relative z-10 text-[0.8125rem] text-[#5D6878] leading-[1.8]">
+              <p className="relative z-10 text-[0.8125rem] text-[#52565e] leading-[1.8]">
                 {description}
               </p>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(44,62,128,0.25)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(18, 51, 204,0.25)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </div>
           ))}
         </div>

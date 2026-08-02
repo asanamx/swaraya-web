@@ -7,8 +7,8 @@ import useScrollReveal from '../hooks/useScrollReveal';
  *
  * Cada principio parseado en 3 registros:
  *   1) Concepto principal (Cabinet ink 500)  — "Contexto"
- *   2) Conector "antes que" (versalitas #9BA5B7, pequeño)
- *   3) Concepto secundario (Inter #5D6878)  — "automatización"
+ *   2) Conector "antes que" (versalitas #9aa0a8, pequeño)
+ *   3) Concepto secundario (Inter #52565e)  — "automatización"
  *
  * Filas con número índice fantasma + hairline divider + hover con
  * highlight sutil. El "antes que" se convierte en patrón visual.
@@ -37,7 +37,7 @@ export const Principles = () => {
     <section
       ref={sectionRef}
       className="section-padding-lg relative overflow-hidden"
-      style={{ background: '#F5F2EB' }}
+      style={{ background: '#f4f4f5' }}
       data-testid="principles-section"
     >
       {/* Glow indigo suave — único elemento decorativo (brief 2) */}
@@ -46,7 +46,7 @@ export const Principles = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 78% 40%, rgba(84,104,214,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 78% 40%, rgba(58, 91, 255,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -56,7 +56,7 @@ export const Principles = () => {
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>
             <h2 className="heading-xl mb-6" data-testid="principles-headline">
               Nuestros sistemas se moldean por{' '}
-              <span style={{ color: '#2C3E80' }}>disciplina antes que escala.</span>
+              <span style={{ color: '#1233cc' }}>disciplina antes que escala.</span>
             </h2>
             <p
               className="max-w-[38ch]"
@@ -64,7 +64,7 @@ export const Principles = () => {
                 fontFamily: "'Inter', sans-serif",
                 fontSize: '0.9375rem',
                 lineHeight: 1.65,
-                color: '#5D6878',
+                color: '#52565e',
               }}
             >
               Cinco compromisos que ordenan cómo diseñamos, integramos
@@ -74,14 +74,14 @@ export const Principles = () => {
 
           {/* Principles rows · 60% */}
           <div className={`lg:col-span-7 reveal-stagger ${isVisible ? 'revealed' : ''}`}>
-            <ul className="border-t" style={{ borderColor: 'rgba(14,15,17,0.10)' }}>
+            <ul className="border-t" style={{ borderColor: 'rgba(17, 17, 20,0.10)' }}>
               {principles.map(([a, b], i) => (
                 <li
                   key={i}
                   className="group relative flex items-start gap-6 md:gap-8 py-6 md:py-7 transition-colors duration-300"
                   data-testid={`principle-item-${i + 1}`}
-                  style={{ borderBottom: '1px solid rgba(14,15,17,0.10)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(44,62,128,0.04)')}
+                  style={{ borderBottom: '1px solid rgba(17, 17, 20,0.10)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(18, 51, 204,0.04)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   {/* Número índice fantasma */}
@@ -93,7 +93,7 @@ export const Principles = () => {
                       fontSize: 'clamp(1.5rem, 2.6vw, 2rem)',
                       lineHeight: 1,
                       letterSpacing: '-0.03em',
-                      color: 'rgba(14,15,17,0.12)',
+                      color: 'rgba(17, 17, 20,0.12)',
                       minWidth: 44,
                     }}
                   >
@@ -109,7 +109,7 @@ export const Principles = () => {
                           fontWeight: 500,
                           fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)',
                           letterSpacing: '-0.015em',
-                          color: '#0E0F11',
+                          color: '#111114',
                           lineHeight: 1.25,
                         }}
                       >
@@ -122,7 +122,7 @@ export const Principles = () => {
                           fontWeight: 500,
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#646E7B',
+                          color: '#63666e',
                           lineHeight: 1.4,
                         }}
                       >
@@ -133,7 +133,7 @@ export const Principles = () => {
                           fontFamily: "'Inter', sans-serif",
                           fontWeight: 400,
                           fontSize: 'clamp(1rem, 1.3vw, 1.15rem)',
-                          color: '#5D6878',
+                          color: '#52565e',
                           letterSpacing: '-0.005em',
                           lineHeight: 1.3,
                         }}
@@ -147,7 +147,7 @@ export const Principles = () => {
                         fontFamily: "'Inter', sans-serif",
                         fontSize: '0.8125rem',
                         lineHeight: 1.6,
-                        color: '#5D6878',
+                        color: '#52565e',
                         maxWidth: '54ch',
                       }}
                     >
@@ -160,7 +160,7 @@ export const Principles = () => {
                     aria-hidden="true"
                     className="absolute left-0 top-8 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: '#2C3E80',
+                      background: '#1233cc',
                       transform: 'translateX(-14px)',
                     }}
                   />

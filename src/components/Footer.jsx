@@ -15,8 +15,8 @@ export const Footer = () => {
     <footer
       id="contact"
       ref={topRef}
-      className={`relative dark-mode reveal ${topVisible ? 'revealed' : ''}`}
-      style={{ background: '#0E0F11', color: '#F5F2EC' }}
+      className={`relative dark-mode with-grain reveal ${topVisible ? 'revealed' : ''}`}
+      style={{ background: '#0a0a0a', color: '#ffffff' }}
       data-testid="footer"
     >
       {/* Indigo electric glow — mismo lenguaje visual que el hero */}
@@ -24,7 +24,7 @@ export const Footer = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(84,104,214,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(84,104,214,0.14) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(58, 91, 255,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(58, 91, 255,0.14) 0%, transparent 60%)',
           filter: 'blur(20px)',
         }}
       />
@@ -34,7 +34,7 @@ export const Footer = () => {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.35) 50%, transparent 100%)',
+            'linear-gradient(90deg, transparent 0%, rgba(58, 91, 255,0.35) 50%, transparent 100%)',
         }}
       />
 
@@ -49,7 +49,7 @@ export const Footer = () => {
                   fontSize: '0.6875rem',
                   letterSpacing: '0.32em',
                   textTransform: 'uppercase',
-                  color: '#5468D6',
+                  color: '#3a5bff',
                   fontWeight: 500,
                   display: 'inline-block',
                   marginBottom: '1.5rem',
@@ -65,7 +65,7 @@ export const Footer = () => {
                   fontWeight: 500,
                   letterSpacing: '-0.03em',
                   lineHeight: 1.05,
-                  color: '#F5F2EC',
+                  color: '#ffffff',
                   maxWidth: '20ch',
                   marginBottom: '1.75rem',
                 }}
@@ -77,7 +77,7 @@ export const Footer = () => {
                 style={{
                   fontSize: '1rem',
                   lineHeight: 1.65,
-                  color: '#C8CCDC',
+                  color: '#c9cdd3',
                   maxWidth: '52ch',
                   marginBottom: '2.5rem',
                   fontFamily: "'Inter', sans-serif",
@@ -96,8 +96,8 @@ export const Footer = () => {
                   fontSize: '1.125rem',
                   fontWeight: 500,
                   letterSpacing: '-0.015em',
-                  color: '#F5F2EC',
-                  borderBottom: '1px solid rgba(245,242,236,0.30)',
+                  color: '#ffffff',
+                  borderBottom: '1px solid rgba(255, 255, 255,0.30)',
                   paddingBottom: '0.5rem',
                 }}
                 onMouseEnter={(e) => {
@@ -105,8 +105,8 @@ export const Footer = () => {
                   e.currentTarget.style.borderBottomColor = `${colors.indigo.onDark}aa`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#F5F2EC';
-                  e.currentTarget.style.borderBottomColor = 'rgba(245,242,236,0.30)';
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.borderBottomColor = 'rgba(255, 255, 255,0.30)';
                 }}
                 data-testid="footer-cta-email"
               >
@@ -119,17 +119,17 @@ export const Footer = () => {
 
               <div
                 className="mt-10 grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md"
-                style={{ color: '#9BA5B7', fontFamily: "'Inter', sans-serif" }}
+                style={{ color: '#9aa0a8', fontFamily: "'Inter', sans-serif" }}
               >
                 <div className="flex flex-col gap-1">
-                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878' }}>
+                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e' }}>
                     Sede
                   </span>
                   <span>Ciudad de México</span>
                   <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>LatAm + remoto</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878' }}>
+                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e' }}>
                     Disponibilidad
                   </span>
                   <span>Lun – Vie · 9:00 – 19:00</span>
@@ -139,10 +139,10 @@ export const Footer = () => {
 
               {/* Datos corporativos — bajo Sede, sin domicilio */}
               <div style={{ display: 'none' }} aria-hidden="true">
-                <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#5D6878', marginBottom: 4 }}>
+                <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e', marginBottom: 4 }}>
                   Datos corporativos
                 </span>
-                <span style={{ color: '#C8CCDC' }}>swaraya, S. de R. L. de C. V.</span>
+                <span style={{ color: '#c9cdd3' }}>swaraya, S. de R. L. de C. V.</span>
                 <span>RFC: SWA1408208F7</span>
               </div>
             </div>
@@ -152,8 +152,8 @@ export const Footer = () => {
               <div
                 className="relative p-7 md:p-8 rounded-2xl"
                 style={{
-                  background: 'rgba(245,242,236,0.04)',
-                  border: '1px solid rgba(245,242,236,0.08)',
+                  background: 'rgba(255, 255, 255,0.04)',
+                  border: '1px solid rgba(255, 255, 255,0.08)',
                   backdropFilter: 'blur(20px)',
                 }}
               >
@@ -162,7 +162,7 @@ export const Footer = () => {
                   className="absolute top-0 left-6 right-6 h-px"
                   style={{
                     background:
-                      'linear-gradient(90deg, transparent 0%, rgba(84,104,214,0.45) 50%, transparent 100%)',
+                      'linear-gradient(90deg, transparent 0%, rgba(58, 91, 255,0.45) 50%, transparent 100%)',
                   }}
                 />
 
@@ -171,7 +171,7 @@ export const Footer = () => {
                     fontSize: '0.6875rem',
                     letterSpacing: '0.24em',
                     textTransform: 'uppercase',
-                    color: '#9BA5B7',
+                    color: '#9aa0a8',
                     fontWeight: 500,
                     marginBottom: '1.75rem',
                   }}
@@ -193,7 +193,7 @@ export const Footer = () => {
                           fontSize: '0.6875rem',
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#9BA5B7',
+                          color: '#9aa0a8',
                           fontWeight: 500,
                           marginBottom: 8,
                         }}
@@ -219,7 +219,7 @@ export const Footer = () => {
                         fontSize: '0.6875rem',
                         letterSpacing: '0.18em',
                         textTransform: 'uppercase',
-                        color: '#9BA5B7',
+                        color: '#9aa0a8',
                         fontWeight: 500,
                         marginBottom: 8,
                       }}
@@ -268,7 +268,7 @@ export const Footer = () => {
         <div
           ref={bottomRef}
           className={`pt-16 md:pt-20 pb-12 reveal ${bottomVisible ? 'revealed' : ''}`}
-          style={{ borderTop: '1px solid rgba(245,242,236,0.08)' }}
+          style={{ borderTop: '1px solid rgba(255, 255, 255,0.08)' }}
         >
           {/* Wordmark del footer — sistema unificado con el navbar.
               Misma proporción y composición. Cardinales en cream para
@@ -279,7 +279,7 @@ export const Footer = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                color: '#F5F2EC',
+                color: '#ffffff',
               }}
             >
               <span
@@ -289,12 +289,12 @@ export const Footer = () => {
                   fontSize: '1.5rem',
                   letterSpacing: '-0.035em',
                   lineHeight: 1,
-                  color: '#F5F2EC',
+                  color: '#ffffff',
                   textTransform: 'lowercase',
                 }}
               >
                 swaraya
-                <span aria-hidden="true" style={{ color: '#5468D6' }}>.</span>
+                <span aria-hidden="true" style={{ color: '#3a5bff' }}>.</span>
               </span>
             </div>
           </div>
@@ -308,7 +308,7 @@ export const Footer = () => {
                   fontSize: '0.6875rem',
                   letterSpacing: '0.24em',
                   textTransform: 'uppercase',
-                  color: '#5D6878',
+                  color: '#52565e',
                   fontWeight: 500,
                   marginBottom: 20,
                 }}
@@ -319,7 +319,7 @@ export const Footer = () => {
                 style={{
                   fontSize: '0.875rem',
                   lineHeight: 1.6,
-                  color: '#C8CCDC',
+                  color: '#c9cdd3',
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
@@ -359,7 +359,7 @@ export const Footer = () => {
                     fontSize: '0.6875rem',
                     letterSpacing: '0.24em',
                     textTransform: 'uppercase',
-                    color: '#5D6878',
+                    color: '#52565e',
                     fontWeight: 500,
                     marginBottom: 20,
                   }}
@@ -375,7 +375,7 @@ export const Footer = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="link-hover text-sm transition-colors"
-                          style={{ color: '#C8CCDC' }}
+                          style={{ color: '#c9cdd3' }}
                         >
                           {item.label}
                         </a>
@@ -383,7 +383,7 @@ export const Footer = () => {
                         <Link
                           href={item.href}
                           className="link-hover text-sm transition-colors"
-                          style={{ color: '#C8CCDC' }}
+                          style={{ color: '#c9cdd3' }}
                         >
                           {item.label}
                         </Link>
@@ -401,14 +401,14 @@ export const Footer = () => {
           {initiatives.length > 0 && (
             <div
               className="mt-12 md:mt-14 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-              style={{ borderTop: '1px solid rgba(245,242,236,0.06)' }}
+              style={{ borderTop: '1px solid rgba(255, 255, 255,0.06)' }}
             >
               <h4
                 style={{
                   fontSize: '0.6875rem',
                   letterSpacing: '0.24em',
                   textTransform: 'uppercase',
-                  color: '#5D6878',
+                  color: '#52565e',
                   fontWeight: 500,
                 }}
               >
@@ -444,8 +444,8 @@ export const Footer = () => {
           <div
             className="mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs"
             style={{
-              borderTop: '1px solid rgba(245,242,236,0.06)',
-              color: '#5D6878',
+              borderTop: '1px solid rgba(255, 255, 255,0.06)',
+              color: '#52565e',
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
             }}
@@ -462,23 +462,23 @@ export const Footer = () => {
           width: 100%;
           min-height: 44px;
           padding: 12px 14px;
-          background: rgba(245,242,236,0.04);
-          border: 1px solid rgba(245,242,236,0.14);
+          background: rgba(255, 255, 255,0.04);
+          border: 1px solid rgba(255, 255, 255,0.14);
           border-radius: 10px;
-          color: #F5F2EC;
+          color: #ffffff;
           font-family: 'Inter', sans-serif;
           font-size: 0.9375rem;
           line-height: 1.4;
           transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
         }
         .footer-input::placeholder {
-          color: #9BA5B7;                              /* 7.72:1 sobre #0E0F11 ✓ */
+          color: #9aa0a8;                              /* 7.72:1 sobre #111114 ✓ */
         }
         .footer-input:focus {
           outline: none;
-          border-color: #5468D6;
-          background: rgba(245,242,236,0.06);
-          box-shadow: 0 0 0 3px rgba(84,104,214,0.25);
+          border-color: #3a5bff;
+          background: rgba(255, 255, 255,0.06);
+          box-shadow: 0 0 0 3px rgba(58, 91, 255,0.25);
         }
 
         /* Iniciativas — homologación de estados idle/hover
@@ -498,7 +498,7 @@ export const Footer = () => {
           opacity: 1;
         }
         .initiative-logo:focus-visible {
-          outline: 2px solid #5468D6;
+          outline: 2px solid #3a5bff;
           outline-offset: 4px;
           border-radius: 4px;
         }

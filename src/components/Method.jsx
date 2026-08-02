@@ -87,7 +87,7 @@ export const Method = () => {
   return (
     <section
       id="method"
-      className="section-padding bg-[#F5F2EB]"
+      className="section-padding bg-[#f4f4f5]"
       data-testid="method-section"
       ref={sectionRef}
     >
@@ -98,7 +98,7 @@ export const Method = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-28 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#2C3E80] block mb-6" 
+            className="label-accent text-[#1233cc] block mb-6" 
             data-testid="method-label"
           >
             Método
@@ -125,15 +125,15 @@ export const Method = () => {
             >
               {/* Línea base — hairline visible sobre cream */}
               <line x1="0" y1="12" x2="1000" y2="12"
-                stroke="rgba(14,15,17,0.14)" strokeWidth="1" />
+                stroke="rgba(17, 17, 20,0.14)" strokeWidth="1" />
               {/* Progreso índigo (Prompt G) */}
               <line x1="0" y1="12" x2={1000 * (reducedMotion ? 1 : progress)} y2="12"
-                stroke="#5468D6" strokeWidth="1.5" strokeLinecap="round" />
+                stroke="#3a5bff" strokeWidth="1.5" strokeLinecap="round" />
               {/* Token viajero con glow */}
               {!reducedMotion && progress > 0 && progress < 1 && (
                 <g style={{ transform: `translateX(${1000 * progress}px)` }}>
-                  <circle cx="0" cy="12" r="8" fill="#5468D6" opacity="0.25" />
-                  <circle cx="0" cy="12" r="4" fill="#5468D6" />
+                  <circle cx="0" cy="12" r="8" fill="#3a5bff" opacity="0.25" />
+                  <circle cx="0" cy="12" r="4" fill="#3a5bff" />
                 </g>
               )}
             </svg>
@@ -156,7 +156,7 @@ export const Method = () => {
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 500,
                         letterSpacing: '-0.045em',
-                        color: isActive ? 'rgba(44,62,128,0.85)' : 'rgba(44,62,128,0.20)',
+                        color: isActive ? 'rgba(18, 51, 204,0.85)' : 'rgba(18, 51, 204,0.20)',
                       }}
                     >
                       {step.number}
@@ -169,18 +169,18 @@ export const Method = () => {
                     style={{
                       top: 58,
                       width: 10, height: 10,
-                      background: isActive ? '#5468D6' : '#F5F2EB',
-                      border: isActive ? 'none' : '1px solid rgba(14,15,17,0.20)',
-                      boxShadow: isActive ? '0 0 0 6px rgba(84,104,214,0.12)' : 'none',
+                      background: isActive ? '#3a5bff' : '#f4f4f5',
+                      border: isActive ? 'none' : '1px solid rgba(17, 17, 20,0.20)',
+                      boxShadow: isActive ? '0 0 0 6px rgba(58, 91, 255,0.12)' : 'none',
                     }}
                   />
 
                   {/* Content */}
                   <div className="pt-12">
-                    <h3 className="text-[0.9375rem] font-medium text-[#0E0F11] mb-2.5 tracking-[-0.01em]">
+                    <h3 className="text-[0.9375rem] font-medium text-[#111114] mb-2.5 tracking-[-0.01em]">
                       {step.title}
                     </h3>
-                    <p className="text-[0.8125rem] text-[#5D6878] leading-[1.7] max-w-[170px] mx-auto">
+                    <p className="text-[0.8125rem] text-[#52565e] leading-[1.7] max-w-[170px] mx-auto">
                       {step.description}
                     </p>
                   </div>
@@ -206,22 +206,22 @@ export const Method = () => {
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
                       letterSpacing: '-0.04em',
-                      color: 'rgba(44,62,128,0.55)',
+                      color: 'rgba(18, 51, 204,0.55)',
                     }}
                   >
                     {step.number}
                   </span>
                   {index < steps.length - 1 && (
-                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(44,62,128,0.25)] to-transparent min-h-[50px]" />
+                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(18, 51, 204,0.25)] to-transparent min-h-[50px]" />
                   )}
                 </div>
                 
                 {/* Right: Content */}
                 <div className="pb-8 flex-1">
-                  <h3 className="text-[0.9375rem] font-medium text-[#0E0F11] mb-1.5 tracking-[-0.01em]">
+                  <h3 className="text-[0.9375rem] font-medium text-[#111114] mb-1.5 tracking-[-0.01em]">
                     {step.title}
                   </h3>
-                  <p className="text-[0.8125rem] text-[#5D6878] leading-[1.7]">
+                  <p className="text-[0.8125rem] text-[#52565e] leading-[1.7]">
                     {step.description}
                   </p>
                 </div>

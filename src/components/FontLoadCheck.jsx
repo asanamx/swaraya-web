@@ -31,7 +31,7 @@ export default function FontLoadCheck() {
       if (failed.length === 0) {
         // eslint-disable-next-line no-console
         console.log('%c[swaraya] Fonts OK — Cabinet Grotesk + Inter cargadas',
-          'color:#2C3E80;font-weight:600');
+          'color:#1233cc;font-weight:600');
       } else {
         // eslint-disable-next-line no-console
         console.warn('[swaraya] Fuentes NO cargadas correctamente (fallback activo):', failed);
