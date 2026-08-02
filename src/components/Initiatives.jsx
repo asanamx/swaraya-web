@@ -38,7 +38,7 @@ const StatusBadge = ({ status }) => {
         textTransform: 'uppercase',
       }}
     >
-      <Hexagon size={10} color={s.color} strokeWidth={1.4} pulse={s.pulse} />
+      <Hexagon size={18} color={s.color} strokeWidth={1.8} pulse={s.pulse} />
       {s.label}
     </span>
   );
