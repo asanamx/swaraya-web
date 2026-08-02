@@ -157,26 +157,28 @@ const CtaCard = ({ agent }) => (
   <Link
     href="/#chat"
     scroll={true}
-    className="relative p-7 md:p-8 lg:p-10 flex flex-col h-full group rounded-none"
+    className="relative p-7 md:p-8 lg:p-10 flex flex-col h-full group rounded-2xl transition-transform duration-500"
     data-testid={`agent-card-${agent.id}`}
     style={{
-      background:
-        'linear-gradient(160deg, rgba(119, 90, 0,0.05) 0%, rgba(250,248,242,0.7) 60%)',
-      border: '1px dashed rgba(119, 90, 0,0.25)',
+      background: '#111114',
+      color: '#ffffff',
+      border: '1px solid rgba(255, 255, 255, 0.10)',
+      boxShadow: '0 20px 40px -20px rgba(17,17,20,0.35)',
     }}
   >
     {/* Disciplina */}
     <span
       className="label-accent block mb-7"
-      style={{ color: '#775a00' }}
+      style={{ color: '#f6b91f' }}                    /* girasol vivo sobre carbón · ≈9.5:1 ✓ */
     >
       {agent.disciplina}
     </span>
 
     {/* Título */}
     <h3
-      className="text-[#111114] mb-6 tracking-[-0.018em] leading-[1.18]"
+      className="mb-6 tracking-[-0.018em] leading-[1.18]"
       style={{
+        color: '#ffffff',
         fontFamily: "'Cabinet Grotesk', sans-serif",
         fontWeight: 500,
         fontSize: 'clamp(1.375rem, 1.5vw + 0.75rem, 1.6875rem)',
@@ -186,21 +188,40 @@ const CtaCard = ({ agent }) => (
     </h3>
 
     {/* Problema + Resultado en flujo */}
-    <p className="text-[0.875rem] text-[#52565e] leading-[1.7] mb-3">
+    <p className="text-[0.875rem] leading-[1.7] mb-3" style={{ color: '#9aa0a8' }}>
       {agent.problema}
     </p>
-    <p className="text-[0.875rem] text-[#111114] leading-[1.7] mb-8">
+    <p className="text-[0.875rem] leading-[1.7] mb-8" style={{ color: '#c9cdd3' }}>
       {agent.resultado}
     </p>
 
     {/* Footer CTA */}
-    <div className="mt-auto pt-6 flex items-center justify-between gap-4"
-      style={{ borderTop: '1px solid rgba(119, 90, 0,0.12)' }}
+    <div
+      className="mt-auto pt-6 flex items-center justify-between gap-4"
+      style={{ borderTop: '1px solid rgba(255, 255, 255, 0.10)' }}
     >
-      <StatusBadge estado={agent.estado} />
+      {/* Chip "En producción" sobre carbón — girasol + borde girasol */}
+      <span
+        className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[0.6875rem] uppercase"
+        style={{
+          background: 'rgba(246, 185, 31, 0.10)',
+          border: '1px solid rgba(246, 185, 31, 0.35)',
+          color: '#f6b91f',
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: 500,
+          letterSpacing: '0.08em',
+        }}
+      >
+        <span
+          aria-hidden="true"
+          className="inline-block rounded-full"
+          style={{ width: 8, height: 8, background: '#f6b91f' }}
+        />
+        {agent.disciplina && 'Tu disciplina'}
+      </span>
       <span
         className="inline-flex items-center gap-2 text-[0.875rem] font-medium transition-transform duration-400 group-hover:translate-x-0.5"
-        style={{ color: '#775a00', fontFamily: "'Inter', sans-serif" }}
+        style={{ color: '#f6b91f', fontFamily: "'Inter', sans-serif" }}
       >
         ¡Hablemos!
         <ArrowUpRight className="w-4 h-4" strokeWidth={1.8} />

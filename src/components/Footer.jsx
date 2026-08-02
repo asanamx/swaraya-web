@@ -13,171 +13,136 @@ export const Footer = () => {
 
   return (
     <footer
-      id="contact"
       ref={topRef}
-      className={`relative dark-mode with-grain reveal ${topVisible ? 'revealed' : ''}`}
-      style={{ background: '#0a0a0a', color: '#ffffff' }}
+      className={`reveal ${topVisible ? 'revealed' : ''}`}
       data-testid="footer"
     >
-      {/* Indigo electric glow — mismo lenguaje visual que el hero */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(246, 185, 31,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(246, 185, 31,0.14) 0%, transparent 60%)',
-          filter: 'blur(20px)',
-        }}
-      />
-
-      {/* Top accent line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent 0%, rgba(246, 185, 31,0.35) 50%, transparent 100%)',
-        }}
-      />
-
-      <div className="container-main relative">
-        {/* ===== CONTACT SECTION (top) ===== */}
-        <div className="pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            {/* Left: CTA copy */}
-            <div className="lg:col-span-7">
-              <span
-                style={{
-                  fontSize: '0.6875rem',
-                  letterSpacing: '0.32em',
-                  textTransform: 'uppercase',
-                  color: '#f6b91f',
-                  fontWeight: 500,
-                  display: 'inline-block',
-                  marginBottom: '1.5rem',
-                }}
-              >
-                Diálogo Abierto
-              </span>
-
-              <h2
-                style={{
-                  fontFamily: "'Cabinet Grotesk', sans-serif",
-                  fontSize: 'clamp(2rem, 4vw, 3.25rem)',
-                  fontWeight: 500,
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1.05,
-                  color: '#ffffff',
-                  maxWidth: '20ch',
-                  marginBottom: '1.75rem',
-                }}
-              >
-                Iniciemos una conversación estratégica.
-              </h2>
-
-              <p
-                style={{
-                  fontSize: '1rem',
-                  lineHeight: 1.65,
-                  color: '#c9cdd3',
-                  maxWidth: '52ch',
-                  marginBottom: '2.5rem',
-                  fontFamily: "'Inter', sans-serif",
-                }}
-              >
-                Pensamiento de nivel investigación. Sistemas de nivel operativo.
-                Resultados de nivel estratégico. Escríbenos directamente o
-                déjanos tus datos y te contactamos.
-              </p>
-
-              <a
-                href="mailto:hola@swaraya.ai"
-                className="group inline-flex items-center gap-3 transition-all duration-300"
-                style={{
-                  fontFamily: "'Cabinet Grotesk', sans-serif",
-                  fontSize: '1.125rem',
-                  fontWeight: 500,
-                  letterSpacing: '-0.015em',
-                  color: '#ffffff',
-                  borderBottom: '1px solid rgba(255, 255, 255,0.30)',
-                  paddingBottom: '0.5rem',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = colors.indigo.onDark;
-                  e.currentTarget.style.borderBottomColor = `${colors.indigo.onDark}aa`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.borderBottomColor = 'rgba(255, 255, 255,0.30)';
-                }}
-                data-testid="footer-cta-email"
-              >
-                hola@swaraya.ai
-                <ArrowRight
-                  className="transition-transform duration-300 group-hover:translate-x-1.5"
-                  size={18}
-                />
-              </a>
-
-              <div
-                className="mt-10 grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md"
-                style={{ color: '#9aa0a8', fontFamily: "'Inter', sans-serif" }}
-              >
-                <div className="flex flex-col gap-1">
-                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e' }}>
-                    Sede
-                  </span>
-                  <span>Ciudad de México</span>
-                  <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>LatAm + remoto</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e' }}>
-                    Disponibilidad
-                  </span>
-                  <span>Lun – Vie · 9:00 – 19:00</span>
-                  <span style={{ color: '#7A8493', fontSize: '0.8125rem' }}>Respuesta en 24 h hábiles</span>
-                </div>
-              </div>
-
-              {/* Datos corporativos — bajo Sede, sin domicilio */}
-              <div style={{ display: 'none' }} aria-hidden="true">
-                <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#52565e', marginBottom: 4 }}>
-                  Datos corporativos
-                </span>
-                <span style={{ color: '#c9cdd3' }}>swaraya, S. de R. L. de C. V.</span>
-                <span>RFC: SWA1408208F7</span>
-              </div>
-            </div>
-
-            {/* Right: Form */}
-            <div className="lg:col-span-5">
-              <div
-                className="relative p-7 md:p-8 rounded-2xl"
-                style={{
-                  background: 'rgba(255, 255, 255,0.04)',
-                  border: '1px solid rgba(255, 255, 255,0.08)',
-                  backdropFilter: 'blur(20px)',
-                }}
-              >
-                {/* Subtle accent */}
-                <div
-                  className="absolute top-0 left-6 right-6 h-px"
-                  style={{
-                    background:
-                      'linear-gradient(90deg, transparent 0%, rgba(246, 185, 31,0.45) 50%, transparent 100%)',
-                  }}
-                />
-
-                <h3
+      {/* ═══════════════════════════════════════════════════════
+          BANDA CONTACTO · full-girasol · única superficie amarilla
+          del sitio (§6.3). Máximo impacto sin ruido.
+          ═══════════════════════════════════════════════════════ */}
+      <section
+        id="contact"
+        style={{ background: '#f6b91f', color: '#2b2000' }}
+        data-testid="contact-band"
+      >
+        <div className="container-main">
+          {/* ===== CONTACT SECTION (top) ===== */}
+          <div className="pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+              {/* Left: CTA copy */}
+              <div className="lg:col-span-7">
+                <span
                   style={{
                     fontSize: '0.6875rem',
-                    letterSpacing: '0.24em',
+                    letterSpacing: '0.32em',
                     textTransform: 'uppercase',
-                    color: '#9aa0a8',
+                    color: '#2b2000',
+                    fontWeight: 600,
+                    display: 'inline-block',
+                    marginBottom: '1.5rem',
+                    opacity: 0.75,
+                  }}
+                >
+                  Diálogo Abierto
+                </span>
+
+                <h2
+                  style={{
+                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontSize: 'clamp(2rem, 4vw, 3.25rem)',
                     fontWeight: 500,
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1.05,
+                    color: '#2b2000',
+                    maxWidth: '20ch',
                     marginBottom: '1.75rem',
                   }}
                 >
-                  O déjanos tus datos
-                </h3>
+                  Iniciemos una conversación estratégica.
+                </h2>
+
+                <p
+                  style={{
+                    fontSize: '1rem',
+                    lineHeight: 1.65,
+                    color: '#2b2000',
+                    opacity: 0.85,
+                    maxWidth: '52ch',
+                    marginBottom: '2.5rem',
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
+                  Pensamiento de nivel investigación. Sistemas de nivel operativo.
+                  Resultados de nivel estratégico. Escríbenos directamente o
+                  déjanos tus datos y te contactamos.
+                </p>
+
+                <a
+                  href="mailto:hola@swaraya.ai"
+                  className="group inline-flex items-center gap-3 transition-all duration-300"
+                  style={{
+                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontSize: '1.125rem',
+                    fontWeight: 500,
+                    letterSpacing: '-0.015em',
+                    color: '#2b2000',
+                    borderBottom: '1px solid rgba(43,30,0,0.45)',
+                    paddingBottom: '0.5rem',
+                  }}
+                  data-testid="footer-cta-email"
+                >
+                  hola@swaraya.ai
+                  <ArrowRight
+                    className="transition-transform duration-300 group-hover:translate-x-1.5"
+                    size={18}
+                  />
+                </a>
+
+                <div
+                  className="mt-10 grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md"
+                  style={{ color: '#2b2000', fontFamily: "'Inter', sans-serif" }}
+                >
+                  <div className="flex flex-col gap-1">
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#2b2000', opacity: 0.6, fontWeight: 600 }}>
+                      Sede
+                    </span>
+                    <span>Ciudad de México</span>
+                    <span style={{ color: '#2b2000', opacity: 0.7, fontSize: '0.8125rem' }}>LatAm + remoto</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#2b2000', opacity: 0.6, fontWeight: 600 }}>
+                      Disponibilidad
+                    </span>
+                    <span>Lun – Vie · 9:00 – 19:00</span>
+                    <span style={{ color: '#2b2000', opacity: 0.7, fontSize: '0.8125rem' }}>Respuesta en 24 h hábiles</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Form */}
+              <div className="lg:col-span-5">
+                <div
+                  className="relative p-7 md:p-8 rounded-2xl contact-form-panel"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.35)',
+                    border: '1px solid rgba(43, 30, 0, 0.20)',
+                    backdropFilter: 'blur(6px)',
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.24em',
+                      textTransform: 'uppercase',
+                      color: '#2b2000',
+                      opacity: 0.65,
+                      fontWeight: 600,
+                      marginBottom: '1.75rem',
+                    }}
+                  >
+                    O déjanos tus datos
+                  </h3>
 
                 <form className="space-y-5" data-testid="footer-contact-form">
                   {[
@@ -193,8 +158,9 @@ export const Footer = () => {
                           fontSize: '0.6875rem',
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#9aa0a8',
-                          fontWeight: 500,
+                          color: '#2b2000',
+                          opacity: 0.75,
+                          fontWeight: 600,
                           marginBottom: 8,
                         }}
                       >
@@ -205,7 +171,7 @@ export const Footer = () => {
                         id={field.id}
                         name={field.id}
                         placeholder={field.placeholder}
-                        className="footer-input"
+                        className="contact-input"
                         data-testid={`footer-input-${field.id}`}
                       />
                     </div>
@@ -219,8 +185,9 @@ export const Footer = () => {
                         fontSize: '0.6875rem',
                         letterSpacing: '0.18em',
                         textTransform: 'uppercase',
-                        color: '#9aa0a8',
-                        fontWeight: 500,
+                        color: '#2b2000',
+                        opacity: 0.75,
+                        fontWeight: 600,
                         marginBottom: 8,
                       }}
                     >
@@ -231,7 +198,7 @@ export const Footer = () => {
                       name="message"
                       rows="3"
                       placeholder="Cuéntanos sobre tu desafío…"
-                      className="footer-input resize-none"
+                      className="contact-input resize-none"
                       data-testid="footer-input-message"
                     />
                   </div>
@@ -240,16 +207,16 @@ export const Footer = () => {
                     type="submit"
                     className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-semibold tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
                     style={{
-                      background: colors.accentBright,   /* #f6b91f · miel viva */
-                      color: '#2b2000',                  /* ≈7.8:1 ✓ sobre miel */
+                      background: '#111114',                 /* carbón, no amarillo */
+                      color: '#ffffff',                      /* etiqueta blanca sobre carbón */
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = colors.accentBrightHover;
+                      e.currentTarget.style.background = '#000000';
                       e.currentTarget.style.transform = 'translateY(-1px)';
-                      e.currentTarget.style.boxShadow = `0 12px 28px -8px ${colors.accentBright}66`;
+                      e.currentTarget.style.boxShadow = '0 12px 28px -8px rgba(17,17,20,0.45)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = colors.accentBright;
+                      e.currentTarget.style.background = '#111114';
                       e.currentTarget.style.transform = 'translateY(0)';
                       e.currentTarget.style.boxShadow = 'none';
                     }}
@@ -263,6 +230,26 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          BANDA FOOTER · carbón profundo · nav + copyright
+          ═══════════════════════════════════════════════════════ */}
+      <div
+        className="relative dark-mode with-grain"
+        style={{ background: '#0a0a0a', color: '#ffffff' }}
+      >
+        {/* Top accent line — girasol tenue */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, transparent 0%, rgba(246, 185, 31,0.35) 50%, transparent 100%)',
+          }}
+        />
+
+        <div className="container-main relative">
 
         {/* ===== DIVIDER + WORDMARK + NAV ===== */}
         <div
@@ -455,9 +442,35 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      </div>
 
-      {/* Local input styles — dark-mode form (Prompt F.1) */}
+      {/* Local input styles */}
       <style jsx>{`
+        /* Inputs sobre banda girasol — contraste dark ink */
+        .contact-input {
+          width: 100%;
+          min-height: 44px;
+          padding: 12px 14px;
+          background: rgba(255, 255, 255, 0.35);
+          border: 1px solid rgba(43, 30, 0, 0.35);
+          border-radius: 10px;
+          color: #2b2000;
+          font-family: 'Inter', sans-serif;
+          font-size: 0.9375rem;
+          line-height: 1.4;
+          transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
+        .contact-input::placeholder {
+          color: rgba(43, 30, 0, 0.55);
+        }
+        .contact-input:focus {
+          outline: none;
+          border-color: #2b2000;
+          background: rgba(255, 255, 255, 0.55);
+          box-shadow: 0 0 0 3px rgba(43, 30, 0, 0.20);
+        }
+
+        /* Inputs sobre footer oscuro (por si algún día se usan) */
         .footer-input {
           width: 100%;
           min-height: 44px;
