@@ -68,7 +68,11 @@ const StatusBadge = ({ estado }) => {
 // ─────────────────────────────────────────────────────────────
 const AgentCard = ({ agent }) => (
   <article
-    className="relative bg-[#FAF8F2] p-7 md:p-8 lg:p-10 flex flex-col h-full group"
+    className="relative bg-[#ffffff] p-7 md:p-8 lg:p-10 flex flex-col h-full group rounded-2xl"
+    style={{
+      border: '1px solid rgba(17, 17, 20, 0.08)',
+      boxShadow: '0 12px 28px -12px rgba(17, 17, 20, 0.07)',
+    }}
     data-testid={`agent-card-${agent.id}`}
   >
     {/* Disciplina (etiqueta superior) */}
@@ -207,7 +211,7 @@ const IntelligenceShowcase = () => {
   return (
     <section
       id="inteligencia-aplicada"
-      className="section-padding bg-[#ffffff] hex-mesh"
+      className="section-padding bg-[#f4f4f5] hex-mesh"
       data-testid="intelligence-showcase-section"
     >
       <div className="container-main">

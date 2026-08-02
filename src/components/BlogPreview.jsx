@@ -71,10 +71,10 @@ export const BlogPreview = () => {
             // Loading skeleton
             [...Array(3)].map((_, i) => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-[16/9] bg-[#FAF8F2] rounded-xl mb-4" />
-                <div className="h-3 bg-[#FAF8F2] rounded w-1/4 mb-3" />
-                <div className="h-5 bg-[#FAF8F2] rounded w-3/4 mb-2" />
-                <div className="h-4 bg-[#FAF8F2] rounded w-full" />
+                <div className="aspect-[16/9] bg-[#ffffff] rounded-xl mb-4" />
+                <div className="h-3 bg-[#ffffff] rounded w-1/4 mb-3" />
+                <div className="h-5 bg-[#ffffff] rounded w-3/4 mb-2" />
+                <div className="h-4 bg-[#ffffff] rounded w-full" />
               </div>
             ))
           ) : (

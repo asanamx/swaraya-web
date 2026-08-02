@@ -127,7 +127,7 @@ const BlogPage = () => {
                 placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#7d5800]/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#7d5800]/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -147,7 +147,7 @@ const BlogPage = () => {
 
           {/* Expanded Filters */}
           {showFilters && (
-            <div className="mt-6 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
+            <div className="mt-6 p-6 bg-[#ffffff] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Categories */}
                 <div>
@@ -216,10 +216,10 @@ const BlogPage = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="animate-pulse">
-                  <div className="aspect-[16/9] bg-[#FAF8F2] rounded-xl mb-4" />
-                  <div className="h-4 bg-[#FAF8F2] rounded w-1/4 mb-3" />
-                  <div className="h-6 bg-[#FAF8F2] rounded w-3/4 mb-2" />
-                  <div className="h-4 bg-[#FAF8F2] rounded w-full" />
+                  <div className="aspect-[16/9] bg-[#ffffff] rounded-xl mb-4" />
+                  <div className="h-4 bg-[#ffffff] rounded w-1/4 mb-3" />
+                  <div className="h-6 bg-[#ffffff] rounded w-3/4 mb-2" />
+                  <div className="h-4 bg-[#ffffff] rounded w-full" />
                 </div>
               ))}
             </div>
@@ -243,7 +243,7 @@ const BlogPage = () => {
                 >
                   <Link href={`/blog/${post.slug}`}>
                     {/* Cover Image — duotone editorial */}
-                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.06)]">
+                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#ffffff] border border-[rgba(17, 17, 20,0.06)]">
                       <img
                         src={post.coverImage || post.cover_image}
                         alt={post.title}

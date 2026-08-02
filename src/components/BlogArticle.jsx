@@ -34,7 +34,7 @@ const YouTubeEmbed = ({ videoId, title }) => {
 
   return (
     <div className="my-8">
-      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)]">
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)]">
         {!isLoaded ? (
           <button
             onClick={() => setIsLoaded(true)}
@@ -218,7 +218,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
           {/* Cover Image — duotone editorial */}
           <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)]">
+            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)]">
               <img
                 src={post.coverImage || post.cover_image}
                 alt={post.title}
@@ -289,7 +289,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             </div>
 
             {/* Author */}
-            <div className="mt-8 p-6 bg-[#FAF8F2] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
+            <div className="mt-8 p-6 bg-[#ffffff] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-[rgba(125, 88, 0,0.10)] flex items-center justify-center">
                   <AxisMark size={20} color="#7d5800" />
@@ -306,7 +306,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 md:py-20 border-t border-[rgba(17, 17, 20,0.08)] bg-[#FAF8F2]">
+        <section className="py-16 md:py-20 border-t border-[rgba(17, 17, 20,0.08)] bg-[#ffffff]">
           <div className="container-main">
             <h2
               className="text-2xl text-[#111114] mb-10"
