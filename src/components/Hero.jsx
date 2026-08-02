@@ -3,6 +3,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import LiveRow from './LiveRow';
+import HeroVideo from './HeroVideo';
+
+// Configuración del video atmosférico del hero.
+// Coloca los archivos en /public/hero/ · Si no existen, el hero funciona
+// completo con poster + glow + fila viva (§4b).
+const HERO_VIDEO = {
+  // Preferencia 1: murmuración de estorninos (starling murmuration)
+  //   - Enjambre como concepto de la marca (swar = swarm)
+  //   - Sin insectos, sin oficinas, sin circuitos
+  src:     '/hero/hero-bg.mp4',        // H.264 fallback  (Safari)
+  srcWebm: '/hero/hero-bg.webm',       // VP9/AV1 opcional
+  poster:  '/hero/hero-poster.jpg',    // frame representativo — fallback estático
+};
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -59,6 +72,14 @@ export const Hero = () => {
       data-testid="hero-section"
       ref={heroRef}
     >
+      {/* Video atmosférico (§4b) — no carga en touch / reduced-motion / reduced-data.
+          El hero funciona idéntico si el video nunca se sirve (fallback poster). */}
+      <HeroVideo
+        src={HERO_VIDEO.src}
+        srcWebm={HERO_VIDEO.srcWebm}
+        poster={HERO_VIDEO.poster}
+      />
+
       {/* Cursor spotlight (sólo hero desktop) */}
       <div className="hero-spotlight" aria-hidden="true" />
 
