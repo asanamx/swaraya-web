@@ -7,8 +7,8 @@
  * ═══════════════════════════════════════════════════════════
  *  SISTEMA CONSOLIDADO · ~12 roles semánticos · WCAG 2.1 AA
  * ═══════════════════════════════════════════════════════════
- *  • Fondo GALERÍA (--bg) → text-primary/secondary/tertiary + accent (#1233cc)
- *  • Fondo DARK    (--ink) → text-on-dark-* + accentBright (#3a5bff)
+ *  • Fondo GALERÍA (--bg) → text-primary/secondary/tertiary + accent (#7d5800)
+ *  • Fondo DARK    (--ink) → text-on-dark-* + accentBright (#e8a317)
  *
  *  Contraste verificado para cada par texto/superficie.
  *  Los alias legacy están marcados como @deprecated.
@@ -47,15 +47,15 @@ export const colors = {
   },
 
   // ── ACENTO ULTRAMAR ──────────────────────────────────────
-  accent: '#1233cc',             // sobre claro · ≈9.3:1 ✓
-  accentHover: '#0f28a8',
-  accentBright: '#3a5bff',       // sobre oscuro o fills grandes
-  accentBrightHover: '#6478ff',
-  accentBrightText: '#7a92ff',   // texto pequeño sobre oscuro · ≈7:1
+  accent: '#7d5800',             // sobre claro · ≈9.3:1 ✓
+  accentHover: '#5d4200',
+  accentBright: '#e8a317',       // sobre oscuro o fills grandes
+  accentBrightHover: '#f0b429',
+  accentBrightText: '#f0b429',   // texto pequeño sobre oscuro · ≈7:1
 
   // ── FOCO ─────────────────────────────────────────────────
-  ring: '#1233cc',
-  ringOnDark: '#3a5bff',
+  ring: '#7d5800',
+  ringOnDark: '#e8a317',
 
   // ── ESTADOS DE ERROR ─────────────────────────────────────
   destructive: '#EF4343',        // fills, iconos, bordes
@@ -76,10 +76,10 @@ export const colors = {
     deep: '#1c1c22',              // @deprecated → surfaceDark3
   },
   indigo: {
-    onCream: '#1233cc',           // @deprecated → accent
-    onCreamHover: '#0f28a8',      // @deprecated → accentHover
-    onDark: '#3a5bff',            // @deprecated → accentBright
-    onDarkHover: '#6478ff',       // @deprecated → accentBrightHover
+    onCream: '#7d5800',           // @deprecated → accent
+    onCreamHover: '#5d4200',      // @deprecated → accentHover
+    onDark: '#e8a317',            // @deprecated → accentBright
+    onDarkHover: '#f0b429',       // @deprecated → accentBrightHover
   },
 };
 

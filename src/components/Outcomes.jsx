@@ -52,7 +52,7 @@ export const Outcomes = () => {
         className="absolute inset-0 pointer-events-none section-glow"
         style={{
           background:
-            'radial-gradient(60% 50% at 72% 38%, rgba(58, 91, 255,0.18) 0%, rgba(58, 91, 255,0.05) 40%, transparent 70%)',
+            'radial-gradient(60% 50% at 72% 38%, rgba(232, 163, 23,0.18) 0%, rgba(232, 163, 23,0.05) 40%, transparent 70%)',
         }}
       />
 
@@ -76,7 +76,7 @@ export const Outcomes = () => {
         >
           <span
             className="label-accent block mb-6"
-            style={{ color: '#3a5bff' }}
+            style={{ color: '#e8a317' }}
             data-testid="outcomes-label"
           >
             Resultados
@@ -86,7 +86,7 @@ export const Outcomes = () => {
             style={{ color: '#ffffff' }}
             data-testid="outcomes-headline"
           >
-            Inteligencia <span style={{ color: '#3a5bff' }}>operativa</span> medible
+            Inteligencia <span style={{ color: '#e8a317' }}>operativa</span> medible
           </h2>
           <p
             className="mt-6 max-w-[54ch]"
@@ -128,7 +128,7 @@ export const Outcomes = () => {
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: '#3a5bff',
+                  color: '#e8a317',
                 }}
               >
                 {f.kicker}
@@ -149,7 +149,7 @@ export const Outcomes = () => {
               <div
                 className="w-10 h-px transition-all duration-400 group-hover:w-16 mt-1"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(58, 91, 255,0.7) 0%, transparent 100%)',
+                  background: 'linear-gradient(90deg, rgba(232, 163, 23,0.7) 0%, transparent 100%)',
                 }}
               />
               <span

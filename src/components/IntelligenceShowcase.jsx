@@ -11,31 +11,35 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { agents } from '@/data/agents';
+import Hexagon from './Hexagon';
 
 // ─────────────────────────────────────────────────────────────
-// BADGE DE ESTADO — semántico, alineado con el sistema gris + ultramar
+// BADGE DE ESTADO — hexágono outline como indicador (§5 brand book)
 // ─────────────────────────────────────────────────────────────
 const STATUS = {
   produccion: {
     label: 'En producción',
-    dot: '#1233cc',
-    bg: 'rgba(18, 51, 204, 0.08)',
-    fg: '#1233cc',
-    ring: 'rgba(18, 51, 204, 0.22)',
+    color: '#7d5800',
+    bg: 'rgba(125, 88, 0, 0.08)',
+    fg: '#7d5800',
+    ring: 'rgba(125, 88, 0, 0.22)',
+    pulse: true,
   },
   desarrollo: {
     label: 'En desarrollo',
-    dot: '#9aa0a8',
+    color: '#9aa0a8',
     bg: 'rgba(154, 160, 168, 0.12)',
     fg: '#52565e',
     ring: 'rgba(154, 160, 168, 0.28)',
+    pulse: false,
   },
   proximo: {
     label: 'Próximamente',
-    dot: '#9aa0a8',
+    color: '#9aa0a8',
     bg: 'rgba(154, 160, 168, 0.12)',
     fg: '#52565e',
     ring: 'rgba(154, 160, 168, 0.28)',
+    pulse: false,
   },
 };
 
@@ -53,10 +57,7 @@ const StatusBadge = ({ estado }) => {
         letterSpacing: '0.08em',
       }}
     >
-      <span
-        className="w-1.5 h-1.5 rounded-full"
-        style={{ background: s.dot }}
-      />
+      <Hexagon size={10} color={s.color} strokeWidth={1.4} pulse={s.pulse} />
       {s.label}
     </span>
   );
@@ -133,7 +134,7 @@ const AgentCard = ({ agent }) => (
     </div>
 
     {/* Hover line accent — consistente con ResearchDomains */}
-    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(18, 51, 204,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(125, 88, 0,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
   </article>
 );
 
@@ -148,14 +149,14 @@ const CtaCard = ({ agent }) => (
     data-testid={`agent-card-${agent.id}`}
     style={{
       background:
-        'linear-gradient(160deg, rgba(18, 51, 204,0.05) 0%, rgba(250,248,242,0.7) 60%)',
-      border: '1px dashed rgba(18, 51, 204,0.25)',
+        'linear-gradient(160deg, rgba(125, 88, 0,0.05) 0%, rgba(250,248,242,0.7) 60%)',
+      border: '1px dashed rgba(125, 88, 0,0.25)',
     }}
   >
     {/* Disciplina */}
     <span
       className="label-accent block mb-7"
-      style={{ color: '#1233cc' }}
+      style={{ color: '#7d5800' }}
     >
       {agent.disciplina}
     </span>
@@ -182,12 +183,12 @@ const CtaCard = ({ agent }) => (
 
     {/* Footer CTA */}
     <div className="mt-auto pt-6 flex items-center justify-between gap-4"
-      style={{ borderTop: '1px solid rgba(18, 51, 204,0.12)' }}
+      style={{ borderTop: '1px solid rgba(125, 88, 0,0.12)' }}
     >
       <StatusBadge estado={agent.estado} />
       <span
         className="inline-flex items-center gap-2 text-[0.875rem] font-medium transition-transform duration-400 group-hover:translate-x-0.5"
-        style={{ color: '#1233cc', fontFamily: "'Inter', sans-serif" }}
+        style={{ color: '#7d5800', fontFamily: "'Inter', sans-serif" }}
       >
         ¡Hablemos!
         <ArrowUpRight className="w-4 h-4" strokeWidth={1.8} />
@@ -206,7 +207,7 @@ const IntelligenceShowcase = () => {
   return (
     <section
       id="inteligencia-aplicada"
-      className="section-padding bg-[#ffffff]"
+      className="section-padding bg-[#ffffff] hex-mesh"
       data-testid="intelligence-showcase-section"
     >
       <div className="container-main">
@@ -216,13 +217,13 @@ const IntelligenceShowcase = () => {
           className={`max-w-2xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span
-            className="label-accent text-[#1233cc] block mb-6"
+            className="label-accent text-[#7d5800] block mb-6"
             data-testid="showcase-label"
           >
             Inteligencia Aplicada
           </span>
           <h2 className="heading-xl mb-5" data-testid="showcase-headline">
-            Agentes <span className="text-[#1233cc]">en operación</span>
+            Agentes <span className="text-[#7d5800]">en operación</span>
           </h2>
           <p className="body-large" data-testid="showcase-subtext">
             Sistemas reales que ya están trabajando — no promesas, no demos. Cada uno
@@ -256,9 +257,9 @@ const IntelligenceShowcase = () => {
             scroll={true}
             className="inline-flex items-center gap-2 text-[0.9375rem] font-medium transition-colors duration-400"
             style={{
-              color: '#1233cc',
+              color: '#7d5800',
               fontFamily: "'Inter', sans-serif",
-              borderBottom: '1px solid rgba(18, 51, 204,0.30)',
+              borderBottom: '1px solid rgba(125, 88, 0,0.30)',
               paddingBottom: '2px',
             }}
             data-testid="showcase-cta"

@@ -45,7 +45,7 @@ export default function SectionGlow({
           width: `${size * 2}px`,
           height: `${size * 2}px`,
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(58, 91, 255,${glowAlpha}) 0%, rgba(58, 91, 255,${glowAlpha * 0.45}) 28%, rgba(58, 91, 255,0) 60%)`,
+          background: `radial-gradient(circle, rgba(232, 163, 23,${glowAlpha}) 0%, rgba(232, 163, 23,${glowAlpha * 0.45}) 28%, rgba(232, 163, 23,0) 60%)`,
           filter: 'blur(8px)',
           animation: 'glowPulse 7s ease-in-out infinite',
         }}
@@ -60,9 +60,9 @@ export default function SectionGlow({
           width: '14px',
           height: '14px',
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(58, 91, 255,${coreAlpha + 0.30}) 0%, rgba(58, 91, 255,${coreAlpha}) 40%, rgba(58, 91, 255,0) 100%)`,
+          background: `radial-gradient(circle, rgba(232, 163, 23,${coreAlpha + 0.30}) 0%, rgba(232, 163, 23,${coreAlpha}) 40%, rgba(232, 163, 23,0) 100%)`,
           animation: 'glowPulse 4.5s ease-in-out infinite',
-          boxShadow: `0 0 24px rgba(58, 91, 255,${coreAlpha * 0.7})`,
+          boxShadow: `0 0 24px rgba(232, 163, 23,${coreAlpha * 0.7})`,
         }}
       />
     </div>

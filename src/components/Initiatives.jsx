@@ -3,6 +3,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { initiatives } from '@/data/initiatives';
 import useScrollReveal from '../hooks/useScrollReveal';
+import Hexagon from './Hexagon';
 
 /**
  * INITIATIVES · vitrina de plataformas/productos operados por swaraya.
@@ -17,9 +18,9 @@ import useScrollReveal from '../hooks/useScrollReveal';
  */
 
 const STATUS = {
-  operativa:  { label: 'Operativa',      dot: '#1233cc', fg: '#1233cc', bg: 'rgba(18, 51, 204, 0.08)',  ring: 'rgba(18, 51, 204, 0.22)'  },
-  desarrollo: { label: 'En desarrollo',  dot: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)' },
-  proximo:    { label: 'Próximamente',   dot: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)' },
+  operativa:  { label: 'Operativa',      color: '#7d5800', fg: '#7d5800', bg: 'rgba(125, 88, 0, 0.08)',  ring: 'rgba(125, 88, 0, 0.22)',  pulse: true  },
+  desarrollo: { label: 'En desarrollo',  color: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)', pulse: false },
+  proximo:    { label: 'Próximamente',   color: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.12)', ring: 'rgba(154, 160, 168, 0.28)', pulse: false },
 };
 
 const StatusBadge = ({ status }) => {
@@ -37,7 +38,7 @@ const StatusBadge = ({ status }) => {
         textTransform: 'uppercase',
       }}
     >
-      <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} />
+      <Hexagon size={10} color={s.color} strokeWidth={1.4} pulse={s.pulse} />
       {s.label}
     </span>
   );
@@ -60,7 +61,7 @@ const Initiatives = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(45% 40% at 20% 60%, rgba(58, 91, 255,0.06) 0%, transparent 70%)',
+            'radial-gradient(45% 40% at 20% 60%, rgba(232, 163, 23,0.06) 0%, transparent 70%)',
         }}
       />
 
@@ -69,11 +70,11 @@ const Initiatives = () => {
           ref={headerRef}
           className={`max-w-2xl mb-16 md:mb-20 reveal ${headerVisible ? 'revealed' : ''}`}
         >
-          <span className="label-accent text-[#1233cc] block mb-6" data-testid="initiatives-label">
+          <span className="label-accent text-[#7d5800] block mb-6" data-testid="initiatives-label">
             Iniciativas
           </span>
           <h2 className="heading-xl mb-5" data-testid="initiatives-headline">
-            Plataformas <span className="text-[#1233cc]">propietarias</span> operadas por swaraya
+            Plataformas <span className="text-[#7d5800]">propietarias</span> operadas por swaraya
           </h2>
           <p className="body-large">
             swaraya opera productos y plataformas digitales bajo marcas comerciales propias.
@@ -107,7 +108,7 @@ const Initiatives = () => {
                 <ArrowUpRight
                   className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
-                  style={{ color: '#1233cc' }}
+                  style={{ color: '#7d5800' }}
                 />
               </div>
 
@@ -123,7 +124,7 @@ const Initiatives = () => {
                 }}
               >
                 {it.name}
-                <span aria-hidden="true" style={{ color: '#1233cc' }}>.</span>
+                <span aria-hidden="true" style={{ color: '#7d5800' }}>.</span>
               </h3>
 
               <span
@@ -151,7 +152,7 @@ const Initiatives = () => {
                 {it.description}
               </p>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(18, 51, 204,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(125, 88, 0,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </a>
           ))}
         </div>

@@ -95,7 +95,7 @@ const BlogPage = () => {
       <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(17, 17, 20,0.08)]">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="label-accent text-[#1233cc] mb-6 block">Insights</span>
+            <span className="label-accent text-[#7d5800] mb-6 block">Insights</span>
             <h1
               className="text-3xl md:text-5xl lg:text-6xl text-[#111114] mb-6"
               style={{
@@ -105,7 +105,7 @@ const BlogPage = () => {
                 lineHeight: 1.02,
               }}
             >
-              Perspectivas sobre <span className="text-[#1233cc]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#7d5800]">inteligencia aplicada</span>
             </h1>
             <p className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch]">
               Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos,
@@ -127,7 +127,7 @@ const BlogPage = () => {
                 placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#1233cc]/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-[#FAF8F2] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#7d5800]/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -140,7 +140,7 @@ const BlogPage = () => {
               <Filter className="w-4 h-4" />
               Filtros
               {(selectedCategory || selectedTag) && (
-                <span className="w-2 h-2 rounded-full bg-[#1233cc]" />
+                <span className="w-2 h-2 rounded-full bg-[#7d5800]" />
               )}
             </button>
           </div>
@@ -162,7 +162,7 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedCategory === cat.name
-                            ? 'bg-[#1233cc] text-[#ffffff]'
+                            ? 'bg-[#7d5800] text-[#ffffff]'
                             : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                         }`}
                       >
@@ -185,7 +185,7 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedTag === tag.name
-                            ? 'bg-[#1233cc] text-[#ffffff]'
+                            ? 'bg-[#7d5800] text-[#ffffff]'
                             : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                         }`}
                       >
@@ -199,7 +199,7 @@ const BlogPage = () => {
               {(selectedCategory || selectedTag) && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-xs text-[#1233cc] hover:underline transition-colors"
+                  className="mt-4 text-xs text-[#7d5800] hover:underline transition-colors"
                 >
                   Limpiar filtros
                 </button>
@@ -228,7 +228,7 @@ const BlogPage = () => {
               <p className="text-[#52565e] mb-4">No se encontraron artículos</p>
               <button
                 onClick={clearFilters}
-                className="text-sm text-[#1233cc] hover:underline transition-colors"
+                className="text-sm text-[#7d5800] hover:underline transition-colors"
               >
                 Limpiar filtros
               </button>
@@ -253,7 +253,7 @@ const BlogPage = () => {
 
                     {/* Category */}
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[0.6875rem] font-medium text-[#1233cc] tracking-[0.18em] uppercase">
+                      <span className="text-[0.6875rem] font-medium text-[#7d5800] tracking-[0.18em] uppercase">
                         {post.category}
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
@@ -265,7 +265,7 @@ const BlogPage = () => {
 
                     {/* Title */}
                     <h2
-                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#1233cc] transition-colors"
+                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#7d5800] transition-colors"
                       style={{
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 500,
@@ -301,7 +301,7 @@ const BlogPage = () => {
                   onClick={() => setCurrentPage(page)}
                   className={`w-10 h-10 rounded-lg text-sm font-medium transition-all ${
                     currentPage === page
-                      ? 'bg-[#1233cc] text-[#ffffff]'
+                      ? 'bg-[#7d5800] text-[#ffffff]'
                       : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
                   }`}
                 >

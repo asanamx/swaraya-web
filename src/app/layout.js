@@ -44,13 +44,13 @@ export const metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#1233cc' },
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#e8a317' },
     ],
   },
 };
 
 export const viewport = {
-  themeColor: '#1233cc',
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({ children }) {

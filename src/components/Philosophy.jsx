@@ -19,7 +19,7 @@ export const Philosophy = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 50% 45%, rgba(58, 91, 255,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 50% 45%, rgba(232, 163, 23,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -33,7 +33,7 @@ export const Philosophy = () => {
       <div className="container-main">
         <div className={`max-w-[680px] mx-auto text-center reveal ${isVisible ? 'revealed' : ''}`}>
           <span 
-            className="label-accent text-[#1233cc] block mb-8 md:mb-10" 
+            className="label-accent text-[#7d5800] block mb-8 md:mb-10" 
             data-testid="philosophy-label"
           >
             Filosofía

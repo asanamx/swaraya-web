@@ -57,16 +57,17 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --text-on-dark-secondary: #c9cdd3;   /* ≈12:1 ✓                  */
   --text-on-dark-tertiary:  #9aa0a8;   /* ≈6.9:1 ✓                 */
 
-  /* ── ACENTO ULTRAMAR (dos calibraciones) ────────────────── */
-  --accent:            #1233cc;   /* SOBRE CLARO · ≈9.3:1 ✓    */
-  --accent-hover:      #0f28a8;
-  --accent-bright:     #3a5bff;   /* SOBRE OSCURO · fills grandes */
-  --accent-bright-hover: #6478ff;
-  --accent-bright-text: #7a92ff;  /* texto pequeño sobre oscuro · ≈7:1 ✓ */
+  /* ── ACENTO MIEL — colmena (dos calibraciones) ──────────── */
+  --accent:            #7d5800;   /* SOBRE CLARO · miel profunda · ≈6.7:1 ✓ */
+  --accent-hover:      #5d4200;
+  --accent-bright:     #e8a317;   /* SOBRE OSCURO · miel viva · ≈8.5:1 ✓   */
+  --accent-bright-hover: #f0b429;
+  --accent-bright-text: #e8a317;  /* miel viva sobre oscuro (texto pequeño OK) */
+  --on-accent:         #2b1e00;   /* tinta oscura sobre fill miel · ≈7.8:1 ✓ */
 
   /* ── ANILLO DE FOCO (visible, WCAG 2.4.7) ────────────────  */
-  --ring:              #1233cc;   /* sobre claro                */
-  --ring-on-dark:      #3a5bff;
+  --ring:              #7d5800;   /* sobre claro                */
+  --ring-on-dark:      #e8a317;
 
   /* ── ESTADOS DE ERROR ───────────────────────────────────── */
   --destructive:       #EF4343;   /* fills, iconos, bordes     */
@@ -370,7 +371,7 @@ body {
 .btn-primary:hover {
   background-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px -8px rgba(44, 62, 128, 0.25);
+  box-shadow: 0 16px 32px -8px rgba(125, 88, 0, 0.30);
 }
 
 .btn-secondary {
@@ -398,10 +399,12 @@ body {
 /* Versiones para fondos oscuros */
 .dark-mode .btn-primary {
   background-color: var(--accent-bright);
-  color: #FFFFFF;                                /* blanco puro sobre indigo bright · 4.85:1 ✓ */
+  color: var(--on-accent);                       /* #2b1e00 · ≈7.8:1 ✓ sobre miel viva */
+  font-weight: 600;                              /* ligero refuerzo óptico */
 }
 .dark-mode .btn-primary:hover {
   background-color: var(--accent-bright-hover);
+  color: var(--on-accent);
 }
 .dark-mode .btn-secondary {
   color: var(--text-on-dark-primary);
@@ -567,7 +570,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #111114 0%, #3a5bff 100%);
+  background: linear-gradient(135deg, #111114 0%, #e8a317 100%);
   mix-blend-mode: color;
   pointer-events: none;
   z-index: 1;
@@ -576,7 +579,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(58, 91, 255, 0.10);
+  background: rgba(232, 163, 23, 0.10);
   pointer-events: none;
   z-index: 2;
   transition: opacity 0.35s ease;
@@ -595,7 +598,7 @@ body {
   opacity: 0;
   transition: opacity 400ms ease;
   background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
-              rgba(58, 91, 255, 0.12), transparent 65%);
+              rgba(232, 163, 23, 0.12), transparent 65%);
 }
 [data-testid="hero-section"]:hover .hero-spotlight { opacity: 1; }
 
@@ -651,6 +654,50 @@ body {
 .ghost-wordmark--dark  { color: rgba(255, 255, 255, 0.04); }
 
 /* ═══════════════════════════════════════════════════════════
+   HEXÁGONO · pulso sutil para estado "en producción"
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes hex-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1;   }
+  50%      { transform: scale(1.06); opacity: 0.85;}
+}
+.hex-pulse {
+  transform-origin: center;
+  animation: hex-pulse 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hex-pulse { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MALLA HEXAGONAL · sólo sección Agentes (dosificado)
+   ─────────────────────────────────────────────────────────────
+   Textura apenas perceptible. Aplicar con .hex-mesh a un
+   contenedor. Se compone de un SVG tileable inline.
+   ═══════════════════════════════════════════════════════════ */
+
+.hex-mesh {
+  position: relative;
+  isolation: isolate;
+}
+.hex-mesh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'><g fill='none' stroke='rgba(17,17,20,0.03)' stroke-width='1'><polygon points='21,2 42,14 42,38 21,50 0,38 0,14'/><polygon points='63,2 84,14 84,38 63,50 42,38 42,14'/><polygon points='42,50 63,62 63,86 42,98 21,86 21,62'/></g></svg>");
+  background-size: 84px 96px;
+  background-repeat: repeat;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 82%);
+          mask-image: radial-gradient(ellipse at center, #000 40%, transparent 82%);
+}
+.hex-mesh--dark::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'><g fill='none' stroke='rgba(232,163,23,0.07)' stroke-width='1'><polygon points='21,2 42,14 42,38 21,50 0,38 0,14'/><polygon points='63,2 84,14 84,38 63,50 42,38 42,14'/><polygon points='42,50 63,62 63,86 42,98 21,86 21,62'/></g></svg>");
+}
+
+/* ═══════════════════════════════════════════════════════════
    SHADCN  ─  sincronizado con roles semánticos
    ═══════════════════════════════════════════════════════════ */
 
@@ -668,13 +715,13 @@ body {
     --secondary-foreground: 240 8% 7%;
     --muted: 240 5% 90%;
     --muted-foreground: 225 6% 34%;         /* --text-secondary #52565e */
-    --accent: 231 84% 43%;                  /* --accent #1233cc */
+    --accent: 42 100% 25%;                  /* --accent #7d5800 miel profunda */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 240 5% 90%;
     --input: 240 5% 90%;
-    --ring: 231 84% 43%;                    /* --ring #1233cc */
+    --ring: 42 100% 25%;                    /* --ring #7d5800 */
     --radius: 0.75rem;
   }
 }
@@ -811,7 +858,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(18, 51, 204, 0.60) 0%, rgba(18, 51, 204, 0.38) 100%);
+  background: linear-gradient(160deg, rgba(125, 88, 0, 0.60) 0%, rgba(125, 88, 0, 0.38) 100%);
   mix-blend-mode: multiply;
   transition: background 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -823,7 +870,7 @@ body {
 }
 .group:hover .cover-editorial::after,
 .cover-editorial:hover::after {
-  background: linear-gradient(160deg, rgba(18, 51, 204, 0.44) 0%, rgba(18, 51, 204, 0.22) 100%);
+  background: linear-gradient(160deg, rgba(125, 88, 0, 0.44) 0%, rgba(125, 88, 0, 0.22) 100%);
 }
 .group:hover .cover-editorial::before,
 .cover-editorial:hover::before {

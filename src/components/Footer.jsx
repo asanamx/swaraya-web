@@ -24,7 +24,7 @@ export const Footer = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(58, 91, 255,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(58, 91, 255,0.14) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 20% 25%, rgba(232, 163, 23,0.22) 0%, transparent 60%), radial-gradient(ellipse 70% 50% at 85% 85%, rgba(232, 163, 23,0.14) 0%, transparent 60%)',
           filter: 'blur(20px)',
         }}
       />
@@ -34,7 +34,7 @@ export const Footer = () => {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent 0%, rgba(58, 91, 255,0.35) 50%, transparent 100%)',
+            'linear-gradient(90deg, transparent 0%, rgba(232, 163, 23,0.35) 50%, transparent 100%)',
         }}
       />
 
@@ -49,7 +49,7 @@ export const Footer = () => {
                   fontSize: '0.6875rem',
                   letterSpacing: '0.32em',
                   textTransform: 'uppercase',
-                  color: '#3a5bff',
+                  color: '#e8a317',
                   fontWeight: 500,
                   display: 'inline-block',
                   marginBottom: '1.5rem',
@@ -162,7 +162,7 @@ export const Footer = () => {
                   className="absolute top-0 left-6 right-6 h-px"
                   style={{
                     background:
-                      'linear-gradient(90deg, transparent 0%, rgba(58, 91, 255,0.45) 50%, transparent 100%)',
+                      'linear-gradient(90deg, transparent 0%, rgba(232, 163, 23,0.45) 50%, transparent 100%)',
                   }}
                 />
 
@@ -238,18 +238,18 @@ export const Footer = () => {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-medium tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
+                    className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-semibold tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
                     style={{
-                      background: colors.indigo.onDark,
-                      color: colors.textOnDark.primary,
+                      background: colors.accentBright,   /* #e8a317 · miel viva */
+                      color: '#2b1e00',                  /* ≈7.8:1 ✓ sobre miel */
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = colors.indigo.onDarkHover;
+                      e.currentTarget.style.background = colors.accentBrightHover;
                       e.currentTarget.style.transform = 'translateY(-1px)';
-                      e.currentTarget.style.boxShadow = `0 12px 28px -8px ${colors.indigo.onDark}66`;
+                      e.currentTarget.style.boxShadow = `0 12px 28px -8px ${colors.accentBright}66`;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = colors.indigo.onDark;
+                      e.currentTarget.style.background = colors.accentBright;
                       e.currentTarget.style.transform = 'translateY(0)';
                       e.currentTarget.style.boxShadow = 'none';
                     }}
@@ -294,7 +294,7 @@ export const Footer = () => {
                 }}
               >
                 swaraya
-                <span aria-hidden="true" style={{ color: '#3a5bff' }}>.</span>
+                <span aria-hidden="true" style={{ color: '#e8a317' }}>.</span>
               </span>
             </div>
           </div>
@@ -476,9 +476,9 @@ export const Footer = () => {
         }
         .footer-input:focus {
           outline: none;
-          border-color: #3a5bff;
+          border-color: #e8a317;
           background: rgba(255, 255, 255,0.06);
-          box-shadow: 0 0 0 3px rgba(58, 91, 255,0.25);
+          box-shadow: 0 0 0 3px rgba(232, 163, 23,0.25);
         }
 
         /* Iniciativas — homologación de estados idle/hover
@@ -498,7 +498,7 @@ export const Footer = () => {
           opacity: 1;
         }
         .initiative-logo:focus-visible {
-          outline: 2px solid #3a5bff;
+          outline: 2px solid #e8a317;
           outline-offset: 4px;
           border-radius: 4px;
         }
