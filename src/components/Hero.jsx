@@ -5,16 +5,18 @@ import { ArrowRight } from 'lucide-react';
 import LiveRow from './LiveRow';
 import HeroVideo from './HeroVideo';
 
-// Configuración del video atmosférico del hero.
-// Coloca los archivos en /public/hero/ · Si no existen, el hero funciona
-// completo con poster + glow + fila viva (§4b).
+// Configuración del video atmosférico del hero (§4b).
+// ─────────────────────────────────────────────────────────────
+// Cuando tengas el archivo de video (idealmente murmuración de estorninos,
+// ≤4 MB, 1080p, 10–15s loop), colócalo en /public/hero/ y descomenta las
+// dos líneas de abajo (src y srcWebm si tienes ambos formatos).
+//
+// Mientras tanto, el hero funciona completo con: poster + glow girasol
+// + fila viva + grano + ghost wordmark. Ese es el diseño base.
 const HERO_VIDEO = {
-  // Preferencia 1: murmuración de estorninos (starling murmuration)
-  //   - Enjambre como concepto de la marca (swar = swarm)
-  //   - Sin insectos, sin oficinas, sin circuitos
-  src:     '/hero/hero-bg.mp4',        // H.264 fallback  (Safari)
-  srcWebm: '/hero/hero-bg.webm',       // VP9/AV1 opcional
-  poster:  '/hero/hero-poster.jpg',    // frame representativo — fallback estático
+  src:     null,   // '/hero/hero-bg.mp4'    — H.264 fallback (Safari)
+  srcWebm: null,   // '/hero/hero-bg.webm'   — VP9/AV1 opcional
+  poster:  '/hero/hero-poster.jpg',
 };
 
 export const Hero = () => {
