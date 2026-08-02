@@ -98,7 +98,7 @@ export const Method = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-28 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#7d5800] block mb-6" 
+            className="label-accent text-[#775a00] block mb-6" 
             data-testid="method-label"
           >
             Método
@@ -128,12 +128,12 @@ export const Method = () => {
                 stroke="rgba(17, 17, 20,0.14)" strokeWidth="1" />
               {/* Progreso índigo (Prompt G) */}
               <line x1="0" y1="12" x2={1000 * (reducedMotion ? 1 : progress)} y2="12"
-                stroke="#e8a317" strokeWidth="1.5" strokeLinecap="round" />
+                stroke="#f6b91f" strokeWidth="1.5" strokeLinecap="round" />
               {/* Token viajero con glow */}
               {!reducedMotion && progress > 0 && progress < 1 && (
                 <g style={{ transform: `translateX(${1000 * progress}px)` }}>
-                  <circle cx="0" cy="12" r="8" fill="#e8a317" opacity="0.25" />
-                  <circle cx="0" cy="12" r="4" fill="#e8a317" />
+                  <circle cx="0" cy="12" r="8" fill="#f6b91f" opacity="0.25" />
+                  <circle cx="0" cy="12" r="4" fill="#f6b91f" />
                 </g>
               )}
             </svg>
@@ -156,7 +156,7 @@ export const Method = () => {
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 500,
                         letterSpacing: '-0.045em',
-                        color: isActive ? 'rgba(125, 88, 0,0.85)' : 'rgba(125, 88, 0,0.20)',
+                        color: isActive ? 'rgba(119, 90, 0,0.85)' : 'rgba(119, 90, 0,0.20)',
                       }}
                     >
                       {step.number}
@@ -169,9 +169,9 @@ export const Method = () => {
                     style={{
                       top: 58,
                       width: 10, height: 10,
-                      background: isActive ? '#e8a317' : '#f4f4f5',
+                      background: isActive ? '#f6b91f' : '#f4f4f5',
                       border: isActive ? 'none' : '1px solid rgba(17, 17, 20,0.20)',
-                      boxShadow: isActive ? '0 0 0 6px rgba(232, 163, 23,0.12)' : 'none',
+                      boxShadow: isActive ? '0 0 0 6px rgba(246, 185, 31,0.12)' : 'none',
                     }}
                   />
 
@@ -206,13 +206,13 @@ export const Method = () => {
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
                       letterSpacing: '-0.04em',
-                      color: 'rgba(125, 88, 0,0.55)',
+                      color: 'rgba(119, 90, 0,0.55)',
                     }}
                   >
                     {step.number}
                   </span>
                   {index < steps.length - 1 && (
-                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(125, 88, 0,0.25)] to-transparent min-h-[50px]" />
+                    <div className="flex-1 w-px bg-gradient-to-b from-[rgba(119, 90, 0,0.25)] to-transparent min-h-[50px]" />
                   )}
                 </div>
                 

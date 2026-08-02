@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import LiveRow from './LiveRow';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,7 +71,7 @@ export const Hero = () => {
         className="absolute inset-0 pointer-events-none hero-glow"
         style={{
           background:
-            'radial-gradient(60% 46% at 74% 30%, rgba(232, 163, 23, 0.18) 0%, transparent 68%)',
+            'radial-gradient(60% 46% at 74% 30%, rgba(246, 185, 31, 0.18) 0%, transparent 68%)',
         }}
       />
 
@@ -80,7 +81,7 @@ export const Hero = () => {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent 0%, rgba(125, 88, 0,0.28) 50%, transparent 100%)',
+            'linear-gradient(90deg, transparent 0%, rgba(119, 90, 0,0.28) 50%, transparent 100%)',
         }}
       />
 
@@ -96,7 +97,7 @@ export const Hero = () => {
               fontSize: '0.75rem',
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: '#e8a317',
+              color: '#f6b91f',
               fontWeight: 500,
               transitionDelay: '40ms',
               opacity: isLoaded ? 1 : 0,
@@ -105,7 +106,7 @@ export const Hero = () => {
             }}
             data-testid="hero-eyebrow"
           >
-            <span style={{ width: 28, height: 1, background: '#e8a317', opacity: 0.6 }} />
+            <span style={{ width: 28, height: 1, background: '#f6b91f', opacity: 0.6 }} />
             Agencia de Inteligencia Artificial Aplicada
           </div>
 
@@ -145,7 +146,7 @@ export const Hero = () => {
             <span
               style={{
                 display: 'block',
-                color: '#e8a317',
+                color: '#f6b91f',
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
                 transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms`,
@@ -190,20 +191,20 @@ export const Hero = () => {
               style={{
                 minHeight: 44,
                 padding: '16px 32px',
-                background: '#e8a317',
-                color: '#2b1e00',                     /* tinta oscura sobre miel · ≈7.8:1 ✓ */
+                background: '#f6b91f',
+                color: '#2b2000',                     /* tinta oscura sobre miel · ≈7.8:1 ✓ */
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: '0.9375rem',
                 letterSpacing: '0.005em',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#f0b429';
+                e.currentTarget.style.background = '#ffc93d';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 16px 32px -8px rgba(232, 163, 23,0.45)';
+                e.currentTarget.style.boxShadow = '0 16px 32px -8px rgba(246, 185, 31,0.45)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#e8a317';
+                e.currentTarget.style.background = '#f6b91f';
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
@@ -227,8 +228,8 @@ export const Hero = () => {
                 border: '1px solid rgba(255, 255, 255,0.25)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#e8a317';
-                e.currentTarget.style.color = '#e8a317';
+                e.currentTarget.style.borderColor = '#f6b91f';
+                e.currentTarget.style.color = '#f6b91f';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.25)';
@@ -240,34 +241,17 @@ export const Hero = () => {
             </button>
           </div>
 
-          {/* Fila de prueba — señales concretas (bloque 1) */}
+          {/* Fila viva — momento signature (bajo el titular) */}
           <div
-            className="mt-8 md:mt-10 flex flex-wrap items-center gap-x-5 gap-y-3"
+            className="mt-8 md:mt-10 max-w-xl"
             style={{
               opacity: isLoaded ? 1 : 0,
               transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
               transition: 'opacity 600ms cubic-bezier(0.2,0.6,0.2,1) 500ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) 500ms',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 13,
-              color: '#c9cdd3',
-              letterSpacing: '0.005em',
             }}
             data-testid="hero-signals"
           >
-            <span className="inline-flex items-center gap-2">
-              <span
-                aria-hidden="true"
-                style={{
-                  display: 'inline-block',
-                  width: 6, height: 6, borderRadius: 999, background: '#e8a317',
-                }}
-              />
-              Agentes en producción
-            </span>
-            <span aria-hidden="true" style={{ width: 20, height: 1, background: 'rgba(200,204,220,0.25)' }} />
-            <span>Inmobiliario</span>
-            <span aria-hidden="true" style={{ width: 20, height: 1, background: 'rgba(200,204,220,0.25)' }} />
-            <span>Fiscal</span>
+            <LiveRow label="Agentes en producción" onDark={true} dotCount={6} />
           </div>
 
           {/* Tech stack — logos oficiales monocromos */}
@@ -290,7 +274,7 @@ export const Hero = () => {
 
               {/* Anthropic */}
               <div className="flex items-center gap-2 transition-all duration-300 hover:opacity-100" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="Anthropic"
               >
@@ -300,7 +284,7 @@ export const Hero = () => {
 
               {/* OpenAI */}
               <div className="flex items-center gap-2 transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="OpenAI"
               >
@@ -310,7 +294,7 @@ export const Hero = () => {
 
               {/* Vercel */}
               <div className="flex items-center gap-2 transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="Vercel"
               >
@@ -320,7 +304,7 @@ export const Hero = () => {
 
               {/* OpenClaw — tipografía display que respeta el wordmark original */}
               <div className="transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="OpenClaw"
               >
@@ -335,7 +319,7 @@ export const Hero = () => {
 
               {/* Resend */}
               <div className="flex items-center gap-2 transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="Resend"
               >
@@ -345,7 +329,7 @@ export const Hero = () => {
 
               {/* Sanity */}
               <div className="flex items-center gap-2 transition-all duration-300" style={{ opacity: 0.55, color: 'rgba(255, 255, 255,0.55)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#e8a317'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#f6b91f'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.55'; e.currentTarget.style.color = 'rgba(255, 255, 255,0.55)'; }}
                 title="Sanity"
               >

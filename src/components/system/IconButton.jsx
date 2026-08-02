@@ -85,18 +85,18 @@ export const FAB = forwardRef(function FAB(
         background: 'var(--accent-bright)',
         color: '#FFFFFF',
         border: 'none',
-        boxShadow: '0 10px 24px -8px rgba(232, 163, 23,0.35)',
+        boxShadow: '0 10px 24px -8px rgba(246, 185, 31,0.35)',
         cursor: 'pointer',
         ...style,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'scale(1.05)';
-        e.currentTarget.style.boxShadow = '0 14px 32px -8px rgba(232, 163, 23,0.5)';
+        e.currentTarget.style.boxShadow = '0 14px 32px -8px rgba(246, 185, 31,0.5)';
         rest.onMouseEnter?.(e);
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow = '0 10px 24px -8px rgba(232, 163, 23,0.35)';
+        e.currentTarget.style.boxShadow = '0 10px 24px -8px rgba(246, 185, 31,0.35)';
         rest.onMouseLeave?.(e);
       }}
       {...rest}

@@ -46,7 +46,7 @@ export const Principles = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 78% 40%, rgba(232, 163, 23,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 78% 40%, rgba(246, 185, 31,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -56,7 +56,7 @@ export const Principles = () => {
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>
             <h2 className="heading-xl mb-6" data-testid="principles-headline">
               Nuestros sistemas se moldean por{' '}
-              <span style={{ color: '#7d5800' }}>disciplina antes que escala.</span>
+              <span style={{ color: '#775a00' }}>disciplina antes que escala.</span>
             </h2>
             <p
               className="max-w-[38ch]"
@@ -81,7 +81,7 @@ export const Principles = () => {
                   className="group relative flex items-start gap-6 md:gap-8 py-6 md:py-7 transition-colors duration-300"
                   data-testid={`principle-item-${i + 1}`}
                   style={{ borderBottom: '1px solid rgba(17, 17, 20,0.10)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(125, 88, 0,0.04)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(119, 90, 0,0.04)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   {/* Número índice fantasma */}
@@ -160,7 +160,7 @@ export const Principles = () => {
                     aria-hidden="true"
                     className="absolute left-0 top-8 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: '#7d5800',
+                      background: '#775a00',
                       transform: 'translateX(-14px)',
                     }}
                   />

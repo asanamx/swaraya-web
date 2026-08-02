@@ -116,13 +116,13 @@ export const ResearchDomains = () => {
           className={`max-w-xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span 
-            className="label-accent text-[#7d5800] block mb-6" 
+            className="label-accent text-[#775a00] block mb-6" 
             data-testid="research-label"
           >
             Dominios de Investigación
           </span>
           <h2 className="heading-xl mb-5" data-testid="research-headline">
-            Campos de <span className="text-[#7d5800]">inteligencia aplicada</span>
+            Campos de <span className="text-[#775a00]">inteligencia aplicada</span>
           </h2>
           <p className="body-large" data-testid="research-subtext">
             Capacidades diseñadas para traducir investigación, datos y sistemas en operación real.
@@ -153,7 +153,7 @@ export const ResearchDomains = () => {
                   fontFamily: "'Cabinet Grotesk', sans-serif",
                   fontWeight: 500,
                   letterSpacing: '-0.04em',
-                  color: 'rgba(125, 88, 0,0.14)',
+                  color: 'rgba(119, 90, 0,0.14)',
                 }}
               >
                 {number}
@@ -163,7 +163,7 @@ export const ResearchDomains = () => {
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-400"
                   style={{
-                    background: 'rgba(125, 88, 0,0.06)',
+                    background: 'rgba(119, 90, 0,0.06)',
                     color: '#52565e',
                   }}
                 >
@@ -179,7 +179,7 @@ export const ResearchDomains = () => {
                 {description}
               </p>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(125, 88, 0,0.25)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(119, 90, 0,0.25)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </div>
           ))}
         </div>

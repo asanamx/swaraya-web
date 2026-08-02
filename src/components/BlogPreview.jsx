@@ -45,17 +45,17 @@ export const BlogPreview = () => {
           className={`flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <div className="max-w-xl">
-            <span className="label-accent text-[#7d5800] mb-4 md:mb-5 block">
+            <span className="label-accent text-[#775a00] mb-4 md:mb-5 block">
               Insights
             </span>
             <h2 className="heading-xl">
-              Perspectivas sobre <span className="text-[#7d5800]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#775a00]">inteligencia aplicada</span>
             </h2>
           </div>
           
           <Link 
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#52565e] hover:text-[#7d5800] transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-[#52565e] hover:text-[#775a00] transition-colors group"
           >
             Ver todos los artículos
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -96,7 +96,7 @@ export const BlogPreview = () => {
 
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[0.6875rem] font-medium text-[#7d5800] tracking-[0.18em] uppercase">
+                    <span className="text-[0.6875rem] font-medium text-[#775a00] tracking-[0.18em] uppercase">
                       {post.category}
                     </span>
                     <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
@@ -108,7 +108,7 @@ export const BlogPreview = () => {
 
                   {/* Title */}
                   <h3
-                    className="text-base md:text-lg text-[#111114] mb-2.5 leading-snug group-hover:text-[#7d5800] transition-colors line-clamp-2"
+                    className="text-base md:text-lg text-[#111114] mb-2.5 leading-snug group-hover:text-[#775a00] transition-colors line-clamp-2"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,

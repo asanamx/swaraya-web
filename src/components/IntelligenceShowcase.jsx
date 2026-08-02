@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { agents } from '@/data/agents';
-import Hexagon from './Hexagon';
 
 // ─────────────────────────────────────────────────────────────
 // BADGE DE ESTADO — hexágono outline como indicador (§5 brand book)
@@ -19,27 +18,27 @@ import Hexagon from './Hexagon';
 const STATUS = {
   produccion: {
     label: 'En producción',
-    color: '#7d5800',
-    bg: 'rgba(125, 88, 0, 0.08)',
-    fg: '#7d5800',
-    ring: 'rgba(125, 88, 0, 0.22)',
-    pulse: true,
+    color: '#775a00',
+    bg: 'rgba(119, 90, 0, 0.06)',
+    fg: '#775a00',
+    ring: 'rgba(119, 90, 0, 0.30)',
+    solid: true,
   },
   desarrollo: {
     label: 'En desarrollo',
     color: '#9aa0a8',
-    bg: 'rgba(154, 160, 168, 0.12)',
+    bg: 'rgba(154, 160, 168, 0.10)',
     fg: '#52565e',
     ring: 'rgba(154, 160, 168, 0.28)',
-    pulse: false,
+    solid: false,
   },
   proximo: {
     label: 'Próximamente',
     color: '#9aa0a8',
-    bg: 'rgba(154, 160, 168, 0.12)',
+    bg: 'rgba(154, 160, 168, 0.10)',
     fg: '#52565e',
     ring: 'rgba(154, 160, 168, 0.28)',
-    pulse: false,
+    solid: false,
   },
 };
 
@@ -57,7 +56,16 @@ const StatusBadge = ({ estado }) => {
         letterSpacing: '0.08em',
       }}
     >
-      <Hexagon size={18} color={s.color} strokeWidth={1.8} pulse={s.pulse} />
+      <span
+        aria-hidden="true"
+        className="inline-block rounded-full"
+        style={{
+          width: 8,
+          height: 8,
+          background: s.solid ? s.color : 'transparent',
+          border: s.solid ? 'none' : `1.5px solid ${s.color}`,
+        }}
+      />
       {s.label}
     </span>
   );
@@ -138,7 +146,7 @@ const AgentCard = ({ agent }) => (
     </div>
 
     {/* Hover line accent — consistente con ResearchDomains */}
-    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(125, 88, 0,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(119, 90, 0,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
   </article>
 );
 
@@ -153,14 +161,14 @@ const CtaCard = ({ agent }) => (
     data-testid={`agent-card-${agent.id}`}
     style={{
       background:
-        'linear-gradient(160deg, rgba(125, 88, 0,0.05) 0%, rgba(250,248,242,0.7) 60%)',
-      border: '1px dashed rgba(125, 88, 0,0.25)',
+        'linear-gradient(160deg, rgba(119, 90, 0,0.05) 0%, rgba(250,248,242,0.7) 60%)',
+      border: '1px dashed rgba(119, 90, 0,0.25)',
     }}
   >
     {/* Disciplina */}
     <span
       className="label-accent block mb-7"
-      style={{ color: '#7d5800' }}
+      style={{ color: '#775a00' }}
     >
       {agent.disciplina}
     </span>
@@ -187,12 +195,12 @@ const CtaCard = ({ agent }) => (
 
     {/* Footer CTA */}
     <div className="mt-auto pt-6 flex items-center justify-between gap-4"
-      style={{ borderTop: '1px solid rgba(125, 88, 0,0.12)' }}
+      style={{ borderTop: '1px solid rgba(119, 90, 0,0.12)' }}
     >
       <StatusBadge estado={agent.estado} />
       <span
         className="inline-flex items-center gap-2 text-[0.875rem] font-medium transition-transform duration-400 group-hover:translate-x-0.5"
-        style={{ color: '#7d5800', fontFamily: "'Inter', sans-serif" }}
+        style={{ color: '#775a00', fontFamily: "'Inter', sans-serif" }}
       >
         ¡Hablemos!
         <ArrowUpRight className="w-4 h-4" strokeWidth={1.8} />
@@ -211,7 +219,7 @@ const IntelligenceShowcase = () => {
   return (
     <section
       id="inteligencia-aplicada"
-      className="section-padding bg-[#f4f4f5] hex-mesh"
+      className="section-padding bg-[#f4f4f5]"
       data-testid="intelligence-showcase-section"
     >
       <div className="container-main">
@@ -221,13 +229,13 @@ const IntelligenceShowcase = () => {
           className={`max-w-2xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
         >
           <span
-            className="label-accent text-[#7d5800] block mb-6"
+            className="label-accent text-[#775a00] block mb-6"
             data-testid="showcase-label"
           >
             Inteligencia Aplicada
           </span>
           <h2 className="heading-xl mb-5" data-testid="showcase-headline">
-            Agentes <span className="text-[#7d5800]">en operación</span>
+            Agentes <span className="text-[#775a00]">en operación</span>
           </h2>
           <p className="body-large" data-testid="showcase-subtext">
             Sistemas reales que ya están trabajando — no promesas, no demos. Cada uno
@@ -261,9 +269,9 @@ const IntelligenceShowcase = () => {
             scroll={true}
             className="inline-flex items-center gap-2 text-[0.9375rem] font-medium transition-colors duration-400"
             style={{
-              color: '#7d5800',
+              color: '#775a00',
               fontFamily: "'Inter', sans-serif",
-              borderBottom: '1px solid rgba(125, 88, 0,0.30)',
+              borderBottom: '1px solid rgba(119, 90, 0,0.30)',
               paddingBottom: '2px',
             }}
             data-testid="showcase-cta"

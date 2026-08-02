@@ -44,7 +44,7 @@ export const metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#e8a317' },
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#f6b91f' },
     ],
   },
 };

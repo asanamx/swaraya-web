@@ -16,7 +16,7 @@ export const Positioning = () => {
           {/* Left Column */}
           <div className={`lg:col-span-6 reveal ${isVisible ? 'revealed' : ''}`}>
             <span 
-              className="label-accent text-[#7d5800] block mb-6 md:mb-8" 
+              className="label-accent text-[#775a00] block mb-6 md:mb-8" 
               data-testid="positioning-label"
             >
               Posicionamiento
