@@ -643,10 +643,10 @@ body {
 .ghost-wordmark {
   position: absolute;
   right: -0.05em;
-  bottom: -0.18em;
+  bottom: 6rem;                        /* por encima de la línea STACK */
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(14rem, 30vw, 28rem);
+  font-size: clamp(11rem, 24vw, 22rem);
   letter-spacing: -0.05em;
   line-height: 0.8;
   text-transform: lowercase;
@@ -654,8 +654,8 @@ body {
   user-select: none;
   z-index: 0;
 }
-.ghost-wordmark--light { color: rgba(17, 17, 20, 0.045); }
-.ghost-wordmark--dark  { color: rgba(255, 255, 255, 0.035); }
+.ghost-wordmark--light { color: rgba(17, 17, 20, 0.035); }
+.ghost-wordmark--dark  { color: rgba(255, 255, 255, 0.022); }
 
 /* ═══════════════════════════════════════════════════════════
    ::selection · girasol vivo + tinta oscura (marca de casa)
