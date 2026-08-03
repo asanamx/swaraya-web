@@ -94,7 +94,7 @@ export const Hero = () => {
         className="absolute inset-0 pointer-events-none hero-glow"
         style={{
           background:
-            'radial-gradient(60% 46% at 74% 30%, rgba(246, 185, 31, 0.18) 0%, transparent 68%)',
+            'radial-gradient(60% 46% at 74% 30%, rgba(246, 185, 31, 0.11) 0%, transparent 68%)',
         }}
       />
 
