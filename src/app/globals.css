@@ -643,10 +643,10 @@ body {
 .ghost-wordmark {
   position: absolute;
   right: 1.5rem;
-  bottom: 9.5rem;                      /* justo arriba del divisor con STACK */
+  bottom: 13rem;                       /* claramente arriba del divisor STACK */
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(7rem, 16vw, 15rem);
+  font-size: clamp(6rem, 13vw, 12rem);
   letter-spacing: -0.05em;
   line-height: 0.85;
   text-transform: lowercase;

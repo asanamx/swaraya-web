@@ -136,7 +136,7 @@ export const Hero = () => {
             className="m-0 max-w-[14ch]"
             style={{
               fontFamily: "'Cabinet Grotesk', sans-serif",
-              fontSize: 'clamp(2.75rem, 7.2vw, 6.5rem)',
+              fontSize: 'clamp(2.5rem, 6.4vw, 5.75rem)',
               lineHeight: 0.98,
               letterSpacing: '-0.035em',
               fontWeight: 500,
