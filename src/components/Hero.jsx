@@ -7,16 +7,14 @@ import HeroVideo from './HeroVideo';
 
 // Configuración del video atmosférico del hero (§4b).
 // ─────────────────────────────────────────────────────────────
-// Cuando tengas el archivo de video (idealmente murmuración de estorninos,
-// ≤4 MB, 1080p, 10–15s loop), colócalo en /public/hero/ y descomenta las
-// dos líneas de abajo (src y srcWebm si tienes ambos formatos).
-//
-// Mientras tanto, el hero funciona completo con: poster + glow girasol
-// + fila viva + grano + ghost wordmark. Ese es el diseño base.
+// Preferencia 1 del spec: murmuración de estorninos (starling murmuration)
+//   - Enjambre = concepto de la marca (swar → swarm) sin mostrar insectos
+//   - Video tratado con grayscale + contrast + overlay oscuro (HeroVideo.jsx)
+//   - No carga en touch / reduced-motion / reduced-data — solo poster + glow
 const HERO_VIDEO = {
-  src:     null,   // '/hero/hero-bg.mp4'    — H.264 fallback (Safari)
-  srcWebm: null,   // '/hero/hero-bg.webm'   — VP9/AV1 opcional
-  poster:  '/hero/hero-poster.jpg',
+  src:     '/hero/hero-bg.mp4',        // 3.1 MB · H.264 · 960×540 · 15s · Safari fallback
+  srcWebm: '/hero/hero-bg.webm',       // 2.6 MB · VP9 · más eficiente · Chrome/Firefox
+  poster:  '/hero/hero-poster.jpg',    // frame representativo del video (t=5s)
 };
 
 export const Hero = () => {
