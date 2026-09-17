@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#000"/>
-  <text x="50%" y="55%" font-family="Arial, sans-serif" font-weight="700"
+  <rect width="512" height="512" fill="#0d0f0e"/>
+  <text x="42%" y="55%" font-family="Arial, sans-serif" font-weight="700"
         font-size="360" text-anchor="middle" dominant-baseline="middle"
         fill="#ffffff">s</text>
-  <circle cx="410" cy="360" r="34" fill="#000"/>
+  <circle cx="380" cy="360" r="34" fill="#c8e824"/>
 </svg>

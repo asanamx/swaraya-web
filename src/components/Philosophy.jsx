@@ -10,16 +10,16 @@ export const Philosophy = () => {
       ref={sectionRef}
       id="philosophy"
       className="section-padding-lg relative overflow-hidden"
-      style={{ background: '#f4f4f5' }}
+      style={{ background: 'var(--niebla)' }}
       data-testid="philosophy-section"
     >
-      {/* Glow indigo suave detrás del manifiesto — único fondo */}
+      {/* Glow brote suave detrás del manifiesto — único fondo */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 50% 45%, rgba(246, 185, 31,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 50% 45%, rgba(200, 232, 36,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -32,24 +32,37 @@ export const Philosophy = () => {
 
       <div className="container-main">
         <div className={`max-w-[680px] mx-auto text-center reveal ${isVisible ? 'revealed' : ''}`}>
-          <span 
-            className="label-accent text-[#775a00] block mb-8 md:mb-10" 
+          <span
+            className="label-accent block mb-8 md:mb-10"
             data-testid="philosophy-label"
           >
             Filosofía
           </span>
 
-          <h2
+          {/* Pull-quote editorial — Newsreader serif, voz de investigación */}
+          <blockquote
             className="editorial mb-8 md:mb-10"
             style={{
-              fontSize: 'clamp(2.25rem, 3.4vw, 2.75rem)',
-              lineHeight: 1.25,
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(1.75rem, 3.2vw, 2.5rem)',
+              lineHeight: 1.3,
+              letterSpacing: '-0.015em',
             }}
-            data-testid="philosophy-headline"
+            data-testid="philosophy-quote"
           >
-            Creemos que la inteligencia debe profundizar la <em>capacidad humana</em>, expandir la <em>claridad institucional</em> y elevar la calidad de la toma de decisiones.
-          </h2>
+            <span
+              aria-hidden="true"
+              className="block mx-auto mb-6"
+              style={{
+                width: 32,
+                height: 1,
+                background: 'var(--brote)',
+              }}
+            />
+            Creemos que la inteligencia debe profundizar la{' '}
+            <em>capacidad humana</em>, expandir la{' '}
+            <em>claridad institucional</em> y elevar la calidad de la toma de
+            decisiones.
+          </blockquote>
 
           <p className="body-large mx-auto" data-testid="philosophy-body">
             swaraya concibe la inteligencia artificial como una disciplina de diseño, no sólo de ejecución. Por eso construimos sistemas con responsabilidad, estructura y visión de largo plazo.

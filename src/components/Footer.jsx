@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { colors } from '../lib/tokens';
 import { initiatives } from '@/data/initiatives';
+import Wordmark from './Wordmark';
 
 export const Footer = () => {
   const [topRef, topVisible] = useScrollReveal({ threshold: 0.15 });
@@ -22,8 +23,8 @@ export const Footer = () => {
           del sitio (§6.3). Máximo impacto sin ruido.
           ═══════════════════════════════════════════════════════ */}
       <section
-        id="contact"
-        style={{ background: '#f6b91f', color: '#2b2000' }}
+        id="contacto"
+        style={{ background: '#c8e824', color: '#0d0f0e' }}
         data-testid="contact-band"
       >
         <div className="container-main">
@@ -37,14 +38,14 @@ export const Footer = () => {
                     fontSize: '0.6875rem',
                     letterSpacing: '0.32em',
                     textTransform: 'uppercase',
-                    color: '#2b2000',
+                    color: '#0d0f0e',
                     fontWeight: 600,
                     display: 'inline-block',
                     marginBottom: '1.5rem',
                     opacity: 0.75,
                   }}
                 >
-                  Diálogo Abierto
+                  Primera Etapa
                 </span>
 
                 <h2
@@ -54,28 +55,30 @@ export const Footer = () => {
                     fontWeight: 500,
                     letterSpacing: '-0.03em',
                     lineHeight: 1.05,
-                    color: '#2b2000',
+                    color: '#0d0f0e',
                     maxWidth: '20ch',
                     marginBottom: '1.75rem',
                   }}
                 >
-                  Iniciemos una conversación estratégica.
+                  Empieza por saber{' '}
+                  <span style={{ opacity: 0.55 }}>qué automatizar</span>
                 </h2>
 
                 <p
                   style={{
                     fontSize: '1rem',
                     lineHeight: 1.65,
-                    color: '#2b2000',
+                    color: '#0d0f0e',
                     opacity: 0.85,
                     maxWidth: '52ch',
                     marginBottom: '2.5rem',
                     fontFamily: "'Inter', sans-serif",
                   }}
                 >
-                  Pensamiento de nivel investigación. Sistemas de nivel operativo.
-                  Resultados de nivel estratégico. Escríbenos directamente o
-                  déjanos tus datos y te contactamos.
+                  Dos semanas de levantamiento con tu equipo. Al final tienes
+                  el mapa de cómo decide hoy tu operación y qué procesos
+                  conviene automatizar primero, ordenados por retorno. Es un
+                  entregable tuyo, lo contrates o no con nosotros después.
                 </p>
 
                 <a
@@ -86,7 +89,7 @@ export const Footer = () => {
                     fontSize: '1.125rem',
                     fontWeight: 500,
                     letterSpacing: '-0.015em',
-                    color: '#2b2000',
+                    color: '#0d0f0e',
                     borderBottom: '1px solid rgba(43,30,0,0.45)',
                     paddingBottom: '0.5rem',
                   }}
@@ -99,23 +102,29 @@ export const Footer = () => {
                   />
                 </a>
 
+                {/* Datos de la oferta — reemplazan SEDE / DISPONIBILIDAD */}
                 <div
-                  className="mt-10 grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md"
-                  style={{ color: '#2b2000', fontFamily: "'Inter', sans-serif" }}
+                  className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-3 text-sm"
+                  style={{ color: '#0d0f0e', fontFamily: "'Inter', sans-serif" }}
+                  data-testid="footer-oferta"
                 >
                   <div className="flex flex-col gap-1">
-                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#2b2000', opacity: 0.6, fontWeight: 600 }}>
-                      Sede
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0d0f0e', opacity: 0.6, fontWeight: 600 }}>
+                      Duración
                     </span>
-                    <span>Ciudad de México</span>
-                    <span style={{ color: '#2b2000', opacity: 0.7, fontSize: '0.8125rem' }}>LatAm + remoto</span>
+                    <span>2 semanas</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#2b2000', opacity: 0.6, fontWeight: 600 }}>
-                      Disponibilidad
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0d0f0e', opacity: 0.6, fontWeight: 600 }}>
+                      Entregable
                     </span>
-                    <span>Lun – Vie · 9:00 – 19:00</span>
-                    <span style={{ color: '#2b2000', opacity: 0.7, fontSize: '0.8125rem' }}>Respuesta en 24 h hábiles</span>
+                    <span>Mapa de criterio</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0d0f0e', opacity: 0.6, fontWeight: 600 }}>
+                      Compromiso
+                    </span>
+                    <span>Ninguno de continuar</span>
                   </div>
                 </div>
               </div>
@@ -123,7 +132,7 @@ export const Footer = () => {
               {/* Right: Form */}
               <div className="lg:col-span-5">
                 <div
-                  className="relative p-7 md:p-8 rounded-2xl contact-form-panel"
+                  className="relative p-7 md:p-8 rounded-xl contact-form-panel"
                   style={{
                     background: 'rgba(255, 255, 255, 0.35)',
                     border: '1px solid rgba(43, 30, 0, 0.20)',
@@ -135,7 +144,7 @@ export const Footer = () => {
                       fontSize: '0.6875rem',
                       letterSpacing: '0.24em',
                       textTransform: 'uppercase',
-                      color: '#2b2000',
+                      color: '#0d0f0e',
                       opacity: 0.65,
                       fontWeight: 600,
                       marginBottom: '1.75rem',
@@ -158,7 +167,7 @@ export const Footer = () => {
                           fontSize: '0.6875rem',
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#2b2000',
+                          color: '#0d0f0e',
                           opacity: 0.75,
                           fontWeight: 600,
                           marginBottom: 8,
@@ -185,7 +194,7 @@ export const Footer = () => {
                         fontSize: '0.6875rem',
                         letterSpacing: '0.18em',
                         textTransform: 'uppercase',
-                        color: '#2b2000',
+                        color: '#0d0f0e',
                         opacity: 0.75,
                         fontWeight: 600,
                         marginBottom: 8,
@@ -197,7 +206,7 @@ export const Footer = () => {
                       id="message"
                       name="message"
                       rows="3"
-                      placeholder="Cuéntanos sobre tu desafío…"
+                      placeholder="¿Qué proceso te gustaría dejar de hacer a mano?"
                       className="contact-input resize-none"
                       data-testid="footer-input-message"
                     />
@@ -207,22 +216,20 @@ export const Footer = () => {
                     type="submit"
                     className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-semibold tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
                     style={{
-                      background: '#111114',                 /* carbón, no amarillo */
+                      background: '#0d0f0e',                 /* carbón, no amarillo */
                       color: '#ffffff',                      /* etiqueta blanca sobre carbón */
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = '#000000';
                       e.currentTarget.style.transform = 'translateY(-1px)';
-                      e.currentTarget.style.boxShadow = '0 12px 28px -8px rgba(17,17,20,0.45)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = '#111114';
+                      e.currentTarget.style.background = '#0d0f0e';
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'none';
                     }}
                     data-testid="footer-submit-button"
                   >
-                    Enviar Mensaje
+                    Solicitar diagnóstico
                     <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </form>
@@ -237,15 +244,15 @@ export const Footer = () => {
           BANDA FOOTER · carbón profundo · nav + copyright
           ═══════════════════════════════════════════════════════ */}
       <div
-        className="relative dark-mode with-grain"
-        style={{ background: '#0a0a0a', color: '#ffffff' }}
+        className="relative invertido with-grain"
+        style={{ background: 'var(--carbon)' }}
       >
         {/* Top accent line — girasol tenue */}
         <div
           className="absolute top-0 left-0 right-0 h-px pointer-events-none"
           style={{
             background:
-              'linear-gradient(90deg, transparent 0%, rgba(246, 185, 31,0.35) 50%, transparent 100%)',
+              'linear-gradient(90deg, transparent 0%, rgba(200, 232, 36,0.35) 50%, transparent 100%)',
           }}
         />
 
@@ -258,32 +265,10 @@ export const Footer = () => {
           style={{ borderTop: '1px solid rgba(255, 255, 255,0.08)' }}
         >
           {/* Wordmark del footer — sistema unificado con el navbar.
-              Misma proporción y composición. Cardinales en cream para
-              contraste con fondo oscuro. Indigo se mantiene luminoso. */}
+              Componente canónico <Wordmark />; el punto siempre es --brote,
+              swaraya hereda color del contexto (.invertido → blanco). */}
           <div className="mb-12 md:mb-16">
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: '#ffffff',
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
-                  fontWeight: 500,
-                  fontSize: '1.5rem',
-                  letterSpacing: '-0.035em',
-                  lineHeight: 1,
-                  color: '#ffffff',
-                  textTransform: 'lowercase',
-                }}
-              >
-                swaraya
-                <span aria-hidden="true" style={{ color: '#f6b91f' }}>.</span>
-              </span>
-            </div>
+            <Wordmark size="lg" data-testid="footer-wordmark" />
           </div>
 
           {/* Grid de columnas — navegación */}
@@ -295,7 +280,7 @@ export const Footer = () => {
                   fontSize: '0.6875rem',
                   letterSpacing: '0.24em',
                   textTransform: 'uppercase',
-                  color: '#52565e',
+                  color: 'rgba(255, 255, 255, 0.60)',
                   fontWeight: 500,
                   marginBottom: 20,
                 }}
@@ -306,29 +291,76 @@ export const Footer = () => {
                 style={{
                   fontSize: '0.875rem',
                   lineHeight: 1.6,
-                  color: '#c9cdd3',
+                  color: 'rgba(255, 255, 255, 0.72)',
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
-                Agencia de inteligencia artificial aplicada. Diseñamos
-                sistemas para organizaciones que requieren ventaja estructural.
+                Agencia de Inteligencia Aplicada. Destilamos el criterio de
+                tu operación en sistemas que deciden con tu estándar.
               </p>
+
+              {/* SEDE + DISPONIBILIDAD — trasladados aquí desde la banda de contacto */}
+              <div
+                className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2 max-w-md"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+                data-testid="footer-manifest-meta"
+              >
+                <div className="flex flex-col gap-1">
+                  <span
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.24em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255, 255, 255, 0.55)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    Sede
+                  </span>
+                  <span style={{ fontSize: '0.8125rem', color: 'rgba(255, 255, 255, 0.72)' }}>
+                    Ciudad de México
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.55)' }}>
+                    LatAm + remoto
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.24em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255, 255, 255, 0.55)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    Disponibilidad
+                  </span>
+                  <span style={{ fontSize: '0.8125rem', color: 'rgba(255, 255, 255, 0.72)' }}>
+                    Lun – Vie · 9:00 – 19:00
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.55)' }}>
+                    Respuesta en 24 h hábiles
+                  </span>
+                </div>
+              </div>
             </div>
 
             {[
               {
                 title: 'Trabajo',
                 items: [
-                  { label: 'Investigación', href: '/#research' },
-                  { label: 'Método', href: '/#method' },
-                  { label: 'Filosofía', href: '/#philosophy' },
+                  { label: 'Criterio', href: '/#criterio' },
+                  { label: 'Agentes',  href: '/#agentes' },
+                  { label: 'Método',   href: '/#metodo' },
+                  { label: 'Panel',    href: '/#panel' },
+                  { label: 'Contacto', href: '/#contacto' },
                 ],
               },
               {
                 title: 'Recursos',
                 items: [
                   { label: 'Blog', href: '/blog' },
-                  { label: 'Stack', href: '/#tech-stack' },
                 ],
               },
               {
@@ -346,7 +378,7 @@ export const Footer = () => {
                     fontSize: '0.6875rem',
                     letterSpacing: '0.24em',
                     textTransform: 'uppercase',
-                    color: '#52565e',
+                    color: 'rgba(255, 255, 255, 0.60)',
                     fontWeight: 500,
                     marginBottom: 20,
                   }}
@@ -362,7 +394,7 @@ export const Footer = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="link-hover text-sm transition-colors"
-                          style={{ color: '#c9cdd3' }}
+                          style={{ color: 'rgba(255, 255, 255, 0.75)' }}
                         >
                           {item.label}
                         </a>
@@ -370,7 +402,7 @@ export const Footer = () => {
                         <Link
                           href={item.href}
                           className="link-hover text-sm transition-colors"
-                          style={{ color: '#c9cdd3' }}
+                          style={{ color: 'rgba(255, 255, 255, 0.75)' }}
                         >
                           {item.label}
                         </Link>
@@ -395,7 +427,7 @@ export const Footer = () => {
                   fontSize: '0.6875rem',
                   letterSpacing: '0.24em',
                   textTransform: 'uppercase',
-                  color: '#52565e',
+                  color: 'rgba(255, 255, 255, 0.60)',
                   fontWeight: 500,
                 }}
               >
@@ -411,15 +443,34 @@ export const Footer = () => {
                       className="initiative-logo inline-flex items-center"
                       aria-label={`Visitar ${it.name}`}
                     >
-                      <img
-                        src={it.logo}
-                        alt={it.logoAlt || it.name}
-                        style={{
-                          height: `${it.footerHeightPx ?? 20}px`,
-                          width: 'auto',
-                          display: 'block',
-                        }}
-                      />
+                      {it.logo ? (
+                        <img
+                          src={it.logo}
+                          alt={it.logoAlt || it.name}
+                          style={{
+                            height: `${it.footerHeightPx ?? 20}px`,
+                            width: 'auto',
+                            display: 'block',
+                          }}
+                        />
+                      ) : (
+                        <span
+                          className="initiative-wordmark"
+                          style={{
+                            fontFamily: "'Cabinet Grotesk', sans-serif",
+                            fontWeight: 500,
+                            fontSize: '20px',
+                            lineHeight: 1,
+                            letterSpacing: '-0.02em',
+                            color: '#ffffff',
+                            textTransform: 'lowercase',
+                            display: 'inline-block',
+                          }}
+                        >
+                          {it.name}
+                          <span aria-hidden="true" style={{ color: 'var(--brote)' }}>.</span>
+                        </span>
+                      )}
                     </a>
                   </li>
                 ))}
@@ -432,13 +483,13 @@ export const Footer = () => {
             className="mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs"
             style={{
               borderTop: '1px solid rgba(255, 255, 255,0.06)',
-              color: '#52565e',
+              color: 'rgba(255, 255, 255, 0.55)',
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
             }}
           >
             <span>© {year} swaraya, S. de R. L. de C. V.</span>
-            <span>Agencia de inteligencia artificial aplicada</span>
+            <span>Agencia de Inteligencia Aplicada</span>
           </div>
         </div>
       </div>
@@ -454,7 +505,7 @@ export const Footer = () => {
           background: rgba(255, 255, 255, 0.35);
           border: 1px solid rgba(43, 30, 0, 0.35);
           border-radius: 10px;
-          color: #2b2000;
+          color: #0d0f0e;
           font-family: 'Inter', sans-serif;
           font-size: 0.9375rem;
           line-height: 1.4;
@@ -465,7 +516,7 @@ export const Footer = () => {
         }
         .contact-input:focus {
           outline: none;
-          border-color: #2b2000;
+          border-color: #0d0f0e;
           background: rgba(255, 255, 255, 0.55);
           box-shadow: 0 0 0 3px rgba(43, 30, 0, 0.20);
         }
@@ -485,13 +536,13 @@ export const Footer = () => {
           transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
         }
         .footer-input::placeholder {
-          color: #9aa0a8;                              /* 7.72:1 sobre #111114 ✓ */
+          color: #9aa0a8;                              /* 7.72:1 sobre #0d0f0e ✓ */
         }
         .footer-input:focus {
           outline: none;
-          border-color: #f6b91f;
+          border-color: #c8e824;
           background: rgba(255, 255, 255,0.06);
-          box-shadow: 0 0 0 3px rgba(246, 185, 31,0.25);
+          box-shadow: 0 0 0 3px rgba(200, 232, 36,0.25);
         }
 
         /* Iniciativas — homologación de estados idle/hover
@@ -511,7 +562,7 @@ export const Footer = () => {
           opacity: 1;
         }
         .initiative-logo:focus-visible {
-          outline: 2px solid #f6b91f;
+          outline: 2px solid #c8e824;
           outline-offset: 4px;
           border-radius: 4px;
         }

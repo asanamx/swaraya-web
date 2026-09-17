@@ -103,9 +103,9 @@
 #====================================================================================================
 
 user_problem_statement: |
-  "corrije el favico" — el favicon actual es del branding viejo (índigo/crema con "S"
-  en tipografía cream). Debe regenerarse con la nueva paleta Carbón + Girasol per
-  §7 del brand book: sobre #0a0a0a con punto girasol #f6b91f y wordmark "s.".
+  Fase 3 · v3.0 — jerarquía tipográfica por opacidad (--texto/--texto-apoyo),
+  eliminación de box-shadows (excepto focus rings) y cap de border-radius
+  en 12px (--r-xl). Ningún cambio en tokens (Fase 1) ni en Wordmark (Fase 2).
 
 backend:
   - task: "Favicons — regenerados con paleta Carbón + Girasol"
@@ -119,48 +119,141 @@ backend:
       - working: "NA"
         agent: "main"
         comment: |
-          Regenerated all favicon PNGs (16, 32, 192, 512, maskable, apple-icon 180)
-          using Pillow + Liberation Sans Bold. Design: carbón #0a0a0a rounded-square
-          background, white "s" glyph + sunflower "#f6b91f" period next to it —
-          matches the swaraya. wordmark identity. safari-pinned-tab.svg regenerated
-          with matching monochrome design.
-          layout.js already references correct file names and paths (icons.icon,
-          icons.apple, icons.other[mask-icon]). Meta theme-color is '#0a0a0a' and
-          mask-icon color is '#f6b91f' — both aligned with new palette.
+          (histórico) Regenerated favicons for the previous palette.
       - working: true
         agent: "testing"
         comment: |
-          All 5 comprehensive tests PASSED:
-          1. HTTP Delivery — 7 favicon files return HTTP 200 with correct MIME types.
-          2. PNG Dimensions — all match spec (16, 32, 192, 512, 512 maskable, 180).
-          3. Color Palette — new Carbón #0a0a0a bg + Girasol #f6b91f dot confirmed;
-             NO old indigo (#2C3E80, #5468D6) detected.
-          4. HTML Metadata — all favicon links present in <head> with correct sizes,
-             mask-icon color="#f6b91f", theme-color="#0a0a0a".
-          5. No Old Branding — confirmed no old references in HTML.
-          Favicon rebrand fully verified and working.
-      - working: true
-        agent: "testing"
+          Favicon delivery verified across all 7 files.
+
+frontend:
+  - task: "v3.0 Post-cierre — fixes de contraste + duplicación CTA + Chat FAB + mobile audit"
+    implemented: true
+    working: "NA"
+    file: "/app/src/app/globals.css, /app/src/components/{Navbar,Outcomes,ChatWidget}.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
         comment: |
-          ✅ ALL TESTS PASSED - Favicon rebrand verified successfully!
-          
-          Test 1 - HTTP Delivery: All 7 files (favicon-16.png, favicon-32.png, 
-          icon-192.png, icon-512.png, icon-512-maskable.png, apple-icon.png, 
-          safari-pinned-tab.svg) return HTTP 200 with correct MIME types.
-          
-          Test 2 - Dimensions: All PNGs have correct dimensions (16x16, 32x32, 
-          192x192, 512x512, 512x512, 180x180 respectively).
-          
-          Test 3 - Color Palette: Verified new Carbón + Girasol palette. No old 
-          indigo colors (#2C3E80, #5468D6) detected. Found carbon-like pixels 
-          (#0a0a0a dark background) and girasol-like pixels (#f6b91f yellow dot) 
-          in both icon-192.png and apple-icon.png.
-          
-          Test 4 - HTML Metadata: All favicon links present in HTML <head> with 
-          correct sizes, mask-icon color="#f6b91f", and theme-color="#0a0a0a".
-          
-          Test 5 - No Old Branding: Confirmed no references to old branding colors 
-          (#2C3E80, #5468D6, #7d5800, #e8a317) in HTML.
+          4 fixes post-cierre pedidos por el usuario:
+          1) `.label` / `.label-accent` cambiadas de `color: var(--brote)` a
+             `color: var(--texto)` — brote quedaba <1.5:1 sobre niebla (fail WCAG).
+             Ahora ~15:1 sobre light y ~14:1 sobre .invertido. Removido override
+             `.section-dark/.dark-mode .label` que se volvía innecesario.
+          2) ChatWidget FAB: "s" blanca solitaria → "s." con dot canonical,
+             ambos en var(--sobre-brote) para contraste ~9:1 sobre fondo brote.
+          3) Navbar CTA "Iniciar Diálogo" ahora se oculta cuando onDarkHero===true
+             (elimina duplicación con el CTA principal del Hero). Reaparece al
+             scroll fuera del hero.
+          4) Mobile audit: hamburger menu funciona correctamente, overlay carbón
+             fullscreen con links blancos, layout responsive del índice editorial
+             y Outcomes colapsan a 1 col sin issues. Screenshots verifican.
+
+  - task: "v3.0 Fase 6 — Wordmark canónico + pull-quote Filosofía + cleanup final"
+    implemented: true
+    working: "NA"
+    file: "/app/src/components/{Wordmark,Navbar,Footer,Philosophy,BlogPreview,Initiatives,Method,Positioning}.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: |
+          Fase 6 (última) aplicada:
+          · CREADO /app/src/components/Wordmark.jsx — componente canónico
+            con 4 tamaños (sm/md/lg/display), punto SIEMPRE en var(--brote),
+            "swaraya" hereda color del contexto (currentColor).
+          · Navbar y Footer migrados al <Wordmark /> canónico. Cero duplicación.
+          · Philosophy: <h2 editorial> → <blockquote editorial> con línea brote
+            arriba, Newsreader serif con italic en emphasis. Voz de investigación
+            reforzada.
+          · Cleanup: eliminados los overrides redundantes `text-[#0d0f0e]` en
+            .label-accent de BlogPreview, Initiatives, Method, Positioning.
+            Los labels ahora respetan el color de acento del sistema (--brote).
+          · Compila sin errores. Screenshots verifican wordmark, pull-quote,
+            navbar y positioning con label brote correcto.
+
+  - task: "v3.0 Fase 5 — ResearchDomains editorial + fix headings en .invertido"
+    implemented: true
+    working: "NA"
+    file: "/app/src/components/ResearchDomains.jsx, /app/src/app/globals.css"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: |
+          Fase 5 aplicada:
+          · Bug de contraste en Outcomes → los headings usaban var(--text-primary)
+            (alias hacia --texto). Ahora usan var(--texto) directo → resuelven
+            correctamente en scope .invertido. Igual aplicado a .heading-hero,
+            .heading-lg, .heading-md, .body-large/regular/small, .caption,
+            .metric-number, .editorial y .label.
+          · ResearchDomains reescrita completa: de 3×2 grid con tarjetas/iconos
+            a índice editorial de 6 filas (número fantasma + título Cabinet 500
+            + descripción Inter + hairlines). Layout 5/7 columnas con header
+            sticky en desktop. Hover: bg sutil (var(--superficie)) + flecha
+            ArrowUpRight que aparece con transición.
+          · Ninguna sombra reintroducida. Todos los tokens vía var().
+          · Se eliminaron los 6 componentes Glyph* del archivo original.
+
+  - task: "v3.0 Fase 4 — .invertido como única fuente de inversión + migración Hero/Outcomes/Footer/Chat"
+    implemented: true
+    working: "NA"
+    file: "/app/src/app/globals.css, /app/src/components/{Hero,Outcomes,Footer,ChatWidget}.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: |
+          Fase 4 aplicada:
+          · Confirmado que NO existe `@media (prefers-color-scheme: dark)` en la base.
+          · `.invertido` ahora concentra: focus ring brote, .editorial invertido,
+            .btn-primary/secondary invertido, .grid-pattern invertido.
+          · `.section-dark` y `.dark-mode` mantienen comportamiento pero por vía
+            de tokens (mismo bloque de vars que .invertido) — quedan como aliases
+            deprecados hasta que se limpien todos los legacies.
+          · Hero: `bg #141414` inline → `.invertido` (var(--tema))
+          · Outcomes: `section-dark + bg #0d0f0e` → `.invertido`. Cards con var(--tema),
+            hairlines con var(--borde), textos con var(--texto/--texto-apoyo).
+          · Footer bottom band: `.dark-mode` → `.invertido`
+          · ChatWidget: `.invertido` en el contenedor → hereda tokens correctos
+          Ninguna sombra reintroducida. Site compila sin errores.
+          Screenshots verifican integridad visual de Hero, Outcomes, Footer y Chat.
+
+  - task: "v3.0 Fase 3 — Tipografía por opacidad, eliminación de box-shadows y cap radios 12px"
+    implemented: true
+    working: "NA"
+    file: "/app/src/app/globals.css, /app/src/components/{Hero,Navbar,ChatWidget,Footer,BlogArticle,BlogPreview,IntelligenceShowcase,Method,ResearchDomains,Initiatives,Positioning}.jsx, /app/src/components/system/{Surface,IconButton}.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: |
+          Phase 3 del sistema v3.0 aplicada:
+          · globals.css → eliminados box-shadow de .card-premium:hover, .btn-primary:hover, .field
+            focus. card-premium ahora usa var(--r-xl)=12px + hover con background/border, no sombra.
+            .btn-primary refactorizado para usar var(--texto)/var(--brote).
+          · Todos los rounded-2xl (16px), rounded-[16px], rounded-[20px] → rounded-xl (12px).
+          · Todos los `text-[#52565e]` hardcoded → `text-[color:var(--texto-apoyo)]` (60% opacidad tinta).
+          · Todos los `rgba(13, 15, 14, N)` hardcoded → tokens (--borde-alfa, --superficie, --texto-apoyo, etc.).
+          · Hero CTA: box-shadow removido, sólo translate en hover.
+          · Navbar CTA: box-shadow removido.
+          · ChatWidget: shadows removidas, radios cap a xl, contraste texto sobre brote corregido.
+          · Method: nodo activo sin box-shadow decorativa.
+          · Surface y IconButton (sistema): sombras eliminadas, elevación por bg/border.
+          · Footer: colores de labels del footer oscuro pasan a var(--blanco-60) para consistencia.
+          Focus rings (outline + focus box-shadow en inputs con borde girasol) conservados.
+          Site compila sin errores. Screenshots verifican integridad visual.
+          Pendiente: verificación del usuario navegando el sitio antes de continuar con Fase 4.
 
 metadata:
   created_by: "main_agent"

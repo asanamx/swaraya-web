@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { colors, indigoFor, borders } from '../lib/tokens';
+import Wordmark from './Wordmark';
 
 export const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -35,14 +36,15 @@ export const Navbar = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
-  // Orden one-pager: las secciones del home en orden de aparición + Blog al final
-  // (Blog es la única ruta separada; el resto son anclas de la home)
+  // Menú one-pager: secciones del home + Blog (destino separado, con gap
+  // mayor porque no es una sección de la portada).
   const navLinks = [
-    { name: 'Investigación', href: '#research' },
-    { name: 'Método', href: '#method' },
-    { name: 'Filosofía', href: '#philosophy' },
-    { name: 'Blog', href: '/blog', isRoute: true },
-    { name: 'Contacto', href: '#contact' },
+    { name: 'Criterio', href: '#criterio' },
+    { name: 'Agentes',  href: '#agentes' },
+    { name: 'Método',   href: '#metodo' },
+    { name: 'Panel',    href: '#panel' },
+    { name: 'Contacto', href: '#contacto' },
+    { name: 'Blog',     href: '/blog', isRoute: true, separated: true },
   ];
 
   const scrollToSection = (href) => {
@@ -104,7 +106,7 @@ export const Navbar = () => {
     ? 'rgba(255, 255, 255,0.7)'
     : onDarkHero
       ? 'rgba(255, 255, 255,0.78)'     // cream atenuado sobre oscuro
-      : 'rgba(17, 17, 20,0.62)';       // sumi atenuado sobre cream
+      : 'rgba(13, 15, 14,0.62)';       // sumi atenuado sobre cream
 
   const navHoverColor = indigoAccent;
 
@@ -157,7 +159,7 @@ export const Navbar = () => {
 
       <div className="container-main relative">
         <div className="flex items-center justify-between h-[60px] lg:h-[72px]">
-          {/* Logo: swaraya. wordmark (Quiet Confidence) */}
+          {/* Logo: swaraya. wordmark (canonical) */}
           <Link
             href="/"
             className="relative z-50 inline-flex items-center h-full focus:outline-none"
@@ -165,96 +167,77 @@ export const Navbar = () => {
             aria-label="swaraya — inicio"
             style={{
               transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
-              color: isMobileMenuOpen ? '#ffffff' : navTextColor,
+              color: isMobileMenuOpen ? 'var(--blanco)' : navTextColor,
               minHeight: 44,
               paddingRight: 6, /* espacio libre óptico */
             }}
           >
-            <span
-              className="text-[22px] md:text-[24px] lg:text-[26px]"
-              style={{
-                fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
-                fontWeight: 500,
-                letterSpacing: '-0.03em',
-                lineHeight: 1,
-                textTransform: 'lowercase',
-                color: 'currentColor',
-                display: 'inline-flex',
-                alignItems: 'baseline',
-              }}
-            >
-              swaraya
-              <span aria-hidden="true" style={{ color: indigoAccent }}>.</span>
-            </span>
+            <Wordmark size="md" className="text-[22px] md:text-[24px] lg:text-[26px]" />
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-9 xl:gap-10">
-            {navLinks.map((link) => (
-              link.isRoute ? (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="link-hover"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 15,
-                    fontWeight: 400,
-                    letterSpacing: '0.005em',
-                    color: navMutedColor,
-                    transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
-                  data-testid={`nav-link-${link.name.toLowerCase()}`}
-                >
-                  {link.name}
-                </Link>
-              ) : (
-                <button
-                  key={link.name}
-                  onClick={() => scrollToSection(link.href)}
-                  className="link-hover"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 15,
-                    fontWeight: 400,
-                    letterSpacing: '0.005em',
-                    color: navMutedColor,
-                    transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
-                  data-testid={`nav-link-${link.name.toLowerCase()}`}
-                >
-                  {link.name}
-                </button>
-              )
+            {navLinks.map((link, idx) => (
+              <div key={link.name} className="flex items-center">
+                {/* Separador visual antes de Blog: destino distinto (no
+                    es una sección de la portada). */}
+                {link.separated ? (
+                  <span
+                    aria-hidden="true"
+                    className="hidden lg:inline-block mr-9 xl:mr-10"
+                    style={{
+                      width: 1,
+                      height: 14,
+                      background: navMutedColor,
+                      opacity: 0.35,
+                    }}
+                  />
+                ) : null}
+                {link.isRoute ? (
+                  <Link
+                    href={link.href}
+                    className="link-hover"
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: 15,
+                      fontWeight: 400,
+                      letterSpacing: '0.005em',
+                      color: navMutedColor,
+                      transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
+                    data-testid={`nav-link-${link.name.toLowerCase()}`}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="link-hover"
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: 15,
+                      fontWeight: 400,
+                      letterSpacing: '0.005em',
+                      color: navMutedColor,
+                      transition: 'color 420ms cubic-bezier(0.22, 1, 0.36, 1)',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = navHoverColor)}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = navMutedColor)}
+                    data-testid={`nav-link-${link.name.toLowerCase()}`}
+                  >
+                    {link.name}
+                  </button>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* CTA Desktop — mismo indigo que el CTA primario del hero */}
-          <button
-            onClick={() => scrollToSection('#contact')}
-            className="hidden lg:inline-flex items-center justify-center text-[0.8125rem] font-medium tracking-wide rounded-full transition-all duration-300"
-            style={{
-              minHeight: 44,
-              padding: '12px 24px',
-              background: ctaIndigo,
-              color: '#FFFFFF',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = ctaIndigoHover;
-              e.currentTarget.style.boxShadow = `0 8px 20px -6px ${ctaIndigo}66`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = ctaIndigo;
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-            data-testid="nav-cta"
-          >
-            Iniciar Diálogo
-          </button>
+          {/* Sin CTA en navbar desktop — el link "Contacto" del nav es
+              suficiente. Evita duplicación con el CTA del Hero y con la banda
+              de contacto amarilla del footer. El CTA "Iniciar Diálogo" sigue
+              disponible en el mobile menu (dentro del overlay hamburger). */}
 
           {/* Mobile hamburger */}
           <button
@@ -306,7 +289,7 @@ export const Navbar = () => {
               )
             ))}
             <button
-              onClick={() => scrollToSection('#contact')}
+              onClick={() => scrollToSection('#contacto')}
               className="mt-10 inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-full self-start"
               style={{
                 background: colors.indigo.onDark,

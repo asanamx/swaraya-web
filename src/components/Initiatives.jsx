@@ -17,9 +17,9 @@ import useScrollReveal from '../hooks/useScrollReveal';
  */
 
 const STATUS = {
-  operativa:  { label: 'Operativa',      color: '#775a00', fg: '#775a00', bg: 'rgba(119, 90, 0, 0.06)',   ring: 'rgba(119, 90, 0, 0.30)',   solid: true  },
-  desarrollo: { label: 'En desarrollo',  color: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.10)', ring: 'rgba(154, 160, 168, 0.28)', solid: false },
-  proximo:    { label: 'Próximamente',   color: '#9aa0a8', fg: '#52565e', bg: 'rgba(154, 160, 168, 0.10)', ring: 'rgba(154, 160, 168, 0.28)', solid: false },
+  operativa:  { label: 'Operativa',      color: 'var(--texto)',        fg: 'var(--texto)',        bg: 'var(--superficie)', ring: 'var(--borde)',      solid: true  },
+  desarrollo: { label: 'En desarrollo',  color: 'var(--texto-apoyo)',  fg: 'var(--texto-apoyo)',  bg: 'var(--superficie)', ring: 'var(--borde-alfa)', solid: false },
+  proximo:    { label: 'Próximamente',   color: 'var(--texto-apoyo)',  fg: 'var(--texto-apoyo)',  bg: 'var(--superficie)', ring: 'var(--borde-alfa)', solid: false },
 };
 
 const StatusBadge = ({ status }) => {
@@ -69,7 +69,7 @@ const Initiatives = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(45% 40% at 20% 60%, rgba(246, 185, 31,0.06) 0%, transparent 70%)',
+            'radial-gradient(45% 40% at 20% 60%, rgba(200, 232, 36,0.06) 0%, transparent 70%)',
         }}
       />
 
@@ -78,21 +78,25 @@ const Initiatives = () => {
           ref={headerRef}
           className={`max-w-2xl mb-16 md:mb-20 reveal ${headerVisible ? 'revealed' : ''}`}
         >
-          <span className="label-accent text-[#775a00] block mb-6" data-testid="initiatives-label">
+          <span className="label-accent block mb-6" data-testid="initiatives-label">
             Iniciativas
           </span>
           <h2 className="heading-xl mb-5" data-testid="initiatives-headline">
-            Plataformas <span className="text-[#775a00]">propietarias</span> operadas por swaraya
+            Construimos software{' '}
+            <span style={{ color: 'var(--texto-apoyo)' }}>
+              además de venderlo
+            </span>
           </h2>
           <p className="body-large">
-            swaraya opera productos y plataformas digitales bajo marcas comerciales propias.
-            Cada iniciativa tiene su propia identidad, dominio y modelo comercial.
+            Operamos nuestras propias plataformas. No asesoramos sobre
+            problemas que no hemos tenido: los tenemos todos los meses, con
+            usuarios y facturación de por medio.
           </p>
         </div>
 
         <div
           ref={gridRef}
-          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(17, 17, 20,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${gridVisible ? 'revealed' : ''}`}
+          className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[color:var(--borde-alfa)] rounded-xl overflow-hidden reveal-stagger ${gridVisible ? 'revealed' : ''}`}
         >
           {initiatives.map((it) => (
             <a
@@ -100,15 +104,15 @@ const Initiatives = () => {
               href={it.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative bg-[#ffffff] p-7 md:p-8 lg:p-10 group transition-all duration-300 focus:outline-none flex flex-col"
+              className="relative bg-[color:var(--blanco)] p-7 md:p-8 lg:p-10 group transition-all duration-300 focus:outline-none flex flex-col"
               data-testid={`initiative-${it.id}`}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(17, 17, 20,0.08)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.background = 'var(--niebla)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.background = 'var(--blanco)';
               }}
             >
               <div className="flex items-start justify-between mb-6">
@@ -116,7 +120,7 @@ const Initiatives = () => {
                 <ArrowUpRight
                   className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   strokeWidth={1.8}
-                  style={{ color: '#775a00' }}
+                  style={{ color: 'var(--texto)' }}
                 />
               </div>
 
@@ -127,19 +131,19 @@ const Initiatives = () => {
                   fontWeight: 500,
                   fontSize: 'clamp(1.5rem, 2vw, 1.875rem)',
                   lineHeight: 1.1,
-                  color: '#111114',
+                  color: 'var(--texto)',
                   textTransform: 'lowercase',
                 }}
               >
                 {it.name}
-                <span aria-hidden="true" style={{ color: '#775a00' }}>.</span>
+                <span aria-hidden="true" style={{ color: 'var(--brote)' }}>.</span>
               </h3>
 
               <span
                 className="mb-5 text-[0.75rem]"
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  color: '#63666e',
+                  color: 'var(--texto-terciario)',
                   letterSpacing: '0.005em',
                 }}
               >
@@ -148,19 +152,19 @@ const Initiatives = () => {
 
               <p
                 className="text-[0.9375rem] leading-[1.65] mb-4"
-                style={{ color: '#111114', fontFamily: "'Inter', sans-serif" }}
+                style={{ color: 'var(--texto)', fontFamily: "'Inter', sans-serif" }}
               >
                 {it.tagline}
               </p>
 
               <p
                 className="text-[0.8125rem] leading-[1.7] mt-auto"
-                style={{ color: '#52565e', fontFamily: "'Inter', sans-serif" }}
+                style={{ color: 'var(--texto-apoyo)', fontFamily: "'Inter', sans-serif" }}
               >
                 {it.description}
               </p>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(119, 90, 0,0.30)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[color:var(--borde)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </a>
           ))}
         </div>

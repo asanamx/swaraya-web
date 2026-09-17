@@ -16,17 +16,17 @@ import useScrollReveal from '../hooks/useScrollReveal';
 
 const principles = [
   ['Contexto',       'automatización'],
-  ['Precisión',      'espectáculo'],
+  ['Criterio',       'capacidad'],
   ['Integración',    'experimentación'],
-  ['Gobernanza',     'despliegue'],
+  ['Medición',       'despliegue'],
   ['Amplificación humana', 'reemplazo'],
 ];
 
 const glosses = [
   'Antes de automatizar entendemos qué se debe automatizar.',
-  'La precisión importa más que la impresión inicial.',
+  'La capacidad de un modelo sin criterio de negocio es potencia mal apuntada.',
   'Se integra al proceso real, no a un experimento aislado.',
-  'La gobernanza se define antes de mover código a producción.',
+  'Ningún agente sale a producción sin banco de casos y umbral firmado.',
   'La IA extiende el criterio experto; no lo sustituye.',
 ];
 
@@ -46,7 +46,7 @@ export const Principles = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(50% 45% at 78% 40%, rgba(246, 185, 31,0.08) 0%, transparent 70%)',
+            'radial-gradient(50% 45% at 78% 40%, rgba(200, 232, 36,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -56,7 +56,7 @@ export const Principles = () => {
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>
             <h2 className="heading-xl mb-6" data-testid="principles-headline">
               Nuestros sistemas se moldean por{' '}
-              <span style={{ color: '#775a00' }}>disciplina antes que escala.</span>
+              <span style={{ color: '#0d0f0e' }}>disciplina antes que escala.</span>
             </h2>
             <p
               className="max-w-[38ch]"
@@ -74,14 +74,14 @@ export const Principles = () => {
 
           {/* Principles rows · 60% */}
           <div className={`lg:col-span-7 reveal-stagger ${isVisible ? 'revealed' : ''}`}>
-            <ul className="border-t" style={{ borderColor: 'rgba(17, 17, 20,0.10)' }}>
+            <ul className="border-t" style={{ borderColor: 'rgba(13, 15, 14,0.10)' }}>
               {principles.map(([a, b], i) => (
                 <li
                   key={i}
                   className="group relative flex items-start gap-6 md:gap-8 py-6 md:py-7 transition-colors duration-300"
                   data-testid={`principle-item-${i + 1}`}
-                  style={{ borderBottom: '1px solid rgba(17, 17, 20,0.10)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(119, 90, 0,0.04)')}
+                  style={{ borderBottom: '1px solid rgba(13, 15, 14,0.10)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(13, 15, 14,0.04)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   {/* Número índice fantasma */}
@@ -93,7 +93,7 @@ export const Principles = () => {
                       fontSize: 'clamp(1.5rem, 2.6vw, 2rem)',
                       lineHeight: 1,
                       letterSpacing: '-0.03em',
-                      color: 'rgba(17, 17, 20,0.12)',
+                      color: 'rgba(13, 15, 14,0.12)',
                       minWidth: 44,
                     }}
                   >
@@ -109,7 +109,7 @@ export const Principles = () => {
                           fontWeight: 500,
                           fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)',
                           letterSpacing: '-0.015em',
-                          color: '#111114',
+                          color: '#0d0f0e',
                           lineHeight: 1.25,
                         }}
                       >
@@ -160,7 +160,7 @@ export const Principles = () => {
                     aria-hidden="true"
                     className="absolute left-0 top-8 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: '#775a00',
+                      background: '#0d0f0e',
                       transform: 'translateX(-14px)',
                     }}
                   />

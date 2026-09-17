@@ -42,8 +42,7 @@ export const Outcomes = () => {
 
   return (
     <section
-      className="section-padding-lg relative overflow-hidden section-dark with-grain"
-      style={{ background: '#111114', color: '#ffffff' }}
+      className="section-padding-lg relative overflow-hidden invertido with-grain"
       data-testid="outcomes-section"
     >
       {/* Glow indigo enfocado — mismo lenguaje que el hero */}
@@ -52,7 +51,7 @@ export const Outcomes = () => {
         className="absolute inset-0 pointer-events-none section-glow"
         style={{
           background:
-            'radial-gradient(60% 50% at 72% 38%, rgba(246, 185, 31,0.18) 0%, rgba(246, 185, 31,0.05) 40%, transparent 70%)',
+            'radial-gradient(60% 50% at 72% 38%, rgba(200, 232, 36,0.18) 0%, rgba(200, 232, 36,0.05) 40%, transparent 70%)',
         }}
       />
 
@@ -76,17 +75,15 @@ export const Outcomes = () => {
         >
           <span
             className="label-accent block mb-6"
-            style={{ color: '#f6b91f' }}
             data-testid="outcomes-label"
           >
             Resultados
           </span>
           <h2
             className="heading-xl"
-            style={{ color: '#ffffff' }}
             data-testid="outcomes-headline"
           >
-            Inteligencia <span style={{ color: '#f6b91f' }}>operativa</span> medible
+            Inteligencia <span style={{ color: 'var(--brote)' }}>operativa</span> medible
           </h2>
           <p
             className="mt-6 max-w-[54ch]"
@@ -94,7 +91,7 @@ export const Outcomes = () => {
               fontFamily: "'Inter', sans-serif",
               fontSize: 'clamp(0.9375rem, 1vw, 1rem)',
               lineHeight: 1.65,
-              color: 'rgba(200,204,220,0.85)',
+              color: 'var(--texto-apoyo)',
             }}
           >
             No promesas. Propiedades de sistemas ya en operación —
@@ -107,8 +104,8 @@ export const Outcomes = () => {
           ref={gridRef}
           className={`grid sm:grid-cols-2 gap-px reveal-stagger ${gridVisible ? 'revealed' : ''}`}
           style={{
-            background: 'rgba(255, 255, 255,0.08)',
-            borderRadius: 'var(--radius-lg)',
+            background: 'var(--borde)',
+            borderRadius: 'var(--r-xl)',
             overflow: 'hidden',
           }}
         >
@@ -116,10 +113,10 @@ export const Outcomes = () => {
             <div
               key={i}
               className="relative p-8 md:p-10 lg:p-12 flex flex-col gap-5 transition-colors duration-400 group"
-              style={{ background: '#111114' }}
+              style={{ background: 'var(--tema)' }}
               data-testid={`outcome-fact-${i + 1}`}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#0E1116')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#111114')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#1c1c1b')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--tema)')}
             >
               <span
                 style={{
@@ -128,7 +125,7 @@ export const Outcomes = () => {
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: '#f6b91f',
+                  color: 'var(--brote)',
                 }}
               >
                 {f.kicker}
@@ -140,7 +137,7 @@ export const Outcomes = () => {
                   fontSize: 'clamp(1.375rem, 2vw, 1.75rem)',
                   lineHeight: 1.2,
                   letterSpacing: '-0.02em',
-                  color: '#ffffff',
+                  color: 'var(--texto)',
                   maxWidth: '30ch',
                 }}
               >
@@ -149,14 +146,14 @@ export const Outcomes = () => {
               <div
                 className="w-10 h-px transition-all duration-400 group-hover:w-16 mt-1"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(246, 185, 31,0.7) 0%, transparent 100%)',
+                  background: 'linear-gradient(90deg, rgba(200, 232, 36,0.7) 0%, transparent 100%)',
                 }}
               />
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: '0.8125rem',
-                  color: '#9aa0a8',
+                  color: 'var(--texto-apoyo)',
                   letterSpacing: '0.01em',
                 }}
               >
@@ -172,7 +169,7 @@ export const Outcomes = () => {
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '0.75rem',
-            color: 'rgba(200,204,220,0.60)',
+            color: 'var(--texto-apoyo)',
             letterSpacing: '0.02em',
             lineHeight: 1.6,
           }}

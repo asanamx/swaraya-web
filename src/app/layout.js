@@ -3,11 +3,28 @@ import ChatWidget from '@/components/ChatWidget';
 import BadgeRemover from '@/components/BadgeRemover';
 import FontLoadCheck from '@/components/FontLoadCheck';
 
+/**
+ * URL canónica del sitio.
+ *
+ * Prioridad:
+ *   1. NEXT_PUBLIC_SITE_URL — dominio final de producción cuando esté listo
+ *      (ej. https://swaraya.ai). Sobrescribe todo lo demás.
+ *   2. NEXT_PUBLIC_BASE_URL — dominio actual del deploy (preview de
+ *      Emergent hoy, Vercel mañana). Es lo que permite que la previsualización
+ *      de OG funcione antes de publicar swaraya.ai.
+ *   3. Fallback local para builds sin variables (ej. `next build` en CI).
+ */
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  'http://localhost:3000'
+).replace(/\/+$/, ''); // sin trailing slash
+
 export const metadata = {
-  metadataBase: new URL('https://swaraya.ai'),
-  title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
+  metadataBase: new URL(SITE_URL),
+  title: 'swaraya | Agencia de Inteligencia Aplicada',
   description:
-    'swaraya investiga, diseña e integra sistemas de inteligencia artificial para organizaciones que requieren precisión, escalabilidad y ventaja estructural.',
+    'Destilamos el criterio de tu operación en sistemas que deciden con tu estándar. Precisión medida y aprobación humana antes de cada acción.',
   keywords:
     'inteligencia artificial, IA, agencia IA, machine learning, automatización, consultoría IA, desarrollo IA, investigación IA',
   authors: [{ name: 'swaraya' }],
@@ -16,22 +33,32 @@ export const metadata = {
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
-    url: 'https://swaraya.ai/',
-    title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
+    url: `${SITE_URL}/`,
+    title: 'swaraya | Agencia de Inteligencia Aplicada',
     description:
-      'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
-    locale: 'es_ES',
+      'Destilamos el criterio de tu operación en sistemas que deciden con tu estándar. Precisión medida y aprobación humana antes de cada acción.',
+    locale: 'es_MX',
     siteName: 'swaraya',
+    // URL absoluta y explícita hacia el endpoint dinámico de la imagen OG.
+    // Se apunta al route handler `/api/og` en vez de la convención file-based
+    // (`opengraph-image.js`) porque ésta resuelve la URL contra el host
+    // interno del proceso y no respeta metadataBase detrás de un proxy.
     images: [
-      { url: '/og-image.png', width: 1200, height: 630, alt: 'swaraya.' },
+      {
+        url: `${SITE_URL}/api/og`,
+        width: 1200,
+        height: 630,
+        alt: 'swaraya — Agencia de Inteligencia Aplicada · Tu mejor criterio, aplicado todos los días.',
+        type: 'image/png',
+      },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'swaraya | Agencia de Inteligencia Artificial Aplicada',
+    title: 'swaraya | Agencia de Inteligencia Aplicada',
     description:
-      'Investigación profunda. Ingeniería precisa. Inteligencia real. Sistemas de IA para organizaciones que requieren ventaja estructural.',
-    images: ['/og-image.png'],
+      'Destilamos el criterio de tu operación en sistemas que deciden con tu estándar. Precisión medida y aprobación humana antes de cada acción.',
+    images: [`${SITE_URL}/api/og`],
   },
   icons: {
     icon: [
@@ -44,13 +71,13 @@ export const metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#f6b91f' },
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#c8e824' },
     ],
   },
 };
 
 export const viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: '#141414',
 };
 
 export default function RootLayout({ children }) {

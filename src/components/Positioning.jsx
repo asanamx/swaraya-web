@@ -16,18 +16,18 @@ export const Positioning = () => {
           {/* Left Column */}
           <div className={`lg:col-span-6 reveal ${isVisible ? 'revealed' : ''}`}>
             <span 
-              className="label-accent text-[#775a00] block mb-6 md:mb-8" 
+              className="label-accent block mb-6 md:mb-8" 
               data-testid="positioning-label"
             >
-              Posicionamiento
+              El problema
             </span>
             <h2
               className="heading-xl"
               data-testid="positioning-headline"
             >
-              La inteligencia artificial ya no es una capa de interfaz.{' '}
-              <span className="text-[#52565e]">
-                Se está convirtiendo en la lógica operativa de las instituciones modernas.
+              El modelo sabe razonar.{' '}
+              <span style={{ color: 'var(--texto-apoyo)' }}>
+                Lo que no sabe es cómo decide tu negocio, y eso no lo va a aprender solo.
               </span>
             </h2>
           </div>
@@ -38,7 +38,7 @@ export const Positioning = () => {
             style={{ transitionDelay: '120ms' }}
           >
             <p className="body-large" data-testid="positioning-body">
-              Las organizaciones más avanzadas no adoptan IA como una herramienta aislada. La incorporan como una nueva capa de razonamiento, coordinación y decisión. swaraya diseña esa transición con rigor técnico, criterio estratégico y sensibilidad institucional.
+              Qué descuento se autoriza y cuál se escala. Qué prospecto merece una llamada hoy. Qué desviación de obra es tolerable y cuál enciende alarmas. Ese juicio está probado por años de operación, casi nunca está escrito, y se va de la empresa el día que se va la persona que lo tiene.
             </p>
           </div>
         </div>

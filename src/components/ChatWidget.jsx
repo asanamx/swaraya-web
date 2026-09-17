@@ -76,7 +76,7 @@ const ChatWidget = () => {
       {/* Chat Button — FAB con ícono de marca "s" */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#f6b91f] text-white shadow-lg shadow-[#f6b91f]/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#f6b91f]/40 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-[26px] right-[26px] z-50 w-11 h-11 rounded-xl bg-[#c8e824] text-white flex items-center justify-center transition-all duration-300 hover:scale-110 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Abrir chat con swaraya"
         data-testid="chat-open-button"
       >
@@ -84,13 +84,18 @@ const ChatWidget = () => {
           aria-hidden="true"
           style={{
             fontFamily: "'Cabinet Grotesk', -apple-system, system-ui, sans-serif",
-            fontWeight: 700,
+            fontWeight: 500,
             fontSize: 22,
             lineHeight: 1,
             letterSpacing: '-0.04em',
-            color: '#f4f4f5',
+            color: 'var(--sobre-brote)',
+            display: 'inline-flex',
+            alignItems: 'baseline',
           }}
-        >s</span>
+        >
+          s
+          <span style={{ color: 'var(--sobre-brote)' }}>.</span>
+        </span>
       </button>
 
       {/* Chat Window */}
@@ -99,12 +104,12 @@ const ChatWidget = () => {
           isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="bg-[#111114] rounded-2xl shadow-2xl shadow-black/50 border border-[rgba(255,255,255,0.06)] overflow-hidden flex flex-col h-[520px] max-h-[calc(100vh-6rem)]">
+        <div className="invertido rounded-xl border overflow-hidden flex flex-col h-[520px] max-h-[calc(100vh-6rem)]" style={{ background: 'var(--carbon)', borderColor: 'var(--borde)' }}>
           {/* Header */}
-          <div className="px-5 py-4 bg-gradient-to-r from-[#0C1016] to-[#111114] border-b border-[rgba(255,255,255,0.04)] flex items-center justify-between">
+          <div className="px-5 py-4 bg-gradient-to-r from-[#0C1016] to-[#0d0f0e] border-b border-[rgba(255,255,255,0.04)] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#f6b91f] flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 rounded-full bg-[#c8e824] flex items-center justify-center">
+                <Bot className="w-5 h-5 text-[#0d0f0e]" />
               </div>
               <div>
                 <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente swaraya</h3>
@@ -132,19 +137,19 @@ const ChatWidget = () => {
                 <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center ${
                   msg.role === 'user' 
                     ? 'bg-[rgba(255,255,255,0.08)]' 
-                    : 'bg-[#f6b91f]/20'
+                    : 'bg-[#c8e824]/20'
                 }`}>
                   {msg.role === 'user' 
                     ? <User className="w-3.5 h-3.5 text-[#9aa0a8]" />
-                    : <Bot className="w-3.5 h-3.5 text-[#f6b91f]" />
+                    : <Bot className="w-3.5 h-3.5 text-[#c8e824]" />
                   }
                 </div>
                 
                 {/* Message Bubble */}
-                <div className={`max-w-[75%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                <div className={`max-w-[75%] px-4 py-3 rounded-xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-[#f6b91f] text-white rounded-tr-md'
-                    : 'bg-[rgba(255,255,255,0.04)] text-[#B7BFCC] rounded-tl-md'
+                    ? 'bg-[#c8e824] text-[#0d0f0e] rounded-tr-sm'
+                    : 'bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.85)] rounded-tl-sm'
                 }`}>
                   {msg.content}
                 </div>
@@ -154,10 +159,10 @@ const ChatWidget = () => {
             {/* Loading indicator */}
             {isLoading && (
               <div className="flex gap-3">
-                <div className="w-7 h-7 rounded-full bg-[#f6b91f]/20 flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-[#f6b91f]" />
+                <div className="w-7 h-7 rounded-full bg-[#c8e824]/20 flex items-center justify-center">
+                  <Bot className="w-3.5 h-3.5 text-[#c8e824]" />
                 </div>
-                <div className="px-4 py-3 rounded-2xl rounded-tl-md bg-[rgba(255,255,255,0.04)]">
+                <div className="px-4 py-3 rounded-xl rounded-tl-sm bg-[rgba(255,255,255,0.05)]">
                   <div className="flex gap-1">
                     <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -180,13 +185,13 @@ const ChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu mensaje..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#52565e] focus:outline-none focus:border-[#f6b91f]/50 transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#52565e] focus:outline-none focus:border-[#c8e824]/50 transition-colors disabled:opacity-50"
                 data-testid="chat-input"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="w-11 h-11 rounded-xl bg-[#f6b91f] text-white flex items-center justify-center transition-all hover:bg-[#f6b91f] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-11 h-11 rounded-xl bg-[#c8e824] text-[#0d0f0e] flex items-center justify-center transition-all hover:bg-[#e2f56e] disabled:opacity-50 disabled:cursor-not-allowed"
                 data-testid="chat-send-button"
               >
                 {isLoading ? (

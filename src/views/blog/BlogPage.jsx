@@ -83,6 +83,7 @@ const BlogPage = () => {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
+      timeZone: 'America/Mexico_City',
     });
   };
 
@@ -92,12 +93,12 @@ const BlogPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(17, 17, 20,0.08)]">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 border-b border-[rgba(13, 15, 14,0.08)]">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="label-accent text-[#775a00] mb-6 block">Insights</span>
+            <span className="label-accent text-[#0d0f0e] mb-6 block">Insights</span>
             <h1
-              className="text-3xl md:text-5xl lg:text-6xl text-[#111114] mb-6"
+              className="text-3xl md:text-5xl lg:text-6xl text-[#0d0f0e] mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -105,7 +106,7 @@ const BlogPage = () => {
                 lineHeight: 1.02,
               }}
             >
-              Perspectivas sobre <span className="text-[#775a00]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-[#0d0f0e]">inteligencia aplicada</span>
             </h1>
             <p className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch]">
               Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos,
@@ -116,7 +117,7 @@ const BlogPage = () => {
       </section>
 
       {/* Search and Filters */}
-      <section className="py-8 border-b border-[rgba(17, 17, 20,0.08)]">
+      <section className="py-8 border-b border-[rgba(13, 15, 14,0.08)]">
         <div className="container-main">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Search */}
@@ -127,7 +128,7 @@ const BlogPage = () => {
                 placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)] rounded-xl text-sm text-[#111114] placeholder-[#52565e] focus:outline-none focus:border-[#775a00]/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-[#ffffff] border border-[rgba(13, 15, 14,0.08)] rounded-xl text-sm text-[#0d0f0e] placeholder-[#52565e] focus:outline-none focus:border-[#0d0f0e]/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -135,19 +136,19 @@ const BlogPage = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 text-sm text-[#52565e] hover:text-[#111114] transition-colors"
+              className="flex items-center gap-2 text-sm text-[#52565e] hover:text-[#0d0f0e] transition-colors"
             >
               <Filter className="w-4 h-4" />
               Filtros
               {(selectedCategory || selectedTag) && (
-                <span className="w-2 h-2 rounded-full bg-[#775a00]" />
+                <span className="w-2 h-2 rounded-full bg-[#0d0f0e]" />
               )}
             </button>
           </div>
 
           {/* Expanded Filters */}
           {showFilters && (
-            <div className="mt-6 p-6 bg-[#ffffff] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
+            <div className="mt-6 p-6 bg-[#ffffff] rounded-xl border border-[rgba(13, 15, 14,0.08)]">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Categories */}
                 <div>
@@ -162,8 +163,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedCategory === cat.name
-                            ? 'bg-[#775a00] text-[#ffffff]'
-                            : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
+                            ? 'bg-[#0d0f0e] text-[#ffffff]'
+                            : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e]'
                         }`}
                       >
                         {cat.name} ({cat.count})
@@ -185,8 +186,8 @@ const BlogPage = () => {
                         }}
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedTag === tag.name
-                            ? 'bg-[#775a00] text-[#ffffff]'
-                            : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
+                            ? 'bg-[#0d0f0e] text-[#ffffff]'
+                            : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e]'
                         }`}
                       >
                         {tag.name}
@@ -199,7 +200,7 @@ const BlogPage = () => {
               {(selectedCategory || selectedTag) && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-xs text-[#775a00] hover:underline transition-colors"
+                  className="mt-4 text-xs text-[#0d0f0e] hover:underline transition-colors"
                 >
                   Limpiar filtros
                 </button>
@@ -228,7 +229,7 @@ const BlogPage = () => {
               <p className="text-[#52565e] mb-4">No se encontraron artículos</p>
               <button
                 onClick={clearFilters}
-                className="text-sm text-[#775a00] hover:underline transition-colors"
+                className="text-sm text-[#0d0f0e] hover:underline transition-colors"
               >
                 Limpiar filtros
               </button>
@@ -243,7 +244,7 @@ const BlogPage = () => {
                 >
                   <Link href={`/blog/${post.slug}`}>
                     {/* Cover Image — duotone editorial */}
-                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#ffffff] border border-[rgba(17, 17, 20,0.06)]">
+                    <div className="cover-editorial relative aspect-[16/10] mb-5 rounded-xl bg-[#ffffff] border border-[rgba(13, 15, 14,0.06)]">
                       <img
                         src={post.coverImage || post.cover_image}
                         alt={post.title}
@@ -253,7 +254,7 @@ const BlogPage = () => {
 
                     {/* Category */}
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[0.6875rem] font-medium text-[#775a00] tracking-[0.18em] uppercase">
+                      <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase">
                         {post.category}
                       </span>
                       <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
@@ -265,12 +266,12 @@ const BlogPage = () => {
 
                     {/* Title */}
                     <h2
-                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#775a00] transition-colors"
+                      className="text-lg md:text-xl mb-3 leading-snug group-hover:text-[#0d0f0e] transition-colors"
                       style={{
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 500,
                         letterSpacing: '-0.02em',
-                        color: '#111114',
+                        color: '#0d0f0e',
                       }}
                     >
                       {post.title}
@@ -301,8 +302,8 @@ const BlogPage = () => {
                   onClick={() => setCurrentPage(page)}
                   className={`w-10 h-10 rounded-lg text-sm font-medium transition-all ${
                     currentPage === page
-                      ? 'bg-[#775a00] text-[#ffffff]'
-                      : 'bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(17, 17, 20,0.08)] hover:text-[#111114]'
+                      ? 'bg-[#0d0f0e] text-[#ffffff]'
+                      : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e]'
                   }`}
                 >
                   {page}

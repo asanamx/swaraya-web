@@ -10,12 +10,11 @@
 export const initiatives = [
   {
     id: 'atika',
-    name: 'Atika',
+    name: 'atika',
     domain: 'atika.studio',
     url: 'https://atika.studio',
-    logo: '/brand/iniciativas/atika-white.png',
-    logoAlt: 'Atika',
-    footerHeightPx: 18,                // ajuste óptico: letterforms gruesas — reducir altura
+    logoAlt: 'atika',
+    footerHeightPx: 18,                // ajuste óptico
     tagline: 'Diagnóstico digital de interiores con IA',
     description:
       'Plataforma de diagnóstico digital de interiores impulsada por inteligencia artificial. Genera análisis y reportes de espacios habitables bajo demanda.',
@@ -25,13 +24,12 @@ export const initiatives = [
   },
   {
     id: 'constructos',
-    name: 'Constructos',
+    name: 'constructos',
     domain: 'constructos.app',
     url: 'https://constructos.app',
-    logo: '/brand/iniciativas/constructos-logo.webp',
-    logoAlt: 'Constructos',
+    logoAlt: 'constructos',
     footerHeightPx: 17,                // ajuste óptico: wordmark muy largo
-    tagline: 'Constructos operativos para equipos de producto',
+    tagline: 'constructos operativos para equipos de producto',
     description:
       'Plataforma de constructos operativos que estandariza rituales, artefactos y flujos de trabajo de equipos de producto y operaciones apoyada por inteligencia artificial.',
     model: 'subscription',
@@ -40,17 +38,30 @@ export const initiatives = [
   },
   {
     id: 'stratika',
-    name: 'Stratika',
+    name: 'stratika',
     domain: 'stratika.systems',
     url: 'https://stratika.systems',
-    logo: '/brand/iniciativas/stratika-logo.png',
-    logoAlt: 'Stratika',
-    footerHeightPx: 16,                // ajuste óptico: wordmark delgado
+    logoAlt: 'stratika',
+    footerHeightPx: 16,                // ajuste óptico
     tagline: 'Sistemas estratégicos impulsados por IA',
     description:
       'Plataforma de sistemas estratégicos que opera flujos de decisión aumentados por inteligencia artificial para equipos ejecutivos y unidades de negocio.',
     model: 'subscription',
     contactEmail: 'hola@stratika.systems',
+    status: 'desarrollo',
+  },
+  {
+    id: 'blynx',
+    name: 'blynx',
+    domain: 'blynx.app',
+    url: 'https://blynx.app',
+    logoAlt: 'blynx',
+    footerHeightPx: 16,
+    tagline: 'Automatización de mercadotecnia con IA',
+    description:
+      'Plataforma de automatización de mercadotecnia para pequeñas y medianas empresas, con generación de contenido y gestión de campañas asistidas por inteligencia artificial.',
+    model: 'subscription',
+    contactEmail: 'hola@blynx.app',
     status: 'desarrollo',
   },
   // Próximas iniciativas se agregan aquí — la UI y los documentos

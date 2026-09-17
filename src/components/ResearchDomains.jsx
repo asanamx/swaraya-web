@@ -1,187 +1,172 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 /**
- * SWARAYA · Set geométrico propio de dominios.
- * 20×20 viewBox, stroke 1.5px, sin fill, currentColor.
- * Ningún ícono de librería — cada glifo es una abstracción del dominio.
+ * ResearchDomains — v3.0 · índice editorial.
+ *
+ * Tres niveles de destilación de criterio (conocimiento, decisión, voz).
+ * Formato: columna izquierda con label/titular/bajada; columna derecha
+ * con lista numerada separada por hairlines + cierre atenuado.
+ *
+ * Sin cards, sin sombras, sin iconografía de color. Solo hairlines.
  */
-const GlyphArchitecture = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="4" y="12" width="12" height="4" />
-    <rect x="6" y="7" width="8"  height="4" />
-    <rect x="8" y="2" width="4"  height="4" />
-  </svg>
-);
 
-const GlyphAgents = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-    <circle cx="10" cy="10" r="3.2" />
-    <circle cx="10" cy="3"  r="1"  fill="currentColor" stroke="none" />
-    <circle cx="17" cy="10" r="1"  fill="currentColor" stroke="none" />
-    <circle cx="10" cy="17" r="1"  fill="currentColor" stroke="none" />
-    <circle cx="3"  cy="10" r="1"  fill="currentColor" stroke="none" />
-  </svg>
-);
-
-const GlyphPredictive = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="2,15 7,10 11,13 18,4" />
-    <circle cx="18" cy="4" r="1.4" fill="currentColor" stroke="none" />
-  </svg>
-);
-
-const GlyphData = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M10 2 L17 6 L10 10 L3 6 Z" />
-    <path d="M3 6 L3 14 L10 18 L17 14 L17 6" />
-    <path d="M10 10 L10 18" />
-  </svg>
-);
-
-const GlyphImplementation = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="4" cy="16" r="1.4" fill="currentColor" stroke="none" />
-    <line x1="4" y1="16" x2="16" y2="4" />
-    <polyline points="10,4 16,4 16,10" />
-  </svg>
-);
-
-const GlyphInteraction = () => (
-  <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="7"  cy="10" r="4" />
-    <circle cx="13" cy="10" r="4" />
-  </svg>
-);
-
-const domains = [
+const levels = [
   {
-    id: 1,
-    Glyph: GlyphArchitecture,
-    title: 'Arquitectura Estratégica de IA',
-    description: 'Diseño de sistemas de inteligencia alineados con estructura organizacional, decisión y escalabilidad.',
-    number: '01'
+    number: '01',
+    title: 'Lo que tu empresa sabe',
+    description:
+      'Catálogos, precios, políticas, contratos y el historial de casos resueltos. Consultable al instante, actualizable por tu equipo.',
   },
   {
-    id: 2,
-    Glyph: GlyphAgents,
-    title: 'Agentes Autónomos',
-    description: 'Agentes cognitivos y flujos autónomos para ejecución, coordinación y asistencia contextual.',
-    number: '02'
+    number: '02',
+    title: 'Cómo tu empresa decide',
+    description:
+      'Umbrales, prioridades, excepciones y rutas de escalamiento, escritos en lenguaje llano y editables sin tocar una línea de código.',
   },
   {
-    id: 3,
-    Glyph: GlyphPredictive,
-    title: 'Modelado Predictivo',
-    description: 'Modelos para anticipación de demanda, riesgo, comportamiento, operación y planeación.',
-    number: '03'
-  },
-  {
-    id: 4,
-    Glyph: GlyphData,
-    title: 'Estructuración de Datos',
-    description: 'Organización semántica y operativa de datos para habilitar razonamiento computacional.',
-    number: '04'
-  },
-  {
-    id: 5,
-    Glyph: GlyphImplementation,
-    title: 'De la Investigación a la Implementación',
-    description: 'Desarrollo de plataformas propietarias desde hipótesis hasta implementación.',
-    number: '05'
-  },
-  {
-    id: 6,
-    Glyph: GlyphInteraction,
-    title: 'Interacción Humano-IA',
-    description: 'Diseño de interfaces conversacionales y experiencias de interacción de alta precisión.',
-    number: '06'
+    number: '03',
+    title: 'Cómo tu empresa habla',
+    description:
+      'El tono, el formato y el estándar de calidad que aceptas, calibrados con ejemplos que tu propia gente aprobó.',
   },
 ];
 
 export const ResearchDomains = () => {
   const [headerRef, headerVisible] = useScrollReveal({ threshold: 0.2 });
-  const [cardsRef, cardsVisible] = useScrollReveal({ threshold: 0.1 });
+  const [listRef, listVisible] = useScrollReveal({ threshold: 0.08 });
 
   return (
     <section
-      id="research"
-      className="section-padding bg-[#f4f4f5]"
+      id="criterio"
+      className="section-padding-lg relative"
+      style={{ background: 'var(--niebla)' }}
       data-testid="research-domains-section"
     >
       <div className="container-main">
-        <div 
-          ref={headerRef}
-          className={`max-w-xl mb-16 md:mb-20 lg:mb-24 reveal ${headerVisible ? 'revealed' : ''}`}
-        >
-          <span 
-            className="label-accent text-[#775a00] block mb-6" 
-            data-testid="research-label"
+        <div className="grid lg:grid-cols-12 gap-10 md:gap-14 lg:gap-20 items-start">
+          {/* Encabezado — 5 columnas */}
+          <div
+            ref={headerRef}
+            className={`lg:col-span-5 lg:sticky lg:top-32 reveal ${headerVisible ? 'revealed' : ''}`}
           >
-            Dominios de Investigación
-          </span>
-          <h2 className="heading-xl mb-5" data-testid="research-headline">
-            Campos de <span className="text-[#775a00]">inteligencia aplicada</span>
-          </h2>
-          <p className="body-large" data-testid="research-subtext">
-            Capacidades diseñadas para traducir investigación, datos y sistemas en operación real.
-          </p>
-        </div>
-
-        <div 
-          ref={cardsRef}
-          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[rgba(17, 17, 20,0.06)] rounded-[16px] overflow-hidden reveal-stagger ${cardsVisible ? 'revealed' : ''}`}
-        >
-          {domains.map(({ id, Glyph, title, description, number }) => (
-            <div
-              key={id}
-              className="relative bg-[#ffffff] p-7 md:p-8 lg:p-10 group transition-all duration-300"
-              data-testid={`domain-card-${id}`}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 24px 48px -16px rgba(17, 17, 20,0.08)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
+            <span
+              className="label-accent block mb-6"
+              data-testid="research-label"
             >
-              <span
-                className="absolute top-5 right-6 text-[3.25rem] md:text-[4rem] leading-none select-none pointer-events-none transition-all duration-500"
-                style={{
-                  fontFamily: "'Cabinet Grotesk', sans-serif",
-                  fontWeight: 500,
-                  letterSpacing: '-0.04em',
-                  color: 'rgba(119, 90, 0,0.14)',
-                }}
-              >
-                {number}
+              Destilación de Criterio
+            </span>
+            <h2 className="heading-xl mb-5" data-testid="research-headline">
+              Tres niveles para{' '}
+              <span style={{ color: 'var(--texto-apoyo)' }}>
+                convertir oficio en sistema
               </span>
+            </h2>
+            <p className="body-large" data-testid="research-subtext">
+              Separar estos tres niveles es lo que permite que tu gente lea sus
+              propias reglas, las cambie cuando quiera, y que el sistema no sea
+              una caja cerrada.
+            </p>
+          </div>
 
-              <div className="relative z-10 mb-7">
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-400"
-                  style={{
-                    background: 'rgba(119, 90, 0,0.06)',
-                    color: '#52565e',
-                  }}
+          {/* Índice editorial — 7 columnas */}
+          <div
+            ref={listRef}
+            className={`lg:col-span-7 reveal-stagger ${listVisible ? 'revealed' : ''}`}
+          >
+            <ul
+              className="border-t"
+              style={{ borderColor: 'var(--borde-alfa)' }}
+            >
+              {levels.map(({ number, title, description }, i) => (
+                <li
+                  key={number}
+                  className="group relative transition-colors duration-300"
+                  style={{ borderBottom: '1px solid var(--borde-alfa)' }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background = 'var(--superficie)')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background = 'transparent')
+                  }
+                  data-testid={`domain-row-${i + 1}`}
                 >
-                  <Glyph />
-                </div>
-              </div>
+                  <div className="flex items-start gap-5 md:gap-8 py-6 md:py-7 pr-2">
+                    {/* Número fantasma */}
+                    <span
+                      className="select-none flex-shrink-0 transition-colors duration-300 tabular-nums"
+                      style={{
+                        fontFamily: "'Cabinet Grotesk', sans-serif",
+                        fontWeight: 500,
+                        fontSize: 'clamp(1.5rem, 2.4vw, 1.875rem)',
+                        lineHeight: 1,
+                        letterSpacing: '-0.03em',
+                        color: 'var(--tinta-10)',
+                        minWidth: 44,
+                      }}
+                    >
+                      {number}
+                    </span>
 
-              <h3 className="relative z-10 text-[0.9375rem] md:text-base font-medium text-[#111114] mb-3.5 tracking-[-0.01em] leading-snug">
-                {title}
-              </h3>
+                    {/* Contenido */}
+                    <div className="flex-1 flex flex-col gap-2">
+                      <h3
+                        style={{
+                          fontFamily: "'Cabinet Grotesk', sans-serif",
+                          fontWeight: 500,
+                          fontSize: 'clamp(1.125rem, 1.5vw, 1.375rem)',
+                          letterSpacing: '-0.02em',
+                          lineHeight: 1.2,
+                          color: 'var(--texto)',
+                        }}
+                      >
+                        {title}
+                      </h3>
+                      <p
+                        style={{
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: '0.9375rem',
+                          lineHeight: 1.65,
+                          color: 'var(--texto-apoyo)',
+                          maxWidth: '54ch',
+                        }}
+                      >
+                        {description}
+                      </p>
+                    </div>
 
-              <p className="relative z-10 text-[0.8125rem] text-[#52565e] leading-[1.8]">
-                {description}
-              </p>
+                    {/* Flecha — aparece en hover */}
+                    <span
+                      aria-hidden="true"
+                      className="flex-shrink-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-400"
+                      style={{ color: 'var(--texto-apoyo)', marginTop: 6 }}
+                    >
+                      <ArrowUpRight className="w-5 h-5" strokeWidth={1.6} />
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(119, 90, 0,0.25)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-            </div>
-          ))}
+            {/* Cierre atenuado — bajo la última hairline */}
+            <p
+              className="mt-6 md:mt-8 max-w-[54ch]"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.8125rem',
+                lineHeight: 1.6,
+                color: 'var(--texto-apoyo)',
+                fontWeight: 400,
+              }}
+              data-testid="research-closing"
+            >
+              Un modelo nuevo llega cada pocos meses, y llega igual de ignorante
+              sobre tu operación. Lo que destilamos contigo no caduca con la
+              siguiente versión: se queda contigo.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -31,101 +31,171 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── SUPERFICIES ─────────────────────────────────────────── */
-  --bg:                #f4f4f5;   /* canvas gris galería (base) */
-  --surface:           #ffffff;   /* superficie elevada         */
-  --surface-raised:    #ffffff;   /* alias — cards, popovers    */
-  --surface-muted:     #e5e5e6;   /* chips, hover states        */
-  --ink:               #111114;   /* tinta/foreground           */
+  /* ═══════════════════════════════════════════════════════════
+     SISTEMA v3.0 · Neutros + Acento Brote
+     ─────────────────────────────────────────────────────────── */
 
-  /* ── SUPERFICIES OSCURAS (hero, footer, resultados) ─────── */
-  --bg-dark:           #111114;   /* dark base                  */
-  --bg-deep:           #0a0a0a;   /* hero + footer profundo     */
-  --surface-dark:      #111114;
-  --surface-dark-2:    #17171b;
-  --surface-dark-3:    #1c1c22;
+  /* Escala neutra */
+  --blanco: #ffffff;
+  --niebla: #f4f4f3;
+  --grafito: #d3d2d0;
+  --piedra: #6e6d6b;
+  --carbon: #141414;
+  --tinta: #0d0f0e;
 
-  /* ── TEXTO SOBRE CLARO ──────────────────────────────────── */
-  --text-primary:      #111114;   /* ≈17:1 sobre #f4f4f5 ✓ AAA */
-  --text-secondary:    #52565e;   /* ≈6.6:1 ✓ AA              */
-  --text-tertiary:     #63666e;   /* ≈4.9:1 ✓ AA              */
-  --text-placeholder:  #63666e;
+  /* Rampas de opacidad — la jerarquía de texto vive aquí */
+  --tinta-rgb: 13, 15, 14;
+  --tinta-04: rgba(var(--tinta-rgb), 0.04);
+  --tinta-06: rgba(var(--tinta-rgb), 0.06);
+  --tinta-10: rgba(var(--tinta-rgb), 0.10);
+  --tinta-60: rgba(var(--tinta-rgb), 0.60);
+  --blanco-rgb: 255, 255, 255;
+  --blanco-05: rgba(var(--blanco-rgb), 0.05);
+  --blanco-14: rgba(var(--blanco-rgb), 0.14);
+  --blanco-60: rgba(var(--blanco-rgb), 0.60);
 
-  /* ── TEXTO SOBRE OSCURO ─────────────────────────────────── */
-  --ink-inverse:            #ffffff;   /* ≈18:1 ✓ AAA              */
-  --text-on-dark-primary:   #ffffff;
-  --text-on-dark-secondary: #c9cdd3;   /* ≈12:1 ✓                  */
-  --text-on-dark-tertiary:  #9aa0a8;   /* ≈6.9:1 ✓                 */
+  /* Acento — el único hex intercambiable del sistema */
+  --brote: #c8e824;
+  --brote-alto: #e2f56e;
+  --sobre-brote: #0d0f0e;
 
-  /* ── ACENTO GIRASOL — enjambre sobre carbón ─────────────── */
-  --accent:            #775a00;   /* SOBRE CLARO · girasol profundo · ≈6.2:1 ✓ */
-  --accent-hover:      #5a4400;
-  --accent-bright:     #f6b91f;   /* SOBRE OSCURO · girasol vivo · ≈9.5:1 ✓ */
-  --accent-bright-hover: #ffc93d;
-  --accent-bright-text: #f6b91f;  /* girasol vivo sobre oscuro (texto pequeño OK) */
-  --on-accent:         #2b2000;   /* tinta oscura sobre fill girasol · ≈8.5:1 ✓ */
+  /* Iconografía y estados */
+  --pizarra: #4a5a6e;
+  --pizarra-tenue: #e8ecf1;
+  --jade: #1e6a52;
+  --cinabrio: #c2410c;
 
-  /* ── FONDOS OSCUROS · dos capas ─────────────────────────── */
-  --bg-carbon:         #16171a;   /* Carbón · secciones dark cards */
-  --bg-deep-override:  #0a0a0a;   /* profundo Hero + Footer */
+  /* Roles semánticos — conmutables por sección (.invertido los redefine) */
+  --tema: var(--blanco);
+  --texto: var(--tinta);
+  --texto-apoyo: var(--tinta-60);
+  --texto-terciario: var(--piedra);
+  --superficie: var(--tinta-04);
+  --superficie-solida: var(--niebla);
+  --borde: var(--grafito);
+  --borde-alfa: var(--tinta-10);
+  --punto: rgba(var(--tinta-rgb), 0.16);
 
-  /* ── ANILLO DE FOCO (visible, WCAG 2.4.7) ────────────────  */
-  --ring:              #775a00;   /* sobre claro                */
-  --ring-on-dark:      #f6b91f;
+  /* Degradados */
+  --alba:      linear-gradient(to bottom, #f4f4f3 22%, #ffffff 93%);
+  --medianoche: linear-gradient(to bottom, #1c1c1b 0%, #0d0f0e 100%);
+  --halo:      radial-gradient(60% 50% at 72% 32%, rgba(200, 232, 36, 0.08), transparent 68%);
 
-  /* ── ESTADOS DE ERROR ───────────────────────────────────── */
-  --destructive:       #EF4343;   /* fills, iconos, bordes     */
-  --destructive-text:  #c62f2f;   /* SÓLO texto sobre claro    · 4.88:1 ✓ */
+  /* Forma */
+  --r-sm: 4px; --r-md: 6px; --r-lg: 8px; --r-xl: 12px; --r-full: 999px;
 
-  /* ── BORDES · escala alfa uniforme ──────────────────────── */
-  --border-1: rgba(17, 17, 20, 0.06);   /* hairline       */
-  --border-2: rgba(17, 17, 20, 0.12);   /* base (spec §1) */
-  --border-3: rgba(17, 17, 20, 0.18);   /* énfasis        */
-  --border:   rgba(17, 17, 20, 0.12);   /* alias claro    */
-  --border-solid:      #e5e5e6;         /* sólido         */
+  /* Espacio */
+  --s-1: 4px; --s-2: 8px; --s-3: 10px; --s-4: 12px;
+  --s-5: 16px; --s-6: 24px; --s-7: 32px; --s-8: 64px;
+  --seccion: 128px; --contenedor: 1440px; --gutter: 20px;
 
-  /* Bordes sobre superficies oscuras */
-  --border-dark-1: rgba(255, 255, 255, 0.06);
-  --border-dark-2: rgba(255, 255, 255, 0.10);
-  --border-dark-3: rgba(255, 255, 255, 0.14);
-  --border-dark:   rgba(255, 255, 255, 0.14);
+  /* Tipografía — las familias NO cambian */
+  --display: 'Cabinet Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --ui:      'Inter', system-ui, -apple-system, sans-serif;
+  --serif:   'Newsreader', Georgia, 'Times New Roman', serif;
+  --t-display: clamp(2.75rem, 7.5vw, 4.5rem);
+  --t-h1: clamp(2rem, 4.6vw, 3rem);
+  --t-h2: clamp(1.75rem, 3.4vw, 2.5rem);
+  --t-h3: 1.75rem; --t-h4: 1.5rem;
+  --t-cita: clamp(1.375rem, 2.6vw, 2rem);
+  --t-lead: 1.25rem;
+  --t-xl:   clamp(1.125rem, 1.4vw, 1.25rem);
+  --t-body: 1rem; --t-s: 0.875rem; --t-xs: 0.8125rem; --t-eyebrow: 0.6875rem;
+  --ls-display: -0.04em; --ls-h1: -0.012em; --ls-h2: -0.008em; --ls-eyebrow: 0.22em;
 
-  /* ── RADIOS · 4 tamaños + pill ──────────────────────────── */
-  --radius-sm:   8px;    /* inputs, íconos                     */
-  --radius-md:   12px;   /* botones rect, chips                */
-  --radius-lg:   16px;   /* TODAS las cards                    */
-  --radius-xl:   20px;   /* contenedores bento                 */
-  --radius-pill: 999px;  /* CTAs marketing                     */
+  /* ═══════════════════════════════════════════════════════════
+     @deprecated · aliases apuntando al nuevo sistema.
+     Existen únicamente para que nada explote a mitad de la migración.
+     ─────────────────────────────────────────────────────────── */
+  --bg:              var(--blanco);
+  --surface:         var(--niebla);
+  --surface-raised:  var(--niebla);
+  --surface-muted:   var(--niebla);
+  --ink:             var(--tinta);
+  --ink-inverse:     var(--blanco);
+  --bg-dark:         var(--carbon);
+  --bg-deep:         var(--tinta);
+  --bg-carbon:       var(--carbon);
+  --surface-dark:    var(--carbon);
+  --surface-dark-2:  #1c1c1b;
+  --surface-dark-3:  #1c1c1b;
 
-  /* ── ESPACIADO DE SECCIÓN (malla 8) ─────────────────────── */
+  --text-primary:        var(--texto);
+  --text-secondary:      var(--texto-apoyo);
+  --text-tertiary:       var(--texto-terciario);
+  --text-placeholder:    var(--texto-terciario);
+  --text-on-dark-primary:   var(--blanco);
+  --text-on-dark-secondary: var(--blanco-60);
+  --text-on-dark-tertiary:  var(--blanco-60);
+
+  --accent:              var(--brote);
+  --accent-hover:        var(--brote-alto);
+  --accent-bright:       var(--brote);
+  --accent-bright-hover: var(--brote-alto);
+  --accent-bright-text:  var(--brote);
+  --on-accent:           var(--sobre-brote);
+  --ring:                var(--texto);
+  --ring-on-dark:        var(--brote);
+
+  --destructive:      #EF4343;
+  --destructive-text: #c62f2f;
+
+  --border-1: var(--borde-alfa);
+  --border-2: var(--borde-alfa);
+  --border-3: var(--borde);
+  --border:   var(--borde-alfa);
+  --border-solid: var(--borde);
+  --border-dark-1: var(--blanco-14);
+  --border-dark-2: var(--blanco-14);
+  --border-dark-3: var(--blanco-14);
+  --border-dark:   var(--blanco-14);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-pill: var(--r-full);
+
   --space-section-sm: 80px;
-  --space-section-md: 120px;
-  --space-section-lg: 160px;
-  --space-section-xl: 200px;
+  --space-section-md: var(--seccion);
+  --space-section-lg: var(--seccion);
+  --space-section-xl: var(--seccion);
 
-  /* ── FONT STACKS ────────────────────────────────────────── */
-  --font-wordmark: 'Author', 'Cabinet Grotesk', -apple-system, system-ui, sans-serif;
-  --font-display: 'Cabinet Grotesk', -apple-system, system-ui, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-serif: 'Newsreader', Georgia, serif;
-  --font-serif-editorial: 'Newsreader', Georgia, serif; /* alias @deprecated */
+  --font-wordmark: var(--display);
+  --font-display:  var(--display);
+  --font-body:     var(--ui);
+  --font-serif:    var(--serif);
+  --font-serif-editorial: var(--serif);
 
-  /* ─────────────────────────────────────────────────────────
-     ALIAS @deprecated · mantener durante migración.
-     Todos apuntan al nuevo sistema — no usar en código nuevo.
-     ───────────────────────────────────────────────────────── */
-  --surface-1: var(--bg);                    /* @deprecated → --bg              */
-  --surface-2: var(--surface-raised);        /* @deprecated → --surface-raised  */
-  --surface-3: var(--surface-muted);         /* @deprecated → --surface-muted   */
-  --surface-4: var(--border-solid);          /* @deprecated → --border-solid    */
-  --surface-dark-1: var(--surface-dark);     /* @deprecated → --surface-dark    */
-  --accent-primary: var(--accent);           /* @deprecated → --accent          */
-  --accent-secondary: var(--accent-bright);  /* @deprecated → --accent-bright   */
-  --indigo-on-cream: var(--accent);          /* @deprecated → --accent          */
-  --indigo-on-cream-hover: var(--accent-hover);
-  --indigo-on-dark: var(--accent-bright);    /* @deprecated → --accent-bright   */
-  --indigo-on-dark-hover: var(--accent-bright-hover);
-  --accent-tertiary: #7AC4E0;                /* @deprecated · cyan legacy       */
+  --surface-1: var(--bg);
+  --surface-2: var(--surface-raised);
+  --surface-3: var(--surface-muted);
+  --surface-4: var(--border-solid);
+  --surface-dark-1: var(--surface-dark);
+  --accent-primary:   var(--brote);
+  --accent-secondary: var(--brote);
+  --indigo-on-cream: var(--brote);
+  --indigo-on-cream-hover: var(--brote-alto);
+  --indigo-on-dark: var(--brote);
+  --indigo-on-dark-hover: var(--brote-alto);
+  --accent-tertiary: var(--pizarra);
+}
+
+@media (max-width: 992px) { :root { --seccion: 80px; } }
+@media (min-width: 992px) { :root { --gutter: 40px; } }
+
+.invertido {
+  --tema: var(--carbon);
+  --texto: var(--blanco);
+  --texto-apoyo: var(--blanco-60);
+  --texto-terciario: var(--blanco-60);
+  --superficie: var(--blanco-05);
+  --superficie-solida: #1c1c1b;
+  --borde: var(--blanco-14);
+  --borde-alfa: var(--blanco-14);
+  --punto: rgba(var(--blanco-rgb), 0.14);
+  background: var(--tema);
+  color: var(--texto);
 }
 
 @media (max-width: 768px) {
@@ -176,10 +246,9 @@ body {
   border-radius: inherit;
 }
 
-/* Sobre superficies oscuras — anillo brillante */
-.section-dark :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible,
-.dark-mode :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
-  outline-color: var(--ring-on-dark);
+/* Sobre superficies invertidas — anillo brillante */
+.invertido :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
+  outline-color: var(--brote);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -206,16 +275,64 @@ body {
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: var(--text-primary);
+  color: var(--texto);
 }
 .editorial em,
 .editorial .accent {
   font-style: italic;
   font-weight: 400;
 }
-.section-dark .editorial,
-.dark-mode .editorial {
-  color: var(--text-on-dark-primary);
+.invertido .editorial {
+  color: var(--texto);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROSE EDITORIAL · blockquotes en Newsreader serif
+   ─────────────────────────────────────────────────────────────
+   Aplica sobre .prose-editorial (BlogArticle prose). Convierte
+   los <blockquote> del portable text en pull-quotes con la voz
+   Newsreader usada en Filosofía. Sin border-left ni panel gris:
+   sólo tipografía + línea brote.
+   ═══════════════════════════════════════════════════════════ */
+
+.prose-editorial blockquote {
+  position: relative;
+  border-left: none;
+  background: transparent;
+  padding: 0;
+  margin: 2.5rem 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1.375rem, 2.6vw, 1.75rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--texto);
+  quotes: none;
+}
+.prose-editorial blockquote::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--brote);
+  margin-bottom: 1.25rem;
+}
+.prose-editorial blockquote p,
+.prose-editorial blockquote > p {
+  font-family: inherit;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+.prose-editorial blockquote em {
+  font-style: italic;
+  color: inherit;
+}
+.prose-editorial blockquote p::before,
+.prose-editorial blockquote p::after {
+  content: none;
 }
 
 /* Display · 76px hero */
@@ -225,7 +342,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 0.98;
-  color: var(--text-primary);
+  color: var(--texto);
 }
 
 /* H1 · 48px */
@@ -235,7 +352,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: var(--text-primary);
+  color: var(--texto);
 }
 
 /* H2 · 30px — el nivel puente que faltaba */
@@ -245,7 +362,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
-  color: var(--text-primary);
+  color: var(--texto);
 }
 
 /* H3 · 20px propio, tamaño con carácter */
@@ -255,7 +372,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.4;
-  color: var(--text-primary);
+  color: var(--texto);
 }
 
 /* Body · 16px */
@@ -264,7 +381,7 @@ body {
   font-size: clamp(1rem, 1.05vw, 1.0625rem);  /* 16 → 17px */
   font-weight: 400;
   line-height: 1.55;
-  color: var(--text-secondary);
+  color: var(--texto-apoyo);
   max-width: 62ch;
 }
 
@@ -273,7 +390,7 @@ body {
   font-size: 1rem;             /* 16px */
   font-weight: 400;
   line-height: 1.55;
-  color: var(--text-secondary);
+  color: var(--texto-apoyo);
 }
 
 /* Small · 14px */
@@ -282,7 +399,7 @@ body {
   font-size: 0.875rem;         /* 14px */
   font-weight: 400;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: var(--texto-apoyo);
 }
 
 /* Caption · 12px */
@@ -292,10 +409,12 @@ body {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--text-tertiary);
+  color: var(--texto-terciario);
 }
 
-/* Micro / label · 11px (mínimo accesible), uppercase */
+/* Micro / label · 11px (mínimo accesible), uppercase.
+   Texto en var(--texto) para contraste WCAG AA en fondo claro e invertido.
+   El acento brote se reserva para el punto del wordmark y CTAs. */
 .label,
 .label-accent {
   font-family: var(--font-body);
@@ -303,7 +422,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--texto);
   line-height: 1.5;
 }
 
@@ -330,22 +449,22 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CARDS · TODAS con radio 16 (--radius-lg)
+   CARDS · v3.0 — radio 12, sin sombras, elevación por borde/bg
    ═══════════════════════════════════════════════════════════ */
 
 .card-premium {
   background: var(--surface-raised);
   border: 1px solid var(--border-2);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-xl);
   position: relative;
   overflow: hidden;
-  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  transition: border-color 0.4s ease, transform 0.4s ease, background-color 0.4s ease;
 }
 
 .card-premium:hover {
-  border-color: var(--border-3);
-  transform: translateY(-3px);
-  box-shadow: 0 24px 48px -16px rgba(14, 15, 17, 0.08);
+  border-color: var(--texto);
+  background: var(--superficie);
+  transform: translateY(-2px);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -361,21 +480,21 @@ body {
   justify-content: center;
   min-height: 44px;
   padding: 16px 32px;
-  background-color: var(--surface-dark);
-  color: #FFFFFF;                                /* blanco puro · 4.85:1 ✓ sobre indigo bright también */
+  background-color: var(--texto);
+  color: var(--tema);
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.005em;
   border-radius: var(--radius-pill);
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 32px -8px rgba(119, 90, 0, 0.30);
+  background-color: var(--brote);
+  color: var(--sobre-brote);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -400,23 +519,23 @@ body {
   color: var(--accent);
 }
 
-/* Versiones para fondos oscuros */
-.dark-mode .btn-primary {
-  background-color: var(--accent-bright);
-  color: var(--on-accent);                       /* #2b2000 · ≈7.8:1 ✓ sobre miel viva */
-  font-weight: 600;                              /* ligero refuerzo óptico */
+/* Versiones para superficies invertidas */
+.invertido .btn-primary {
+  background-color: var(--brote);
+  color: var(--sobre-brote);                      /* tinta sobre brote · ≈9.5:1 ✓ */
+  font-weight: 600;                               /* refuerzo óptico */
 }
-.dark-mode .btn-primary:hover {
-  background-color: var(--accent-bright-hover);
-  color: var(--on-accent);
+.invertido .btn-primary:hover {
+  background-color: var(--brote-alto);
+  color: var(--sobre-brote);
 }
-.dark-mode .btn-secondary {
-  color: var(--text-on-dark-primary);
-  border-color: var(--border-dark-3);
+.invertido .btn-secondary {
+  color: var(--texto);
+  border-color: var(--borde);
 }
-.dark-mode .btn-secondary:hover {
-  color: var(--accent-bright);
-  border-color: var(--accent-bright);
+.invertido .btn-secondary:hover {
+  color: var(--brote);
+  border-color: var(--brote);
 }
 
 @media (max-width: 639px) {
@@ -434,9 +553,9 @@ body {
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 0.9;
-  color: var(--text-primary);
+  color: var(--texto);
   background: none !important;
-  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--texto) !important;
 }
 
 .principle-marker {
@@ -470,7 +589,7 @@ body {
   color: var(--text-primary);
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .input-premium::placeholder,
@@ -574,7 +693,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #111114 0%, #f6b91f 100%);
+  background: linear-gradient(135deg, #0d0f0e 0%, #c8e824 100%);
   mix-blend-mode: color;
   pointer-events: none;
   z-index: 1;
@@ -583,7 +702,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(246, 185, 31, 0.10);
+  background: rgba(200, 232, 36, 0.10);
   pointer-events: none;
   z-index: 2;
   transition: opacity 0.35s ease;
@@ -602,7 +721,7 @@ body {
   opacity: 0;
   transition: opacity 400ms ease;
   background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%),
-              rgba(246, 185, 31, 0.12), transparent 65%);
+              rgba(200, 232, 36, 0.12), transparent 65%);
 }
 [data-testid="hero-section"]:hover .hero-spotlight { opacity: 1; }
 
@@ -654,14 +773,14 @@ body {
   user-select: none;
   z-index: 0;
 }
-.ghost-wordmark--light { color: rgba(17, 17, 20, 0.020); }
+.ghost-wordmark--light { color: rgba(13, 15, 14, 0.020); }
 .ghost-wordmark--dark  { color: rgba(255, 255, 255, 0.019); }
 
 /* ═══════════════════════════════════════════════════════════
    ::selection · girasol vivo + tinta oscura (marca de casa)
    ═══════════════════════════════════════════════════════════ */
-::selection      { background: #f6b91f; color: #2b2000; }
-::-moz-selection { background: #f6b91f; color: #2b2000; }
+::selection      { background: #c8e824; color: #0d0f0e; }
+::-moz-selection { background: #c8e824; color: #0d0f0e; }
 
 /* ═══════════════════════════════════════════════════════════
    SHADCN  ─  sincronizado con roles semánticos
@@ -670,7 +789,7 @@ body {
 @layer base {
   :root {
     --background: 240 5% 96%;              /* --bg #f4f4f5 */
-    --foreground: 240 8% 7%;                /* --ink #111114 */
+    --foreground: 240 8% 7%;                /* --ink #0d0f0e */
     --card: 0 0% 100%;                      /* --surface #ffffff */
     --card-foreground: 240 8% 7%;
     --popover: 0 0% 100%;
@@ -681,14 +800,14 @@ body {
     --secondary-foreground: 240 8% 7%;
     --muted: 240 5% 90%;
     --muted-foreground: 225 6% 34%;         /* --text-secondary #52565e */
-    --accent: 42 100% 25%;                  /* --accent #775a00 miel profunda */
-    --accent-foreground: 0 0% 100%;
+    --accent: 71 84% 52%;                   /* --brote #c8e824 */
+    --accent-foreground: 120 8% 5%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 5% 90%;
-    --input: 240 5% 90%;
-    --ring: 42 100% 25%;                    /* --ring #775a00 */
-    --radius: 0.75rem;
+    --border: 60 3% 82%;                    /* --grafito */
+    --input: 60 3% 82%;
+    --ring: 120 8% 5%;                      /* --tinta */
+    --radius: 0.5rem;                       /* 8px */
   }
 }
 
@@ -763,11 +882,26 @@ body {
 }
 
 /* Sections coloring helpers (light + dark variants) */
+/* Sections coloring helpers (light + dark variants — aliases hacia .invertido) */
 .section-cream { background-color: var(--surface-1); color: var(--text-primary); }
 .section-cream-soft { background-color: var(--surface-2); color: var(--text-primary); }
-.section-dark { background-color: var(--surface-dark-1); color: var(--text-on-dark-primary); }
-.section-dark .text-secondary { color: var(--text-on-dark-secondary); }
-.section-dark .label { color: var(--accent-secondary); }
+/* @deprecated .section-dark y .dark-mode — usar .invertido en su lugar */
+.section-dark,
+.dark-mode {
+  --tema: var(--carbon);
+  --texto: var(--blanco);
+  --texto-apoyo: var(--blanco-60);
+  --texto-terciario: var(--blanco-60);
+  --superficie: var(--blanco-05);
+  --superficie-solida: #1c1c1b;
+  --borde: var(--blanco-14);
+  --borde-alfa: var(--blanco-14);
+  --punto: rgba(var(--blanco-rgb), 0.14);
+  background: var(--tema);
+  color: var(--texto);
+}
+.section-dark .text-secondary,
+.dark-mode  .text-secondary { color: var(--blanco-60); }
 
 .section-depth-1 { background-color: var(--surface-1); }
 .section-depth-2 { background-color: var(--surface-2); }
@@ -780,10 +914,11 @@ body {
   background-size: 60px 60px;
 }
 
+.invertido .grid-pattern,
 .dark-mode .grid-pattern {
   background-image:
-    linear-gradient(rgba(245,242,236,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,242,236,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
 }
 
 
@@ -824,7 +959,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(119, 90, 0, 0.60) 0%, rgba(119, 90, 0, 0.38) 100%);
+  background: linear-gradient(160deg, rgba(13, 15, 14, 0.60) 0%, rgba(13, 15, 14, 0.38) 100%);
   mix-blend-mode: multiply;
   transition: background 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
@@ -836,7 +971,7 @@ body {
 }
 .group:hover .cover-editorial::after,
 .cover-editorial:hover::after {
-  background: linear-gradient(160deg, rgba(119, 90, 0, 0.44) 0%, rgba(119, 90, 0, 0.22) 100%);
+  background: linear-gradient(160deg, rgba(13, 15, 14, 0.44) 0%, rgba(13, 15, 14, 0.22) 100%);
 }
 .group:hover .cover-editorial::before,
 .cover-editorial:hover::before {

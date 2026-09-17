@@ -67,3 +67,17 @@ credentials.json
 .next/dev/cache/turbopack/411c455d/00013587.sst
 .next/dev/cache/turbopack/411c455d/00013979.sst
 .next/dev/cache/turbopack/411c455d/00013980.sst
+
+# --- Emergent Support (ticket 255734): workspace auto-commit unblock ---
+# The platform stages with :(exclude)<path> pathspecs. git aborts the ENTIRE
+# staging step if .gitignore also ignores a path named that way, so the
+# end-of-turn commit never runs and Save to GitHub has nothing to push.
+# Un-ignoring the ENTRY stops the collision; the /** lines keep all CONTENTS
+# ignored, so no env file and no build output is ever committed.
+# Keep this block LAST in the file.
+!/.env
+!/build
+/build/**
+!/.next
+/.next/**
+.next/dev/cache/turbopack/411c455d/00025829.sst

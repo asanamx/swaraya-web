@@ -18,7 +18,7 @@ const LiveRow = ({
   className = '',
   style = {},
 }) => {
-  const dashColor = onDark ? 'rgba(246,185,31,0.35)' : 'rgba(119,90,0,0.35)';
+  const dashColor = onDark ? 'rgba(200, 232, 36,0.35)' : 'rgba(13, 15, 14,0.35)';
   const labelDefault = onDark ? '#9aa0a8' : '#63666e';
 
   return (
@@ -84,7 +84,7 @@ const LiveRow = ({
           width: 5px;
           height: 5px;
           border-radius: 999px;
-          background: #f6b91f;
+          background: #c8e824;
           top: 50%;
           left: -1%;
           margin-top: -2.5px;

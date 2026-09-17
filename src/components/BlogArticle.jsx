@@ -34,7 +34,7 @@ const YouTubeEmbed = ({ videoId, title }) => {
 
   return (
     <div className="my-8">
-      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)]">
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#ffffff] border border-[rgba(13, 15, 14,0.08)]">
         {!isLoaded ? (
           <button
             onClick={() => setIsLoaded(true)}
@@ -48,8 +48,8 @@ const YouTubeEmbed = ({ videoId, title }) => {
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111114]/75 to-transparent" />
-            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-[#775a00] text-[#ffffff] group-hover:scale-110 transition-transform shadow-lg shadow-[#775a00]/30">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f0e]/75 to-transparent" />
+            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-[#0d0f0e] text-[#ffffff] group-hover:scale-110 transition-transform">
               <Play className="w-7 h-7 ml-1" fill="currentColor" />
             </div>
             {title && (
@@ -69,7 +69,7 @@ const YouTubeEmbed = ({ videoId, title }) => {
         )}
       </div>
       {title && isLoaded && (
-        <p className="mt-3 text-xs text-[#52565e] text-center">{title}</p>
+        <p className="mt-3 text-xs text-[color:var(--texto-apoyo)] text-center">{title}</p>
       )}
     </div>
   );
@@ -115,6 +115,7 @@ const formatDate = (dateString) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'America/Mexico_City',   // sede swaraya — evita mismatch SSR/cliente
   });
 };
 
@@ -154,7 +155,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Back Link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#775a00] mb-8 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-sm text-[#0d0f0e] mb-8 hover:gap-3 transition-all"
           >
             <ArrowLeft className="w-4 h-4" />
             Todos los artículos
@@ -163,7 +164,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Back Link - Mobile (legacy hidden) */}
           <Link
             href="/blog"
-            className="hidden items-center gap-2 text-sm text-[#775a00] mb-8"
+            className="hidden items-center gap-2 text-sm text-[#0d0f0e] mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver
@@ -172,23 +173,23 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Article Header */}
           <header className="max-w-3xl mx-auto mb-10 md:mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-[0.6875rem] font-medium text-[#775a00] tracking-[0.18em] uppercase px-2.5 py-1 bg-[rgba(119, 90, 0,0.08)] rounded-md">
+              <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase px-2.5 py-1 bg-[rgba(13, 15, 14,0.08)] rounded-md">
                 {post.category}
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
-              <span className="flex items-center gap-1.5 text-xs text-[#52565e]">
+              <span className="w-1 h-1 rounded-full bg-[color:var(--texto-apoyo)] opacity-40" />
+              <span className="flex items-center gap-1.5 text-xs text-[color:var(--texto-apoyo)]">
                 <Calendar className="w-3.5 h-3.5" />
                 {formatDate(post.publishedAt || post.published_at)}
               </span>
-              <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
-              <span className="flex items-center gap-1.5 text-xs text-[#52565e]">
+              <span className="w-1 h-1 rounded-full bg-[color:var(--texto-apoyo)] opacity-40" />
+              <span className="flex items-center gap-1.5 text-xs text-[color:var(--texto-apoyo)]">
                 <Clock className="w-3.5 h-3.5" />
                 {post.readingTime || post.reading_time || '5'} min de lectura
               </span>
             </div>
 
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#111114] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#0d0f0e] mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -199,7 +200,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
               {post.title}
             </h1>
 
-            <p className="text-base md:text-lg text-[#52565e] leading-relaxed">
+            <p className="text-base md:text-lg text-[color:var(--texto-apoyo)] leading-relaxed">
               {post.excerpt}
             </p>
 
@@ -208,7 +209,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 <Link
                   key={tag}
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
-                  className="text-xs text-[#52565e] hover:text-[#775a00] transition-colors"
+                  className="text-xs text-[color:var(--texto-apoyo)] hover:text-[#0d0f0e] transition-colors"
                 >
                   #{tag.replace(/\s+/g, '')}
                 </Link>
@@ -218,7 +219,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
           {/* Cover Image — duotone editorial */}
           <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#ffffff] border border-[rgba(17, 17, 20,0.08)]">
+            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#ffffff] border border-[rgba(13, 15, 14,0.08)]">
               <img
                 src={post.coverImage || post.cover_image}
                 alt={post.title}
@@ -245,21 +246,21 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                   <div
                     key={`html-${index}`}
                     className="prose prose-base max-w-none
-                      prose-headings:text-[#111114] prose-headings:font-medium prose-headings:tracking-[-0.025em]
+                      prose-headings:text-[color:var(--texto)] prose-headings:font-medium prose-headings:tracking-[-0.025em]
                       prose-h1:text-3xl prose-h1:mt-12 prose-h1:mb-5
                       prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
                       prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                      prose-p:text-[#3C4654] prose-p:leading-[1.8] prose-p:mb-5 prose-p:text-[1rem]
-                      prose-a:text-[#775a00] prose-a:underline prose-a:underline-offset-2 prose-a:decoration-[#775a00]/30 hover:prose-a:decoration-[#775a00]
-                      prose-strong:text-[#111114] prose-strong:font-semibold
-                      prose-ul:text-[#3C4654] prose-ul:my-5
-                      prose-ol:text-[#3C4654] prose-ol:my-5
+                      prose-p:text-[color:var(--texto-apoyo)] prose-p:leading-[1.8] prose-p:mb-5 prose-p:text-[1rem]
+                      prose-a:text-[color:var(--texto)] prose-a:underline prose-a:underline-offset-2 prose-a:decoration-[color:var(--borde)] hover:prose-a:decoration-[color:var(--texto)]
+                      prose-strong:text-[color:var(--texto)] prose-strong:font-semibold
+                      prose-ul:text-[color:var(--texto-apoyo)] prose-ul:my-5
+                      prose-ol:text-[color:var(--texto-apoyo)] prose-ol:my-5
                       prose-li:my-1.5 prose-li:leading-[1.75] prose-li:text-[1rem]
-                      prose-blockquote:border-l-[#775a00] prose-blockquote:bg-[rgba(119, 90, 0,0.05)] prose-blockquote:text-[#111114] prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-                      prose-code:text-[#775a00] prose-code:bg-[rgba(119, 90, 0,0.08)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
-                      prose-pre:bg-[#111114] prose-pre:text-[#ffffff] prose-pre:rounded-xl
-                      prose-img:rounded-xl prose-img:border prose-img:border-[rgba(17, 17, 20,0.08)]
-                      prose-hr:border-[rgba(17, 17, 20,0.10)] prose-hr:my-10
+                      prose-code:text-[color:var(--texto)] prose-code:bg-[color:var(--tinta-10)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
+                      prose-pre:bg-[color:var(--carbon)] prose-pre:text-[color:var(--blanco)] prose-pre:rounded-xl
+                      prose-img:rounded-xl prose-img:border prose-img:border-[color:var(--borde-alfa)]
+                      prose-hr:border-[color:var(--borde-alfa)] prose-hr:my-10
+                      prose-editorial
                     "
                     dangerouslySetInnerHTML={{ __html: segment.content }}
                   />
@@ -268,35 +269,35 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             })()}
 
             {/* Share */}
-            <div className="mt-12 pt-8 border-t border-[rgba(17, 17, 20,0.08)]">
+            <div className="mt-12 pt-8 border-t border-[rgba(13, 15, 14,0.08)]">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <span className="text-xs font-medium text-[#52565e] tracking-[0.18em] uppercase">Compartir artículo</span>
+                <span className="text-xs font-medium text-[color:var(--texto-apoyo)] tracking-[0.18em] uppercase">Compartir artículo</span>
                 <div className="flex items-center gap-3">
-                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(119, 90, 0,0.08)] hover:text-[#775a00] transition-all" aria-label="Compartir en Twitter">
+                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en Twitter">
                     <Twitter className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(119, 90, 0,0.08)] hover:text-[#775a00] transition-all" aria-label="Compartir en LinkedIn">
+                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en LinkedIn">
                     <Linkedin className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(119, 90, 0,0.08)] hover:text-[#775a00] transition-all" aria-label="Compartir en Facebook">
+                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en Facebook">
                     <Facebook className="w-4 h-4" />
                   </a>
-                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(17, 17, 20,0.04)] text-[#52565e] hover:bg-[rgba(119, 90, 0,0.08)] hover:text-[#775a00] transition-all" aria-label="Copiar enlace">
-                    {copied ? <Check className="w-4 h-4 text-[#775a00]" /> : <LinkIcon className="w-4 h-4" />}
+                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Copiar enlace">
+                    {copied ? <Check className="w-4 h-4 text-[#0d0f0e]" /> : <LinkIcon className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Author */}
-            <div className="mt-8 p-6 bg-[#ffffff] rounded-xl border border-[rgba(17, 17, 20,0.08)]">
+            <div className="mt-8 p-6 bg-[#ffffff] rounded-xl border border-[rgba(13, 15, 14,0.08)]">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[rgba(119, 90, 0,0.10)] flex items-center justify-center">
-                  <AxisMark size={20} color="#775a00" />
+                <div className="w-12 h-12 rounded-full bg-[rgba(13, 15, 14,0.10)] flex items-center justify-center">
+                  <AxisMark size={20} color="#0d0f0e" />
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-[#111114]">{post.author?.name || 'swaraya'}</div>
-                  <div className="text-xs text-[#52565e]">Agencia de Inteligencia Aplicada</div>
+                  <div className="text-sm font-medium text-[#0d0f0e]">{post.author?.name || 'swaraya'}</div>
+                  <div className="text-xs text-[color:var(--texto-apoyo)]">Agencia de Inteligencia Aplicada</div>
                 </div>
               </div>
             </div>
@@ -306,10 +307,10 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 md:py-20 border-t border-[rgba(17, 17, 20,0.08)] bg-[#ffffff]">
+        <section className="py-16 md:py-20 border-t border-[rgba(13, 15, 14,0.08)] bg-[#ffffff]">
           <div className="container-main">
             <h2
-              className="text-2xl text-[#111114] mb-10"
+              className="text-2xl text-[#0d0f0e] mb-10"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -323,11 +324,11 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 <Link
                   key={relPost.id}
                   href={`/blog/${relPost.slug}`}
-                  className="group p-6 bg-[#ffffff] rounded-xl border border-[rgba(17, 17, 20,0.08)] hover:border-[#775a00]/40 transition-colors"
+                  className="group p-6 bg-[#ffffff] rounded-xl border border-[rgba(13, 15, 14,0.08)] hover:border-[#0d0f0e]/40 transition-colors"
                 >
-                  <span className="text-[0.6875rem] font-medium text-[#775a00] tracking-[0.18em] uppercase">{relPost.category}</span>
+                  <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase">{relPost.category}</span>
                   <h3
-                    className="text-lg mt-3 mb-2 group-hover:text-[#775a00] transition-colors text-[#111114]"
+                    className="text-lg mt-3 mb-2 group-hover:text-[#0d0f0e] transition-colors text-[#0d0f0e]"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
@@ -336,7 +337,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                   >
                     {relPost.title}
                   </h3>
-                  <p className="text-sm text-[#52565e] line-clamp-2">{relPost.excerpt}</p>
+                  <p className="text-sm text-[color:var(--texto-apoyo)] line-clamp-2">{relPost.excerpt}</p>
                 </Link>
               ))}
             </div>

@@ -25,7 +25,7 @@ export default function LegalLayout({
           {/* Back link */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[0.8125rem] text-[#52565e] hover:text-[#775a00] transition-colors mb-12"
+            className="inline-flex items-center gap-2 text-[0.8125rem] text-[#52565e] hover:text-[#0d0f0e] transition-colors mb-12"
             data-testid="back-to-home"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -34,9 +34,9 @@ export default function LegalLayout({
 
           {/* Header */}
           <header className="mb-16 md:mb-20 max-w-4xl">
-            <p className="label-accent text-[#775a00] mb-6">{eyebrow}</p>
+            <p className="label-accent text-[#0d0f0e] mb-6">{eyebrow}</p>
             <h1
-              className="text-3xl md:text-5xl lg:text-[3.5rem] text-[#111114] mb-6"
+              className="text-3xl md:text-5xl lg:text-[3.5rem] text-[#0d0f0e] mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -60,7 +60,7 @@ export default function LegalLayout({
           </header>
 
           {/* Divider */}
-          <div className="h-px bg-[rgba(17, 17, 20,0.10)] mb-16 md:mb-20" />
+          <div className="h-px bg-[rgba(13, 15, 14,0.10)] mb-16 md:mb-20" />
 
           {/* Sections */}
           <div className="space-y-16 md:space-y-20">
@@ -74,7 +74,7 @@ export default function LegalLayout({
                 {/* Number column */}
                 <div className="col-span-12 md:col-span-2">
                   <div
-                    className="text-[#775a00] sticky top-24"
+                    className="text-[#0d0f0e] sticky top-24"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 300,
@@ -90,7 +90,7 @@ export default function LegalLayout({
                 {/* Content column */}
                 <div className="col-span-12 md:col-span-10 max-w-3xl">
                   <h2
-                    className="text-xl md:text-2xl lg:text-[1.625rem] text-[#111114] mb-6"
+                    className="text-xl md:text-2xl lg:text-[1.625rem] text-[#0d0f0e] mb-6"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,
@@ -121,18 +121,18 @@ export default function LegalLayout({
           margin-top: 1em;
         }
         .prose-legal strong {
-          color: #111114;
+          color: #0d0f0e;
           font-weight: 600;
         }
         .prose-legal a {
-          color: #775a00;
+          color: #0d0f0e;
           text-decoration: underline;
           text-decoration-thickness: 1px;
           text-underline-offset: 3px;
           transition: color 0.2s ease;
         }
         .prose-legal a:hover {
-          color: #f6b91f;
+          color: #c8e824;
         }
         .prose-legal ul {
           list-style: none;
@@ -152,7 +152,7 @@ export default function LegalLayout({
           top: 0.7em;
           width: 0.5rem;
           height: 1px;
-          background: #775a00;
+          background: #0d0f0e;
         }
         .prose-legal .sublabel {
           display: inline-block;
@@ -160,7 +160,7 @@ export default function LegalLayout({
           font-weight: 500;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #775a00;
+          color: #0d0f0e;
           margin-bottom: 0.75rem;
           margin-top: 1rem;
         }

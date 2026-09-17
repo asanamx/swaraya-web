@@ -7,8 +7,8 @@
  * ═══════════════════════════════════════════════════════════
  *  SISTEMA CONSOLIDADO · ~12 roles semánticos · WCAG 2.1 AA
  * ═══════════════════════════════════════════════════════════
- *  • Fondo GALERÍA (--bg) → text-primary/secondary/tertiary + accent (#775a00)
- *  • Fondo DARK    (--ink) → text-on-dark-* + accentBright (#f6b91f)
+ *  • Fondo GALERÍA (--bg) → text-primary/secondary/tertiary + accent (#0d0f0e)
+ *  • Fondo DARK    (--ink) → text-on-dark-* + accentBright (#c8e824)
  *
  *  Contraste verificado para cada par texto/superficie.
  *  Los alias legacy están marcados como @deprecated.
@@ -21,18 +21,18 @@ export const colors = {
   surface: '#ffffff',            // superficie elevada
   surfaceRaised: '#ffffff',      // alias cards, popovers
   surfaceMuted: '#e5e5e6',       // chips, hover, secondary
-  ink: '#111114',                // tinta / foreground
+  ink: '#0d0f0e',                // tinta / foreground
 
   // Superficies oscuras
-  bgDark: '#111114',
-  bgDeep: '#0a0a0a',             // hero + footer profundo
-  surfaceDark: '#111114',
-  surfaceDark2: '#17171b',
+  bgDark: '#0d0f0e',
+  bgDeep: '#141414',             // hero + footer profundo
+  surfaceDark: '#0d0f0e',
+  surfaceDark2: '#1c1c1b',
   surfaceDark3: '#1c1c22',
 
   // ── TEXTO SOBRE CLARO ────────────────────────────────────
   text: {
-    primary: '#111114',          // ≈17:1 sobre #f4f4f5 AAA
+    primary: '#0d0f0e',          // ≈17:1 sobre #f4f4f5 AAA
     secondary: '#52565e',        // ≈6.6:1 AA
     tertiary: '#63666e',         // ≈4.9:1 AA
     placeholder: '#63666e',
@@ -43,19 +43,19 @@ export const colors = {
   textOnDark: {
     primary: '#ffffff',
     secondary: '#c9cdd3',
-    tertiary: '#9aa0a8',         // ≈6.9:1 sobre #111114 ✓
+    tertiary: '#9aa0a8',         // ≈6.9:1 sobre #0d0f0e ✓
   },
 
   // ── ACENTO ULTRAMAR ──────────────────────────────────────
-  accent: '#775a00',             // sobre claro · ≈9.3:1 ✓
-  accentHover: '#5a4400',
-  accentBright: '#f6b91f',       // sobre oscuro o fills grandes
-  accentBrightHover: '#ffc93d',
-  accentBrightText: '#ffc93d',   // texto pequeño sobre oscuro · ≈7:1
+  accent: '#0d0f0e',             // sobre claro · ≈9.3:1 ✓
+  accentHover: '#0d0f0e',
+  accentBright: '#c8e824',       // sobre oscuro o fills grandes
+  accentBrightHover: '#e2f56e',
+  accentBrightText: '#e2f56e',   // texto pequeño sobre oscuro · ≈7:1
 
   // ── FOCO ─────────────────────────────────────────────────
-  ring: '#775a00',
-  ringOnDark: '#f6b91f',
+  ring: '#0d0f0e',
+  ringOnDark: '#c8e824',
 
   // ── ESTADOS DE ERROR ─────────────────────────────────────
   destructive: '#EF4343',        // fills, iconos, bordes
@@ -71,15 +71,15 @@ export const colors = {
     hairline: '#e5e5e6',          // @deprecated → borders.solid
   },
   dark: {
-    base: '#111114',              // @deprecated → surfaceDark
-    soft: '#17171b',              // @deprecated → surfaceDark2
+    base: '#0d0f0e',              // @deprecated → surfaceDark
+    soft: '#1c1c1b',              // @deprecated → surfaceDark2
     deep: '#1c1c22',              // @deprecated → surfaceDark3
   },
   indigo: {
-    onCream: '#775a00',           // @deprecated → accent
-    onCreamHover: '#5a4400',      // @deprecated → accentHover
-    onDark: '#f6b91f',            // @deprecated → accentBright
-    onDarkHover: '#ffc93d',       // @deprecated → accentBrightHover
+    onCream: '#0d0f0e',           // @deprecated → accent
+    onCreamHover: '#0d0f0e',      // @deprecated → accentHover
+    onDark: '#c8e824',            // @deprecated → accentBright
+    onDarkHover: '#e2f56e',       // @deprecated → accentBrightHover
   },
 };
 
@@ -96,9 +96,9 @@ export const indigoFor = (surface, state = 'base') => {
 /** Bordes translúcidos por contexto */
 export const borders = {
   onCream: {
-    soft: 'rgba(17, 17, 20, 0.05)',
-    base: 'rgba(17, 17, 20, 0.10)',
-    strong: 'rgba(17, 17, 20, 0.16)',
+    soft: 'rgba(13, 15, 14, 0.05)',
+    base: 'rgba(13, 15, 14, 0.10)',
+    strong: 'rgba(13, 15, 14, 0.16)',
     solid: '#e5e5e6',
   },
   onDark: {

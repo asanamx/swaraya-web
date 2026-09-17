@@ -1,9 +1,8 @@
 /**
- * SWARAYA — Catálogo de agentes en operación.
+ * SWARAYA — Catálogo de agentes / capacidades.
  *
  * ARQUITECTURA: Datos separados de presentación.
- * Mañana esta lista puede venir de Sanity / API externa sin tocar el
- * componente. El shape debe respetar:
+ * Estados admitidos: 'produccion' | 'desarrollo' | 'disponible' | 'cta'
  *
  *   {
  *     id:         string  (estable)
@@ -11,43 +10,68 @@
  *     titulo:     string  (la promesa de valor, una frase corta)
  *     problema:   string  (qué duele en una frase)
  *     resultado:  string  (qué hace el agente, en una frase)
- *     estado:     'produccion' | 'desarrollo' | 'proximo'
- *     logro:      string  (resultado anonimizado, sin nombre de cliente)
+ *     estado:     'produccion' | 'desarrollo' | 'disponible'
+ *     logro:      string  (pie de tarjeta)
  *     ctaCard?:   boolean (true marca la tarjeta como CTA, no como caso)
  *   }
  */
 
 export const agents = [
   {
-    id: 'inmobiliario-leads',
+    id: 'inmobiliario-prospectos',
     disciplina: 'Inmobiliario residencial',
-    titulo: 'Califica leads y prioriza los de mayor cierre',
+    titulo: 'Califica y prioriza prospectos',
     problema:
-      'Entran muchos prospectos y nadie sabe cuáles valen la pena.',
+      'Entran solicitudes por todos lados y nadie alcanza a contestarlas a tiempo.',
     resultado:
-      'Perfila cada lead automáticamente y prioriza por probabilidad de cierre, con aprobación humana antes de actuar.',
+      'Responde en segundos, califica con tu criterio y entrega al vendedor solo lo que vale su tiempo.',
     estado: 'produccion',
     logro:
-      'Perfilado automático de leads operando en un desarrollo residencial.',
+      'Perfilado automático operando en un desarrollo residencial.',
   },
   {
     id: 'fiscal-riesgos',
     disciplina: 'Fiscal / Contable',
-    titulo: 'Detecta riesgos fiscales antes de que cuesten',
+    titulo: 'Procesa documentos y detecta riesgos',
     problema:
-      'Revisar documentación fiscal a mano es lento y se escapan riesgos.',
+      'Revisar facturas, contratos y expedientes a mano es lento y se escapan cosas.',
     resultado:
-      'Pre-revisa documentos y marca los de mayor riesgo para atención prioritaria.',
+      'Extrae, valida y marca por prioridad de riesgo, con la excepción siempre a revisión humana.',
     estado: 'desarrollo',
     logro: 'En construcción.',
   },
   {
+    id: 'operacion-manual',
+    disciplina: 'Operación interna',
+    titulo: 'Responde con el manual de la casa',
+    problema:
+      'Todo depende de la persona que se sabe las políticas y los precedentes.',
+    resultado:
+      'Contesta sobre políticas, precios y casos anteriores usando los documentos de tu empresa.',
+    estado: 'disponible',
+    logro: 'Plantilla lista para implementar.',
+  },
+  {
+    id: 'seguimiento-desviaciones',
+    disciplina: 'Seguimiento',
+    titulo: 'Vigila y avisa antes del problema',
+    problema:
+      'Las desviaciones se descubren cuando ya costaron dinero.',
+    resultado:
+      'Compara la operación contra lo planeado y alerta al responsable con el dato en la mano.',
+    estado: 'disponible',
+    logro: 'Plantilla lista para implementar.',
+  },
+  {
     id: 'cta-disciplina',
     disciplina: 'Tu disciplina',
-    titulo: 'El siguiente agente podría ser para tu negocio',
+    titulo: 'El siguiente podría ser el tuyo',
     problema:
-      'Cada profesión tiene tareas repetitivas de criterio experto.',
-    resultado: 'Diseñamos agentes a la medida de tu disciplina.',
+      'Si reconoces una tarea repetitiva donde se ejerce criterio sobre datos que llegan en flujo,',
+    resultado:
+      'probablemente ahí vive tu primer agente.',
+    cierre:
+      'Lo mapeamos contigo en dos semanas.',
     estado: 'proximo',
     logro: '',
     ctaCard: true,
