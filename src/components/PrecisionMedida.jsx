@@ -81,7 +81,7 @@ export const PrecisionMedida = () => {
                   fontWeight: 500,
                   fontSize: 'clamp(3rem, 6vw, 4.5rem)',
                   lineHeight: 0.9,
-                  letterSpacing: '-0.045em',
+                  letterSpacing: 'normal',                /* v3.1 — ya no apretamos cifras */
                   color: 'var(--texto)',
                 }}
               >

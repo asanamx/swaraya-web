@@ -162,7 +162,7 @@ export const Navbar = () => {
           {/* Logo: swaraya. wordmark (canonical) */}
           <Link
             href="/"
-            className="relative z-50 inline-flex items-center h-full focus:outline-none"
+            className="wordmark-link relative z-50 inline-flex items-center h-full focus:outline-none"
             data-testid="navbar-logo"
             aria-label="swaraya — inicio"
             style={{

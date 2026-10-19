@@ -170,7 +170,7 @@ const CtaCard = ({ agent, className = '' }) => (
   <Link
     href="/#chat"
     scroll={true}
-    className={`relative p-7 md:p-8 lg:p-10 flex flex-col h-full group rounded-xl transition-transform duration-500 invertido ${className}`}
+    className={`tarjeta relative p-7 md:p-8 lg:p-10 flex flex-col h-full group rounded-xl transition-transform duration-500 invertido ${className}`}
     data-testid={`agent-card-${agent.id}`}
     style={{
       background: 'var(--carbon)',

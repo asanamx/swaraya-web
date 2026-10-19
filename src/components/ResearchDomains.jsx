@@ -76,15 +76,11 @@ export const ResearchDomains = () => {
             ref={listRef}
             className={`lg:col-span-7 reveal-stagger ${listVisible ? 'revealed' : ''}`}
           >
-            <ul
-              className="border-t"
-              style={{ borderColor: 'var(--borde-alfa)' }}
-            >
+            <ul>
               {levels.map(({ number, title, description }, i) => (
                 <li
                   key={number}
-                  className="group relative transition-colors duration-300"
-                  style={{ borderBottom: '1px solid var(--borde-alfa)' }}
+                  className="fila group relative transition-colors duration-300"
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.background = 'var(--superficie)')
                   }

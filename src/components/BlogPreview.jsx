@@ -85,7 +85,7 @@ export const BlogPreview = () => {
                 className="group"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`} className="tarjeta block">
                   {/* Cover Image — duotono índigo unificado (Prompt B) */}
                   <div className="duotone-indigo relative aspect-[16/9] mb-5 rounded-xl overflow-hidden bg-[color:var(--blanco)] border border-[color:var(--borde-alfa)] transition-transform duration-500 group-hover:scale-[1.02]">
                     <img

@@ -291,6 +291,55 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   ENLACES · v3.1
+   ─────────────────────────────────────────────────────────────
+   Los <a> que NO son enlaces de texto (botones-link, filas de
+   índice, tarjetas enlazadas, logotipo, menú, pestañas) anulan
+   cualquier línea inferior heredada de la regla global de enlaces.
+   Si llega a reintroducirse `a { border-bottom: … }` como regla
+   global, estas clases la neutralizan sin tocar los componentes.
+   ═══════════════════════════════════════════════════════════ */
+
+a.btn,
+a.fila,
+a.tarjeta,
+a.nav-item,
+a.wordmark-link,
+a.tab {
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FILAS DE ÍNDICE · v3.1
+   ─────────────────────────────────────────────────────────────
+   Cada fila lleva solo su línea SUPERIOR. La última, además, la
+   inferior para cerrar el bloque. Nunca aparecen dos líneas
+   consecutivas (= doble línea entre filas adyacentes).
+   ═══════════════════════════════════════════════════════════ */
+
+.fila {
+  border-top: 1px solid var(--borde-alfa);
+  border-bottom: 0;
+}
+.fila:last-child {
+  border-bottom: 1px solid var(--borde-alfa);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO · degradado medianoche
+   ─────────────────────────────────────────────────────────────
+   `.invertido` fija `background: var(--tema)` plano. Con doble
+   especificidad `.hero.invertido` lo sustituye por el degradado
+   `--medianoche` (#1c1c1b → #0d0f0e). El velo (::after) y el
+   video atmosférico quedan intactos encima.
+   ═══════════════════════════════════════════════════════════ */
+
+.hero.invertido {
+  background: var(--medianoche);
+}
+
+/* ═══════════════════════════════════════════════════════════
    TIPOGRAFÍA EDITORIAL  ─  Cabinet Grotesk + Inter
    ─────────────────────────────────────────────────────────────
    Escala con puente H2 (30px) y H3 propio (20px), sin saltos
@@ -590,7 +639,7 @@ body {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 10vw, 4.5rem);
   font-weight: 500;
-  letter-spacing: -0.045em;
+  letter-spacing: normal;                       /* v3.1 — a esta escala el track negativo apretaba cifras */
   line-height: 0.9;
   color: var(--texto);
   background: none !important;

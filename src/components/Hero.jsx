@@ -67,8 +67,8 @@ export const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden with-grain invertido"
-      style={{ background: 'var(--tema)', color: 'var(--texto)' }}
+      className="hero relative min-h-screen overflow-hidden with-grain invertido"
+      style={{ color: 'var(--texto)' }}
       data-testid="hero-section"
       ref={heroRef}
     >
