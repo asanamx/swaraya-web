@@ -132,7 +132,7 @@ export default function LegalLayout({
           transition: color 0.2s ease;
         }
         .prose-legal a:hover {
-          color: #c8e824;
+          color: var(--texto);
         }
         .prose-legal ul {
           list-style: none;

@@ -255,15 +255,39 @@ body {
    Ratio 9.25:1 (--ring vs --bg) ✓ AA no-textual.
    ═══════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════
+   FOCO ÚNICO · v3.1
+   ─────────────────────────────────────────────────────────────
+   Una sola regla para todo el sitio. Ningún anillo con box-shadow,
+   ningún ring-*. El color del contorno es `--texto`, que se vuelve
+   blanco automáticamente dentro de `.invertido`. Sobre la banda de
+   acento pleno (`.bloque-acento`) el contorno se oscurece a
+   `--sobre-brote` para preservar contraste contra el lima.
+   ═══════════════════════════════════════════════════════════ */
+
+:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 2px;
+}
+
 :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid var(--texto);
   outline-offset: 2px;
   border-radius: inherit;
 }
 
-/* Sobre superficies invertidas — anillo brillante */
-.invertido :where(a, button, [role="button"], input, textarea, select, summary, [tabindex]):focus-visible {
-  outline-color: var(--brote);
+.btn:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Dentro de la banda lima el contorno pasa a carbón para asegurar
+   contraste contra el fondo brote (–texto allí también es carbón,
+   pero esta regla hace explícita la intención). */
+.bloque-acento :focus-visible,
+.bloque-acento .btn:focus-visible {
+  outline-color: var(--sobre-brote);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -549,7 +573,7 @@ body {
   border-color: var(--borde);
 }
 .invertido .btn-secondary:hover {
-  color: var(--brote);
+  color: var(--texto);
   border-color: var(--brote);
 }
 

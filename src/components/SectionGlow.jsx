@@ -51,7 +51,8 @@ export default function SectionGlow({
         }}
       />
 
-      {/* Núcleo pulsante — el "punto de luz" central */}
+      {/* Núcleo pulsante — el "punto de luz" central.
+          Sin box-shadow (Sistema v3.1): el halo lo da el radial-gradient. */}
       <div
         className="absolute rounded-full"
         style={{
@@ -62,7 +63,6 @@ export default function SectionGlow({
           transform: 'translate(-50%, -50%)',
           background: `radial-gradient(circle, rgba(200, 232, 36,${coreAlpha + 0.30}) 0%, rgba(200, 232, 36,${coreAlpha}) 40%, rgba(200, 232, 36,0) 100%)`,
           animation: 'glowPulse 4.5s ease-in-out infinite',
-          boxShadow: `0 0 24px rgba(200, 232, 36,${coreAlpha * 0.7})`,
         }}
       />
     </div>

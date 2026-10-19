@@ -118,7 +118,7 @@ export const Hero = () => {
               fontSize: '0.75rem',
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: 'var(--brote)',
+              color: 'var(--texto)',
               fontWeight: 500,
               transitionDelay: '40ms',
               opacity: isLoaded ? 1 : 0,
@@ -167,7 +167,6 @@ export const Hero = () => {
             <span
               style={{
                 display: 'block',
-                color: 'var(--brote)',
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
                 transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms`,

@@ -181,7 +181,7 @@ const CtaCard = ({ agent, className = '' }) => (
     {/* Disciplina */}
     <span
       className="label-accent block mb-7"
-      style={{ color: 'var(--brote)' }}                    /* brote sobre carbón · ≈9.5:1 ✓ */
+      style={{ color: 'var(--texto)' }}                    /* texto = blanco en .invertido */
     >
       {agent.disciplina}
     </span>
@@ -205,12 +205,13 @@ const CtaCard = ({ agent, className = '' }) => (
       {agent.resultado}
     </p>
 
-    {/* Línea de cierre — promesa concreta, en brote para dar cierre visual */}
+    {/* Línea de cierre — en blanco con Cabinet Grotesk 500 para diferenciar
+        del cuerpo (400) sin recurrir al lima como color de letra. */}
     {agent.cierre ? (
       <p
         className="text-[0.875rem] leading-[1.55] mb-8"
         style={{
-          color: 'var(--brote)',
+          color: 'var(--texto)',
           fontFamily: "'Cabinet Grotesk', sans-serif",
           fontWeight: 500,
           letterSpacing: '-0.005em',
@@ -226,13 +227,14 @@ const CtaCard = ({ agent, className = '' }) => (
       className="mt-auto pt-6 flex items-center justify-between gap-4"
       style={{ borderTop: '1px solid var(--blanco-14)' }}
     >
-      {/* Chip "En producción" sobre carbón — brote + borde brote */}
+      {/* Chip "Tu disciplina" — texto blanco, con el punto brote como
+          único acento cromático dentro del chip. */}
       <span
         className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[0.6875rem] uppercase"
         style={{
           background: 'rgba(200, 232, 36, 0.10)',
           border: '1px solid rgba(200, 232, 36, 0.35)',
-          color: 'var(--brote)',
+          color: 'var(--texto)',
           fontFamily: "'Inter', sans-serif",
           fontWeight: 500,
           letterSpacing: '0.08em',
@@ -247,7 +249,7 @@ const CtaCard = ({ agent, className = '' }) => (
       </span>
       <span
         className="inline-flex items-center gap-2 text-[0.875rem] font-medium transition-transform duration-400 group-hover:translate-x-0.5"
-        style={{ color: 'var(--brote)', fontFamily: "'Inter', sans-serif" }}
+        style={{ color: 'var(--texto)', fontFamily: "'Inter', sans-serif" }}
       >
         ¡Hablemos!
         <ArrowUpRight className="w-4 h-4" strokeWidth={1.8} />

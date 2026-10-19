@@ -24,7 +24,8 @@ export const Footer = () => {
           ═══════════════════════════════════════════════════════ */}
       <section
         id="contacto"
-        style={{ background: 'var(--brote)', color: 'var(--tinta)' }}
+        className="bloque-acento"
+        style={{ background: 'var(--brote)', color: 'var(--sobre-brote)' }}
         data-testid="contact-band"
       >
         <div className="container-main">
@@ -42,7 +43,7 @@ export const Footer = () => {
                     fontWeight: 600,
                     display: 'inline-block',
                     marginBottom: '1.5rem',
-                    opacity: 0.75,
+                    opacity: 0.7,
                   }}
                 >
                   Primera Etapa
@@ -109,19 +110,19 @@ export const Footer = () => {
                   data-testid="footer-oferta"
                 >
                   <div className="flex flex-col gap-1">
-                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.6, fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.7, fontWeight: 600 }}>
                       Duración
                     </span>
                     <span>2 semanas</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.6, fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.7, fontWeight: 600 }}>
                       Entregable
                     </span>
                     <span>Mapa de criterio</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.6, fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.6875rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--tinta)', opacity: 0.7, fontWeight: 600 }}>
                       Compromiso
                     </span>
                     <span>Ninguno de continuar</span>
@@ -145,7 +146,7 @@ export const Footer = () => {
                       letterSpacing: '0.24em',
                       textTransform: 'uppercase',
                       color: 'var(--tinta)',
-                      opacity: 0.65,
+                      opacity: 0.7,
                       fontWeight: 600,
                       marginBottom: '1.75rem',
                     }}
@@ -168,7 +169,7 @@ export const Footer = () => {
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
                           color: 'var(--tinta)',
-                          opacity: 0.75,
+                          opacity: 0.7,
                           fontWeight: 600,
                           marginBottom: 8,
                         }}
@@ -195,7 +196,7 @@ export const Footer = () => {
                         letterSpacing: '0.18em',
                         textTransform: 'uppercase',
                         color: 'var(--tinta)',
-                        opacity: 0.75,
+                        opacity: 0.7,
                         fontWeight: 600,
                         marginBottom: 8,
                       }}
@@ -214,17 +215,17 @@ export const Footer = () => {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-semibold tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
+                    className="btn w-full mt-2 py-3.5 px-6 rounded-xl text-[0.8125rem] font-semibold tracking-[-0.005em] transition-all duration-300 group inline-flex items-center justify-center gap-2"
                     style={{
-                      background: 'var(--tinta)',                 /* carbón, no amarillo */
-                      color: 'var(--blanco)',                      /* etiqueta blanca sobre carbón */
+                      background: 'var(--sobre-brote)',       /* carbón sobre banda lima */
+                      color: 'var(--blanco)',                 /* etiqueta blanca */
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#000000';
+                      e.currentTarget.style.background = 'var(--sobre-brote-hover)';
                       e.currentTarget.style.transform = 'translateY(-1px)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'var(--tinta)';
+                      e.currentTarget.style.background = 'var(--sobre-brote)';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                     data-testid="footer-submit-button"
@@ -497,7 +498,8 @@ export const Footer = () => {
 
       {/* Local input styles */}
       <style jsx>{`
-        /* Inputs sobre banda girasol — contraste dark ink */
+        /* Inputs sobre banda girasol — contraste dark ink.
+           Foco heredado del :focus-visible global (outline 2px texto). */
         .contact-input {
           width: 100%;
           min-height: 44px;
@@ -509,19 +511,18 @@ export const Footer = () => {
           font-family: 'Inter', sans-serif;
           font-size: 0.9375rem;
           line-height: 1.4;
-          transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+          transition: border-color 0.25s ease, background 0.25s ease;
         }
         .contact-input::placeholder {
           color: rgba(43, 30, 0, 0.55);
         }
-        .contact-input:focus {
-          outline: none;
-          border-color: var(--tinta);
+        .contact-input:focus-visible {
+          border-color: var(--sobre-brote);
           background: rgba(255, 255, 255, 0.55);
-          box-shadow: 0 0 0 3px rgba(43, 30, 0, 0.20);
         }
 
-        /* Inputs sobre footer oscuro (por si algún día se usan) */
+        /* Inputs sobre footer oscuro (por si algún día se usan).
+           Foco heredado del :focus-visible global. */
         .footer-input {
           width: 100%;
           min-height: 44px;
@@ -533,16 +534,14 @@ export const Footer = () => {
           font-family: 'Inter', sans-serif;
           font-size: 0.9375rem;
           line-height: 1.4;
-          transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+          transition: border-color 0.25s ease, background 0.25s ease;
         }
         .footer-input::placeholder {
           color: #9aa0a8;                              /* 7.72:1 sobre #0d0f0e ✓ */
         }
-        .footer-input:focus {
-          outline: none;
-          border-color: var(--brote);
+        .footer-input:focus-visible {
+          border-color: var(--blanco);
           background: rgba(255, 255, 255,0.06);
-          box-shadow: 0 0 0 3px rgba(200, 232, 36,0.25);
         }
 
         /* Iniciativas — homologación de estados idle/hover
@@ -550,7 +549,8 @@ export const Footer = () => {
            distintos (wordmark blanco vs icono cuadrado a color). Para que
            el "logo strip" respire con coherencia:
            · Idle  → escala de grises + opacidad reducida (todos iguales)
-           · Hover → color de marca original + opacidad plena           */
+           · Hover → color de marca original + opacidad plena
+           El foco visible lo aporta la regla global :focus-visible. */
         .initiative-logo {
           filter: grayscale(1);
           opacity: 0.55;
@@ -560,11 +560,6 @@ export const Footer = () => {
         .initiative-logo:focus-visible {
           filter: grayscale(0);
           opacity: 1;
-        }
-        .initiative-logo:focus-visible {
-          outline: 2px solid var(--brote);
-          outline-offset: 4px;
-          border-radius: 4px;
         }
       `}</style>
     </footer>

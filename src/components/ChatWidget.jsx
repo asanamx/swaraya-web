@@ -141,7 +141,7 @@ const ChatWidget = () => {
                 }`}>
                   {msg.role === 'user' 
                     ? <User className="w-3.5 h-3.5 text-[#9aa0a8]" />
-                    : <Bot className="w-3.5 h-3.5 text-brote" />
+                    : <Bot className="w-3.5 h-3.5 text-blanco" />
                   }
                 </div>
                 
@@ -160,7 +160,7 @@ const ChatWidget = () => {
             {isLoading && (
               <div className="flex gap-3">
                 <div className="w-7 h-7 rounded-full bg-brote/20 flex items-center justify-center">
-                  <Bot className="w-3.5 h-3.5 text-brote" />
+                  <Bot className="w-3.5 h-3.5 text-blanco" />
                 </div>
                 <div className="px-4 py-3 rounded-xl rounded-tl-sm bg-[rgba(255,255,255,0.05)]">
                   <div className="flex gap-1">

@@ -139,7 +139,7 @@ export const Navbar = () => {
         // Aplicado explícitamente a las propiedades que cambian para evitar
         // jank en navegadores que no transicionan correctamente `transition-all`.
         transitionProperty:
-          'background-color, background, backdrop-filter, -webkit-backdrop-filter, border-color, box-shadow',
+          'background-color, background, backdrop-filter, -webkit-backdrop-filter, border-color',
         transitionDuration: '420ms',
         transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
       }}
