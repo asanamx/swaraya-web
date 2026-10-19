@@ -537,7 +537,7 @@ export const Footer = () => {
           transition: border-color 0.25s ease, background 0.25s ease;
         }
         .footer-input::placeholder {
-          color: #9aa0a8;                              /* 7.72:1 sobre #0d0f0e ✓ */
+          color: var(--piedra-media);                              /* 7.72:1 sobre #0d0f0e ✓ */
         }
         .footer-input:focus-visible {
           border-color: var(--blanco);

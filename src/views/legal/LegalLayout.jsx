@@ -25,7 +25,7 @@ export default function LegalLayout({
           {/* Back link */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[0.8125rem] text-[#52565e] hover:text-tinta transition-colors mb-12"
+            className="inline-flex items-center gap-2 text-[0.8125rem] text-piedra-contraste hover:text-tinta transition-colors mb-12"
             data-testid="back-to-home"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -48,13 +48,13 @@ export default function LegalLayout({
             </h1>
             {subtitle && (
               <p
-                className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch] mb-6"
+                className="text-base md:text-lg text-piedra-contraste leading-relaxed max-w-[60ch] mb-6"
                 style={{ fontWeight: 400 }}
               >
                 {subtitle}
               </p>
             )}
-            <p className="text-xs text-[#52565e] tracking-[0.14em] uppercase">
+            <p className="text-xs text-piedra-contraste tracking-[0.14em] uppercase">
               Última actualización · {lastUpdated}
             </p>
           </header>

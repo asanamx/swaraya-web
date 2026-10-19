@@ -19,7 +19,7 @@ const LiveRow = ({
   style = {},
 }) => {
   const dashColor = onDark ? 'rgba(200, 232, 36,0.35)' : 'rgba(13, 15, 14,0.35)';
-  const labelDefault = onDark ? '#9aa0a8' : '#63666e';
+  const labelDefault = onDark ? 'var(--piedra-media)' : 'var(--piedra-contraste)';
 
   return (
     <div

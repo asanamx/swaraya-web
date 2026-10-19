@@ -41,6 +41,7 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --grafito: #d3d2d0;
   --piedra: #6e6d6b;
   --carbon: #141414;
+  --carbon-elevado: #1c1c1b;         /* hover sobre carbón · ligeramente más claro */
   --tinta: #0d0f0e;
 
   /* Rampas de opacidad — la jerarquía de texto vive aquí */
@@ -64,6 +65,12 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --pizarra-tenue: #e8ecf1;
   --jade: #1e6a52;
   --cinabrio: #c2410c;
+
+  /* Grises UI "piedra" — legacy swaraya consolidados en tokens para
+     que ChatWidget, Principles y Navbar dejen de usar literales. */
+  --piedra-tenue:     #F4F6F9;  /* texto principal sobre carbón · 15.3:1 */
+  --piedra-media:     #9aa0a8;  /* texto secundario sobre carbón · 7.72:1 */
+  --piedra-contraste: #52565e;  /* placeholder / muted · 4.6:1 sobre carbón */
 
   /* Roles semánticos — conmutables por sección (.invertido los redefine) */
   --tema: var(--blanco);

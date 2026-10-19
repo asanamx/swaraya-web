@@ -33,9 +33,9 @@ export const colors = {
   // ── TEXTO SOBRE CLARO ────────────────────────────────────
   text: {
     primary: 'var(--tinta)',          // ≈17:1 sobre #f4f4f5 AAA
-    secondary: '#52565e',        // ≈6.6:1 AA
-    tertiary: '#63666e',         // ≈4.9:1 AA
-    placeholder: '#63666e',
+    secondary: 'var(--piedra-contraste)',        // ≈6.6:1 AA
+    tertiary: 'var(--piedra-contraste)',         // ≈4.9:1 AA
+    placeholder: 'var(--piedra-contraste)',
   },
 
   // ── TEXTO SOBRE OSCURO ───────────────────────────────────
@@ -43,7 +43,7 @@ export const colors = {
   textOnDark: {
     primary: 'var(--blanco)',
     secondary: '#c9cdd3',
-    tertiary: '#9aa0a8',         // ≈6.9:1 sobre #0d0f0e ✓
+    tertiary: 'var(--piedra-media)',         // ≈6.9:1 sobre #0d0f0e ✓
   },
 
   // ── ACENTO ULTRAMAR ──────────────────────────────────────

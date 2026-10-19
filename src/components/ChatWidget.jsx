@@ -112,13 +112,13 @@ const ChatWidget = () => {
                 <Bot className="w-5 h-5 text-tinta" />
               </div>
               <div>
-                <h3 className="text-sm font-medium text-[#F4F6F9]">Asistente swaraya</h3>
-                <p className="text-[0.6875rem] text-[#9aa0a8]">Powered by AI</p>
+                <h3 className="text-sm font-medium text-piedra-tenue">Asistente swaraya</h3>
+                <p className="text-[0.6875rem] text-piedra-media">Powered by AI</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="w-8 h-8 rounded-lg bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#52565e] hover:text-[#F4F6F9] hover:bg-[rgba(255,255,255,0.08)] transition-colors"
+              className="w-8 h-8 rounded-lg bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-piedra-contraste hover:text-piedra-tenue hover:bg-[rgba(255,255,255,0.08)] transition-colors"
               aria-label="Cerrar chat"
               data-testid="chat-close-button"
             >
@@ -140,7 +140,7 @@ const ChatWidget = () => {
                     : 'bg-brote/20'
                 }`}>
                   {msg.role === 'user' 
-                    ? <User className="w-3.5 h-3.5 text-[#9aa0a8]" />
+                    ? <User className="w-3.5 h-3.5 text-piedra-media" />
                     : <Bot className="w-3.5 h-3.5 text-blanco" />
                   }
                 </div>
@@ -164,9 +164,9 @@ const ChatWidget = () => {
                 </div>
                 <div className="px-4 py-3 rounded-xl rounded-tl-sm bg-[rgba(255,255,255,0.05)]">
                   <div className="flex gap-1">
-                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 rounded-full bg-[#52565e] animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-piedra-contraste animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-piedra-contraste animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 rounded-full bg-piedra-contraste animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>
@@ -185,7 +185,7 @@ const ChatWidget = () => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu mensaje..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-[#F4F6F9] placeholder-[#52565e] focus:outline-none focus:border-brote/50 transition-colors disabled:opacity-50"
+                className="flex-1 px-4 py-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.06)] rounded-xl text-sm text-piedra-tenue placeholder-piedra-contraste focus:outline-none focus:border-brote/50 transition-colors disabled:opacity-50"
                 data-testid="chat-input"
               />
               <button

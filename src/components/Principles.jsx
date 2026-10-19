@@ -64,7 +64,7 @@ export const Principles = () => {
                 fontFamily: "'Inter', sans-serif",
                 fontSize: '0.9375rem',
                 lineHeight: 1.65,
-                color: '#52565e',
+                color: 'var(--piedra-contraste)',
               }}
             >
               Cinco compromisos que ordenan cómo diseñamos, integramos
@@ -122,7 +122,7 @@ export const Principles = () => {
                           fontWeight: 500,
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#63666e',
+                          color: 'var(--piedra-contraste)',
                           lineHeight: 1.4,
                         }}
                       >
@@ -133,7 +133,7 @@ export const Principles = () => {
                           fontFamily: "'Inter', sans-serif",
                           fontWeight: 400,
                           fontSize: 'clamp(1rem, 1.3vw, 1.15rem)',
-                          color: '#52565e',
+                          color: 'var(--piedra-contraste)',
                           letterSpacing: '-0.005em',
                           lineHeight: 1.3,
                         }}
@@ -147,7 +147,7 @@ export const Principles = () => {
                         fontFamily: "'Inter', sans-serif",
                         fontSize: '0.8125rem',
                         lineHeight: 1.6,
-                        color: '#52565e',
+                        color: 'var(--piedra-contraste)',
                         maxWidth: '54ch',
                       }}
                     >

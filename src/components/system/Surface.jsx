@@ -75,7 +75,7 @@ const Surface = forwardRef(function Surface(
       onMouseEnter={(e) => {
         if (interactive) {
           e.currentTarget.style.transform = 'translateY(-2px)';
-          e.currentTarget.style.background = tone === 'dark' ? '#1c1c1b' : 'var(--niebla)';
+          e.currentTarget.style.background = tone === 'dark' ? 'var(--carbon-elevado)' : 'var(--niebla)';
         }
         rest.onMouseEnter?.(e);
       }}

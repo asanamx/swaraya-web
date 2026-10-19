@@ -108,7 +108,7 @@ const BlogPage = () => {
             >
               Perspectivas sobre <span className="text-tinta">inteligencia aplicada</span>
             </h1>
-            <p className="text-base md:text-lg text-[#52565e] leading-relaxed max-w-[60ch]">
+            <p className="text-base md:text-lg text-piedra-contraste leading-relaxed max-w-[60ch]">
               Investigación, análisis y reflexiones sobre arquitectura de IA, agentes autónomos,
               gobernanza y el futuro de la inteligencia empresarial.
             </p>
@@ -122,13 +122,13 @@ const BlogPage = () => {
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
             {/* Search */}
             <form onSubmit={handleSearch} className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#52565e]" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-piedra-contraste" />
               <input
                 type="text"
                 placeholder="Buscar artículos…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 bg-blanco border border-[rgba(13, 15, 14,0.08)] rounded-xl text-sm text-tinta placeholder-[#52565e] focus:outline-none focus:border-tinta/50 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-blanco border border-[rgba(13, 15, 14,0.08)] rounded-xl text-sm text-tinta placeholder-piedra-contraste focus:outline-none focus:border-tinta/50 transition-colors"
                 data-testid="blog-search-input"
               />
             </form>
@@ -136,7 +136,7 @@ const BlogPage = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 text-sm text-[#52565e] hover:text-tinta transition-colors"
+              className="flex items-center gap-2 text-sm text-piedra-contraste hover:text-tinta transition-colors"
             >
               <Filter className="w-4 h-4" />
               Filtros
@@ -152,7 +152,7 @@ const BlogPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Categories */}
                 <div>
-                  <h3 className="label-accent text-[#52565e] mb-3">Categorías</h3>
+                  <h3 className="label-accent text-piedra-contraste mb-3">Categorías</h3>
                   <div className="flex flex-wrap gap-2">
                     {categories.map((cat) => (
                       <button
@@ -164,7 +164,7 @@ const BlogPage = () => {
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedCategory === cat.name
                             ? 'bg-tinta text-blanco'
-                            : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
+                            : 'bg-[rgba(13, 15, 14,0.04)] text-piedra-contraste hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
                         }`}
                       >
                         {cat.name} ({cat.count})
@@ -175,7 +175,7 @@ const BlogPage = () => {
 
                 {/* Tags */}
                 <div>
-                  <h3 className="label-accent text-[#52565e] mb-3">Tags</h3>
+                  <h3 className="label-accent text-piedra-contraste mb-3">Tags</h3>
                   <div className="flex flex-wrap gap-2">
                     {tags.slice(0, 10).map((tag) => (
                       <button
@@ -187,7 +187,7 @@ const BlogPage = () => {
                         className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
                           selectedTag === tag.name
                             ? 'bg-tinta text-blanco'
-                            : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
+                            : 'bg-[rgba(13, 15, 14,0.04)] text-piedra-contraste hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
                         }`}
                       >
                         {tag.name}
@@ -226,7 +226,7 @@ const BlogPage = () => {
             </div>
           ) : posts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-[#52565e] mb-4">No se encontraron artículos</p>
+              <p className="text-piedra-contraste mb-4">No se encontraron artículos</p>
               <button
                 onClick={clearFilters}
                 className="text-sm text-tinta hover:underline transition-colors"
@@ -257,8 +257,8 @@ const BlogPage = () => {
                       <span className="text-[0.6875rem] font-medium text-tinta tracking-[0.18em] uppercase">
                         {post.category}
                       </span>
-                      <span className="w-1 h-1 rounded-full bg-[#52565e]/40" />
-                      <span className="flex items-center gap-1.5 text-[0.6875rem] text-[#52565e]">
+                      <span className="w-1 h-1 rounded-full bg-piedra-contraste/40" />
+                      <span className="flex items-center gap-1.5 text-[0.6875rem] text-piedra-contraste">
                         <Clock className="w-3 h-3" />
                         {post.readingTime || post.reading_time || '5'} min
                       </span>
@@ -278,12 +278,12 @@ const BlogPage = () => {
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-sm text-[#52565e] leading-relaxed line-clamp-2 mb-4">
+                    <p className="text-sm text-piedra-contraste leading-relaxed line-clamp-2 mb-4">
                       {post.excerpt}
                     </p>
 
                     {/* Date */}
-                    <div className="flex items-center gap-2 text-xs text-[#52565e]">
+                    <div className="flex items-center gap-2 text-xs text-piedra-contraste">
                       <Calendar className="w-3.5 h-3.5" />
                       {formatDate(post.publishedAt || post.published_at)}
                     </div>
@@ -303,7 +303,7 @@ const BlogPage = () => {
                   className={`w-10 h-10 rounded-lg text-sm font-medium transition-all ${
                     currentPage === page
                       ? 'bg-tinta text-blanco'
-                      : 'bg-[rgba(13, 15, 14,0.04)] text-[#52565e] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
+                      : 'bg-[rgba(13, 15, 14,0.04)] text-piedra-contraste hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta'
                   }`}
                 >
                   {page}

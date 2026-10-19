@@ -312,7 +312,7 @@ export const Navbar = () => {
                 style={{
                   letterSpacing: '0.16em',
                   textTransform: 'uppercase',
-                  color: '#9aa0a8',
+                  color: 'var(--piedra-media)',
                 }}
               >
                 hola@swaraya.ai
@@ -321,7 +321,7 @@ export const Navbar = () => {
                 className="text-xs"
                 style={{
                   letterSpacing: '0.04em',
-                  color: '#7A8493',
+                  color: 'var(--piedra-media)',
                 }}
               >
                 Ciudad de México · LatAm + remoto
@@ -330,7 +330,7 @@ export const Navbar = () => {
                 className="text-xs"
                 style={{
                   letterSpacing: '0.04em',
-                  color: '#7A8493',
+                  color: 'var(--piedra-media)',
                 }}
               >
                 Respuesta en 24 h hábiles
