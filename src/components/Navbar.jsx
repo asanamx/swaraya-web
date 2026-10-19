@@ -243,7 +243,7 @@ export const Navbar = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden relative z-50 flex items-center justify-center"
-            style={{ color: isMobileMenuOpen ? '#ffffff' : navTextColor, width: 44, height: 44 }}
+            style={{ color: isMobileMenuOpen ? 'var(--blanco)' : navTextColor, width: 44, height: 44 }}
             data-testid="mobile-menu-toggle"
             aria-label="Menu"
           >
@@ -260,7 +260,7 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="py-4 text-[1.65rem] text-[#ffffff]"
+                  className="py-4 text-[1.65rem] text-blanco"
                   style={{
                     fontFamily: "'Cabinet Grotesk', sans-serif",
                     fontWeight: 500,
@@ -275,7 +275,7 @@ export const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="py-4 text-left text-[1.65rem] text-[#ffffff] w-full"
+                  className="py-4 text-left text-[1.65rem] text-blanco w-full"
                   style={{
                     fontFamily: "'Cabinet Grotesk', sans-serif",
                     fontWeight: 500,

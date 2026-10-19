@@ -8,7 +8,7 @@ export const Positioning = () => {
   return (
     <section
       ref={sectionRef}
-      className="section-padding bg-[#ffffff]"
+      className="section-padding bg-blanco"
       data-testid="positioning-section"
     >
       <div className="container-main">

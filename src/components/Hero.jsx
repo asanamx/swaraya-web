@@ -118,7 +118,7 @@ export const Hero = () => {
               fontSize: '0.75rem',
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: '#c8e824',
+              color: 'var(--brote)',
               fontWeight: 500,
               transitionDelay: '40ms',
               opacity: isLoaded ? 1 : 0,
@@ -127,7 +127,7 @@ export const Hero = () => {
             }}
             data-testid="hero-eyebrow"
           >
-            <span style={{ width: 28, height: 1, background: '#c8e824', opacity: 0.6 }} />
+            <span style={{ width: 28, height: 1, background: 'var(--brote)', opacity: 0.6 }} />
             Agencia de Inteligencia Aplicada
           </div>
 
@@ -140,7 +140,7 @@ export const Hero = () => {
               lineHeight: 0.98,
               letterSpacing: '-0.035em',
               fontWeight: 500,
-              color: '#ffffff',
+              color: 'var(--blanco)',
             }}
             data-testid="hero-headline"
           >
@@ -167,7 +167,7 @@ export const Hero = () => {
             <span
               style={{
                 display: 'block',
-                color: '#c8e824',
+                color: 'var(--brote)',
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? 'translateY(0)' : 'translateY(12px)',
                 transition: `opacity 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms, transform 600ms cubic-bezier(0.2,0.6,0.2,1) ${line3Delay}ms`,
@@ -212,19 +212,19 @@ export const Hero = () => {
               style={{
                 minHeight: 44,
                 padding: '16px 32px',
-                background: '#c8e824',
-                color: '#0d0f0e',                     /* tinta oscura sobre miel · ≈7.8:1 ✓ */
+                background: 'var(--brote)',
+                color: 'var(--tinta)',                     /* tinta oscura sobre miel · ≈7.8:1 ✓ */
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: '0.9375rem',
                 letterSpacing: '0.005em',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#e2f56e';
+                e.currentTarget.style.background = 'var(--brote-alto)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#c8e824';
+                e.currentTarget.style.background = 'var(--brote)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
               data-testid="hero-cta-primary"
@@ -239,7 +239,7 @@ export const Hero = () => {
                 minHeight: 44,
                 padding: '16px 32px',
                 background: 'transparent',
-                color: '#ffffff',
+                color: 'var(--blanco)',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 500,
                 fontSize: '0.9375rem',
@@ -247,12 +247,12 @@ export const Hero = () => {
                 border: '1px solid rgba(255, 255, 255,0.25)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#c8e824';
-                e.currentTarget.style.color = '#c8e824';
+                e.currentTarget.style.borderColor = 'var(--brote)';
+                e.currentTarget.style.color = 'var(--brote)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(255, 255, 255,0.25)';
-                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.color = 'var(--blanco)';
               }}
               data-testid="hero-cta-secondary"
             >
@@ -336,7 +336,7 @@ export const Hero = () => {
                         fontSize: '0.8125rem',
                         fontWeight: 600,
                         letterSpacing: '-0.005em',
-                        color: '#ffffff',
+                        color: 'var(--blanco)',
                         marginBottom: 6,
                       }}
                     >

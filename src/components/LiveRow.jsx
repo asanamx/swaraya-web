@@ -84,7 +84,7 @@ const LiveRow = ({
           width: 5px;
           height: 5px;
           border-radius: 999px;
-          background: #c8e824;
+          background: var(--brote);
           top: 50%;
           left: -1%;
           margin-top: -2.5px;

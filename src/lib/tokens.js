@@ -17,45 +17,45 @@
 
 export const colors = {
   // ── SUPERFICIES ──────────────────────────────────────────
-  bg: '#f4f4f5',                 // canvas gris galería base
-  surface: '#ffffff',            // superficie elevada
-  surfaceRaised: '#ffffff',      // alias cards, popovers
+  bg: 'var(--niebla)',                 // canvas gris galería base
+  surface: 'var(--blanco)',            // superficie elevada
+  surfaceRaised: 'var(--blanco)',      // alias cards, popovers
   surfaceMuted: '#e5e5e6',       // chips, hover, secondary
-  ink: '#0d0f0e',                // tinta / foreground
+  ink: 'var(--tinta)',                // tinta / foreground
 
   // Superficies oscuras
-  bgDark: '#0d0f0e',
+  bgDark: 'var(--tinta)',
   bgDeep: '#141414',             // hero + footer profundo
-  surfaceDark: '#0d0f0e',
+  surfaceDark: 'var(--tinta)',
   surfaceDark2: '#1c1c1b',
   surfaceDark3: '#1c1c22',
 
   // ── TEXTO SOBRE CLARO ────────────────────────────────────
   text: {
-    primary: '#0d0f0e',          // ≈17:1 sobre #f4f4f5 AAA
+    primary: 'var(--tinta)',          // ≈17:1 sobre #f4f4f5 AAA
     secondary: '#52565e',        // ≈6.6:1 AA
     tertiary: '#63666e',         // ≈4.9:1 AA
     placeholder: '#63666e',
   },
 
   // ── TEXTO SOBRE OSCURO ───────────────────────────────────
-  inkInverse: '#ffffff',
+  inkInverse: 'var(--blanco)',
   textOnDark: {
-    primary: '#ffffff',
+    primary: 'var(--blanco)',
     secondary: '#c9cdd3',
     tertiary: '#9aa0a8',         // ≈6.9:1 sobre #0d0f0e ✓
   },
 
   // ── ACENTO ULTRAMAR ──────────────────────────────────────
-  accent: '#0d0f0e',             // sobre claro · ≈9.3:1 ✓
-  accentHover: '#0d0f0e',
-  accentBright: '#c8e824',       // sobre oscuro o fills grandes
-  accentBrightHover: '#e2f56e',
-  accentBrightText: '#e2f56e',   // texto pequeño sobre oscuro · ≈7:1
+  accent: 'var(--tinta)',             // sobre claro · ≈9.3:1 ✓
+  accentHover: 'var(--tinta)',
+  accentBright: 'var(--brote)',       // sobre oscuro o fills grandes
+  accentBrightHover: 'var(--brote-alto)',
+  accentBrightText: 'var(--brote-alto)',   // texto pequeño sobre oscuro · ≈7:1
 
   // ── FOCO ─────────────────────────────────────────────────
-  ring: '#0d0f0e',
-  ringOnDark: '#c8e824',
+  ring: 'var(--tinta)',
+  ringOnDark: 'var(--brote)',
 
   // ── ESTADOS DE ERROR ─────────────────────────────────────
   destructive: '#EF4343',        // fills, iconos, bordes
@@ -65,21 +65,21 @@ export const colors = {
   // @deprecated · alias hacia el nuevo sistema
   // ─────────────────────────────────────────────────────────
   cream: {
-    base: '#f4f4f5',              // @deprecated → bg
-    soft: '#ffffff',              // @deprecated → surfaceRaised
+    base: 'var(--niebla)',              // @deprecated → bg
+    soft: 'var(--blanco)',              // @deprecated → surfaceRaised
     deep: '#e5e5e6',              // @deprecated → surfaceMuted
     hairline: '#e5e5e6',          // @deprecated → borders.solid
   },
   dark: {
-    base: '#0d0f0e',              // @deprecated → surfaceDark
+    base: 'var(--tinta)',              // @deprecated → surfaceDark
     soft: '#1c1c1b',              // @deprecated → surfaceDark2
     deep: '#1c1c22',              // @deprecated → surfaceDark3
   },
   indigo: {
-    onCream: '#0d0f0e',           // @deprecated → accent
-    onCreamHover: '#0d0f0e',      // @deprecated → accentHover
-    onDark: '#c8e824',            // @deprecated → accentBright
-    onDarkHover: '#e2f56e',       // @deprecated → accentBrightHover
+    onCream: 'var(--tinta)',           // @deprecated → accent
+    onCreamHover: 'var(--tinta)',      // @deprecated → accentHover
+    onDark: 'var(--brote)',            // @deprecated → accentBright
+    onDarkHover: 'var(--brote-alto)',       // @deprecated → accentBrightHover
   },
 };
 

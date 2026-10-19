@@ -61,7 +61,7 @@ const Initiatives = () => {
   return (
     <section
       id="iniciativas"
-      className="section-padding bg-[#f4f4f5] relative overflow-hidden"
+      className="section-padding bg-niebla relative overflow-hidden"
       data-testid="initiatives-section"
     >
       <div

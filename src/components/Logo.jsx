@@ -26,21 +26,21 @@
 import Link from 'next/link';
 
 const TONES = {
-  positive:   { text: '#0d0f0e', dot: '#c8e824' },   /* fondo claro · punto brote */
-  negative:   { text: '#ffffff', dot: '#c8e824' },   /* fondo oscuro · punto brote (≈11:1) */
-  indigo:     { text: '#0d0f0e', dot: '#c8e824' },   /* alias legacy → tinta + brote */
-  'mono-ink': { text: '#0d0f0e', dot: '#0d0f0e' },   /* 1-color · sin acento */
-  'mono-cream': { text: '#ffffff', dot: '#ffffff' }, /* 1-color · sobre oscuro */
-  'on-indigo': { text: '#0d0f0e', dot: '#0d0f0e' },  /* sobre brote pleno · tinta */
+  positive:   { text: 'var(--tinta)', dot: 'var(--brote)' },   /* fondo claro · punto brote */
+  negative:   { text: 'var(--blanco)', dot: 'var(--brote)' },   /* fondo oscuro · punto brote (≈11:1) */
+  indigo:     { text: 'var(--tinta)', dot: 'var(--brote)' },   /* alias legacy → tinta + brote */
+  'mono-ink': { text: 'var(--tinta)', dot: 'var(--tinta)' },   /* 1-color · sin acento */
+  'mono-cream': { text: 'var(--blanco)', dot: 'var(--blanco)' }, /* 1-color · sobre oscuro */
+  'on-indigo': { text: 'var(--tinta)', dot: 'var(--tinta)' },  /* sobre brote pleno · tinta */
 };
 
 const ICON_BG = {
-  positive:  { bg: '#0d0f0e', fg: '#f4f4f3' },
-  negative:  { bg: '#0d0f0e', fg: '#f4f4f3' },
-  indigo:    { bg: '#0d0f0e', fg: '#f4f4f3' },
-  'mono-ink':   { bg: '#0d0f0e', fg: '#f4f4f3' },
-  'mono-cream': { bg: '#ffffff', fg: '#0d0f0e' },
-  'on-indigo':  { bg: '#c8e824', fg: '#0d0f0e' },
+  positive:  { bg: 'var(--tinta)', fg: 'var(--niebla)' },
+  negative:  { bg: 'var(--tinta)', fg: 'var(--niebla)' },
+  indigo:    { bg: 'var(--tinta)', fg: 'var(--niebla)' },
+  'mono-ink':   { bg: 'var(--tinta)', fg: 'var(--niebla)' },
+  'mono-cream': { bg: 'var(--blanco)', fg: 'var(--tinta)' },
+  'on-indigo':  { bg: 'var(--brote)', fg: 'var(--tinta)' },
 };
 
 const resolveTone = (tone, surface) => {

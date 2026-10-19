@@ -34,7 +34,7 @@ const YouTubeEmbed = ({ videoId, title }) => {
 
   return (
     <div className="my-8">
-      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#ffffff] border border-[rgba(13, 15, 14,0.08)]">
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-blanco border border-[rgba(13, 15, 14,0.08)]">
         {!isLoaded ? (
           <button
             onClick={() => setIsLoaded(true)}
@@ -48,12 +48,12 @@ const YouTubeEmbed = ({ videoId, title }) => {
                 e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f0e]/75 to-transparent" />
-            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-[#0d0f0e] text-[#ffffff] group-hover:scale-110 transition-transform">
+            <div className="absolute inset-0 bg-gradient-to-t from-tinta/75 to-transparent" />
+            <div className="relative z-10 w-16 h-16 flex items-center justify-center rounded-full bg-tinta text-blanco group-hover:scale-110 transition-transform">
               <Play className="w-7 h-7 ml-1" fill="currentColor" />
             </div>
             {title && (
-              <span className="relative z-10 text-sm text-[#ffffff] font-medium px-4 text-center">
+              <span className="relative z-10 text-sm text-blanco font-medium px-4 text-center">
                 {title}
               </span>
             )}
@@ -142,7 +142,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#ffffff]">
+    <div className="min-h-screen bg-blanco">
       {/* Navbar global del sitio (mismo que home y /blog) */}
       <Navbar />
 
@@ -155,7 +155,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Back Link */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#0d0f0e] mb-8 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-sm text-tinta mb-8 hover:gap-3 transition-all"
           >
             <ArrowLeft className="w-4 h-4" />
             Todos los artículos
@@ -164,7 +164,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Back Link - Mobile (legacy hidden) */}
           <Link
             href="/blog"
-            className="hidden items-center gap-2 text-sm text-[#0d0f0e] mb-8"
+            className="hidden items-center gap-2 text-sm text-tinta mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver
@@ -173,7 +173,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
           {/* Article Header */}
           <header className="max-w-3xl mx-auto mb-10 md:mb-12">
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase px-2.5 py-1 bg-[rgba(13, 15, 14,0.08)] rounded-md">
+              <span className="text-[0.6875rem] font-medium text-tinta tracking-[0.18em] uppercase px-2.5 py-1 bg-[rgba(13, 15, 14,0.08)] rounded-md">
                 {post.category}
               </span>
               <span className="w-1 h-1 rounded-full bg-[color:var(--texto-apoyo)] opacity-40" />
@@ -189,7 +189,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
             </div>
 
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#0d0f0e] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-tinta mb-6"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -209,7 +209,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 <Link
                   key={tag}
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
-                  className="text-xs text-[color:var(--texto-apoyo)] hover:text-[#0d0f0e] transition-colors"
+                  className="text-xs text-[color:var(--texto-apoyo)] hover:text-tinta transition-colors"
                 >
                   #{tag.replace(/\s+/g, '')}
                 </Link>
@@ -219,7 +219,7 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
           {/* Cover Image — duotone editorial */}
           <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="cover-editorial aspect-[16/9] rounded-xl bg-[#ffffff] border border-[rgba(13, 15, 14,0.08)]">
+            <div className="cover-editorial aspect-[16/9] rounded-xl bg-blanco border border-[rgba(13, 15, 14,0.08)]">
               <img
                 src={post.coverImage || post.cover_image}
                 alt={post.title}
@@ -273,30 +273,30 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <span className="text-xs font-medium text-[color:var(--texto-apoyo)] tracking-[0.18em] uppercase">Compartir artículo</span>
                 <div className="flex items-center gap-3">
-                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en Twitter">
+                  <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta transition-all" aria-label="Compartir en Twitter">
                     <Twitter className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en LinkedIn">
+                  <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta transition-all" aria-label="Compartir en LinkedIn">
                     <Linkedin className="w-4 h-4" />
                   </a>
-                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Compartir en Facebook">
+                  <a href={shareLinks.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta transition-all" aria-label="Compartir en Facebook">
                     <Facebook className="w-4 h-4" />
                   </a>
-                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-[#0d0f0e] transition-all" aria-label="Copiar enlace">
-                    {copied ? <Check className="w-4 h-4 text-[#0d0f0e]" /> : <LinkIcon className="w-4 h-4" />}
+                  <button onClick={copyLink} className="w-10 h-10 flex items-center justify-center rounded-lg bg-[rgba(13, 15, 14,0.04)] text-[color:var(--texto-apoyo)] hover:bg-[rgba(13, 15, 14,0.08)] hover:text-tinta transition-all" aria-label="Copiar enlace">
+                    {copied ? <Check className="w-4 h-4 text-tinta" /> : <LinkIcon className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Author */}
-            <div className="mt-8 p-6 bg-[#ffffff] rounded-xl border border-[rgba(13, 15, 14,0.08)]">
+            <div className="mt-8 p-6 bg-blanco rounded-xl border border-[rgba(13, 15, 14,0.08)]">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-[rgba(13, 15, 14,0.10)] flex items-center justify-center">
-                  <AxisMark size={20} color="#0d0f0e" />
+                  <AxisMark size={20} color="var(--tinta)" />
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-[#0d0f0e]">{post.author?.name || 'swaraya'}</div>
+                  <div className="text-sm font-medium text-tinta">{post.author?.name || 'swaraya'}</div>
                   <div className="text-xs text-[color:var(--texto-apoyo)]">Agencia de Inteligencia Aplicada</div>
                 </div>
               </div>
@@ -307,10 +307,10 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 md:py-20 border-t border-[rgba(13, 15, 14,0.08)] bg-[#ffffff]">
+        <section className="py-16 md:py-20 border-t border-[rgba(13, 15, 14,0.08)] bg-blanco">
           <div className="container-main">
             <h2
-              className="text-2xl text-[#0d0f0e] mb-10"
+              className="text-2xl text-tinta mb-10"
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 500,
@@ -324,11 +324,11 @@ const BlogArticle = ({ post, relatedPosts = [] }) => {
                 <Link
                   key={relPost.id}
                   href={`/blog/${relPost.slug}`}
-                  className="group p-6 bg-[#ffffff] rounded-xl border border-[rgba(13, 15, 14,0.08)] hover:border-[#0d0f0e]/40 transition-colors"
+                  className="group p-6 bg-blanco rounded-xl border border-[rgba(13, 15, 14,0.08)] hover:border-tinta/40 transition-colors"
                 >
-                  <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase">{relPost.category}</span>
+                  <span className="text-[0.6875rem] font-medium text-tinta tracking-[0.18em] uppercase">{relPost.category}</span>
                   <h3
-                    className="text-lg mt-3 mb-2 group-hover:text-[#0d0f0e] transition-colors text-[#0d0f0e]"
+                    className="text-lg mt-3 mb-2 group-hover:text-tinta transition-colors text-tinta"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,

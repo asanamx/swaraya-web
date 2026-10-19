@@ -23,8 +23,8 @@ const paletteFor = ({ variant, tone }) => {
   const dark = tone === 'dark';
   if (variant === 'primary') {
     return dark
-      ? { bg: 'var(--accent-bright)', color: '#FFFFFF', border: 'none', hover: 'var(--accent-bright-hover)' }
-      : { bg: 'var(--ink)',           color: '#FFFFFF', border: 'none', hover: 'var(--accent)' };
+      ? { bg: 'var(--accent-bright)', color: 'var(--blanco)', border: 'none', hover: 'var(--accent-bright-hover)' }
+      : { bg: 'var(--ink)',           color: 'var(--blanco)', border: 'none', hover: 'var(--accent)' };
   }
   if (variant === 'secondary') {
     return dark

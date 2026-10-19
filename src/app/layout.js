@@ -71,13 +71,13 @@ export const metadata = {
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#c8e824' },
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: 'var(--brote)' },
     ],
   },
 };
 
 export const viewport = {
-  themeColor: '#141414',
+  themeColor: 'var(--carbon)',
 };
 
 export default function RootLayout({ children }) {
@@ -89,10 +89,11 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
 
-        {/* Cabinet Grotesk (Fontshare) — display / titulares (500) + icon "s" (700) */}
+        {/* Cabinet Grotesk (Fontshare) — v3.1: SOLO peso 500. El sistema
+            v3.0 no usa 400 ni 700; cargar menos pesos acelera el FCP. */}
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500&display=swap"
         />
         {/* Inter (Google) — cuerpo / UI */}
         <link

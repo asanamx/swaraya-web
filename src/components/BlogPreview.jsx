@@ -38,7 +38,7 @@ export const BlogPreview = () => {
   };
 
   return (
-    <section className="section-padding bg-[#ffffff]" id="blog">
+    <section className="section-padding bg-blanco" id="blog">
       <div className="container-main">
         {/* Header */}
         <div 
@@ -50,7 +50,7 @@ export const BlogPreview = () => {
               Insights
             </span>
             <h2 className="heading-xl">
-              Perspectivas sobre <span className="text-[#0d0f0e]">inteligencia aplicada</span>
+              Perspectivas sobre <span className="text-tinta">inteligencia aplicada</span>
             </h2>
           </div>
           
@@ -72,10 +72,10 @@ export const BlogPreview = () => {
             // Loading skeleton
             [...Array(3)].map((_, i) => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-[16/9] bg-[#ffffff] rounded-xl mb-4" />
-                <div className="h-3 bg-[#ffffff] rounded w-1/4 mb-3" />
-                <div className="h-5 bg-[#ffffff] rounded w-3/4 mb-2" />
-                <div className="h-4 bg-[#ffffff] rounded w-full" />
+                <div className="aspect-[16/9] bg-blanco rounded-xl mb-4" />
+                <div className="h-3 bg-blanco rounded w-1/4 mb-3" />
+                <div className="h-5 bg-blanco rounded w-3/4 mb-2" />
+                <div className="h-4 bg-blanco rounded w-full" />
               </div>
             ))
           ) : (
@@ -97,7 +97,7 @@ export const BlogPreview = () => {
 
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-[0.6875rem] font-medium text-[#0d0f0e] tracking-[0.18em] uppercase">
+                    <span className="text-[0.6875rem] font-medium text-tinta tracking-[0.18em] uppercase">
                       {post.category}
                     </span>
                     <span className="w-1 h-1 rounded-full bg-[color:var(--texto-apoyo)] opacity-40" />
@@ -109,7 +109,7 @@ export const BlogPreview = () => {
 
                   {/* Title */}
                   <h3
-                    className="text-base md:text-lg text-[#0d0f0e] mb-2.5 leading-snug group-hover:text-[#0d0f0e] transition-colors line-clamp-2"
+                    className="text-base md:text-lg text-tinta mb-2.5 leading-snug group-hover:text-tinta transition-colors line-clamp-2"
                     style={{
                       fontFamily: "'Cabinet Grotesk', sans-serif",
                       fontWeight: 500,

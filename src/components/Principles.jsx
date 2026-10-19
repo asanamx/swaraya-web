@@ -37,7 +37,7 @@ export const Principles = () => {
     <section
       ref={sectionRef}
       className="section-padding-lg relative overflow-hidden"
-      style={{ background: '#f4f4f5' }}
+      style={{ background: 'var(--niebla)' }}
       data-testid="principles-section"
     >
       {/* Glow indigo suave — único elemento decorativo (brief 2) */}
@@ -56,7 +56,7 @@ export const Principles = () => {
           <div className={`lg:col-span-5 reveal ${isVisible ? 'revealed' : ''}`}>
             <h2 className="heading-xl mb-6" data-testid="principles-headline">
               Nuestros sistemas se moldean por{' '}
-              <span style={{ color: '#0d0f0e' }}>disciplina antes que escala.</span>
+              <span style={{ color: 'var(--tinta)' }}>disciplina antes que escala.</span>
             </h2>
             <p
               className="max-w-[38ch]"
@@ -109,7 +109,7 @@ export const Principles = () => {
                           fontWeight: 500,
                           fontSize: 'clamp(1.0625rem, 1.4vw, 1.25rem)',
                           letterSpacing: '-0.015em',
-                          color: '#0d0f0e',
+                          color: 'var(--tinta)',
                           lineHeight: 1.25,
                         }}
                       >
@@ -160,7 +160,7 @@ export const Principles = () => {
                     aria-hidden="true"
                     className="absolute left-0 top-8 w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: '#0d0f0e',
+                      background: 'var(--tinta)',
                       transform: 'translateX(-14px)',
                     }}
                   />

@@ -45,7 +45,7 @@ export async function GET() {
           padding: '80px 88px',
           background:
             'radial-gradient(60% 46% at 74% 30%, rgba(200, 232, 36, 0.10) 0%, rgba(20, 20, 20, 0) 65%), #141414',
-          color: '#ffffff',
+          color: 'var(--blanco)',
           fontFamily: 'Cabinet Grotesk',
         }}
       >
@@ -58,11 +58,11 @@ export async function GET() {
             fontSize: 20,
             letterSpacing: '6px',
             textTransform: 'uppercase',
-            color: '#c8e824',
+            color: 'var(--brote)',
             fontWeight: 500,
           }}
         >
-          <div style={{ width: 44, height: 2, background: '#c8e824', opacity: 0.6 }} />
+          <div style={{ width: 44, height: 2, background: 'var(--brote)', opacity: 0.6 }} />
           Agencia de Inteligencia Aplicada
         </div>
 
@@ -75,12 +75,12 @@ export async function GET() {
             fontWeight: 500,
             lineHeight: 1.02,
             letterSpacing: '-0.035em',
-            color: '#ffffff',
+            color: 'var(--blanco)',
             maxWidth: 980,
           }}
         >
           <span>Tu mejor criterio,</span>
-          <span style={{ color: '#c8e824' }}>aplicado todos los días.</span>
+          <span style={{ color: 'var(--brote)' }}>aplicado todos los días.</span>
         </div>
 
         {/* Wordmark inferior */}
@@ -100,12 +100,12 @@ export async function GET() {
               fontWeight: 500,
               letterSpacing: '-0.03em',
               lineHeight: 1,
-              color: '#ffffff',
+              color: 'var(--blanco)',
               textTransform: 'lowercase',
             }}
           >
             swaraya
-            <span style={{ color: '#c8e824' }}>.</span>
+            <span style={{ color: 'var(--brote)' }}>.</span>
           </div>
           <div
             style={{

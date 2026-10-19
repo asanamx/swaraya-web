@@ -179,9 +179,20 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --indigo-on-dark: var(--brote);
   --indigo-on-dark-hover: var(--brote-alto);
   --accent-tertiary: var(--pizarra);
+
+  /* ─── v3.1 Addendum ──────────────────────────────────────── */
+  /* Hover carbón sobre la banda brote (ligeramente más claro que
+     --sobre-brote para que se perciba el cambio sin salir del tono). */
+  --sobre-brote-hover: #262826;
+  /* Tintas semánticas para estados "éxito" y "alerta/dato crítico". */
+  --jade-tenue:     #e6f0ec;
+  --cinabrio-tenue: #fbf0ea;
+  /* RGB sueltos para `rgb(var() / <alpha-value>)` desde Tailwind. */
+  --texto-rgb: 13 15 14;
+  --tema-rgb:  255 255 255;
 }
 
-@media (max-width: 992px) { :root { --seccion: 80px; } }
+@media (max-width: 991.98px) { :root { --seccion: 80px; } }
 @media (min-width: 992px) { :root { --gutter: 40px; } }
 
 .invertido {
@@ -194,11 +205,15 @@ a[href*="emergentagent.com"]:not([href*="/blog"]) {
   --borde: var(--blanco-14);
   --borde-alfa: var(--blanco-14);
   --punto: rgba(var(--blanco-rgb), 0.14);
+  /* v3.1 — RGB sueltos redefinidos para que `text-texto` / `bg-tema` con
+     alfa dinámico funcionen correctamente en superficies oscuras. */
+  --texto-rgb: 255 255 255;
+  --tema-rgb:  20 20 20;
   background: var(--tema);
   color: var(--texto);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   #emergent-badge {
     transform: scale(0.5) !important;
     bottom: 5px !important;
@@ -538,7 +553,7 @@ body {
   border-color: var(--brote);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 639.98px) {
   .btn-primary, .btn-secondary { padding: 14px 24px; width: 100%; justify-content: center; min-height: 44px; }
   .btn-secondary.btn-small { padding: 10px 16px !important; min-height: 40px; width: auto !important; font-size: 0.8125rem !important; }
 }

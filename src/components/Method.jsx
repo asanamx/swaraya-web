@@ -101,7 +101,7 @@ export const Method = () => {
   return (
     <section
       id="metodo"
-      className="section-padding bg-[#f4f4f5]"
+      className="section-padding bg-niebla"
       data-testid="method-section"
       ref={sectionRef}
     >
@@ -152,14 +152,14 @@ export const Method = () => {
                 y1="12"
                 x2={1000 * (reducedMotion ? 1 : progress)}
                 y2="12"
-                stroke="#c8e824"
+                stroke="var(--brote)"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />
               {!reducedMotion && progress > 0 && progress < 1 && (
                 <g style={{ transform: `translateX(${1000 * progress}px)` }}>
-                  <circle cx="0" cy="12" r="8" fill="#c8e824" opacity="0.25" />
-                  <circle cx="0" cy="12" r="4" fill="#c8e824" />
+                  <circle cx="0" cy="12" r="8" fill="var(--brote)" opacity="0.25" />
+                  <circle cx="0" cy="12" r="4" fill="var(--brote)" />
                 </g>
               )}
             </svg>
