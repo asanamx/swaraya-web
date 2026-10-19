@@ -1,318 +1,287 @@
 #!/usr/bin/env python3
 """
-Favicon verification test suite for swaraya rebrand (Carbón + Girasol palette).
-Tests HTTP delivery, dimensions, color palette, and HTML metadata.
+Backend test for /api/og endpoint verification.
+
+Tests:
+1. GET /api/og returns HTTP 200 with Content-Type: image/png
+2. Response body is a valid PNG with correct magic bytes and dimensions
+3. PNG can be opened with PIL and has size (1200, 630)
+4. Two consecutive requests both work
+5. Home page has correct og:image meta tag
+6. PNG size is reasonable (>20KB, <500KB)
 """
 
 import requests
+import io
+import struct
 from PIL import Image
-from io import BytesIO
-import sys
-from collections import Counter
+from bs4 import BeautifulSoup
 
 # Base URL from environment
 BASE_URL = "https://nextjs-swaraya.preview.emergentagent.com"
+OG_ENDPOINT = f"{BASE_URL}/api/og"
+HOME_URL = BASE_URL
 
-# Expected files and their properties
-FAVICON_FILES = {
-    "/favicon-16.png": {"mime": "image/png", "dimensions": (16, 16)},
-    "/favicon-32.png": {"mime": "image/png", "dimensions": (32, 32)},
-    "/icon-192.png": {"mime": "image/png", "dimensions": (192, 192)},
-    "/icon-512.png": {"mime": "image/png", "dimensions": (512, 512)},
-    "/icon-512-maskable.png": {"mime": "image/png", "dimensions": (512, 512)},
-    "/apple-icon.png": {"mime": "image/png", "dimensions": (180, 180)},
-    "/safari-pinned-tab.svg": {"mime": ["image/svg+xml", "application/xml", "text/xml"], "dimensions": None},
-}
-
-# Color palette
-OLD_INDIGO_COLORS = ["#2C3E80", "#5468D6"]
-NEW_CARBON = "#0a0a0a"  # rgb(10, 10, 10)
-NEW_GIRASOL = "#f6b91f"  # rgb(246, 185, 31)
-
-def hex_to_rgb(hex_color):
-    """Convert hex color to RGB tuple."""
-    hex_color = hex_color.lstrip('#')
-    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-
-def color_distance(c1, c2):
-    """Calculate Euclidean distance between two RGB colors."""
-    return sum((a - b) ** 2 for a, b in zip(c1, c2)) ** 0.5
-
-def test_http_delivery():
-    """Test 1: HTTP 200 + correct MIME types for all favicon files."""
+def test_og_endpoint_basic():
+    """Test 1: Basic HTTP 200 and Content-Type verification"""
     print("\n" + "="*80)
-    print("TEST 1: HTTP DELIVERY - Status 200 + Correct MIME Types")
+    print("TEST 1: Basic HTTP 200 and Content-Type verification")
     print("="*80)
-    
-    all_passed = True
-    
-    for path, props in FAVICON_FILES.items():
-        url = BASE_URL + path
-        try:
-            response = requests.get(url, timeout=10)
-            status = response.status_code
-            content_type = response.headers.get('Content-Type', '').split(';')[0].strip()
-            
-            # Check status
-            if status != 200:
-                print(f"❌ {path}: HTTP {status} (expected 200)")
-                all_passed = False
-                continue
-            
-            # Check MIME type
-            expected_mime = props["mime"]
-            if isinstance(expected_mime, list):
-                mime_ok = content_type in expected_mime
-                expected_str = " or ".join(expected_mime)
-            else:
-                mime_ok = content_type == expected_mime
-                expected_str = expected_mime
-            
-            if mime_ok:
-                print(f"✅ {path}: HTTP 200, Content-Type: {content_type}")
-            else:
-                print(f"❌ {path}: HTTP 200 but Content-Type is '{content_type}' (expected {expected_str})")
-                all_passed = False
-                
-        except Exception as e:
-            print(f"❌ {path}: Request failed - {e}")
-            all_passed = False
-    
-    return all_passed
-
-def test_dimensions():
-    """Test 2: Verify correct dimensions for all PNG files."""
-    print("\n" + "="*80)
-    print("TEST 2: PNG DIMENSIONS")
-    print("="*80)
-    
-    all_passed = True
-    
-    for path, props in FAVICON_FILES.items():
-        if props["dimensions"] is None:  # Skip SVG
-            continue
-            
-        url = BASE_URL + path
-        try:
-            response = requests.get(url, timeout=10)
-            if response.status_code != 200:
-                print(f"❌ {path}: Cannot download (HTTP {response.status_code})")
-                all_passed = False
-                continue
-            
-            img = Image.open(BytesIO(response.content))
-            actual_size = img.size
-            expected_size = props["dimensions"]
-            
-            if actual_size == expected_size:
-                print(f"✅ {path}: {actual_size[0]} x {actual_size[1]} (correct)")
-            else:
-                print(f"❌ {path}: {actual_size[0]} x {actual_size[1]} (expected {expected_size[0]} x {expected_size[1]})")
-                all_passed = False
-                
-        except Exception as e:
-            print(f"❌ {path}: Failed to verify dimensions - {e}")
-            all_passed = False
-    
-    return all_passed
-
-def test_color_palette():
-    """Test 3: Verify new Carbón + Girasol palette (NOT old indigo)."""
-    print("\n" + "="*80)
-    print("TEST 3: COLOR PALETTE - New Carbón + Girasol (NOT old indigo)")
-    print("="*80)
-    
-    all_passed = True
-    test_files = ["/icon-192.png", "/apple-icon.png"]
-    
-    old_indigo_rgb = [hex_to_rgb(c) for c in OLD_INDIGO_COLORS]
-    carbon_rgb = hex_to_rgb(NEW_CARBON)
-    girasol_rgb = hex_to_rgb(NEW_GIRASOL)
-    
-    for path in test_files:
-        url = BASE_URL + path
-        try:
-            response = requests.get(url, timeout=10)
-            if response.status_code != 200:
-                print(f"❌ {path}: Cannot download (HTTP {response.status_code})")
-                all_passed = False
-                continue
-            
-            img = Image.open(BytesIO(response.content)).convert('RGB')
-            width, height = img.size
-            
-            # Sample pixels from different regions
-            samples = []
-            # Center region (for background check)
-            for x in range(width // 4, 3 * width // 4, max(1, width // 20)):
-                for y in range(height // 4, 3 * height // 4, max(1, height // 20)):
-                    samples.append(img.getpixel((x, y)))
-            
-            # Check for old indigo colors (should NOT be present)
-            has_old_indigo = False
-            for pixel in samples:
-                for old_color in old_indigo_rgb:
-                    if color_distance(pixel, old_color) < 30:  # Tolerance
-                        has_old_indigo = True
-                        print(f"❌ {path}: Found OLD INDIGO color at pixel {pixel} (close to {old_color})")
-                        all_passed = False
-                        break
-                if has_old_indigo:
-                    break
-            
-            if not has_old_indigo:
-                print(f"✅ {path}: No old indigo colors detected")
-            
-            # Check for dark carbon background
-            dark_pixels = [p for p in samples if all(c < 50 for c in p)]  # Very dark pixels
-            carbon_pixels = [p for p in dark_pixels if color_distance(p, carbon_rgb) < 30]
-            
-            if carbon_pixels:
-                print(f"✅ {path}: Found {len(carbon_pixels)} carbon-like pixels (dark background present)")
-            else:
-                print(f"⚠️  {path}: No carbon (#0a0a0a) background detected - found {len(dark_pixels)} dark pixels")
-                # Not failing this as the background might be slightly different
-            
-            # Check for girasol yellow dot
-            yellow_pixels = [p for p in samples if p[0] > 200 and 130 < p[1] < 200 and p[2] < 80]
-            girasol_pixels = [p for p in yellow_pixels if color_distance(p, girasol_rgb) < 50]
-            
-            if girasol_pixels:
-                print(f"✅ {path}: Found {len(girasol_pixels)} girasol-like pixels (yellow dot present)")
-            else:
-                print(f"⚠️  {path}: No girasol (#f6b91f) yellow detected - found {len(yellow_pixels)} yellow-ish pixels")
-                # Not failing this as the dot might be small
-                
-        except Exception as e:
-            print(f"❌ {path}: Failed to verify palette - {e}")
-            all_passed = False
-    
-    return all_passed
-
-def test_html_metadata():
-    """Test 4: Verify HTML <head> contains correct favicon metadata."""
-    print("\n" + "="*80)
-    print("TEST 4: HTML HEAD METADATA")
-    print("="*80)
-    
-    all_passed = True
     
     try:
-        response = requests.get(BASE_URL + "/", timeout=10)
-        if response.status_code != 200:
-            print(f"❌ Cannot fetch homepage (HTTP {response.status_code})")
-            return False
+        response = requests.get(OG_ENDPOINT, timeout=30)
         
-        html = response.text.lower()
+        print(f"✓ Request URL: {OG_ENDPOINT}")
+        print(f"✓ Status Code: {response.status_code}")
+        print(f"✓ Content-Type: {response.headers.get('Content-Type', 'NOT SET')}")
+        print(f"✓ Content-Length: {len(response.content)} bytes")
         
-        # Check for favicon links
-        checks = [
-            ('favicon-16.png', 'sizes="16x16"'),
-            ('favicon-32.png', 'sizes="32x32"'),
-            ('icon-192.png', 'sizes="192x192"'),
-            ('icon-512.png', 'sizes="512x512"'),
-            ('apple-icon.png', 'sizes="180x180"'),
-            ('safari-pinned-tab.svg', 'rel="mask-icon"'),
-        ]
+        assert response.status_code == 200, f"Expected 200, got {response.status_code}"
         
-        for filename, attribute in checks:
-            if filename in html and attribute.lower() in html:
-                print(f"✅ Found <link> for {filename} with {attribute}")
-            else:
-                print(f"❌ Missing or incorrect <link> for {filename} with {attribute}")
-                all_passed = False
+        content_type = response.headers.get('Content-Type', '')
+        assert 'image/png' in content_type, f"Expected image/png, got {content_type}"
         
-        # Check mask-icon color
-        if 'color="#f6b91f"' in html or "color='#f6b91f'" in html or 'color=#f6b91f' in html:
-            print(f"✅ Found mask-icon with color=\"#f6b91f\" (girasol)")
-        else:
-            print(f"❌ mask-icon color is not #f6b91f")
-            all_passed = False
+        print("\n✅ TEST 1 PASSED: Endpoint returns 200 with image/png")
+        return response.content
         
-        # Check theme-color
-        if 'content="#0a0a0a"' in html or "content='#0a0a0a'" in html or 'content=#0a0a0a' in html:
-            print(f"✅ Found theme-color with content=\"#0a0a0a\" (carbón)")
-        else:
-            print(f"❌ theme-color is not #0a0a0a")
-            all_passed = False
-            
     except Exception as e:
-        print(f"❌ Failed to verify HTML metadata - {e}")
-        all_passed = False
-    
-    return all_passed
+        print(f"\n❌ TEST 1 FAILED: {str(e)}")
+        raise
 
-def test_no_old_branding():
-    """Test 5: Verify NO references to old branding colors in HTML."""
+
+def test_png_magic_bytes(png_data):
+    """Test 2: Verify PNG magic bytes signature"""
     print("\n" + "="*80)
-    print("TEST 5: NO OLD BRANDING REFERENCES")
+    print("TEST 2: PNG Magic Bytes Verification")
     print("="*80)
     
-    all_passed = True
+    try:
+        # PNG magic bytes: 89 50 4E 47 0D 0A 1A 0A
+        expected_magic = b'\x89\x50\x4E\x47\x0D\x0A\x1A\x0A'
+        actual_magic = png_data[:8]
+        
+        print(f"✓ Expected magic bytes: {expected_magic.hex().upper()}")
+        print(f"✓ Actual magic bytes:   {actual_magic.hex().upper()}")
+        
+        assert actual_magic == expected_magic, f"Invalid PNG magic bytes"
+        
+        print("\n✅ TEST 2 PASSED: Valid PNG magic bytes")
+        
+    except Exception as e:
+        print(f"\n❌ TEST 2 FAILED: {str(e)}")
+        raise
+
+
+def test_png_dimensions(png_data):
+    """Test 2b: Verify PNG dimensions from IHDR chunk"""
+    print("\n" + "="*80)
+    print("TEST 2b: PNG Dimensions from IHDR chunk")
+    print("="*80)
     
     try:
-        response = requests.get(BASE_URL + "/", timeout=10)
-        if response.status_code != 200:
-            print(f"❌ Cannot fetch homepage (HTTP {response.status_code})")
-            return False
+        # IHDR chunk starts at byte 8, dimensions are at bytes 16-23
+        # Width: bytes 16-19 (big-endian)
+        # Height: bytes 20-23 (big-endian)
+        width_bytes = png_data[16:20]
+        height_bytes = png_data[20:24]
         
-        html = response.text.lower()
+        width = struct.unpack('>I', width_bytes)[0]
+        height = struct.unpack('>I', height_bytes)[0]
         
-        # Old colors to check
-        old_colors = ["#2c3e80", "#5468d6", "#7d5800", "#e8a317"]
+        print(f"✓ Width from IHDR:  {width}px")
+        print(f"✓ Height from IHDR: {height}px")
         
-        found_old = []
-        for color in old_colors:
-            if color in html:
-                found_old.append(color)
+        assert width == 1200, f"Expected width 1200, got {width}"
+        assert height == 630, f"Expected height 630, got {height}"
         
-        if found_old:
-            print(f"❌ Found OLD BRANDING colors in HTML: {', '.join(found_old)}")
-            all_passed = False
-        else:
-            print(f"✅ No old branding colors found in HTML")
-            
+        print("\n✅ TEST 2b PASSED: PNG dimensions are 1200×630")
+        
     except Exception as e:
-        print(f"❌ Failed to check for old branding - {e}")
-        all_passed = False
+        print(f"\n❌ TEST 2b FAILED: {str(e)}")
+        raise
+
+
+def test_png_size_reasonable(png_data):
+    """Test 2c: Verify PNG size is reasonable (not error image)"""
+    print("\n" + "="*80)
+    print("TEST 2c: PNG Size Reasonableness Check")
+    print("="*80)
     
-    return all_passed
+    try:
+        size_bytes = len(png_data)
+        size_kb = size_bytes / 1024
+        
+        print(f"✓ PNG size: {size_bytes} bytes ({size_kb:.2f} KB)")
+        
+        assert size_bytes > 20 * 1024, f"PNG too small ({size_kb:.2f} KB), likely an error image"
+        assert size_bytes < 500 * 1024, f"PNG too large ({size_kb:.2f} KB), unexpected"
+        
+        print(f"✓ Size is within expected range (20 KB - 500 KB)")
+        print("\n✅ TEST 2c PASSED: PNG size is reasonable")
+        
+    except Exception as e:
+        print(f"\n❌ TEST 2c FAILED: {str(e)}")
+        raise
+
+
+def test_pil_validation(png_data):
+    """Test 3: Validate PNG with PIL/Pillow"""
+    print("\n" + "="*80)
+    print("TEST 3: PIL/Pillow Validation")
+    print("="*80)
+    
+    try:
+        img = Image.open(io.BytesIO(png_data))
+        
+        print(f"✓ PIL successfully opened the image")
+        print(f"✓ Format: {img.format}")
+        print(f"✓ Size: {img.size}")
+        print(f"✓ Mode: {img.mode}")
+        
+        assert img.format == 'PNG', f"Expected PNG format, got {img.format}"
+        assert img.size == (1200, 630), f"Expected (1200, 630), got {img.size}"
+        
+        print("\n✅ TEST 3 PASSED: PIL validation successful")
+        
+    except Exception as e:
+        print(f"\n❌ TEST 3 FAILED: {str(e)}")
+        raise
+
+
+def test_consecutive_requests():
+    """Test 4: Two consecutive requests both work"""
+    print("\n" + "="*80)
+    print("TEST 4: Consecutive Requests")
+    print("="*80)
+    
+    try:
+        print("Making first request...")
+        response1 = requests.get(OG_ENDPOINT, timeout=30)
+        print(f"✓ Request 1: Status {response1.status_code}, Size {len(response1.content)} bytes")
+        
+        assert response1.status_code == 200, f"Request 1 failed with {response1.status_code}"
+        assert 'image/png' in response1.headers.get('Content-Type', ''), "Request 1 not image/png"
+        
+        print("\nMaking second request...")
+        response2 = requests.get(OG_ENDPOINT, timeout=30)
+        print(f"✓ Request 2: Status {response2.status_code}, Size {len(response2.content)} bytes")
+        
+        assert response2.status_code == 200, f"Request 2 failed with {response2.status_code}"
+        assert 'image/png' in response2.headers.get('Content-Type', ''), "Request 2 not image/png"
+        
+        # Verify both are valid PNGs
+        img1 = Image.open(io.BytesIO(response1.content))
+        img2 = Image.open(io.BytesIO(response2.content))
+        
+        print(f"✓ Both images are valid PNGs with size {img1.size}")
+        
+        print("\n✅ TEST 4 PASSED: Consecutive requests both work")
+        
+    except Exception as e:
+        print(f"\n❌ TEST 4 FAILED: {str(e)}")
+        raise
+
+
+def test_home_og_meta():
+    """Test 5: Verify home page has correct og:image meta tag"""
+    print("\n" + "="*80)
+    print("TEST 5: Home Page og:image Meta Tag")
+    print("="*80)
+    
+    try:
+        response = requests.get(HOME_URL, timeout=30)
+        print(f"✓ Home page status: {response.status_code}")
+        
+        assert response.status_code == 200, f"Home page returned {response.status_code}"
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Find og:image meta tag
+        og_image = soup.find('meta', property='og:image')
+        
+        if og_image:
+            og_url = og_image.get('content', '')
+            print(f"✓ Found og:image meta tag")
+            print(f"✓ Content: {og_url}")
+            
+            # Verify it points to /api/og
+            assert '/api/og' in og_url, f"og:image doesn't point to /api/og: {og_url}"
+            assert BASE_URL in og_url or og_url.startswith('/api/og'), \
+                f"og:image URL doesn't match expected domain: {og_url}"
+            
+            print(f"✓ og:image correctly points to /api/og endpoint")
+        else:
+            raise AssertionError("og:image meta tag not found in home page")
+        
+        # Also check Twitter card
+        twitter_image = soup.find('meta', attrs={'name': 'twitter:image'})
+        if twitter_image:
+            twitter_url = twitter_image.get('content', '')
+            print(f"✓ Found twitter:image: {twitter_url}")
+        
+        print("\n✅ TEST 5 PASSED: Home page has correct og:image meta tag")
+        
+    except Exception as e:
+        print(f"\n❌ TEST 5 FAILED: {str(e)}")
+        raise
+
 
 def main():
-    """Run all favicon tests."""
+    """Run all tests"""
     print("\n" + "="*80)
-    print("FAVICON VERIFICATION TEST SUITE")
-    print("Carbón + Girasol Rebrand")
+    print("STARTING /api/og ENDPOINT VERIFICATION")
     print("="*80)
     print(f"Base URL: {BASE_URL}")
+    print(f"OG Endpoint: {OG_ENDPOINT}")
     
-    results = {
-        "HTTP Delivery": test_http_delivery(),
-        "PNG Dimensions": test_dimensions(),
-        "Color Palette": test_color_palette(),
-        "HTML Metadata": test_html_metadata(),
-        "No Old Branding": test_no_old_branding(),
-    }
+    all_passed = True
     
-    print("\n" + "="*80)
-    print("FINAL RESULTS")
-    print("="*80)
+    try:
+        # Test 1: Basic endpoint check
+        png_data = test_og_endpoint_basic()
+        
+        # Test 2: PNG magic bytes
+        test_png_magic_bytes(png_data)
+        
+        # Test 2b: PNG dimensions
+        test_png_dimensions(png_data)
+        
+        # Test 2c: PNG size check
+        test_png_size_reasonable(png_data)
+        
+        # Test 3: PIL validation
+        test_pil_validation(png_data)
+        
+        # Test 4: Consecutive requests
+        test_consecutive_requests()
+        
+        # Test 5: Home page meta tag
+        test_home_og_meta()
+        
+    except Exception as e:
+        all_passed = False
+        print(f"\n{'='*80}")
+        print(f"TEST SUITE FAILED")
+        print(f"{'='*80}")
+        print(f"Error: {str(e)}")
     
-    for test_name, passed in results.items():
-        status = "✅ PASSED" if passed else "❌ FAILED"
-        print(f"{test_name}: {status}")
-    
-    all_passed = all(results.values())
-    
-    print("\n" + "="*80)
     if all_passed:
-        print("🎉 ALL TESTS PASSED - Favicon rebrand verified successfully!")
+        print("\n" + "="*80)
+        print("✅ ALL TESTS PASSED")
         print("="*80)
-        sys.exit(0)
+        print("\nSUMMARY:")
+        print("  ✓ Endpoint returns HTTP 200 with image/png")
+        print("  ✓ PNG has valid magic bytes (89 50 4E 47 0D 0A 1A 0A)")
+        print("  ✓ PNG dimensions are 1200×630 (from IHDR chunk)")
+        print("  ✓ PNG size is reasonable (>20KB, <500KB)")
+        print("  ✓ PIL can open and validate the PNG")
+        print("  ✓ Consecutive requests both work correctly")
+        print("  ✓ Home page has correct og:image meta tag")
+        print("\n/api/og endpoint is working correctly! ✅")
+        return 0
     else:
-        print("⚠️  SOME TESTS FAILED - See details above")
-        print("="*80)
-        sys.exit(1)
+        return 1
+
 
 if __name__ == "__main__":
-    main()
+    exit(main())
