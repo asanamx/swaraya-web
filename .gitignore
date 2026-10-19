@@ -75,7 +75,15 @@ credentials.json
 # Un-ignoring the ENTRY stops the collision; the /** lines keep all CONTENTS
 # ignored, so no env file and no build output is ever committed.
 # Keep this block LAST in the file.
-!/.env
+#
+# ⚠️ `!/.env` NO se restaura: `.env` es un ARCHIVO (no directorio), así que el
+# truco `!/path` + `/path/**` que funciona para `/build` y `/.next` NO aplica
+# aquí — dejar `!/.env` filtraría el OPENAI_API_KEY al próximo `git add .`.
+# Si Emergent Support confirma que la workaround de .env sigue siendo
+# necesaria, implementarla con un patrón que preserve la ignoración del
+# archivo (p. ej. mover secretos a un .env.local no listado o usar
+# `git update-index --skip-worktree .env`).
+# !/.env                                 ← intencionalmente ausente
 !/build
 /build/**
 !/.next
